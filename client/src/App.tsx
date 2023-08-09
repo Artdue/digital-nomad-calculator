@@ -11,7 +11,7 @@ function App(): JSX.Element {
       <Button>Работает</Button>;
       <Calculator />
     </Provider>
-  );
+  )
 }
 
 export default App;
