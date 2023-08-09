@@ -1,6 +1,6 @@
-import type { ItaskType } from '../types/types';
+import type { Istate } from '../Types/types';
 
 export type IstateType = {
-  tasks: ItaskType[];
+  states: Istate[];
   loading: boolean;
 };

@@ -1,28 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { IstateType } from './store.types';
+import { getStates } from './thunks/getStates';
 
 const initialState: IstateType = {
   states: [],
   loading: false,
 };
 
-const userSlice = createSlice({
-  name: 'users',
-  loading: false,
+const stateSlice = createSlice({
+  name: 'states',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getAllTasks.pending, (state) => {
+      .addCase(getStates.pending, (state) => {
         state.loading = true;
-        console.log(state.loading);
+        // console.log(state.loading);
       })
-      .addCase(getAllTasks.fulfilled, (state, action) => {
+      .addCase(getStates.fulfilled, (state, action) => {
         state.loading = false;
-        console.log(state.loading);
-        state.tasks = action.payload;
+        // console.log(state.loading);
+        state.states = action.payload;
       })
-      .addCase(getAllTasks.rejected, (state) => {
+      .addCase(getStates.rejected, (state) => {
         state.loading = false;
         console.error('ERROR!');
       })
@@ -30,4 +30,4 @@ const userSlice = createSlice({
   },
 });
 
-export default userSlice.reducer;
+export default stateSlice.reducer;

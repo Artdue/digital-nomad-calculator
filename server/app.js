@@ -8,6 +8,7 @@ const FileStore = require('session-file-store')(session);
 const indexRouter = require('./router/indexRouter');
 const userRouter = require('./router/userRouter');
 const profileRouter = require('./router/profileRouter');
+const statesRouter = require("./router/statesRouter");
 
 const sessionConfig = {
   name: 'name',
@@ -26,6 +27,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(session(sessionConfig));
 app.use(cors({ credentials: true, origin: true }));
+
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -36,5 +38,6 @@ app.use('/uploads/lease', express.static('lease'));
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/profile', profileRouter);
+app.use("/states", statesRouter);
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));
