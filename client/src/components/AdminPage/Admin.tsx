@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../../Types/types';
-import { fetchStates } from '../../Redux/thunks/states.api';
-import { getStates } from '../../redux/thunks/getStates';
+import { getAdmin } from '../../Redux/thunks/getAdmin';
 import { addState } from '../../Redux/thunks/addStates';
-import { deleteState } from '../../redux/thunks/deleteState';
-import { editState } from '../../redux/thunks/editState';
-
+import { deleteState } from '../../Redux/thunks/deleteState';
+import { editState } from '../../Redux/thunks/editState';
 
 function AdminStates(): React.JSX.Element {
   const states = useSelector((state: RootState) => state.adminSlice.states);
@@ -50,14 +48,12 @@ function AdminStates(): React.JSX.Element {
   const handleDeleteState = async (id: number) => {
     try {
       void dispatch(deleteState(id));
-      void dispatch(getStates());
+      void dispatch(getAdmin());
     } catch (error) {
       console.error('Ошибка при удалении данных:', error);
     }
   };
 
-
-  
   const [editingStateId, setEditingStateId] = useState<number | null>(null);
   const [editedFields, setEditedFields] = useState({
     state_name: '',
@@ -72,7 +68,7 @@ function AdminStates(): React.JSX.Element {
 
   const handleEditState = async (id: number) => {
     try {
-      await dispatch(editState({ id, data: editedFields }));
+      dispatch(editState({ id, data: editedFields }));
       setEditingStateId(null);
       setEditedFields({
         state_name: '',
@@ -90,8 +86,39 @@ function AdminStates(): React.JSX.Element {
   };
 
   useEffect(() => {
-    dispatch(getStates());
+    dispatch(getAdmin());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (editingStateId !== null) {
+      // Найдите состояние, которое редактируется
+      const editingState = states.find((state) => state.id === editingStateId);
+
+      // Заполните состояние editedFields данными для предзаполнения
+      setEditedFields({
+        state_name: editingState.state_name,
+        min_income: editingState.min_income.toString(),
+        banned_citizenship: editingState.banned_citizenship,
+        work_exp: editingState.work_exp.toString(),
+        min_age: editingState.min_age.toString(),
+        max_age: editingState.max_age.toString(),
+        gender: editingState.gender,
+        criminal: editingState.criminal,
+      });
+    } else {
+      // Если не редактируется, сбросьте editedFields
+      setEditedFields({
+        state_name: '',
+        min_income: '',
+        banned_citizenship: '',
+        work_exp: '',
+        min_age: '',
+        max_age: '',
+        gender: '',
+        criminal: false,
+      });
+    }
+  }, [editingStateId, states]);
 
   return (
     <div>
@@ -117,7 +144,9 @@ function AdminStates(): React.JSX.Element {
                   type="text"
                   value={editedFields.banned_citizenship}
                   placeholder="Нельзя с гражданством"
-                  onChange={(e) => setEditedFields({ ...editedFields, banned_citizenship: e.target.value })}
+                  onChange={(e) =>
+                    setEditedFields({ ...editedFields, banned_citizenship: e.target.value })
+                  }
                 />
                 <input
                   type="number"
@@ -147,7 +176,9 @@ function AdminStates(): React.JSX.Element {
                   <input
                     type="checkbox"
                     checked={editedFields.criminal}
-                    onChange={(e) => setEditedFields({ ...editedFields, criminal: e.target.checked })}
+                    onChange={(e) =>
+                      setEditedFields({ ...editedFields, criminal: e.target.checked })
+                    }
                   />
                   Судимость
                 </label>
@@ -156,13 +187,9 @@ function AdminStates(): React.JSX.Element {
             ) : (
               <div>
                 Название страны: {state.state_name}
-                (Мин. доход: {state.min_income})
-                (Нельзя с гражданством: {state.banned_citizenship})
-                (Опыт работы: {state.work_exp})
-                (Мин. возраст: {state.min_age})
-                (Макс. возраст: {state.max_age})
-                (Пол: {state.gender})
-                (Судимость: {state.criminal})
+                (Мин. доход: {state.min_income}) (Нельзя с гражданством: {state.banned_citizenship})
+                (Опыт работы: {state.work_exp}) (Мин. возраст: {state.min_age}) (Макс. возраст:{' '}
+                {state.max_age}) (Пол: {state.gender}) (Судимость: {state.criminal})
                 <button onClick={() => setEditingStateId(state.id)}>Редактировать</button>
                 <button onClick={() => dispatch(deleteState(state.id))}>Удалить</button>
               </div>
