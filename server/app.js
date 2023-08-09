@@ -8,6 +8,10 @@ const FileStore = require('session-file-store')(session);
 const indexRouter = require('./router/indexRouter');
 const userRouter = require('./router/userRouter');
 const profileRouter = require('./router/profileRouter');
+const adminRouter = require('./router/adminRouter');
+const statesRouter = require("./router/statesRouter");
+
+
 
 const sessionConfig = {
   name: 'name',
@@ -36,5 +40,7 @@ app.use('/uploads/lease', express.static('lease'));
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/profile', profileRouter);
+app.use('/admin', adminRouter);
+app.use("/states", statesRouter);
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));
