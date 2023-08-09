@@ -8,6 +8,7 @@ const FileStore = require("session-file-store")(session);
 const indexRouter = require("./router/indexRouter");
 const userRouter = require("./router/userRouter");
 const profileRouter = require("./router/profileRouter");
+const statesRouter = require("./router/statesRouter");
 
 const sessionConfig = {
   name: "name",
@@ -33,5 +34,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", indexRouter);
 app.use("/user", userRouter);
 app.use("/profile", profileRouter);
+app.use("/states", statesRouter);
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));

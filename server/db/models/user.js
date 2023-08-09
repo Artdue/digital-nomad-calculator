@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       citizenship: DataTypes.STRING,
       income: DataTypes.INTEGER,
       work_exp: DataTypes.INTEGER,
+      admin: DataTypes.BOOLEAN,
     },
     {
       sequelize,
