@@ -5,7 +5,8 @@ const CompanyServices = () => {
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
       <h1 className="text-xl font-bold mt-4 mb-4">Наша команда</h1>
       <p className="mb-6">
-        Мы объединили сильнейшую арбитражную практику и многолетний опыт работы с клиентами
+        Мы объединили нашу выдающуюся арбитражную практику с многолетним опытом работы с нашими
+        клиентами.{' '}
       </p>
       {/* First Card */}
       <div className="bg-white shadow-md w-full sm:w-4/5 md:w-96 mx-3 rounded-3xl flex flex-col sm:flex-row mb-8 overflow-hidden">
