@@ -1,13 +1,10 @@
 import React from 'react';
 // import { Button } from 'flowbite-react';
 import './App.css';
-
-import CompanyServices from './components/MainPage/CompanyServices/CompanyServices';
+import AdminStates from './components/AdminPage/Admin';
 
 function App(): JSX.Element {
-  return <CompanyServices />;
+  return <AdminStates />;
 }
-
-
 
 export default App;
