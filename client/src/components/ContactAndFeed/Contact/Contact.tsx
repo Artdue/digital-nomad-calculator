@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FeedbackForm from '../FeedbackForm/FeedbackForm';
 
-export default function FeedbackForm() {
+export default function Contact() {
   return (
-    <div className="flex flex-wrap justify-center">
+    <div className="flex flex-wrap justify-center ">
       {/* Сторона с контактной информацией */}
       <div className="w-full md:w-1/2 p-4 md:p-8 bg-gray-100 text-center md:text-left">
         <div className="h-full flex flex-col justify-center items-center md:items-start">
@@ -77,89 +78,7 @@ export default function FeedbackForm() {
           </div>
         </div>
       </div>
-
-      {/* Сторона с инпутами */}
-      <div className="w-full md:w-1/2 p-4 md:p-8 flex flex-col justify-center items-center">
-        <h2 className="text-2xl font-semibold mb-4 text-center md:text-left">Свяжитесь с нами</h2>
-        <form className="w-full max-w-md">
-          <div className="mb-4 w-full flex">
-            <div className="w-1/2 mr-2">
-              <label className="block text-sm font-medium mb-1" htmlFor="first-name">
-                Имя
-              </label>
-              <input
-                type="text"
-                id="first-name"
-                className="w-full border-gray-300 rounded-md p-2"
-                required
-              />
-            </div>
-            <div className="w-1/2 ml-2">
-              <label className="block text-sm font-medium mb-1" htmlFor="last-name">
-                Фамилия
-              </label>
-              <input
-                type="text"
-                id="last-name"
-                className="w-full border-gray-300 rounded-md p-2"
-                required
-              />
-            </div>
-          </div>
-          <div className="mb-4 w-full">
-            <label className="block text-sm font-medium mb-1" htmlFor="email">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="w-full border-gray-300 rounded-md p-2"
-              autoComplete="email"
-              required
-            />
-          </div>
-          <div className="mb-4 w-full">
-            <label className="block text-sm font-medium mb-1" htmlFor="phone-number">
-              Телефон
-            </label>
-            <input
-              type="tel"
-              id="phone-number"
-              className="w-full border-gray-300 rounded-md p-2"
-              required
-            />
-          </div>
-          <div className="mb-4 w-full">
-            <label className="block text-sm font-medium mb-1" htmlFor="message">
-              Сообщение
-            </label>
-            <textarea
-              id="message"
-              className="w-full border-gray-300 rounded-md p-2"
-              rows="4"
-              maxLength="1000"
-              placeholder="До 1000 символов"
-              required
-            ></textarea>
-          </div>
-          <span>
-            Нажимая на кнопку, вы соглашаетесь на{' '}
-            <Link
-              to="/path-to-privacy-policy"
-              style={{ textDecoration: 'underline', color: 'blue' }}
-            >
-              обработку персональных данных
-            </Link>
-            .
-          </span>
-          <button
-            type="submit"
-            className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mx-auto block mt-4"
-          >
-            Отправить
-          </button>
-        </form>
-      </div>
+      <FeedbackForm />
     </div>
   );
 }
