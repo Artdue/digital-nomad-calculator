@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { useNavigate } from 'react-router-dom';
-import userLogin from '../../../redux/thunks/user/log.api';
+import userLogin from '../../../Redux/thunks/user/log.api';
 
 interface ILogin {
   email: string;
@@ -21,10 +21,10 @@ export default function Login() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const inputHandler = (event) => {
+  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLogin((pre) => ({ ...pre, [event.target.name]: event.target.value }));
   };
-  const Hendler = async (e) => {
+  const Hendler = async (e: React.FormEvent) => {
     e.preventDefault();
     const actionResult = await dispatch(userLogin(login));
     // console.log(actionResult.payload);

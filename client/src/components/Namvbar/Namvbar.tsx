@@ -5,7 +5,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { Avatar } from 'flowbite-react';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
-import userLogout from '../../redux/thunks/user/logout.api';
+import userLogout from '../../Redux/thunks/user/logout.api';
 
 const navigation = [
   { name: 'О компании', href: '/about', current: false },
