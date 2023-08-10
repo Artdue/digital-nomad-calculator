@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
@@ -6,16 +5,16 @@ import { useDispatch } from 'react-redux';
 import Login from './components/LogReg/Login/Login';
 import Register from './components/LogReg/Register/Register';
 import Namvbar from './components/Namvbar/Namvbar';
-import navApi from './redux/thunks/user/nav.api';
+import navApi from './Redux/thunks/user/nav.api';
+import Footer from './components/Footer/Footer';
 
 function App(): JSX.Element {
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(navApi());
   }, []);
-  
+
   return (
     <>
       <Routes>
@@ -24,8 +23,7 @@ function App(): JSX.Element {
           <Route path="/user/login" element={<Login />} />
         </Route>
       </Routes>
-
-      {/* <Register /> */}
+      <Footer />
     </>
   );
 }
