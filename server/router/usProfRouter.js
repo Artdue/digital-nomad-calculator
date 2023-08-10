@@ -25,6 +25,7 @@ router.put('/', async (req, res) => {
       citizenship: req.body.citizenship,
       income: req.body.income,
       work_exp: req.body.work_exp,
+      work_date: req.body.work_date,
     },
     {
       where: {

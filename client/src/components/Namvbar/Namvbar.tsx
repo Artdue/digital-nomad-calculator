@@ -31,8 +31,7 @@ export default function Namvbar() {
 
   const logout = () => {
     void dispatch(userLogout());
-    console.log('ffffffffffff');
-    navigate('/about');
+    navigate('/');
   };
 
   return (
@@ -109,7 +108,7 @@ export default function Namvbar() {
                           <Menu.Item>
                             {({ active }) => (
                               <Link
-                                to="#"
+                                to="/user/main"
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
                                   'block px-4 py-2 text-sm text-gray-700',
