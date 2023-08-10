@@ -19,7 +19,7 @@ import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 import Strengths from './components/MainPage/Strengths/Strengths';
 import OurTeam from './components/MainPage/OurTeam/OurTeam';
 import Home from './components/MainPage/Home/Home';
-import AdminStates from './components/AdminPage/Admin';
+import MainCalculator from './components/MainPage/Calculator/MainCalculator';
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
@@ -48,9 +48,9 @@ function App(): JSX.Element {
           <Route path="/user/login" element={<Login />} />
           <Route path="/politika-konfidenczialnosti" element={<PrivacyPolicy />} />
           <Route path="/user/profile" element={<EditProfile />} />
+          <Route path="/user/main" element={<MainCalculator />} />
         </Route>
       </Routes>
-      <AdminStates />
       <Foot />
     </>
   );

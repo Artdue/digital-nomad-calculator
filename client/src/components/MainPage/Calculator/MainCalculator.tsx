@@ -200,9 +200,9 @@ export default function MainCalculator(): React.JSX.Element {
             backgroundColor: 'rgba(0, 0, 0, 0.5)',
           }}
         >
-          <div className="w-[600px] h-[500px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center">
+          <div className="w-[600px] h-[500px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
             <h1 className="text-2xl font-bold mb-4">{oneState.state_name}</h1>
-            <div className="actions">
+            <div className="actions flex-grow overflow-y-auto">
               <ul>
                 {oneState.actions.split('\n').map((action, index) => (
                   <li key={index}>{action}</li>
@@ -212,6 +212,9 @@ export default function MainCalculator(): React.JSX.Element {
             <button
               onClick={closeModal}
               className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
+              style={{
+                alignSelf: 'center',
+              }}
             >
               Закрыть
             </button>

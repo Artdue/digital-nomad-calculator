@@ -15,8 +15,8 @@ export default function EditProfile(): React.JSX.Element {
   //   const [email, setEmail] = useState('super-Multer@was-born-on-Phiket.th');
   const [citizenship, setCitizenship] = useState(userData?.citizenship || '');
   const [income, setIncome] = useState(userData?.income || '');
-  const [employmentDate, setEmploymentDate] = useState('2023-05-01');
-  const [months, setMonths] = useState('');
+  const [employmentDate, setEmploymentDate] = useState(userData?.work_date || '');
+  const [workExp, setworkExp] = useState(userData?.work_exp || '');
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
@@ -32,7 +32,7 @@ export default function EditProfile(): React.JSX.Element {
     const targetDate = new Date(year, month - 1, day);
     const timeDiff = currentDate - targetDate;
     const monthsPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44));
-    setMonths(monthsPassed);
+    setworkExp(monthsPassed);
     console.log(
       firstName,
       middleName,
@@ -50,6 +50,7 @@ export default function EditProfile(): React.JSX.Element {
       citizenship,
       income,
       work_exp: monthsPassed,
+      work_date: employmentDate,
     };
     console.log(editUser);
     void dispatch(profilePut(editUser));
@@ -156,8 +157,13 @@ export default function EditProfile(): React.JSX.Element {
                       value={employmentDate}
                       onChange={(e) => setEmploymentDate(e.target.value)}
                     />
-                    <div className="text-sm font-medium leading-6 text-gray-900">
-                      Месяцев на текущей работе: {months}
+                    <div
+                      type="text"
+                      name="workExp"
+                      className="text-sm font-medium leading-6 text-gray-900 mt-2"
+                      style={{ border: 'none', padding: '0' }}
+                    >
+                      Месяцев на текущей работе: {workExp}
                     </div>
                   </dd>
                 </div>
