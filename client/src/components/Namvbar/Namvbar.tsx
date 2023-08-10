@@ -5,13 +5,13 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { Avatar } from 'flowbite-react';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
-import userLogout from '../../redux/thunks/user/logout.api';
+import userLogout from '../../Redux/thunks/user/logout.api';
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: false },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  { name: 'О компании', href: '/about', current: false },
+  { name: 'Контакты', href: '/contact', current: false },
+  { name: 'Наша команда', href: '/CompanyServices', current: false },
+  { name: 'Подбери свою страну', href: '/digitalNomandCalculator', current: false },
 ];
 
 const navigationT = [
