@@ -18,7 +18,6 @@ import Contact from './components/ContactAndFeed/Contact/Contact';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 import Strengths from './components/MainPage/Strengths/Strengths';
 import OurTeam from './components/MainPage/OurTeam/OurTeam';
-import ServicesCompanies from './components/MainPage/ServicesCompanies/ServicesCompanies';
 import Home from './components/MainPage/Home/Home';
 
 function App(): JSX.Element {
@@ -47,7 +46,7 @@ function App(): JSX.Element {
           <Route path="/user/register" element={<Register />} />
           <Route path="/user/login" element={<Login />} />
           <Route path="/politika-konfidenczialnosti" element={<PrivacyPolicy />} />
-           <Route path="/user/profile" element={<EditProfile />} />
+          <Route path="/user/profile" element={<EditProfile />} />
         </Route>
       </Routes>
       <Foot />
