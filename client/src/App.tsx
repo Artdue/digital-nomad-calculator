@@ -11,6 +11,7 @@ import navApi from './Redux/thunks/user/nav.api';
 import CompanyServices from './components/MainPage/CompanyServices/CompanyServices';
 import Calculator from './components/MainPage/Calculator/Calculator';
 import Contact from './components/ContactAndFeed/Contact/Contact';
+import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function App(): JSX.Element {
           <Route path="/digitalNomandCalculator" element={<Calculator />} />
           <Route path="/user/register" element={<Register />} />
           <Route path="/user/login" element={<Login />} />
+          <Route path="/politika-konfidenczialnosti" element={<PrivacyPolicy />} />
         </Route>
       </Routes>
       <Foot />
