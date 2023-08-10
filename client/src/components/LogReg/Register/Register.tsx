@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { useNavigate } from 'react-router-dom';
-import userRegister from '../../../redux/thunks/user/reg.api';
+import userRegister from '../../../Redux/thunks/user/reg.api';
 
 interface IReg {
   email: string;

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function PrivacyPolicy() {
   return (
-    <div>
+    <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
       <div>
         <h1>Согласие на обработку персональных данных</h1>
         <div>

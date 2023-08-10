@@ -21,10 +21,10 @@ export default function Login() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const inputHandler = (event) => {
+  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLogin((pre) => ({ ...pre, [event.target.name]: event.target.value }));
   };
-  const Hendler = async (e) => {
+  const Hendler = async (e: React.FormEvent) => {
     e.preventDefault();
     const actionResult = await dispatch(userLogin(login));
     // console.log(actionResult.payload);
