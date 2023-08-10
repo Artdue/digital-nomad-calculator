@@ -54,6 +54,10 @@ module.exports = {
         allowNull: true,
         type: Sequelize.INTEGER,
       },
+      work_date: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
       admin: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
