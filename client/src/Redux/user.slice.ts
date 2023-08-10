@@ -10,6 +10,7 @@ const initialState = {
   auth: false,
   msg: '',
 };
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -43,11 +44,12 @@ const userSlice = createSlice({
       .addCase(userLogout.pending, (state) => {
         console.error('pending');
       })
-      .addCase(userLogout.fulfilled, (state, action) => {
-        state.email = action.payload.email;
-        state.admin = action.payload.admin;
-        state.msg = action.payload.msg;
-        state.auth = true;
+      .addCase(userLogout.fulfilled, (state) => {
+        // state.email = action.payload.email;
+        // state.admin = action.payload.admin;
+        // state.msg = action.payload.msg;
+        // state.auth = true;
+        Object.assign(state, initialState);
       })
       .addCase(userLogout.rejected, (state) => {
         console.error('ERROR!');

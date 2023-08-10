@@ -1,5 +1,5 @@
-import React from 'react';
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
+
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
@@ -29,6 +29,12 @@ export default function Namvbar() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  const logout = () => {
+    void dispatch(userLogout());
+    console.log('ffffffffffff');
+    navigate('/about');
+  };
+
   return (
     <>
       <Disclosure as="nav" className="bg-gray-100">
@@ -37,7 +43,7 @@ export default function Namvbar() {
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8  bg-gray-100 border-b-4 border-yellow-300">
               <div className="relative flex h-16 items-center justify-between">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                  {/* Mobile menu button*/}
+                  {/* Mobile menu button */}
                   <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-[#162E3C] hover:bg-gray-700 hover:text-[#a1a6a8] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="absolute -inset-0.5" />
                     <span className="sr-only">Open main menu</span>
@@ -116,7 +122,7 @@ export default function Namvbar() {
                           <Menu.Item>
                             {({ active }) => (
                               <Link
-                                to="#"
+                                to="/user/profile"
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
                                   'block px-4 py-2 text-lg text-gray-700',
@@ -128,15 +134,15 @@ export default function Namvbar() {
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
-                              <Link
-                                onClick={() => dispatch(userLogout()).then(navigate('/'))}
+                              <button
+                                onClick={logout}
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
                                   'block px-4 py-2 ttext-lg text-gray-700',
                                 )}
                               >
                                 Выйти
-                              </Link>
+                              </button>
                             )}
                           </Menu.Item>
                         </Menu.Items>

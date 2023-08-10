@@ -8,7 +8,11 @@ import Namvbar from './components/Namvbar/Namvbar';
 import Foot from './components/Foot/Foot';
 import AboutCompany from './components/AboutСompany/AboutСompany';
 import navApi from './Redux/thunks/user/nav.api';
-import CompanyServices from './components/MainPage/OurTeam/OurTeam';
+import EditProfile from './components/ProfilePage/EditProfile';
+import Profile from './components/ProfilePage/Profile';
+import FeedbackForm from './components/FeedbackForm/FeedbackForm';
+import { profileGet } from './Redux/thunks/profileThunk';
+import { useAppSelector } from './Redux/hooks';
 import Calculator from './components/MainPage/Calculator/Calculator';
 import Contact from './components/ContactAndFeed/Contact/Contact';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
@@ -19,10 +23,17 @@ import Home from './components/MainPage/Home/Home';
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
+  const user = useAppSelector((state) => state.userSlice);
 
   useEffect(() => {
     dispatch(navApi());
   }, []);
+
+  useEffect(() => {
+    if (user.email) {
+      dispatch(profileGet(user));
+    }
+  }, [user]);
 
   return (
     <>
@@ -36,6 +47,7 @@ function App(): JSX.Element {
           <Route path="/user/register" element={<Register />} />
           <Route path="/user/login" element={<Login />} />
           <Route path="/politika-konfidenczialnosti" element={<PrivacyPolicy />} />
+           <Route path="/user/profile" element={<EditProfile />} />
         </Route>
       </Routes>
       <Foot />

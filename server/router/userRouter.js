@@ -61,14 +61,14 @@ router
   .get('/logout', (req, res) => {
     req.session.destroy(() => {
       res.clearCookie('Todos');
-      res.sendStatus(200);
+      res.status(200).json({ message: 'Logged out successfully' });
     });
   })
 
   .get('/auth', async (req, res) => {
     res.json({
-      email: req.session.email,
-      admin: req.session.admin,
+      email: req.session?.email,
+      admin: req.session?.admin,
     });
   });
 
