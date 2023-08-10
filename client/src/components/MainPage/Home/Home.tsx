@@ -1,7 +1,8 @@
 import React from 'react';
 import Calculator from '../Calculator/Calculator';
-import FeedbackForm from '../../FeedbackForm/FeedbackForm';
 import Strengths from '../Strengths/Strengths';
+import Contact from '../../ContactAndFeed/Contact/Contact';
+import ServicesCompanies from '../ServicesCompanies/ServicesCompanies';
 
 export default function Home() {
   return (
@@ -53,10 +54,13 @@ export default function Home() {
           <Calculator />
         </div>
         <div>
-          <FeedbackForm />
+          <Strengths />
         </div>
         <div>
-          <Strengths />
+          <ServicesCompanies />
+        </div>
+        <div>
+          <Contact />
         </div>
       </div>
     </>
