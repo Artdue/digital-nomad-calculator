@@ -22,10 +22,16 @@ export default function Register() {
     setReg((pre) => ({ ...pre, [e.target.name]: e.target.value }));
   };
 
-  const Hendler = (e) => {
+  const Hendler = async (e) => {
     e.preventDefault();
-    dispatch(userRegister(reg)).then(() => navigate('/'));
+    const actionResult = await dispatch(userRegister(reg));
+    if (actionResult.payload.msg === 'Пользователь зарегистрирован') {
+      navigate('/');
+    } else {
+      state.msg;
+    }
   };
+
   return (
     <div className="isolate bg-white px-4 sm:py-32 lg:px-8">
       {/* py-20 - это паддинги */}

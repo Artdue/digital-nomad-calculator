@@ -11,9 +11,14 @@ const userRegister = createAsyncThunk('reg', async (reg) => {
       body: JSON.stringify(reg),
     });
     const res = await response.json();
-    return res;
+    if (response.ok) {
+      return res;
+    } else {
+      return { status: 'error', error: 'Login failed' };
+    }
   } catch (error) {
-    console.log('Ошибка регистрации', error);
+    console.error('Oops REG', error);
+    return { status: 'error', error: 'An error occurred' };
   }
 });
 
