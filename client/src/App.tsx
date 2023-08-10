@@ -12,6 +12,7 @@ import CompanyServices from './components/MainPage/CompanyServices/CompanyServic
 import Calculator from './components/MainPage/Calculator/Calculator';
 import Contact from './components/ContactAndFeed/Contact/Contact';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
+import Strengths from './components/MainPage/Strengths/Strengths';
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
@@ -33,6 +34,8 @@ function App(): JSX.Element {
           <Route path="/politika-konfidenczialnosti" element={<PrivacyPolicy />} />
         </Route>
       </Routes>
+      <Strengths />
+
       <Foot />
     </>
   );
