@@ -10,7 +10,6 @@ import navApi from './Redux/thunks/user/nav.api';
 import FeedbackForm from './components/FeedbackForm/FeedbackForm';
 import CompanyServices from './components/MainPage/CompanyServices/CompanyServices';
 import Calculator from './components/MainPage/Calculator/Calculator';
-import Strengths from './components/MainPage/Strengths/Strengths';
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
@@ -21,7 +20,7 @@ function App(): JSX.Element {
 
   return (
     <>
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<Namvbar />}>
           <Route path="/about" element={<AboutCompany />} />
           <Route path="/contact" element={<FeedbackForm />} />
@@ -30,8 +29,7 @@ function App(): JSX.Element {
           <Route path="/user/register" element={<Register />} />
           <Route path="/user/login" element={<Login />} />
         </Route>
-      </Routes> */}
-      <Strengths />
+      </Routes>
     </>
   );
 }
