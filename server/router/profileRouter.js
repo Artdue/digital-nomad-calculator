@@ -35,14 +35,6 @@ const uploadsPassport = multer({ storage: storagePassport });
 const uploadsBalance = multer({ storage: storageBalance });
 const uploadsLease = multer({ storage: storageLease });
 
-// profileRouter.post('/passport', uploadsPassport.single('file'), async (req, res) => {
-//   const { userId } = req.session;
-//   const originalname = req.file.filename;
-
-//   await User.update({ passport: `/uploads/passport/${originalname}` }, { where: { id: userId } });
-//   res.send('Паспорт успешно загружен.');
-// });
-
 // profileRouter.post('/balance', uploadsBalance.single('file'), async (req, res) => {
 //   const { userId } = req.session;
 //   const originalname = req.file.filename;
@@ -67,12 +59,12 @@ const uploadsLease = multer({ storage: storageLease });
 //   res.send('Паспорт успешно загружен.');
 // });
 profileRouter.post('/passport', uploadsPassport.single('file'), async (req, res) => {
-  const userId = 1; 
+  const userId = 1;
   const originalname = req.file.filename;
-  
-    await User.update({ passport: `/uploads/passport/${originalname}` }, { where: { id: userId } });
-    res.send('Паспорт успешно загружен.');
-  });
+
+  await User.update({ passport: `/uploads/passport/${originalname}` }, { where: { id: userId } });
+  res.send('Паспорт успешно загружен.');
+});
 profileRouter.post('/balance', uploadsBalance.single('file'), async (req, res) => {
   const userId = 1;
   const originalname = req.file.filename;
@@ -82,7 +74,7 @@ profileRouter.post('/balance', uploadsBalance.single('file'), async (req, res) =
 });
 
 profileRouter.post('/lease', uploadsLease.single('file'), async (req, res) => {
-  const userId = 1; 
+  const userId = 1;
   const originalname = req.file.filename;
 
   await User.update({ lease: `/uploads/lease/${originalname}` }, { where: { id: userId } });
