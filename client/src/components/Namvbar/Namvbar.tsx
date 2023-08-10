@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import userLogout from '../../Redux/thunks/user/logout.api';
 
 const navigation = [
+  { name: 'На главную', href: '/', current: false },
   { name: 'О компании', href: '/about', current: false },
   { name: 'Контакты', href: '/contact', current: false },
   { name: 'Наша команда', href: '/CompanyServices', current: false },
@@ -30,10 +31,10 @@ export default function Namvbar() {
 
   return (
     <>
-      <Disclosure as="nav" className="[#ffffff]">
+      <Disclosure as="nav" className="bg-gray-100">
         {({ open }) => (
           <>
-            <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8  bg-gray-100 border-b-4 border-yellow-300">
               <div className="relative flex h-16 items-center justify-between">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                   {/* Mobile menu button*/}
@@ -59,7 +60,7 @@ export default function Namvbar() {
                             item.current
                               ? 'bg-[#162E3C] text-[#162E3C]'
                               : ' text-[#162E3C] hover:bg-[#d3dfe5] hover:text-white',
-                            'rounded-md px-3 py-2 text-sm font-medium',
+                            'rounded-md px-3 py-2 text-lg font-medium',
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
@@ -74,7 +75,7 @@ export default function Namvbar() {
                   <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     <Menu as="div" className="relative ml-3">
                       <div>
-                        <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                        <Menu.Button className="relative flex rounded-full bg-gray-800 text-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                           <span className="absolute -inset-1.5" />
                           <span className="sr-only">Open user menu</span>
                           <div className="flex flex-wrap gap-2">
@@ -118,7 +119,7 @@ export default function Namvbar() {
                                 to="#"
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700',
+                                  'block px-4 py-2 text-lg text-gray-700',
                                 )}
                               >
                                 Настройки профиля
@@ -131,7 +132,7 @@ export default function Namvbar() {
                                 onClick={() => dispatch(userLogout()).then(navigate('/'))}
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700',
+                                  'block px-4 py-2 ttext-lg text-gray-700',
                                 )}
                               >
                                 Выйти
@@ -153,7 +154,7 @@ export default function Namvbar() {
                             item.current
                               ? 'bg-[#162E3C] text-[#162E3C]'
                               : ' text-[#162E3C] hover:bg-[#d3dfe5] hover:text-white',
-                            'rounded-md px-3 py-2 text-sm font-medium',
+                            'rounded-md px-3 py-2 text-lg font-medium',
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
