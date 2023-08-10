@@ -8,10 +8,13 @@ import Namvbar from './components/Namvbar/Namvbar';
 import Foot from './components/Foot/Foot';
 import AboutCompany from './components/AboutСompany/AboutСompany';
 import navApi from './Redux/thunks/user/nav.api';
-import CompanyServices from './components/MainPage/CompanyServices/CompanyServices';
+import CompanyServices from './components/MainPage/OurTeam/OurTeam';
 import Calculator from './components/MainPage/Calculator/Calculator';
 import Contact from './components/ContactAndFeed/Contact/Contact';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
+import Strengths from './components/MainPage/Strengths/Strengths';
+import OurTeam from './components/MainPage/OurTeam/OurTeam';
+import ServicesCompanies from './components/MainPage/ServicesCompanies/ServicesCompanies';
 import Home from './components/MainPage/Home/Home';
 
 function App(): JSX.Element {
@@ -28,7 +31,7 @@ function App(): JSX.Element {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutCompany />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/CompanyServices" element={<CompanyServices />} />
+          <Route path="/CompanyServices" element={<OurTeam />} />
           <Route path="/digitalNomandCalculator" element={<Calculator />} />
           <Route path="/user/register" element={<Register />} />
           <Route path="/user/login" element={<Login />} />
