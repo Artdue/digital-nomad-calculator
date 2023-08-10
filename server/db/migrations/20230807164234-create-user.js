@@ -8,11 +8,51 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      login: {
+        type: Sequelize.STRING,
+      },
+      first_name: {
+        type: Sequelize.STRING,
+      },
+      middle_name: {
+        type: Sequelize.STRING,
+      },
+      last_name: {
+        type: Sequelize.STRING,
+      },
       email: {
         type: Sequelize.STRING,
       },
       password: {
         type: Sequelize.STRING,
+      },
+
+      subscribed: {
+        type: Sequelize.BOOLEAN,
+      },
+      passport: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      balance: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      lease: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      citizenship: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      income: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+      },
+      work_exp: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
       },
       admin: {
         type: Sequelize.BOOLEAN,

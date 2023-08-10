@@ -9,6 +9,7 @@ const initialState = {
   admin: false,
   auth: false,
   msg: '',
+
 };
 const userSlice = createSlice({
   name: 'user',
