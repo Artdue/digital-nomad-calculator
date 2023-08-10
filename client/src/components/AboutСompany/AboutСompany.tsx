@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function AboutComponents() {
   return (
-    <div>
+    <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div>
         В 2016 году была основана компания KYC Consulting and Legal services и за это время мы
         успели собрать команду профессионалов с системным подходом к праву, состоящую из
