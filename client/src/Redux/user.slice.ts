@@ -9,7 +9,6 @@ const initialState = {
   admin: false,
   auth: false,
   msg: '',
-
 };
 const userSlice = createSlice({
   name: 'user',
@@ -48,7 +47,7 @@ const userSlice = createSlice({
         state.email = action.payload.email;
         state.admin = action.payload.admin;
         state.msg = action.payload.msg;
-        state.auth = false;
+        state.auth = true;
       })
       .addCase(userLogout.rejected, (state) => {
         console.error('ERROR!');

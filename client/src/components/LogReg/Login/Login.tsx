@@ -27,8 +27,8 @@ export default function Login() {
   const Hendler = async (e) => {
     e.preventDefault();
     const actionResult = await dispatch(userLogin(login));
-    console.log(actionResult.payload.status);
-    if (actionResult.payload.status !== 'error') {
+    // console.log(actionResult.payload);
+    if (actionResult.payload.msg === 'Вы успешно авторизованы!') {
       navigate('/');
     } else {
       state.msg;
