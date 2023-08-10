@@ -27,6 +27,17 @@ export type UserType = {
   password: string;
 };
 
+export type IUser = {
+  login: string;
+  first_name: string;
+  middle_name: string;
+  last_name: string;
+  email: string;
+  citizenship: string;
+  income: string;
+  work_exp: string;
+};
+
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;

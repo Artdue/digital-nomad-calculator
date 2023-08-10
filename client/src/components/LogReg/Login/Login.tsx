@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import userLogin from '../../../redux/thunks/user/log.api';
 
-interface ILogin {
+type ILogin = {
   email: string;
   password: string;
-}
+};
 
 const initState: ILogin = {
   email: '',
