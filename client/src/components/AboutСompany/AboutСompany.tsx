@@ -1,5 +1,5 @@
 import React from 'react';
-import FeedbackForm from '../FeedbackForm/FeedbackForm';
+// import FeedbackForm from '../FeedbackForm/FeedbackForm';
 
 export default function AboutComponents() {
   return (
@@ -40,7 +40,6 @@ export default function AboutComponents() {
           вашей правовой проблемы.
         </h2>
       </div>
-      <FeedbackForm />
     </div>
   );
 }
