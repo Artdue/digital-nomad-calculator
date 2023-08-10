@@ -80,7 +80,9 @@ export default function FeedbackForm() {
 
       {/* Сторона с инпутами */}
       <div className="w-full md:w-1/2 p-4 md:p-8 flex flex-col justify-center items-center">
-        <h2 className="text-2xl font-semibold mb-4 text-center md:text-left">Свяжитесь с нами</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-center md:text-left">
+          KYC поможет вам любом юридическом вопросе
+        </h2>
         <form className="w-full max-w-md">
           <div className="mb-4 w-full flex">
             <div className="w-1/2 mr-2">
