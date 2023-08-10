@@ -5,8 +5,9 @@ import { useDispatch } from 'react-redux';
 import Login from './components/LogReg/Login/Login';
 import Register from './components/LogReg/Register/Register';
 import Namvbar from './components/Namvbar/Namvbar';
+
 import navApi from './Redux/thunks/user/nav.api';
-import Footer from './components/Footer/Footer';
+import Foot from './components/Foot/Foot';
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function App(): JSX.Element {
           <Route path="/user/login" element={<Login />} />
         </Route>
       </Routes>
-      <Footer />
+      <Foot />
     </>
   );
 }

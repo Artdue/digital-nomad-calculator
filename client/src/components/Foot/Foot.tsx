@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -86,8 +87,10 @@ export default function Footer() {
               </h2>
               <nav className="mb-10 list-none">
                 <li className="mt-3">
-                  <Link to  className="text-gray-500 cursor-pointer hover:text-gray-900">О компании</a>
-                </Link>
+                  <Link to className="text-gray-500 cursor-pointer hover:text-gray-900">
+                    О компании
+                  </Link>
+                </li>
                 <li className="mt-3">
                   <a className="text-gray-500 cursor-pointer hover:text-gray-900">Careers</a>
                 </li>
