@@ -19,6 +19,7 @@ import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 import Strengths from './components/MainPage/Strengths/Strengths';
 import OurTeam from './components/MainPage/OurTeam/OurTeam';
 import Home from './components/MainPage/Home/Home';
+import AdminStates from './components/AdminPage/Admin';
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ function App(): JSX.Element {
           <Route path="/user/profile" element={<EditProfile />} />
         </Route>
       </Routes>
+      <AdminStates />
       <Foot />
     </>
   );
