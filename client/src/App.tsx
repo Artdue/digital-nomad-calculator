@@ -18,7 +18,6 @@ import Contact from './components/ContactAndFeed/Contact/Contact';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 import Strengths from './components/MainPage/Strengths/Strengths';
 import OurTeam from './components/MainPage/OurTeam/OurTeam';
-import ServicesCompanies from './components/MainPage/ServicesCompanies/ServicesCompanies';
 import Home from './components/MainPage/Home/Home';
 import MainCalculator from './components/MainPage/Calculator/MainCalculator';
 

@@ -5,6 +5,7 @@ import {
   PuzzlePieceIcon,
   HandThumbUpIcon,
 } from '@heroicons/react/20/solid';
+import { Link } from 'react-router-dom';
 
 export default function AboutCompany() {
   return (
@@ -122,8 +123,12 @@ export default function AboutCompany() {
                 Остались вопросы?{' '}
               </h2>
               <p className="mt-6">
-                Запишитесь на консультацию, и мы поможем вам в поиске оптимального и рационального
-                решения вашей правовой проблемы.
+                <Link to="/contact" className="text-base font-semibold leading-7 text-indigo-600">
+                  {' '}
+                  Запишитесь на консультацию
+                </Link>
+                , и мы поможем вам в поиске оптимального и рационального решения вашей правовой
+                проблемы.
               </p>
             </div>
           </div>

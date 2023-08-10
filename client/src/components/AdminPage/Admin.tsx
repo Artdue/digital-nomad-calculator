@@ -1,49 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../../Types/types';
 import { getAdmin } from '../../Redux/thunks/getAdmin';
 import { addState } from '../../Redux/thunks/addStates';
 import { deleteState } from '../../Redux/thunks/deleteState';
 import { editState } from '../../Redux/thunks/editState';
+import NewState from './NewState';
+//import './Admin.css';
 
 function AdminStates(): React.JSX.Element {
+  const [showForm, setShowForm] = useState(false);
+  //const formRef = useRef(null);
   const states = useSelector((state: RootState) => state.adminSlice.states);
+
   const dispatch = useDispatch();
+  // const [stateName, setStateName] = useState<string>('');
+  // const [minIncome, setMinIncome] = useState<string>('');
+  // const [bannedCitizenship, setBannedCitizenship] = useState<string>('');
+  // const [workExp, setWorkExp] = useState<string>('');
+  // const [minAge, setMinAge] = useState<string>('');
+  // const [maxAge, setMaxAge] = useState<string>('');
+  // const [gender, setGender] = useState<string>('');
+  // const [criminal, setCriminal] = useState<boolean>(false);
 
-  const [stateName, setStateName] = useState<string>('');
-  const [minIncome, setMinIncome] = useState<string>('');
-  const [bannedCitizenship, setBannedCitizenship] = useState<string>('');
-  const [workExp, setWorkExp] = useState<string>('');
-  const [minAge, setMinAge] = useState<string>('');
-  const [maxAge, setMaxAge] = useState<string>('');
-  const [gender, setGender] = useState<string>('');
-  const [criminal, setCriminal] = useState<boolean>(false);
-
-  const handleAddState = async () => {
-    const newState = {
-      state_name: stateName,
-      min_income: Number(minIncome),
-      banned_citizenship: bannedCitizenship,
-      work_exp: Number(workExp),
-      min_age: Number(minAge),
-      max_age: Number(maxAge),
-      gender,
-      criminal,
-    };
-    try {
-      void dispatch(addState(newState));
-      setStateName('');
-      setMinIncome('');
-      setBannedCitizenship('');
-      setWorkExp('');
-      setMinAge('');
-      setMaxAge('');
-      setGender('');
-      setCriminal(false);
-    } catch (error) {
-      console.error('Ошибка при добавлении данных:', error);
-    }
-  };
+  // const handleAddState = async () => {
+  //   const newState = {
+  //     state_name: stateName,
+  //     min_income: Number(minIncome),
+  //     banned_citizenship: bannedCitizenship,
+  //     work_exp: Number(workExp),
+  //     min_age: Number(minAge),
+  //     max_age: Number(maxAge),
+  //     gender,
+  //     criminal,
+  //   };
+  //   try {
+  //     void dispatch(addState(newState));
+  //     setStateName('');
+  //     setMinIncome('');
+  //     setBannedCitizenship('');
+  //     setWorkExp('');
+  //     setMinAge('');
+  //     setMaxAge('');
+  //     setGender('');
+  //     setCriminal(false);
+  //   } catch (error) {
+  //     console.error('Ошибка при добавлении данных:', error);
+  //   }
+  // };
 
   const handleDeleteState = async (id: number) => {
     try {
@@ -85,6 +89,17 @@ function AdminStates(): React.JSX.Element {
     }
   };
 
+  // const handleFormToggle = () => {
+  //   setShowForm(!showForm);
+
+  //   if (!showForm && formRef.current) {
+  //     formRef.current.scrollIntoView({
+  //       behavior: 'smooth',
+  //       block: 'start',
+  //     });
+  //   }
+  // };
+
   useEffect(() => {
     dispatch(getAdmin());
   }, [dispatch]);
@@ -122,136 +137,152 @@ function AdminStates(): React.JSX.Element {
 
   return (
     <div>
-      <h2>Список государств</h2>
-      <ul>
-        {states.map((state) => (
-          <li key={state.id}>
-            {editingStateId === state.id ? (
-              <div>
-                <input
-                  type="text"
-                  defaultValue={editedFields.state_name}
-                  placeholder="Название"
-                  onChange={(e) => setEditedFields({ ...editedFields, state_name: e.target.value })}
-                />
-                <input
-                  type="number"
-                  value={editedFields.min_income}
-                  placeholder="Минимальный доход"
-                  onChange={(e) => setEditedFields({ ...editedFields, min_income: e.target.value })}
-                />
-                <input
-                  type="text"
-                  value={editedFields.banned_citizenship}
-                  placeholder="Нельзя с гражданством"
-                  onChange={(e) =>
-                    setEditedFields({ ...editedFields, banned_citizenship: e.target.value })
-                  }
-                />
-                <input
-                  type="number"
-                  value={editedFields.work_exp}
-                  placeholder="Опыт работы"
-                  onChange={(e) => setEditedFields({ ...editedFields, work_exp: e.target.value })}
-                />
-                <input
-                  type="number"
-                  value={editedFields.min_age}
-                  placeholder="Минимальный возраст"
-                  onChange={(e) => setEditedFields({ ...editedFields, min_age: e.target.value })}
-                />
-                <input
-                  type="number"
-                  value={editedFields.max_age}
-                  placeholder="Максимальный возраст"
-                  onChange={(e) => setEditedFields({ ...editedFields, max_age: e.target.value })}
-                />
-                <input
-                  type="text"
-                  value={editedFields.gender}
-                  placeholder="Пол"
-                  onChange={(e) => setEditedFields({ ...editedFields, gender: e.target.value })}
-                />
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={editedFields.criminal}
-                    onChange={(e) =>
-                      setEditedFields({ ...editedFields, criminal: e.target.checked })
-                    }
-                  />
-                  Судимость
-                </label>
-                <button onClick={() => handleEditState(state.id)}>Сохранить</button>
-              </div>
-            ) : (
-              <div>
-                Название страны: {state.state_name}
-                (Мин. доход: {state.min_income}) (Нельзя с гражданством: {state.banned_citizenship})
-                (Опыт работы: {state.work_exp}) (Мин. возраст: {state.min_age}) (Макс. возраст:{' '}
-                {state.max_age}) (Пол: {state.gender}) (Судимость: {state.criminal})
-                <button onClick={() => setEditingStateId(state.id)}>Редактировать</button>
-                <button onClick={() => dispatch(deleteState(state.id))}>Удалить</button>
-              </div>
-            )}
-          </li>
-        ))}
-      </ul>
-      <div>
-        <h2>Добавить государство</h2>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <input
-            type="text"
-            placeholder="Название"
-            value={stateName}
-            onChange={(e) => setStateName(e.target.value)}
-          />
-          <input
-            type="number"
-            placeholder="Минимальный доход"
-            value={minIncome}
-            onChange={(e) => setMinIncome(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Нельзя с гражданством"
-            value={bannedCitizenship}
-            onChange={(e) => setBannedCitizenship(e.target.value)}
-          />
-          <input
-            type="number"
-            placeholder="Опыт работы"
-            value={workExp}
-            onChange={(e) => setWorkExp(e.target.value)}
-          />
-          <input
-            type="number"
-            placeholder="Минимальный возраст"
-            value={minAge}
-            onChange={(e) => setMinAge(e.target.value)}
-          />
-          <input
-            type="number"
-            placeholder="Максимальный возраст"
-            value={maxAge}
-            onChange={(e) => setMaxAge(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Пол"
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-          />
-          <label>
-            <input
-              type="checkbox"
-              checked={criminal}
-              onChange={(e) => setCriminal(e.target.checked)}
-            />
-            Судимость
-          </label>
-          <button onClick={handleAddState}>Добавить</button>
-        </form>
+      <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white mb-8">
+        <br /> Добро пожаловать, Админ
+      </h1>
+      <>
+        <NewState />
+      </>
+      <div className="grid justify-center">
+        <div className={`grid grid-cols-1 gap-8 xl:gap-12 md:grid-cols-3`}>
+          {states.map((state) => (
+            <div key={state.id} className="flex items-stretch">
+              {editingStateId === state.id ? (
+                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+                  <div className="bg-white p-4 rounded-md">
+                    <h2 className="text-lg font-semibold mb-4 text-center">
+                      Редактирование государства
+                    </h2>
+                    <div className="space-y-2 flex flex-col items-center">
+                      <input
+                        type="text"
+                        className="mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
+                        defaultValue={editedFields.state_name}
+                        placeholder="Название"
+                        onChange={(e) =>
+                          setEditedFields({ ...editedFields, state_name: e.target.value })
+                        }
+                      />
+                      <input
+                        type="number"
+                        className="mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
+                        value={editedFields.min_income}
+                        placeholder="Минимальный доход"
+                        onChange={(e) =>
+                          setEditedFields({ ...editedFields, min_income: e.target.value })
+                        }
+                      />
+                      <input
+                        type="text"
+                        className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
+                        value={editedFields.banned_citizenship}
+                        placeholder="Нельзя с гражданством"
+                        onChange={(e) =>
+                          setEditedFields({ ...editedFields, banned_citizenship: e.target.value })
+                        }
+                      />
+                      <input
+                        type="number"
+                        className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
+                        value={editedFields.work_exp}
+                        placeholder="Опыт работы"
+                        onChange={(e) =>
+                          setEditedFields({ ...editedFields, work_exp: e.target.value })
+                        }
+                      />
+                      <input
+                        type="number"
+                        className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
+                        value={editedFields.min_age}
+                        placeholder="Минимальный возраст"
+                        onChange={(e) =>
+                          setEditedFields({ ...editedFields, min_age: e.target.value })
+                        }
+                      />
+                      <input
+                        type="number"
+                        className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
+                        value={editedFields.max_age}
+                        placeholder="Максимальный возраст"
+                        onChange={(e) =>
+                          setEditedFields({ ...editedFields, max_age: e.target.value })
+                        }
+                      />
+                      <input
+                        type="text"
+                        className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
+                        value={editedFields.gender}
+                        placeholder="Пол"
+                        onChange={(e) =>
+                          setEditedFields({ ...editedFields, gender: e.target.value })
+                        }
+                      />
+                      <label>
+                        <input
+                          type="checkbox"
+                          className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
+                          checked={editedFields.criminal}
+                          onChange={(e) =>
+                            setEditedFields({ ...editedFields, criminal: e.target.checked })
+                          }
+                        />
+                        Судимость
+                      </label>
+                      <button onClick={() => handleEditState(state.id)}>Сохранить</button>
+                      <button onClick={() => setEditingStateId(null)}>Отмена</button>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <section className="bg-white dark:bg-gray-900">
+                  <div className="w-full">
+                    <div className="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl h-full flex flex-col">
+                      <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
+                        {state.state_name}
+                      </h1>
+                      {/* <p className="text-gray-500 dark:text-gray-300">
+                        Мин. доход: {state.min_income}
+                      </p>
+                      <p className="text-gray-500 dark:text-gray-300">
+                        Нельзя с гражданством: {state.banned_citizenship}
+                      </p>
+                      <p className="text-gray-500 dark:text-gray-300">
+                        Опыт работы: {state.work_exp}
+                      </p>
+                      <p className="text-gray-500 dark:text-gray-300">
+                        Мин. возраст: {state.min_age}
+                      </p>
+                      <p className="text-gray-500 dark:text-gray-300">
+                        Макс. возраст: {state.max_age}
+                      </p>
+                      <p className="text-gray-500 dark:text-gray-300">Пол: {state.gender}</p>
+                      <p className="text-gray-500 dark:text-gray-300">
+                        Судимость: {state.criminal}
+                      </p> */}
+                      <div className="mt-auto">
+                        <button
+                          type="button"
+                          onClick={() => setEditingStateId(state.id)}
+                          className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                        >
+                          Редактировать
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => dispatch(deleteState(state.id))}
+                          className="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                        >
+                          Удалить
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

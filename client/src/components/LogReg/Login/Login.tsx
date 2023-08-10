@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
-import userLogin from '../../../redux/thunks/user/log.api';
+import userLogin from '../../../Redux/thunks/user/log.api';
 
 type ILogin = {
   email: string;
