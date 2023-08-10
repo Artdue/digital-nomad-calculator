@@ -20,6 +20,7 @@ import Strengths from './components/MainPage/Strengths/Strengths';
 import OurTeam from './components/MainPage/OurTeam/OurTeam';
 import Home from './components/MainPage/Home/Home';
 import MainCalculator from './components/MainPage/Calculator/MainCalculator';
+import AdminStates from './components/AdminPage/Admin';
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ function App(): JSX.Element {
           <Route path="/user/main" element={<MainCalculator />} />
         </Route>
       </Routes>
+      {/* <AdminStates /> */}
       <Foot />
     </>
   );
