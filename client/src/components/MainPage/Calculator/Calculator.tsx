@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { getStates } from '../../../Redux/thunks/getStates';
 import type { RootState } from '../../../Types/types';
@@ -8,6 +8,7 @@ export default function Calculator(): React.JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return
   const states = useAppSelector((state: RootState) => state.stateSlice.states);
   const dispatch = useAppDispatch();
+  const formRef = useRef<HTMLFormElement | null>(null);
   const [income, setIncome] = useState<string>('');
   const [workExp, setWorkExp] = useState<string>('');
   const [citizenship, setCitizenship] = useState<string>('');
@@ -16,6 +17,17 @@ export default function Calculator(): React.JSX.Element {
   useEffect(() => {
     void dispatch(getStates());
   }, []);
+
+  const resetCalc = () => {
+    setIncome('');
+    setWorkExp('');
+    setCitizenship('');
+    setFilterStates('');
+    if (formRef.current) {
+      formRef.current.reset();
+    }
+    setFilterStates([]);
+  };
 
   console.log(states);
 
@@ -42,7 +54,7 @@ export default function Calculator(): React.JSX.Element {
 
   return (
     <>
-      <form onSubmit={submitHandler} className="form-container">
+      <form ref={formRef} onSubmit={submitHandler} className="form-container">
         <div className="flex justify-center items-center flex flex-col">
           <h1 className="text-2xl font-bold mb-4">Узнать подходящие направления</h1>
           <div style={{ width: '500px' }}>
@@ -59,12 +71,15 @@ export default function Calculator(): React.JSX.Element {
                 className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 onChange={(e) => setIncome(e.target.value)}
               >
-                <option value="">Выберите</option>
+                <option value={income}>Выберите</option>
                 <option value="500">500$</option>
                 <option value="1000">1000$</option>
                 <option value="1500">1500$</option>
                 <option value="2000">2000$</option>
                 <option value="2500">2500$</option>
+                <option value="3000">3000$</option>
+                <option value="4000">4000$</option>
+                <option value="5000">5000$</option>
               </select>
             </div>
           </div>
@@ -82,12 +97,13 @@ export default function Calculator(): React.JSX.Element {
                 className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 onChange={(e) => setWorkExp(e.target.value)}
               >
-                <option value="">Выберите</option>
-                <option value="3">3 месяцев</option>
+                <option value={workExp}>Выберите</option>
+                <option value="3">3 месяца</option>
                 <option value="6">6 месяцев</option>
                 <option value="9">9 месяцев</option>
                 <option value="12">12 месяцев</option>
                 <option value="18">18 месяцев</option>
+                <option value="18">24 месяца</option>
               </select>
             </div>
           </div>
@@ -105,41 +121,50 @@ export default function Calculator(): React.JSX.Element {
                 className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 onChange={(e) => setCitizenship(e.target.value)}
               >
-                <option value="">Выберите</option>
-                <option value="USA">USA</option>
-                <option value="RU">RU</option>
-                <option value="UK">UK</option>
-                <option value="GER">GER</option>
-                <option value="POL">POL</option>
+                <option value={citizenship}>Выберите</option>
+                <option value="RU">RU - гражданин РФ</option>
+                <option value="UKR">UKR - гражданин Украины</option>
+                <option value="KZ">KZ - гражданин Казахстана</option>
+                <option value="UZ">UZ - гражданин Узбекистана</option>
+                <option value="TJ">TJ - гражданин Таджикистана</option>
+                <option value="AZ">AZ - гражданин Азербайджана</option>
               </select>
             </div>
           </div>
           <button className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
             Подобрать
           </button>
+          <button
+            onClick={resetCalc}
+            className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+          >
+            Сбросить
+          </button>
         </div>
       </form>
-      <div className="flex justify-center items-center flex flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-        <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-          Страны подходящие для Вас:
-        </h5>
-        <div className="states-container mt-4">
-          {filterStates.length
-            ? filterStates.map((state: postType, i) => (
-                <div key={`${i}`} className="state mt-3">
-                  <div className="state-header">
-                    <p className="title mt-1 font-large leading-tight text-neutral-800 dark:text-neutral-50">
-                      {`${i + 1} - `} {state.state_name}
-                    </p>
+      {filterStates.length ? (
+        <div className="flex justify-center items-center flex flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+          <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+            Страны подходящие для Вас:
+          </h5>
+          <div className="states-container mt-4">
+            {filterStates.length
+              ? filterStates.map((state: postType, i) => (
+                  <div key={`${i}`} className="state mt-3">
+                    <div className="state-header">
+                      <p className="title mt-1 font-large leading-tight text-neutral-800 dark:text-neutral-50">
+                        {`${i + 1} - `} {state.state_name}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))
-            : null}
+                ))
+              : null}
+          </div>
+          <h6 className="mt-3 font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+            Зарегистрируетесь чтобы увидеть подробную информацию
+          </h6>
         </div>
-        <h6 className="mt-3 font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-          Зарегистрируетесь чтобы увидеть подробную информацию
-        </h6>
-      </div>
+      ) : null}
     </>
   );
 }
