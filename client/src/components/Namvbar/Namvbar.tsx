@@ -8,10 +8,10 @@ import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import userLogout from '../../redux/thunks/user/logout.api';
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: false },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  { name: 'О компании', href: '/about', current: false },
+  { name: 'Контакты', href: '/contact', current: false },
+  { name: 'Наша команда', href: '/CompanyServices', current: false },
+  { name: 'Подбери свою страну', href: '/digitalNomandCalculator', current: false },
 ];
 
 const navigationT = [
