@@ -22,6 +22,9 @@ import Home from './components/MainPage/Home/Home';
 import MainCalculator from './components/MainPage/Calculator/MainCalculator';
 import Admin from './components/AdminPage/Admin';
 import AdminUserList from './components/AdminPage/AdminUserList';
+import AdminStates from './components/AdminPage/Admin';
+import ServicesAndPrice from './components/ServicesAndPrice/ServicesAndPrice';
+
 
 
 function App(): JSX.Element {
@@ -49,7 +52,7 @@ function App(): JSX.Element {
           <Route path="/digitalNomandCalculator" element={<Calculator />} />
           <Route path="/user/register" element={<Register />} />
           <Route path="/user/login" element={<Login />} />
-          <Route path="/politika-konfidenczialnosti" element={<PrivacyPolicy />} />
+          <Route path="/path-to-privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/user/profile" element={<EditProfile />} />
           <Route path="/user/main" element={<MainCalculator />} />
           <Route path="/admin" element={<Admin/>} />
@@ -57,6 +60,12 @@ function App(): JSX.Element {
         </Route>
       </Routes>
         
+
+          <Route path="/services-and-price" element={<ServicesAndPrice />} />
+        </Route>
+      </Routes>
+      {/* <AdminStates /> */}
+
       <Foot />
     </>
   );

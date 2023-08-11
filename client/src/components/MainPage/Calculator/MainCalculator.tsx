@@ -82,7 +82,7 @@ export default function MainCalculator(): React.JSX.Element {
               htmlFor="citizenship"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              Чистый доход более:
+              Доход в месяц более:
             </label>
             <div className="relative mt-2 rounded-md shadow-sm">
               <select
