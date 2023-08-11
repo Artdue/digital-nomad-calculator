@@ -25,6 +25,7 @@ export default function EditProfile(): React.JSX.Element {
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
+    window.scrollTo(0, 0);
     setFirstName(firstName);
     setMiddleName(middleName);
     setLastName(lastName);
