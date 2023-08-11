@@ -104,7 +104,7 @@ export default function Calculator(): React.JSX.Element {
               <div className="relative mt-2 rounded-md shadow-sm">
                 <input
                   type="date"
-                  className="block w-full rounded-md border-0 py-1.5 pl-7 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   name="employmentDate"
                   value={employmentDate}
                   onChange={(e) => setEmploymentDate(e.target.value)}
@@ -145,7 +145,7 @@ export default function Calculator(): React.JSX.Element {
                 <select
                   name="citizenship"
                   id="citizenship"
-                  className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   onChange={(e) => setCitizenship(e.target.value)}
                 >
                   <option value={citizenship}>Выберите</option>
