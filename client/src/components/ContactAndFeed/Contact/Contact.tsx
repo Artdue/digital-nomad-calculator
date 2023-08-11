@@ -18,6 +18,7 @@ export default function Contact() {
             </p>
 
             <div className="flex items-center mb-4">
+
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
