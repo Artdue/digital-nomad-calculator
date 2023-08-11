@@ -22,7 +22,7 @@ import Home from './components/MainPage/Home/Home';
 import MainCalculator from './components/MainPage/Calculator/MainCalculator';
 import AdminStates from './components/AdminPage/Admin';
 import ServicesAndPrice from './components/ServicesAndPrice/ServicesAndPrice';
-
+import ServicesCompanies from './components/MainPage/ServicesCompanies/ServicesCompanies';
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
@@ -56,6 +56,8 @@ function App(): JSX.Element {
         </Route>
       </Routes>
       {/* <AdminStates /> */}
+      <ServicesCompanies />
+      {/* <Strengths /> */}
       <Foot />
     </>
   );
