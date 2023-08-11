@@ -28,7 +28,7 @@ adminRouter.get('/', async (req, res) => {
 
 adminRouter.post('/', async (req, res) => {
   try {
-   await State.create(req.body);
+    await State.create(req.body);
     const states = await State.findAll({ raw: true });
     res.json(states);
   } catch (error) {
@@ -72,9 +72,22 @@ adminRouter.delete('/:id', async (req, res) => {
   }
 });
 
-
 adminRouter.get('/users', async (req, res) => {
   try {
+    const users = await User.findAll({ raw: true });
+    res.json(users);
+  } catch (error) {
+    console.error('Ошибка при получении данных пользователей:', error);
+    res.status(500).json({ error: 'Ошибка сервера' });
+  }
+});
+
+adminRouter.put('/users/:id', async (req, res) => {
+  const userId = req.params.id;
+  try {
+    await User.update(req.body, {
+      where: { id: userId },
+    });
     const users = await User.findAll({ raw: true });
     res.json(users);
   } catch (error) {

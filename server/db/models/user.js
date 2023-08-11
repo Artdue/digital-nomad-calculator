@@ -29,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       income: DataTypes.INTEGER,
       work_exp: DataTypes.INTEGER,
       work_date: DataTypes.STRING,
+      document_status: DataTypes.STRING,
       admin: DataTypes.BOOLEAN,
     },
     {

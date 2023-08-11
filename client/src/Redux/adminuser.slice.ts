@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getUsers } from './thunks/getUsers';
+import { editUser } from './thunks/editUsersList';
 
 const adminUserSlice = createSlice({
   name: 'user',
   initialState: {
     users: [],
     loading: false,
-    error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -22,7 +22,21 @@ const adminUserSlice = createSlice({
       .addCase(getUsers.rejected, (state) => {
         state.loading = false;
         console.error('ERROR!');
-      });
+      })
+      .addCase(editUser.pending, (state) => {
+        state.loading = true;
+        // console.log(state.loading);
+      })
+      .addCase(editUser.fulfilled, (state, action) => {
+        state.loading = false;
+       
+        //* колхоз, но работает
+        state.users = action.payload;
+      })
+      .addCase(editUser.rejected, (state) => {
+        state.loading = false;
+        console.error('ERROR!');
+      })
   },
 });
 

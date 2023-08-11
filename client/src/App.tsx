@@ -53,12 +53,12 @@ function App(): JSX.Element {
           <Route path="/path-to-privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/user/profile" element={<EditProfile />} />
           <Route path="/user/main" element={<MainCalculator />} />
+
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/users" element={<AdminUserList />} />
           <Route path="/services-and-price" element={<ServicesAndPrice />} />
         </Route>
       </Routes>
-
       <Foot />
     </>
   );
