@@ -56,6 +56,7 @@ export default function Home() {
         {/* <div>
           <Strengths />
         </div> */}
+
         {/* <div>
           <ServicesCompanies />
         </div> */}
