@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/', async (req, res) => {
-  console.log(req.body);
+  console.log('REQ BODY', req.body);
   await User.update(
     {
       first_name: req.body.first_name,

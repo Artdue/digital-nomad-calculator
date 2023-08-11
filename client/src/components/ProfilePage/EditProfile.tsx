@@ -62,6 +62,8 @@ export default function EditProfile(): React.JSX.Element {
       income,
       work_exp: monthsPassed,
       work_date: employmentDate,
+      visaType,
+      visaShare,
     };
     console.log(editUser);
     void dispatch(profilePut(editUser));
@@ -176,7 +178,6 @@ export default function EditProfile(): React.JSX.Element {
                 <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Чистый доход</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    {' '}
                     <input
                       type="text"
                       className="w-full py-1 px-2 border rounded-md"
@@ -189,14 +190,16 @@ export default function EditProfile(): React.JSX.Element {
                 <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Виза или ВНЖ</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    {' '}
-                    <input
-                      type="text"
-                      className="w-full py-1 px-2 border rounded-md"
-                      name="visaType"
-                      value={visaType}
+                    <select
+                      name="visaT"
+                      id="visaT"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       onChange={(e) => setvisaType(e.target.value)}
-                    />
+                    >
+                      <option value={visaType}>{visaType}</option>
+                      <option value="ВНЖ">ВНЖ</option>
+                      <option value="Виза">Виза</option>
+                    </select>
                   </dd>
                 </div>
                 <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -204,14 +207,16 @@ export default function EditProfile(): React.JSX.Element {
                     Персональная или семейная виза
                   </dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    {' '}
-                    <input
-                      type="text"
-                      className="w-full py-1 px-2 border rounded-md"
-                      name="visaShare"
-                      value={visaShare}
+                    <select
+                      name="visaT"
+                      id="visaT"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       onChange={(e) => setvisaShare(e.target.value)}
-                    />
+                    >
+                      <option value={visaShare}>{visaShare}</option>
+                      <option value="Персональная">Персональная</option>
+                      <option value="Семейная">Семейная</option>
+                    </select>
                   </dd>
                 </div>
                 <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -244,6 +249,7 @@ export default function EditProfile(): React.JSX.Element {
           </div>
         </form>
       )}
+      <div />
     </>
   );
 }
