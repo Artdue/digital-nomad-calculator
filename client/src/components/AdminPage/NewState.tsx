@@ -16,6 +16,10 @@ export default function NewState() {
   const [maxAge, setMaxAge] = useState<string>('');
   const [gender, setGender] = useState<string>('');
   const [criminal, setCriminal] = useState<boolean>(false);
+  const [visaType, setVisaType] = useState<string>('');
+  const [visaTerm, setVisaTerm] = useState<string>('');
+  const [visaShare, setVisaShare] = useState<string>('');
+  const [actions, setActions] = useState<string>('');
 
   const handleAddState = async () => {
     const newState = {
@@ -27,6 +31,10 @@ export default function NewState() {
       max_age: Number(maxAge),
       gender,
       criminal,
+      visaType,
+      visaTerm,
+      visaShare,
+      actions
     };
     try {
       void dispatch(addState(newState));
@@ -38,11 +46,14 @@ export default function NewState() {
       setMaxAge('');
       setGender('');
       setCriminal(false);
+      setVisaType('');
+      setVisaTerm('');
+      setVisaShare('');
+      setActions('');
     } catch (error) {
       console.error('Ошибка при добавлении данных:', error);
     }
   };
-
   return (
     <>
       <div className="flex justify-center mb-4">
@@ -57,44 +68,55 @@ export default function NewState() {
         </button>
       </div>
       {showForm && (
-        <div className="flex justify-center items-center h-screen">
-          <div ref={formRef} className="border-2 p-4 w-full max-w-lg mx-auto">
-            <div className="px-4 sm:px-0" />
+ <div className="flex justify-center items-center h-screen">
+ <div ref={formRef} className="border-2 p-4 w-full max-w-lg mx-auto">
+   <div className="px-4 sm:px-0" />
 
-            <div className="mt-6 border-t border-gray-100">
-              <form onSubmit={(e) => e.preventDefault()} className="divide-y divide-gray-100">
-                <div className="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <label
-                    className="text-sm font-medium leading-6 text-gray-900"
-                    htmlFor="stateName"
-                  >
-                    Название государства
+   <div className="mt-6 border-t border-gray-100">
+     <form onSubmit={(e) => e.preventDefault()} className="divide-y divide-gray-100">
+       <div className="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+         <label
+           className="text-sm font-medium leading-6 text-gray-900"
+           htmlFor="stateName"
+         >
+           Название государства
+         </label>
+         <input
+           id="stateName"
+           type="text"
+           className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
+           placeholder=""
+           value={stateName}
+           onChange={(e) => setStateName(e.target.value)}
+         />
+       </div>
+
+       <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <label className="text-sm font-medium leading-6 text-gray-900" htmlFor="banned_citizenship">
+                Нельзя с гражданством
                   </label>
-                  <input
-                    id="stateName"
-                    type="text"
-                    className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
-                    placeholder=""
-                    value={stateName}
-                    onChange={(e) => setStateName(e.target.value)}
-                  />
-                </div>
-                <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <label
-                    className="text-sm font-medium leading-6 text-gray-900"
-                    htmlFor="bannedCitizenship"
-                  >
-                    Нельзя с гражданством
-                  </label>
-                  <input
-                    id="bannedCitizenship"
-                    type="text"
-                    className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
-                    placeholder=""
+                  <select
+                    id="banned_citizenship"
+                    className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
                     value={bannedCitizenship}
-                    onChange={(e) => setBannedCitizenship(e.target.value)}
-                  />
+                    onChange={(e) =>  setBannedCitizenship(e.target.value)}
+                  >
+                    <option value="">Выберите </option>
+                    <option value="RU">RU - гражданин РФ</option>
+                <option value="UKR">UKR - гражданин Украины</option>
+                <option value="KZ">KZ - гражданин Казахстана</option>
+                <option value="UZ">UZ - гражданин Узбекистана</option>
+                <option value="TJ">TJ - гражданин Таджикистана</option>
+                <option value="AZ">AZ - гражданин Азербайджана</option>
+                <option value="MD">MD - гражданин Молдавии</option>
+                <option value="BY">BY - гражданин Беларуси</option>
+                <option value="AM">AM - гражданин Армении</option>
+                <option value="KG">KG - гражданин Киргизии</option>
+                <option value="TM">TM - гражданин Туркменистана</option>
+                  </select>
                 </div>
+
+
                 <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <label
                     className="text-sm font-medium leading-6 text-gray-900"
@@ -111,7 +133,7 @@ export default function NewState() {
                     onChange={(e) => setMinIncome(e.target.value)}
                   />
                 </div>
-                <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                {/* <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <label className="text-sm font-medium leading-6 text-gray-900" htmlFor="gender">
                     Пол
                   </label>
@@ -125,8 +147,9 @@ export default function NewState() {
                     <option value="male">Мужчина</option>
                     <option value="female">Женщина</option>
                     <option value="other">Другое</option>
-                  </select>
-                </div>
+      
+                   </select> 
+                </div> */}
                 <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <label className="text-sm font-medium leading-6 text-gray-900" htmlFor="workExp">
                     Опыт работы
@@ -166,9 +189,55 @@ export default function NewState() {
                     onChange={(e) => setMaxAge(e.target.value)}
                   />
                 </div>
+                <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <label className="text-sm font-medium leading-6 text-gray-900" htmlFor="visaType">
+                  Выберите тип визы
+                  </label>
+                  <select
+                    id="visaType"
+                    className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
+                    value={visaType}
+                    onChange={(e) =>  setVisaType(e.target.value)}
+                  >
+                    <option value="">Выберите тип визы</option>
+                    <option value="ВНЖ">ВНЖ</option>
+                    <option value="Виза">Виза</option>
+                  </select>
+                </div>
+                <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <label className="text-sm font-medium leading-6 text-gray-900" htmlFor="visaTerm">
+                    Максимальный срок визы/ВНЖ
+                  </label>
+                  <input
+                    id="visaTerm"
+                    type="number"
+                    className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
+                    placeholder=""
+                    value={visaTerm}
+                    onChange={(e) => setVisaTerm(e.target.value)}
+                  />
+                </div>
+                <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <label className="text-sm font-medium leading-6 text-gray-900" htmlFor="visaShare">
+                  Семейная?
+                  </label>
+                  <select
+                    id="visaShare"
+                    className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
+                    value={visaShare}
+                    onChange={(e) =>  setVisaShare(e.target.value)}
+                  >
+                    <option value="">Выберите </option>
+                    <option value="Персональная">Персональная</option>
+                    <option value="Семейная">Семейная</option>
+                  
+                  </select>
+                </div>
+
+
                 <div className="px-4 py-3 sm:flex sm:items-center sm:gap-4 sm:px-0">
                   <label className="text-sm font-medium leading-6 text-gray-900" htmlFor="criminal">
-                    Судимость
+                    С судимостью нельзя
                   </label>
                   <input
                     id="criminal"
@@ -176,6 +245,22 @@ export default function NewState() {
                     className="mt-1 text-sm text-gray-700 sm:ml-2 focus:ring focus:ring-blue-300"
                     checked={criminal}
                     onChange={(e) => setCriminal(e.target.checked)}
+                  />
+                </div>
+                <div className="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <label
+                    className="text-sm font-medium leading-6 text-gray-900"
+                    htmlFor="stateName"
+                  >
+                    Действия
+                  </label>
+                  <input
+                    id="actions"
+                    type="text"
+                    className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
+                    placeholder="Действия"
+                    value={ actions}
+                    onChange={(e) =>  setActions(e.target.value)}
                   />
                 </div>
                 {/* Кнопка "Добавить" */}
