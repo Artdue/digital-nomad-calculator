@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { getStates } from '../../../Redux/thunks/getStates';
 import type { RootState } from '../../../Types/types';
@@ -16,6 +17,7 @@ export default function MainCalculator(): React.JSX.Element {
   // console.log('LOADING', loading);
   // console.log('states', states);
 
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const formRef = useRef<HTMLFormElement | null>(null);
 
@@ -57,6 +59,10 @@ export default function MainCalculator(): React.JSX.Element {
       formRef.current.reset();
     }
     setFilterStates([]);
+  };
+
+  const toConsult = () => {
+    navigate('/CompanyServices');
   };
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
@@ -286,6 +292,15 @@ export default function MainCalculator(): React.JSX.Element {
                   }}
                 >
                   Закрыть
+                </button>
+                <button
+                  onClick={toConsult}
+                  className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
+                  style={{
+                    alignSelf: 'center',
+                  }}
+                >
+                  Получить консультацию
                 </button>
               </div>
             </div>

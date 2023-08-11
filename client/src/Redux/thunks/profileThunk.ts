@@ -18,6 +18,7 @@ export const profileGet = createAsyncThunk('getUser', async (user) => {
 
 export const profilePut = createAsyncThunk('putUser', async (user) => {
   try {
+    console.log('user', user);
     await new Promise((resolve) => setTimeout(resolve, 2000));
     const response = await fetch('http://localhost:3000/changeProfile', {
       method: 'PUT',
