@@ -1,5 +1,6 @@
 const express = require('express');
 const { State } = require('../db/models');
+const { User } = require('../db/models');
 
 const adminRouter = express.Router();
 // в случае если будем подгружать фотку страны
@@ -68,6 +69,17 @@ adminRouter.delete('/:id', async (req, res) => {
   } catch (error) {
     console.error('Ошибка при удалении данных государства:', error);
     res.status(500).json({ error: 'Ошибка сервера при удалении государства' });
+  }
+});
+
+
+adminRouter.get('/users', async (req, res) => {
+  try {
+    const users = await User.findAll({ raw: true });
+    res.json(users);
+  } catch (error) {
+    console.error('Ошибка при получении данных пользователей:', error);
+    res.status(500).json({ error: 'Ошибка сервера' });
   }
 });
 
