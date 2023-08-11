@@ -62,11 +62,14 @@ export default function MainCalculator(): React.JSX.Element {
   };
 
   const toConsult = () => {
+    window.scrollTo(0, 0);
     navigate('/CompanyServices');
   };
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
+
+    window.scrollTo(0, 0);
 
     const editUser = {
       id: userData.id,
