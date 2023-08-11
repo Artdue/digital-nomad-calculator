@@ -61,7 +61,7 @@ export default function Foot() {
                 </li>
                 <li className="mt-3">
                   <Link
-                    to="/politika-konfidenczialnosti"
+                    to="/path-to-privacy-policy"
                     className="text-gray-500 cursor-pointer hover:text-gray-900"
                   >
                     Политика конфиденциальности
@@ -88,6 +88,19 @@ export default function Foot() {
                     className="text-gray-500 cursor-pointer hover:text-gray-900"
                   >
                     Подбери свою страну
+                  </Link>
+                </li>
+                <li className="mt-3">
+                  <Link to="/contact" className="text-gray-500 cursor-pointer hover:text-gray-900">
+                    Записаться на консультацию
+                  </Link>
+                </li>
+                <li className="mt-3">
+                  <Link
+                    to="/services-and-price"
+                    className="text-gray-500 cursor-pointer hover:text-gray-900"
+                  >
+                    Услуги и цены
                   </Link>
                 </li>
               </nav>
@@ -141,7 +154,7 @@ export default function Foot() {
         <div className="bg-gray-300">
           <div className="container px-5 py-4 mx-auto">
             <p className="text-sm text-gray-700 capitalize xl:text-center">
-              © 2020 All rights reserved{' '}
+              © 2023 All rights reserved{' '}
             </p>
           </div>
         </div>

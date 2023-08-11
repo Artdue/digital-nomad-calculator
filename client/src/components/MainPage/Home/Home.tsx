@@ -1,8 +1,6 @@
 import React from 'react';
 import Calculator from '../Calculator/Calculator';
-import Strengths from '../Strengths/Strengths';
 import Contact from '../../ContactAndFeed/Contact/Contact';
-import ServicesCompanies from '../ServicesCompanies/ServicesCompanies';
 
 export default function Home() {
   return (
@@ -14,6 +12,7 @@ export default function Home() {
               <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
                 Digital Nomad Calculator
               </h2>
+              <br />
               <p className="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">
                 Легко и просто ориентируйтесь в мире виз для цифровых кочевников
               </p>
@@ -23,7 +22,7 @@ export default function Home() {
       </div>
       <div
         className="relative isolate overflow-hidden px-6  lg:px-8 flex justify-center"
-        style={{ marginTop: '-20rem' }}
+        style={{ marginTop: '-15rem' }}
       >
         <img
           className="h-full rounded-lg sm:rounded-none sm:rounded-l-lg"
@@ -38,7 +37,7 @@ export default function Home() {
         <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg]  sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
         <div className="mx-auto max-w-2xl lg:max-w-4xl">
           <figure className="mt-10">
-            <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
+            <blockquote className="text-center font-light text-gray-500 lg:mb-16 sm:text-2xl dark:text-gray-700">
               <p>
                 Легко и просто ориентируйтесь в мире виз для цифровых кочевников. Digital Nomad
                 Calculator —идеальное руководство для определения стран, открытых для вашего
@@ -50,15 +49,16 @@ export default function Home() {
           </figure>
         </div>
 
-        <div>
+        <div className="w-full rounded overflow-hidden shadow-lg bg-white flex flex-col p-6 md:py-8 lg:py-12 xl:py-10 md:px-8 lg:px-12 xl:px-20">
           <Calculator />
         </div>
-        <div>
+
+        {/* <div>
           <Strengths />
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <ServicesCompanies />
-        </div>
+        </div> */}
         <div>
           <Contact />
         </div>

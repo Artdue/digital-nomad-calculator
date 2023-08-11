@@ -1,9 +1,7 @@
 import React, { Fragment } from 'react';
-
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { Avatar } from 'flowbite-react';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import userLogout from '../../Redux/thunks/user/logout.api';
 
@@ -13,6 +11,7 @@ const navigation = [
   { name: 'Контакты', href: '/contact', current: false },
   { name: 'Наша команда', href: '/CompanyServices', current: false },
   { name: 'Подбери свою страну', href: '/digitalNomandCalculator', current: false },
+  { name: 'Услуги и цены', href: '/services-and-price', current: false },
 ];
 
 const navigationT = [

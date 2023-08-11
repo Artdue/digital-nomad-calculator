@@ -20,6 +20,7 @@ import Strengths from './components/MainPage/Strengths/Strengths';
 import OurTeam from './components/MainPage/OurTeam/OurTeam';
 import Home from './components/MainPage/Home/Home';
 import MainCalculator from './components/MainPage/Calculator/MainCalculator';
+import ServicesAndPrice from './components/ServicesAndPrice/ServicesAndPrice';
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
@@ -46,9 +47,10 @@ function App(): JSX.Element {
           <Route path="/digitalNomandCalculator" element={<Calculator />} />
           <Route path="/user/register" element={<Register />} />
           <Route path="/user/login" element={<Login />} />
-          <Route path="/politika-konfidenczialnosti" element={<PrivacyPolicy />} />
+          <Route path="/path-to-privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/user/profile" element={<EditProfile />} />
           <Route path="/user/main" element={<MainCalculator />} />
+          <Route path="/services-and-price" element={<ServicesAndPrice />} />
         </Route>
       </Routes>
       <Foot />
