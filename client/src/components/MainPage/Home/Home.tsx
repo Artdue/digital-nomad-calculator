@@ -1,6 +1,7 @@
 import React from 'react';
 import Calculator from '../Calculator/Calculator';
 import Contact from '../../ContactAndFeed/Contact/Contact';
+import Qualities from '../Qualities/Qualities';
 
 export default function Home() {
   return (
@@ -53,10 +54,12 @@ export default function Home() {
           <Calculator />
         </div>
 
+        <div>
+          <Qualities />
+        </div>
         {/* <div>
           <Strengths />
         </div> */}
-
         {/* <div>
           <ServicesCompanies />
         </div> */}
