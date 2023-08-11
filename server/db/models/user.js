@@ -31,6 +31,9 @@ module.exports = (sequelize, DataTypes) => {
       work_date: DataTypes.STRING,
       document_status: DataTypes.STRING,
       admin: DataTypes.BOOLEAN,
+      visaType: DataTypes.STRING,
+      visaTerm: DataTypes.INTEGER,
+      visaShare: DataTypes.STRING,
     },
     {
       sequelize,

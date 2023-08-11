@@ -80,6 +80,18 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
       },
+      visaType: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      visaTerm: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+      },
+      visaShare: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
