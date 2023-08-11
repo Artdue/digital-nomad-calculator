@@ -1,4 +1,5 @@
 import React from 'react';
+import ServicesCompanies from '../ServicesCompanies/ServicesCompanies';
 
 const posts = [
   {
