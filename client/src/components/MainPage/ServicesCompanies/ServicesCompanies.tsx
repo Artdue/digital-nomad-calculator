@@ -49,41 +49,36 @@ const services = [
 export default function ServicesCompanies() {
   return (
     <>
-      <section className="bg-white dark:bg-gray-900">
-        <div className="container px-6 py-10 mx-auto">
-          <h1 className="text-2xl font-semibold text-gray-800 lg:text-3xl dark:text-white">
-            <br /> Перечень <span className="underline decoration-blue-500">Услуг</span>
+      <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+        <section className="bg-white dark:bg-gray-900">
+          <h1 className="text-2xl text-center font-semibold text-gray-800 lg:text-3xl dark:text-white">
+            <br /> Перечень <span className="underline decoration-blue-500">услуг</span>
           </h1>
-          <p className="mt-4 text-gray-500 xl:mt-6 dark:text-gray-300">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum quam voluptatibus
-          </p>
-          <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 mt-8 xl:mt-12 xl:gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="p-6 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl flex flex-col justify-between"
+                className="p-4 border-2 border-blue-400 dark:border-blue-300 rounded-xl max-w-sm mx-auto h-[449px] flex flex-col"
               >
-                <div>
+                <div className="h-[357px] flex flex-col">
                   <h1 className="text-xl font-semibold text-gray-700 dark:text-white">
                     {service.title}
                   </h1>
-                  <span className="inline-block text-blue-500 dark:text-blue-400">
-                    <span className="mt-4 text-gray-500 xl:mt-6 dark:text-gray-300">Цена</span>
+                  <span className="text-blue-500 dark:text-blue-400 mt-2 text-right">
+                    <span className="text-gray-500 dark:text-gray-300">Цена</span>
                     <br /> {service.price}
                   </span>
-
-                  <p className="text-gray-500 dark:text-gray-300  border-t-2 border-indigo-500 pt-2 ">
+                </div>
+                <div className="h-[92px] overflow-hidden border-t-2 border-indigo-500 pt-2">
+                  <p className="text-gray-500 dark:text-gray-300 ml-2 overflow-hidden">
                     {service.description}
                   </p>
                 </div>
-                <Button className="inline-flex p-2 text-blue-500 capitalize transition-colors duration-300 transform bg-blue-100 rounded-full rtl:-scale-x-100 dark:bg-blue-500 dark:text-white hover:underline hover:text-blue-600 dark:hover:text-blue-500">
-                  Wtyf
-                </Button>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </>
   );
 }
