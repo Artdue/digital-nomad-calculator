@@ -30,6 +30,9 @@ module.exports = (sequelize, DataTypes) => {
       work_exp: DataTypes.INTEGER,
       work_date: DataTypes.STRING,
       admin: DataTypes.BOOLEAN,
+      visaType: DataTypes.STRING,
+      visaTerm: DataTypes.INTEGER,
+      visaShare: DataTypes.STRING,
     },
     {
       sequelize,

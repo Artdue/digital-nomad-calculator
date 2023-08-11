@@ -5,9 +5,10 @@ import { profileGet, profilePut } from '../../Redux/thunks/profileThunk';
 export default function EditProfile(): React.JSX.Element {
   const dispatch = useAppDispatch();
 
-  const loading = useAppSelector((state) => state.profileSlice);
   const profile = useAppSelector((state) => state.profileSlice);
+  const status = useAppSelector((state) => state.profileSlice);
   const userData = profile.profile;
+  const { loading } = status;
 
   const [firstName, setFirstName] = useState(userData?.first_name || '');
   const [middleName, setMiddleName] = useState(userData?.middle_name || '');
@@ -17,6 +18,10 @@ export default function EditProfile(): React.JSX.Element {
   const [income, setIncome] = useState(userData?.income || '');
   const [employmentDate, setEmploymentDate] = useState(userData?.work_date || '');
   const [workExp, setworkExp] = useState(userData?.work_exp || '');
+  const [phone, setPhone] = useState(userData?.phoneNumber || '');
+  const [birthDate, setbirthDate] = useState(userData?.birthDate || '');
+  const [visaType, setvisaType] = useState(userData?.visaType || '');
+  const [visaShare, setvisaShare] = useState(userData?.visaShare || '');
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
@@ -33,6 +38,8 @@ export default function EditProfile(): React.JSX.Element {
     const timeDiff = currentDate - targetDate;
     const monthsPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44));
     setworkExp(monthsPassed);
+    setPhone(phone);
+    setbirthDate(birthDate);
     console.log(
       firstName,
       middleName,
@@ -41,12 +48,16 @@ export default function EditProfile(): React.JSX.Element {
       income,
       employmentDate,
       JSON.stringify(monthsPassed),
+      phone,
+      birthDate,
     );
     const editUser = {
       id: userData.id,
       first_name: firstName,
       second_name: middleName,
-      lest_name: lastName,
+      last_name: lastName,
+      birthDate,
+      phone,
       citizenship,
       income,
       work_exp: monthsPassed,
@@ -54,12 +65,16 @@ export default function EditProfile(): React.JSX.Element {
     };
     console.log(editUser);
     void dispatch(profilePut(editUser));
-    void dispatch(profileGet(user));
+    // void dispatch(profileGet(user));
   };
 
   return (
     <>
       {loading ? (
+        <div className="flex h-screen items-center justify-center">
+          <img src="/src/assets/reload-cat.gif" alt="" />
+        </div>
+      ) : (
         <form onSubmit={submitHandler}>
           <div className="container mx-auto mt-8 p-8 max-w-4xl flex justify-center items-center flex flex-col">
             <div className="px-4 sm:px-0">
@@ -108,6 +123,32 @@ export default function EditProfile(): React.JSX.Element {
                     />
                   </dd>
                 </div>
+                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <dt className="text-sm font-medium leading-6 text-gray-900">
+                    Дата устройства на текущую работу
+                  </dt>
+                  <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                    <input
+                      type="date"
+                      className="w-full py-1 px-2 border rounded-md"
+                      name="birthDate"
+                      value={birthDate}
+                      onChange={(e) => setbirthDate(e.target.value)}
+                    />
+                  </dd>
+                </div>
+                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <dt className="text-sm font-medium leading-6 text-gray-900">Номер телефона</dt>
+                  <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                    <input
+                      type="text"
+                      name="phone"
+                      className="w-full py-1 px-2 border rounded-md"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
+                  </dd>
+                </div>
                 {/* <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Электронная почта</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
@@ -146,6 +187,34 @@ export default function EditProfile(): React.JSX.Element {
                   </dd>
                 </div>
                 <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <dt className="text-sm font-medium leading-6 text-gray-900">Виза или ВНЖ</dt>
+                  <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                    {' '}
+                    <input
+                      type="text"
+                      className="w-full py-1 px-2 border rounded-md"
+                      name="visaType"
+                      value={visaType}
+                      onChange={(e) => setvisaType(e.target.value)}
+                    />
+                  </dd>
+                </div>
+                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <dt className="text-sm font-medium leading-6 text-gray-900">
+                    Персональная или семейная виза
+                  </dt>
+                  <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                    {' '}
+                    <input
+                      type="text"
+                      className="w-full py-1 px-2 border rounded-md"
+                      name="visaShare"
+                      value={visaShare}
+                      onChange={(e) => setvisaShare(e.target.value)}
+                    />
+                  </dd>
+                </div>
+                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">
                     Дата устройства на текущую работу
                   </dt>
@@ -174,8 +243,6 @@ export default function EditProfile(): React.JSX.Element {
             </button>
           </div>
         </form>
-      ) : (
-        <div>Ожидание</div>
       )}
     </>
   );
