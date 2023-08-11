@@ -10,6 +10,7 @@ export default function Calculator(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const formRef = useRef<HTMLFormElement | null>(null);
   const [income, setIncome] = useState<string>('');
+  const [employmentDate, setEmploymentDate] = useState('');
   const [workExp, setWorkExp] = useState<string>('');
   const [citizenship, setCitizenship] = useState<string>('');
   const [filterStates, setFilterStates] = useState<string>('');
@@ -20,6 +21,7 @@ export default function Calculator(): React.JSX.Element {
 
   const resetCalc = () => {
     setIncome('');
+    setEmploymentDate('');
     setWorkExp('');
     setCitizenship('');
     setFilterStates('');
@@ -33,21 +35,31 @@ export default function Calculator(): React.JSX.Element {
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    console.log('Выбранные значения:', income, workExp, citizenship);
+    const currentDate = new Date();
+    const [year, month, day] = employmentDate.split('-').map(Number);
+    const targetDate = new Date(year, month - 1, day);
+    const timeDiff = currentDate - targetDate;
+    const monthsPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44));
+    setWorkExp(monthsPassed.toString());
+    console.log('Выбранные значения:', income, employmentDate, monthsPassed, citizenship);
     const incomeFilter = states.filter((state) => state.min_income < income);
     console.log('Отфильтрованные по доходу:', incomeFilter);
+
     const citiFilter = states.filter((state) => {
       const bannedCitizenships = state.banned_citizenship.split(',').map((value) => value.trim());
       return !bannedCitizenships.includes(citizenship);
     });
     console.log('Отфильтрованные по гр-у:', citiFilter);
-    const workFilter = states.filter((state) => state.work_exp < workExp);
+
+    const workFilter = states.filter((state) => state.work_exp < monthsPassed);
     console.log('Отфильтрованные по работе:', workFilter);
+
     const commonStates = incomeFilter.filter((state) => {
       const isInCitiFilter = citiFilter.some((filteredState) => filteredState.id === state.id);
       const isInWorkFilter = workFilter.some((filteredState) => filteredState.id === state.id);
       return isInCitiFilter && isInWorkFilter;
     });
+
     console.log('Подходящие страны:', commonStates);
     setFilterStates(commonStates);
   };
@@ -91,7 +103,20 @@ export default function Calculator(): React.JSX.Element {
               На текущей работе более:
             </label>
             <div className="relative mt-2 rounded-md shadow-sm">
-              <select
+              <input
+                type="date"
+                className="w-full py-1 px-2 border rounded-md"
+                name="employmentDate"
+                value={employmentDate}
+                onChange={(e) => setEmploymentDate(e.target.value)}
+              />
+              {/* <div
+                className="text-sm font-medium leading-6 text-gray-900 mt-2"
+                style={{ border: 'none', padding: '0' }}
+              >
+                Месяцев на текущей работе: {workExp}
+              </div> */}
+              {/* <select
                 name="work_exp"
                 id="work_exp"
                 className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -104,7 +129,7 @@ export default function Calculator(): React.JSX.Element {
                 <option value="12">12 месяцев</option>
                 <option value="18">18 месяцев</option>
                 <option value="18">24 месяца</option>
-              </select>
+              </select> */}
             </div>
           </div>
           <div style={{ width: '500px' }}>
