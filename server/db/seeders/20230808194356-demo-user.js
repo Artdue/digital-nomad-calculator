@@ -15,6 +15,7 @@ module.exports = {
         citizenship: 'USA',
         income: 50000,
         work_exp: 5,
+        document_status: 'Принят в работу',
         work_date: '2023-03-01',
         createdAt: new Date(),
         updatedAt: new Date(),
