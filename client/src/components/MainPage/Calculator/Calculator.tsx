@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { getStates } from '../../../Redux/thunks/getStates';
 import type { RootState } from '../../../Types/types';
+import { Card } from 'flowbite-react';
+
 // import type { RootState } from '../../../Types/types';
 
 export default function Calculator(): React.JSX.Element {
@@ -66,56 +68,65 @@ export default function Calculator(): React.JSX.Element {
 
   return (
     <>
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form ref={formRef} onSubmit={submitHandler} className="space-y-12">
-          <div className="flex justify-center items-center flex-col">
-            <h1 className="text-2xl font-bold mb-4 text-center">Узнать подходящие направления</h1>
-            <div className="w-full sm:w-[500px] mt-2">
-              <label htmlFor="income" className="block text-sm font-medium leading-6 text-gray-900">
-                Чистый доход более
-              </label>
-              <div className="relative mt-2 rounded-md shadow-sm">
-                <select
-                  name="income"
-                  id="income"
-                  className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  onChange={(e) => setIncome(e.target.value)}
-                >
-                  <option value={income}>Выберите</option>
-                  <option value="500">500$</option>
-                  <option value="1000">1000$</option>
-                  <option value="1500">1500$</option>
-                  <option value="2000">2000$</option>
-                  <option value="2500">2500$</option>
-                  <option value="3000">3000$</option>
-                  <option value="4000">4000$</option>
-                  <option value="5000">5000$</option>
-                </select>
-              </div>
-            </div>
-            <div className="w-full sm:w-[500px] mt-2">
-              {/* Изменение здесь */}
-              <label
-                htmlFor="citizenship"
-                className="block text-sm font-medium leading-6 text-gray-900 mt-2"
-              >
-                На текущей работе более
-              </label>
-              <div className="relative mt-2 rounded-md shadow-sm">
-                <input
-                  type="date"
-                  className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  name="employmentDate"
-                  value={employmentDate}
-                  onChange={(e) => setEmploymentDate(e.target.value)}
-                />
-                {/* <div
+      {/* <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm flex"> */}{' '}
+      {/* <form ref={formRef} onSubmit={submitHandler} className="space-y-12  ">  */}
+      <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+        <div className="flex flex-col sm:flex-row justify-center items-stretch gap-4">
+          <div className="flex-1 m-2 sm:w-[400px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <form ref={formRef} onSubmit={submitHandler} className="space-y-12 p-6">
+              <div className="flex justify-center items-center flex-col">
+                <h1 className="text-2xl font-bold mb-4 text-center">
+                  Узнать подходящие направления
+                </h1>
+                <div className="w-full sm:w-[400px] mt-2">
+                  <label
+                    htmlFor="income"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Чистый доход более
+                  </label>
+                  <div className="relative mt-2 rounded-md shadow-sm">
+                    <select
+                      name="income"
+                      id="income"
+                      className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      onChange={(e) => setIncome(e.target.value)}
+                    >
+                      <option value={income}>Выберите</option>
+                      <option value="500">500$</option>
+                      <option value="1000">1000$</option>
+                      <option value="1500">1500$</option>
+                      <option value="2000">2000$</option>
+                      <option value="2500">2500$</option>
+                      <option value="3000">3000$</option>
+                      <option value="4000">4000$</option>
+                      <option value="5000">5000$</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="w-full sm:w-[400px] mt-2">
+                  {/* Изменение здесь */}
+                  <label
+                    htmlFor="citizenship"
+                    className="block text-sm font-medium leading-6 text-gray-900 mt-2"
+                  >
+                    На текущей работе более
+                  </label>
+                  <div className="relative mt-2 rounded-md shadow-sm">
+                    <input
+                      type="date"
+                      className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      name="employmentDate"
+                      value={employmentDate}
+                      onChange={(e) => setEmploymentDate(e.target.value)}
+                    />
+                    {/* <div
                 className="text-sm font-medium leading-6 text-gray-900 mt-2"
                 style={{ border: 'none', padding: '0' }}
               >
                 Месяцев на текущей работе: {workExp}
               </div> */}
-                {/* <select
+                    {/* <select
                 name="work_exp"
                 id="work_exp"
                 className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -129,52 +140,129 @@ export default function Calculator(): React.JSX.Element {
                 <option value="18">18 месяцев</option>
                 <option value="18">24 месяца</option>
               </select> */}
-                {/* </div> */}
-              </div>{' '}
-            </div>
+                    {/* </div> */}
+                  </div>{' '}
+                </div>
 
-            <div className="w-full sm:w-[500px] mt-2">
-              {/* Изменение здесь */}
-              <label
-                htmlFor="citizenship"
-                className="block text-sm font-medium leading-6 text-gray-900 mt-2"
-              >
-                Гражданство
-              </label>
-              <div className="relative mt-2 rounded-md shadow-sm">
-                <select
-                  name="citizenship"
-                  id="citizenship"
-                  className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  onChange={(e) => setCitizenship(e.target.value)}
-                >
-                  <option value={citizenship}>Выберите</option>
-                  <option value="RU">RU - гражданин РФ</option>
-                  <option value="UKR">UKR - гражданин Украины</option>
-                  <option value="KZ">KZ - гражданин Казахстана</option>
-                  <option value="UZ">UZ - гражданин Узбекистана</option>
-                  <option value="TJ">TJ - гражданин Таджикистана</option>
-                  <option value="AZ">AZ - гражданин Азербайджана</option>
-                </select>
+                <div className="w-full sm:w-[400px] mt-2">
+                  {/* Изменение здесь */}
+                  <label
+                    htmlFor="citizenship"
+                    className="block text-sm font-medium leading-6 text-gray-900 mt-2"
+                  >
+                    Гражданство
+                  </label>
+                  <div className="relative mt-2 rounded-md shadow-sm">
+                    <select
+                      name="citizenship"
+                      id="citizenship"
+                      className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      onChange={(e) => setCitizenship(e.target.value)}
+                    >
+                      <option value={citizenship}>Выберите</option>
+                      <option value="RU">RU - гражданин РФ</option>
+                      <option value="UKR">UKR - гражданин Украины</option>
+                      <option value="KZ">KZ - гражданин Казахстана</option>
+                      <option value="UZ">UZ - гражданин Узбекистана</option>
+                      <option value="TJ">TJ - гражданин Таджикистана</option>
+                      <option value="AZ">AZ - гражданин Азербайджана</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="flex justify-center mt-2">
+                  {' '}
+                  <button className="m-2 mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+                    Подобрать
+                  </button>
+                  <button
+                    onClick={resetCalc}
+                    className="m-2 mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+                  >
+                    Сбросить
+                  </button>
+                </div>
+              </div>
+            </form>{' '}
+          </div>
+
+          <div className="flex-1 m-2 bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <h5 className="mb-2 text-xl text-center font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+              Страны подходящие для Вас
+            </h5>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {states.length
+                ? states.map((state: postType, i) => (
+                    <Card
+                      key={`${i}`}
+                      className="max-w-sm"
+                      style={{ backgroundImage: 'linear-gradient(to top right, #a0d8ff, #c3e3fd)' }}
+                    >
+                      <h5 className="font-normal text-gray-700 dark:text-gray-400 text-center">
+                        <p>{state.state_name}</p>
+                      </h5>
+                    </Card>
+                  ))
+                : null}
+              <div className="flex justify-center items-center col-span-2 mt-3">
+                <h6 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                  Войдите в личный кабинет или зарегистрируйтесь, чтобы увидеть подробную информацию
+                </h6>
               </div>
             </div>
-            <div className="flex justify-center mt-2">
-              {' '}
-              <button className="m-2 mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
-                Подобрать
-              </button>
-              <button
-                onClick={resetCalc}
-                className="m-2 mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
-              >
-                Сбросить
-              </button>
-            </div>
           </div>
-        </form>{' '}
+        </div>
       </div>
-
-      {filterStates.length ? (
+      {/* карточки снизу */}
+      {/* <div className="justify-center items-center flex flex-col rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+        <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+          Страны подходящие для Вас:
+        </h5>
+        <div className="grid grid-cols-2 gap-4">
+          {states.length
+            ? states.map((state: postType, i) => (
+                <Card
+                  key={`${i}`}
+                  className="max-w-sm"
+                  href="#"
+                  style={{ backgroundImage: 'linear-gradient(to top right, #a0d8ff, #c3e3fd)' }}
+                >
+                  <h5 className="font-normal text-gray-700 dark:text-gray-400 text-center">
+                    <p>{state.state_name}</p>
+                  </h5>
+                </Card>
+              ))
+            : null}
+          <div className="flex justify-center items-center col-span-2 mt-3">
+            <h6 className="font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+              Зарегистрируетесь чтобы увидеть подробную информацию
+            </h6>
+          </div>
+        </div>
+      </div> */}
+      {/* map */}
+      {/* <div className="justify-center items-center flex flex-col rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+        <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+          Страны подходящие для Вас:
+        </h5>
+        <div className="states-container mt-4">
+          {states.length
+            ? states.map((state: postType, i) => (
+                <div key={`${i}`} className="state mt-3">
+                  <div className="state-header">
+                    <p className="title mt-1 font-large leading-tight text-neutral-800 dark:text-neutral-50">
+                      {`${i + 1}. `} {state.state_name}
+                    </p>
+                  </div>
+                </div>
+              ))
+            : null}
+        </div>
+        <h6 className="mt-3 font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+          Зарегистрируетесь чтобы увидеть подробную информацию
+        </h6>
+      </div> */}
+      {/* НЕ ТРОГАТь */}
+      {/* {filterStates.length ? (
         <div className="justify-center items-center flex flex-col rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
           <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
             Страны подходящие для Вас:
@@ -196,7 +284,7 @@ export default function Calculator(): React.JSX.Element {
             Зарегистрируетесь чтобы увидеть подробную информацию
           </h6>
         </div>
-      ) : null}
+      ) : null} */}
     </>
   );
 }
