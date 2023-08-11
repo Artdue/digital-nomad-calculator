@@ -21,6 +21,9 @@ module.exports = (sequelize, DataTypes) => {
       max_age: DataTypes.INTEGER,
       gender: DataTypes.STRING,
       criminal: DataTypes.BOOLEAN,
+      visaType: DataTypes.STRING,
+      visaTerm: DataTypes.INTEGER,
+      visaShare: DataTypes.STRING,
       actions: DataTypes.STRING(5000),
     },
     {
