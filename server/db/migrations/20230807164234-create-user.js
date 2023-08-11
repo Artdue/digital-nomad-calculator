@@ -71,6 +71,11 @@ module.exports = {
         allowNull: true,
         type: Sequelize.STRING,
       },
+      document_status: {
+        defaultValue:'Новый пользователь',
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
       admin: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,

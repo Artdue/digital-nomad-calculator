@@ -57,14 +57,14 @@ function App(): JSX.Element {
           <Route path="/user/main" element={<MainCalculator />} />
           <Route path="/admin" element={<Admin/>} />
           <Route path="/admin/users" element={<AdminUserList/>} />
+          <Route path="/services-and-price" element={<ServicesAndPrice />} />
         </Route>
       </Routes>
         
 
-          <Route path="/services-and-price" element={<ServicesAndPrice />} />
-        </Route>
-      </Routes>
-      {/* <AdminStates /> */}
+      
+     
+
 
       <Foot />
     </>
