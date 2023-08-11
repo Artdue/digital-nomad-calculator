@@ -6,11 +6,11 @@ import { addState } from '../../Redux/thunks/addStates';
 import { deleteState } from '../../Redux/thunks/deleteState';
 import { editState } from '../../Redux/thunks/editState';
 import NewState from './NewState';
-//import './Admin.css';
+// import './Admin.css';
 
 function AdminStates(): React.JSX.Element {
   const [showForm, setShowForm] = useState(false);
-  //const formRef = useRef(null);
+  // const formRef = useRef(null);
   const states = useSelector((state: RootState) => state.adminSlice.states);
 
   const dispatch = useDispatch();
@@ -102,7 +102,7 @@ function AdminStates(): React.JSX.Element {
 
   useEffect(() => {
     dispatch(getAdmin());
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     if (editingStateId !== null) {
@@ -140,11 +140,9 @@ function AdminStates(): React.JSX.Element {
       <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white mb-8">
         <br /> Добро пожаловать, Админ
       </h1>
-      <>
-        <NewState />
-      </>
+      <NewState />
       <div className="grid justify-center">
-        <div className={`grid grid-cols-1 gap-8 xl:gap-12 md:grid-cols-3`}>
+        <div className="grid grid-cols-1 gap-8 xl:gap-12 md:grid-cols-3">
           {states.map((state) => (
             <div key={state.id} className="flex items-stretch">
               {editingStateId === state.id ? (
@@ -286,6 +284,9 @@ function AdminStates(): React.JSX.Element {
       </div>
     </div>
   );
+
+  
 }
+
 
 export default AdminStates;

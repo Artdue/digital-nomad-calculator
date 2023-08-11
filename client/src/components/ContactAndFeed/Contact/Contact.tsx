@@ -9,6 +9,7 @@ export default function Contact() {
         {/* <div className="flex flex-wrap justify-center "> */}
         {/* Сторона с контактной информацией */}
         <div className="w-full md:w-1/2 p-4 md:p-8 bg-gray-100 text-center md:text-left">
+
           <div className="h-full ">
             {/* <div className="h-full flex flex-col justify-center items-center md:items-start"> */}
             <div className="flex justify-center">
@@ -20,6 +21,37 @@ export default function Contact() {
                 оперативное и качественное выполнение задач в соответствии с законодательством РФ и
                 других стран. Взаимодействие с нашими клиентами приносит нам огромное удовольствие,
                 и мы всегда рады общению – пишите и звоните нам.{' '}
+
+<!--           <div className="h-full flex flex-col justify-center items-center md:items-start">
+            <h2 className="text-2xl font-semibold mb-4">КОНТАКТЫ</h2>
+            <p className="mb-4">
+              Мы стремимся к долгосрочному сотрудничеству с каждым клиентом, обеспечивая оперативное
+              и качественное выполнение задач в соответствии с законодательством РФ и других стран.
+              Взаимодействие с нашими клиентами приносит нам огромное удовольствие, и мы всегда рады
+              общению – пишите и звоните нам.{' '}
+            </p>
+
+            <div className="flex items-center mb-4">
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+                className="w-5 h-5 inline mr-2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"
+                ></path>
+              </svg>
+              <p className="mb-0">
+                «Рабочая станция» <br /> Садовническая Садовническая набережная, 9 <br />
+                Москва, 115035 -->
+
               </p>
               <br />
               <div>

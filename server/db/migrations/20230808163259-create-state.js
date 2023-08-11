@@ -32,6 +32,15 @@ module.exports = {
       criminal: {
         type: Sequelize.BOOLEAN,
       },
+      visaType: {
+        type: Sequelize.STRING,
+      },
+      visaTerm: {
+        type: Sequelize.INTEGER,
+      },
+      visaShare: {
+        type: Sequelize.STRING,
+      },
       actions: {
         type: Sequelize.STRING(5000),
       },
