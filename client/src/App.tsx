@@ -20,6 +20,9 @@ import Strengths from './components/MainPage/Strengths/Strengths';
 import OurTeam from './components/MainPage/OurTeam/OurTeam';
 import Home from './components/MainPage/Home/Home';
 import MainCalculator from './components/MainPage/Calculator/MainCalculator';
+import Admin from './components/AdminPage/Admin';
+import AdminUserList from './components/AdminPage/AdminUserList';
+
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
@@ -49,8 +52,11 @@ function App(): JSX.Element {
           <Route path="/politika-konfidenczialnosti" element={<PrivacyPolicy />} />
           <Route path="/user/profile" element={<EditProfile />} />
           <Route path="/user/main" element={<MainCalculator />} />
+          <Route path="/admin" element={<Admin/>} />
+          <Route path="/admin/users" element={<AdminUserList/>} />
         </Route>
       </Routes>
+        
       <Foot />
     </>
   );
