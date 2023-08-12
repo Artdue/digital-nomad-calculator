@@ -100,7 +100,6 @@ export default function FeedbackForm() {
             <Link className="underline dark:text-blue-400" onClick={() => openModal()}>
               обработку персональных данных
             </Link>
-            .
           </span>
           <div className="text-center">
             <button
