@@ -68,6 +68,10 @@ function AdminStates(): React.JSX.Element {
     max_age: '',
     gender: '',
     criminal: false,
+    visaType: '',
+    visaTerm:'',
+    visaShare:'',
+    actions:'',
   });
 
   const handleEditState = async (id: number) => {
@@ -83,6 +87,10 @@ function AdminStates(): React.JSX.Element {
         max_age: '',
         gender: '',
         criminal: false,
+        visaType: '',
+        visaTerm:'',
+        visaShare:'',
+        actions:'',
       });
     } catch (error) {
       console.error('Ошибка при редактировании данных:', error);
@@ -119,6 +127,10 @@ function AdminStates(): React.JSX.Element {
         max_age: editingState.max_age.toString(),
         gender: editingState.gender,
         criminal: editingState.criminal,
+        visaType: editingState.visaType,
+        visaTerm:editingState. visaTerm,
+        visaShare:editingState.visaShare,
+        actions:editingState.actions
       });
     } else {
       // Если не редактируется, сбросьте editedFields
@@ -131,6 +143,10 @@ function AdminStates(): React.JSX.Element {
         max_age: '',
         gender: '',
         criminal: false,
+        visaType: '',
+        visaTerm:'',
+        visaShare:'',
+        actions:''
       });
     }
   }, [editingStateId, states]);
@@ -170,15 +186,26 @@ function AdminStates(): React.JSX.Element {
                           setEditedFields({ ...editedFields, min_income: e.target.value })
                         }
                       />
-                      <input
-                        type="text"
-                        className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
-                        value={editedFields.banned_citizenship}
-                        placeholder="Нельзя с гражданством"
-                        onChange={(e) =>
-                          setEditedFields({ ...editedFields, banned_citizenship: e.target.value })
-                        }
-                      />
+                    <select
+                    id="banned_citizenship"
+                    className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
+                    value={editedFields.banned_citizenship}
+                    onChange={(e) =>
+                      setEditedFields({ ...editedFields, banned_citizenship: e.target.value })}
+                  >
+                    <option value="">Выберите </option>
+                    <option value="RU">RU - гражданин РФ</option>
+                <option value="UKR">UKR - гражданин Украины</option>
+                <option value="KZ">KZ - гражданин Казахстана</option>
+                <option value="UZ">UZ - гражданин Узбекистана</option>
+                <option value="TJ">TJ - гражданин Таджикистана</option>
+                <option value="AZ">AZ - гражданин Азербайджана</option>
+                <option value="MD">MD - гражданин Молдавии</option>
+                <option value="BY">BY - гражданин Беларуси</option>
+                <option value="AM">AM - гражданин Армении</option>
+                <option value="KG">KG - гражданин Киргизии</option>
+                <option value="TM">TM - гражданин Туркменистана</option>
+                  </select>
                       <input
                         type="number"
                         className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
@@ -206,7 +233,7 @@ function AdminStates(): React.JSX.Element {
                           setEditedFields({ ...editedFields, max_age: e.target.value })
                         }
                       />
-                      <input
+                      {/* <input
                         type="text"
                         className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
                         value={editedFields.gender}
@@ -214,8 +241,48 @@ function AdminStates(): React.JSX.Element {
                         onChange={(e) =>
                           setEditedFields({ ...editedFields, gender: e.target.value })
                         }
+                      /> */}
+                      <select
+                    id="visaType"
+                    className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
+                    value={editedFields.visaType}
+                    onChange={(e) =>
+                      setEditedFields({ ...editedFields, visaType: e.target.value })}
+                  >
+                    <option value="">Выберите тип визы</option>
+                    <option value="ВНЖ">ВНЖ</option>
+                    <option value="Виза">Виза</option>
+                  </select>
+                  <input
+                        type="number"
+                        className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
+                        value={editedFields.visaTerm}
+                        placeholder="Максимальный срок визы"
+                        onChange={(e) =>
+                          setEditedFields({ ...editedFields, visaTerm: e.target.value })
+                        }
                       />
-                      <label>
+            <select
+                    id="visaShare"
+                    className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
+                    value={editedFields.visaShare}
+                    onChange={(e) =>
+                      setEditedFields({ ...editedFields, visaShare: e.target.value })}
+                  >
+                    <option value="">Выберите </option>
+                    <option value="Персональная">Персональная</option>
+                    <option value="Семейная">Семейная</option>
+                  </select>
+                  <input
+                        type="text"
+                        className="mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
+                        defaultValue={editedFields.actions}
+                        placeholder="Действия"
+                        onChange={(e) =>
+                          setEditedFields({ ...editedFields, actions: e.target.value })
+                        }
+                      />
+                  <label>
                         <input
                           type="checkbox"
                           className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"

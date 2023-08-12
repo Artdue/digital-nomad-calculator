@@ -16,16 +16,20 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/', async (req, res) => {
-  console.log(req.body);
-  const user = await User.update(
+  console.log('REQ BODY', req.body);
+  await User.update(
     {
       first_name: req.body.first_name,
       middle_name: req.body.second_name,
-      last_name: req.body.lest_name,
+      last_name: req.body.last_name,
+      birthDate: req.body.birthDate,
+      phoneNumber: req.body.phone,
       citizenship: req.body.citizenship,
       income: req.body.income,
       work_exp: req.body.work_exp,
       work_date: req.body.work_date,
+      visaType: req.body.visaType,
+      visaShare: req.body.visaShare,
     },
     {
       where: {

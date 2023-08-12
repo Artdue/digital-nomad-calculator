@@ -48,10 +48,12 @@ export default function Qualities() {
                     <span className="absolute inset-0 mb-4" />
                     {post.title}
                   </h3>
+
                   {/* <p className="mt-5  text-sm leading-6 text-gray-600">{post.description}</p> */}
                   <p className="mt-2 font-light text-gray-900  sm:text-l dark:text-gray-700 ">
                     {post.description}
                   </p>
+
                 </div>
               </article>
             ))}
