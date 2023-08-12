@@ -7,6 +7,27 @@ import {
 } from '@heroicons/react/20/solid';
 import { Link } from 'react-router-dom';
 
+const features = [
+  {
+    name: 'Гарантия качества и возврата средств.',
+    description:
+      ' Мы стараемся решать проблемы клиента своевременно и качественно, работаем по концепции Money Back Warranty (вернём деньги в случае нарушения оговоренных сроков по нашей вине).',
+    icon: HandThumbUpIcon,
+  },
+  {
+    name: 'Конфиденциальность на первом месте.',
+    description:
+      ' Обязательно соблюдение принципа сохранности предоставленной доверителем конфиденциальной информации (соглашения о неразглашении / NDA).',
+    icon: LockClosedIcon,
+  },
+  {
+    name: 'Индивидуальный подход.',
+    description:
+      '  Не действуем по установленным шаблонам, у каждого клиента есть своя ситуация, требующая детального анализа в каждом конкретном случае.',
+    icon: PuzzlePieceIcon,
+  },
+];
+
 export default function AboutCompany() {
   return (
     <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
@@ -45,7 +66,7 @@ export default function AboutCompany() {
         <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="lg:pr-4">
             <div className="lg:max-w-lg">
-              <p className="text-base font-semibold leading-7 text-indigo-600">
+              <p className="text-base font-semibold leading-7 text-blue-500">
                 KYC Consulting and Legal services
               </p>
               <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -59,11 +80,10 @@ export default function AboutCompany() {
         </div>
         <div className="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
           <img
-            className="w-[48rem] max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]"
-            src="https://images.law.com/contrib/content/uploads/sites/397/2022/05/Selling-Technology-767x633-2.jpg"
-            // src="https://images.law.com/contrib/content/uploads/sites/397/2022/07/Recruitment_2-767x633.jpg"
-            //  src="https://www.gerrardwhite.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMjl3SUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--ebd1477ec557027576a310d3f39e5865acfc4158/AdobeStock_445828907%20Legal%20Tech.jpeg"
-
+            className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]"
+            // src="https://images.law.com/contrib/content/uploads/sites/397/2022/05/Selling-Technology-767x633-2.jpg"
+            // src="/src/assets/aboutCompany.png"
+            src="https://uploads-ssl.webflow.com/63d8af1349fdb34d6fab174e/642161a203b6c1c3a58f80f2_THE_COST_AND_THE_PRO.png"
             alt=""
           />
         </div>
@@ -76,46 +96,20 @@ export default function AboutCompany() {
                 опыт, комплексные кейсы и отличное портфолио позволяет профессионально решать
                 правовые задачи любой сложности в короткие сроки.
               </p>
-              <ul role="list" className="mt-8 space-y-8 text-gray-600">
-                <li className="flex gap-x-3">
-                  <HandThumbUpIcon
-                    className="mt-1 h-5 w-5 flex-none text-indigo-600"
-                    aria-hidden="true"
-                  />
-                  <span>
-                    <strong className="font-semibold text-gray-900">
-                      Гарантия качества и возврата средств.
-                    </strong>{' '}
-                    Мы стараемся решать проблемы клиента своевременно и качественно, работаем по
-                    концепции Money Back Warranty (вернём деньги в случае нарушения оговоренных
-                    сроков по нашей вине).
-                  </span>
-                </li>
-                <li className="flex gap-x-3">
-                  <LockClosedIcon
-                    className="mt-1 h-5 w-5 flex-none text-indigo-600"
-                    aria-hidden="true"
-                  />
-                  <span>
-                    <strong className="font-semibold text-gray-900">
-                      Конфиденциальность на первом месте.
-                    </strong>{' '}
-                    Обязательно соблюдение принципа сохранности предоставленной доверителем
-                    конфиденциальной информации (соглашения о неразглашении / NDA).
-                  </span>
-                </li>
-                <li className="flex gap-x-3">
-                  <PuzzlePieceIcon
-                    className="mt-1 h-5 w-5 flex-none text-indigo-600"
-                    aria-hidden="true"
-                  />
-                  <span>
-                    <strong className="font-semibold text-gray-900">Индивидуальный подход.</strong>{' '}
-                    Не действуем по установленным шаблонам, у каждого клиента есть своя ситуация,
-                    требующая детального анализа в каждом конкретном случае.
-                  </span>
-                </li>
-              </ul>
+              <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+                {features.map((feature) => (
+                  <div key={feature.name} className="relative pl-9">
+                    <dt className="inline font-semibold text-gray-900">
+                      <feature.icon
+                        className="absolute left-1 top-1 h-5 w-5 text-blue-500"
+                        aria-hidden="true"
+                      />
+                      {feature.name}
+                    </dt>{' '}
+                    <dd className="inline">{feature.description}</dd>
+                  </div>
+                ))}
+              </dl>
               <p className="mt-8">
                 Наша миссия – в результате анализа найти и реализовать законный способ решения
                 юридической проблемы клиента. Подобный подход позволяет качественно и оперативно
@@ -125,7 +119,7 @@ export default function AboutCompany() {
                 Остались вопросы?{' '}
               </h2>
               <p className="mt-6">
-                <Link to="/contact" className="text-base font-semibold leading-7 text-indigo-600">
+                <Link to="/contact" className="text-base font-semibold leading-7 text-blue-500">
                   {' '}
                   Запишитесь на консультацию
                 </Link>
