@@ -66,6 +66,10 @@ export default function MainCalculator(): React.JSX.Element {
     navigate('/user/profile');
   };
 
+  const resetStates = () => {
+    setFilterStates([]);
+  };
+
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
 
@@ -278,6 +282,7 @@ export default function MainCalculator(): React.JSX.Element {
               className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50"
               style={{
                 backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                marginLeft: '0',
               }}
             >
               <div className="w-[600px] h-[500px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
@@ -319,7 +324,7 @@ export default function MainCalculator(): React.JSX.Element {
                 {filterStates.length ? (
                   <div
                     className="flex justify-flex-start items-center flex flex-col w-full"
-                    style={{ width: '500px', marginLeft: '0' }}
+                    style={{ width: '500px' }}
                   >
                     {filterStates.map((state, i) => (
                       <div
@@ -341,6 +346,13 @@ export default function MainCalculator(): React.JSX.Element {
                         </div>
                       </div>
                     ))}
+                    <button
+                      type="button"
+                      onClick={resetStates}
+                      className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-green-500"
+                    >
+                      Закрыть
+                    </button>
                   </div>
                 ) : null}
               </div>

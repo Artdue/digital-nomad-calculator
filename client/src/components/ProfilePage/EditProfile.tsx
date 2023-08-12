@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import { profileGet, profilePut } from '../../Redux/thunks/profileThunk';
-import './editProfile.css';
 
 export default function EditProfile(): React.JSX.Element {
   const dispatch = useAppDispatch();
@@ -80,7 +79,7 @@ export default function EditProfile(): React.JSX.Element {
         </div>
       ) : (
         <form onSubmit={submitHandler}>
-          <div className="container mx-auto mt-8 p-8 max-w-4xl flex justify-center items-center flex flex-col">
+          <div className="container mx-auto mt-8 p-8 max-w-4xl flex justify-center items-center flex flex-col block rounded-lg bg-white p-6 shadow-md dark:bg-neutral-700">
             <div className="px-4 sm:px-0">
               <h1 className="text-2xl font-bold leading-7 text-gray-900">
                 Анкета для получения консультации
@@ -91,7 +90,7 @@ export default function EditProfile(): React.JSX.Element {
             </div>
             <div className="mt-6 border-t border-gray-100">
               <dl className="divide-y divide-gray-100">
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Имя</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
@@ -103,7 +102,7 @@ export default function EditProfile(): React.JSX.Element {
                     />
                   </dd>
                 </div>
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Отчество</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
@@ -115,7 +114,7 @@ export default function EditProfile(): React.JSX.Element {
                     />
                   </dd>
                 </div>
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Фамилия</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
@@ -127,7 +126,7 @@ export default function EditProfile(): React.JSX.Element {
                     />
                   </dd>
                 </div>
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">
                     Дата устройства на текущую работу
                   </dt>
@@ -141,7 +140,7 @@ export default function EditProfile(): React.JSX.Element {
                     />
                   </dd>
                 </div>
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Номер телефона</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
@@ -165,7 +164,7 @@ export default function EditProfile(): React.JSX.Element {
                     />
                   </dd>
                 </div> */}
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Гражданство</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
@@ -177,7 +176,7 @@ export default function EditProfile(): React.JSX.Element {
                     />
                   </dd>
                 </div>
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Чистый доход</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
@@ -189,7 +188,7 @@ export default function EditProfile(): React.JSX.Element {
                     />
                   </dd>
                 </div>
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Виза или ВНЖ</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <select
@@ -204,7 +203,7 @@ export default function EditProfile(): React.JSX.Element {
                     </select>
                   </dd>
                 </div>
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">
                     Персональная или семейная виза
                   </dt>
@@ -221,7 +220,7 @@ export default function EditProfile(): React.JSX.Element {
                     </select>
                   </dd>
                 </div>
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">
                     Дата устройства на текущую работу
                   </dt>
