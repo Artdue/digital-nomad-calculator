@@ -193,6 +193,7 @@ export default function MainCalculator(): React.JSX.Element {
           </button>
         </div>
       </form>
+
       {showModal && (
         <div
           className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50"

@@ -72,7 +72,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       document_status: {
-        defaultValue:'Новый пользователь',
+        defaultValue: 'Новый пользователь',
         allowNull: true,
         type: Sequelize.STRING,
       },

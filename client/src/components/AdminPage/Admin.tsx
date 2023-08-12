@@ -147,7 +147,7 @@ function AdminStates(): React.JSX.Element {
             <div key={state.id} className="flex items-stretch">
               {editingStateId === state.id ? (
                 <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-                  <div className="bg-white p-4 rounded-md">
+                  <div className="bg-white p-4 rounded-md ">
                     <h2 className="text-lg font-semibold mb-4 text-center">
                       Редактирование государства
                     </h2>
@@ -284,9 +284,6 @@ function AdminStates(): React.JSX.Element {
       </div>
     </div>
   );
-
-  
 }
-
 
 export default AdminStates;

@@ -3,6 +3,7 @@ import navApi from './thunks/user/nav.api';
 import userRegister from './thunks/user/reg.api';
 import userLogin from './thunks/user/log.api';
 import userLogout from './thunks/user/logout.api';
+import logAdmin from './thunks/logAdmin';
 
 const initialState = {
   email: '',
@@ -63,6 +64,19 @@ const userSlice = createSlice({
         state.auth = true;
       })
       .addCase(navApi.rejected, (state) => {
+        console.error('ERROR!');
+      })
+      .addCase(logAdmin.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(logAdmin.fulfilled, (state, action) => {
+        state.email = action.payload.email;
+        state.admin = action.payload.admin;
+        state.msg = action.payload.msg;
+        state.auth = false;
+      })
+      .addCase(logAdmin.rejected, (state) => {
+        state.loading = false;
         console.error('ERROR!');
       })
       .addDefaultCase(() => {});
