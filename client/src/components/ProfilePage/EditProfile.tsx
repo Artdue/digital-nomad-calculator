@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import { profileGet, profilePut } from '../../Redux/thunks/profileThunk';
+import Profile from './Profile';
 
 export default function EditProfile(): React.JSX.Element {
   const dispatch = useAppDispatch();
@@ -22,6 +23,16 @@ export default function EditProfile(): React.JSX.Element {
   const [birthDate, setbirthDate] = useState(userData?.birthDate || '');
   const [visaType, setvisaType] = useState(userData?.visaType || '');
   const [visaShare, setvisaShare] = useState(userData?.visaShare || '');
+
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    window.scrollTo(0, 0);
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
@@ -79,18 +90,18 @@ export default function EditProfile(): React.JSX.Element {
         </div>
       ) : (
         <form onSubmit={submitHandler}>
-          <div className="container mx-auto mt-8 p-8 max-w-4xl flex justify-center items-center flex flex-col">
+          <div className="container mx-auto mt-8 p-8 max-w-4xl flex justify-center items-center flex flex-col block rounded-lg bg-white p-6 shadow-md dark:bg-neutral-700">
             <div className="px-4 sm:px-0">
-              <h3 className="text-base font-semibold leading-7 text-gray-900">
-                Ваши личные данные
-              </h3>
+              <h1 className="text-2xl font-bold leading-7 text-gray-900">
+                Анкета для получения консультации
+              </h1>
               <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-                Добавить или изменить личные данные
+                Заполните, пожалуйста, как можно больше полей для более эффективной консультации
               </p>
             </div>
             <div className="mt-6 border-t border-gray-100">
               <dl className="divide-y divide-gray-100">
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Имя</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
@@ -102,7 +113,7 @@ export default function EditProfile(): React.JSX.Element {
                     />
                   </dd>
                 </div>
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Отчество</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
@@ -114,7 +125,7 @@ export default function EditProfile(): React.JSX.Element {
                     />
                   </dd>
                 </div>
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Фамилия</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
@@ -126,7 +137,7 @@ export default function EditProfile(): React.JSX.Element {
                     />
                   </dd>
                 </div>
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">
                     Дата устройства на текущую работу
                   </dt>
@@ -140,7 +151,7 @@ export default function EditProfile(): React.JSX.Element {
                     />
                   </dd>
                 </div>
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Номер телефона</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
@@ -164,7 +175,7 @@ export default function EditProfile(): React.JSX.Element {
                     />
                   </dd>
                 </div> */}
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Гражданство</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
@@ -176,7 +187,7 @@ export default function EditProfile(): React.JSX.Element {
                     />
                   </dd>
                 </div>
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Чистый доход</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
@@ -188,13 +199,13 @@ export default function EditProfile(): React.JSX.Element {
                     />
                   </dd>
                 </div>
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Виза или ВНЖ</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <select
                       name="visaT"
                       id="visaT"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border border-black-300 py-1.5  pr-20 text-gray-900  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       onChange={(e) => setvisaType(e.target.value)}
                     >
                       <option value={visaType}>{visaType}</option>
@@ -203,7 +214,7 @@ export default function EditProfile(): React.JSX.Element {
                     </select>
                   </dd>
                 </div>
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">
                     Персональная или семейная виза
                   </dt>
@@ -211,7 +222,7 @@ export default function EditProfile(): React.JSX.Element {
                     <select
                       name="visaT"
                       id="visaT"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border border-black-300 py-1.5  pr-20 text-gray-900  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       onChange={(e) => setvisaShare(e.target.value)}
                     >
                       <option value={visaShare}>{visaShare}</option>
@@ -220,7 +231,7 @@ export default function EditProfile(): React.JSX.Element {
                     </select>
                   </dd>
                 </div>
-                <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">
                     Дата устройства на текущую работу
                   </dt>
@@ -247,10 +258,39 @@ export default function EditProfile(): React.JSX.Element {
             <button className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
               Сохранить
             </button>
+            <button
+              type="button"
+              className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
+              onClick={() => openModal()}
+            >
+              Загрузить документы
+            </button>
           </div>
         </form>
       )}
-      <div />
+      <div>
+        {/* {showModal && (
+          <div
+            className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50"
+            style={{
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              marginLeft: '0',
+            }}
+          >
+            <div className="w-[700px] h-[500px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
+              <h1 className="text-2xl font-bold mb-4">Форма загрузки документов:</h1>
+              <Profile />
+              <button
+                type="button"
+                className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
+                onClick={() => closeModal()}
+              >
+                Закрыть окно
+              </button>
+            </div>{' '}
+          </div>
+        )} */}
+      </div>
     </>
   );
 }
