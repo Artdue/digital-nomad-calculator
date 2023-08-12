@@ -269,7 +269,7 @@ export default function EditProfile(): React.JSX.Element {
         </form>
       )}
       <div>
-        {showModal && (
+        {/* {showModal && (
           <div
             className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50"
             style={{
@@ -289,7 +289,7 @@ export default function EditProfile(): React.JSX.Element {
               </button>
             </div>{' '}
           </div>
-        )}
+        )} */}
       </div>
     </>
   );

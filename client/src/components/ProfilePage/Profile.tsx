@@ -10,6 +10,7 @@ function Profile() {
       await axios.post(`http://localhost:3000/profile/${type}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          credentials: 'include',
         },
       });
       console.log(`Файл типа ${type} успешно загружен на сервер`);
