@@ -4,7 +4,7 @@ import FeedbackForm from '../FeedbackForm/FeedbackForm';
 
 export default function Contact() {
   return (
-    <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
+    <div className="py-8 mb-4 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
       <div className="flex flex-wrap justify-center">
         <div className="w-full md:w-1/2 p-4 md:p-8 bg-gray-100 text-center md:text-left">
           <div className="h-full">

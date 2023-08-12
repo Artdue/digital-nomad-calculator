@@ -3,7 +3,7 @@ import userSlice from './user.slice';
 import adminSlice from './admin.slice';
 import stateSlice from './state.slice';
 import profileSlice from './profileSlice';
-import adminUserSlice  from "./adminuser.slice";
+import adminUserSlice from './adminuser.slice';
 
 const store = configureStore({
   reducer: {
