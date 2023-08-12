@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import { profileGet, profilePut } from '../../Redux/thunks/profileThunk';
+import Profile from './Profile';
 
 export default function EditProfile(): React.JSX.Element {
   const dispatch = useAppDispatch();
@@ -22,6 +23,16 @@ export default function EditProfile(): React.JSX.Element {
   const [birthDate, setbirthDate] = useState(userData?.birthDate || '');
   const [visaType, setvisaType] = useState(userData?.visaType || '');
   const [visaShare, setvisaShare] = useState(userData?.visaShare || '');
+
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    window.scrollTo(0, 0);
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
@@ -247,10 +258,39 @@ export default function EditProfile(): React.JSX.Element {
             <button className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
               Сохранить
             </button>
+            <button
+              type="button"
+              className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
+              onClick={() => openModal()}
+            >
+              Загрузить документы
+            </button>
           </div>
         </form>
       )}
-      <div />
+      <div>
+        {showModal && (
+          <div
+            className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50"
+            style={{
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              marginLeft: '0',
+            }}
+          >
+            <div className="w-[700px] h-[500px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
+              <h1 className="text-2xl font-bold mb-4">Форма загрузки документов:</h1>
+              <Profile />
+              <button
+                type="button"
+                className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
+                onClick={() => closeModal()}
+              >
+                Закрыть окно
+              </button>
+            </div>{' '}
+          </div>
+        )}
+      </div>
     </>
   );
 }
