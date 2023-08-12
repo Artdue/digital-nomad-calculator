@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import { profileGet, profilePut } from '../../Redux/thunks/profileThunk';
+import './editProfile.css';
 
 export default function EditProfile(): React.JSX.Element {
   const dispatch = useAppDispatch();
@@ -81,11 +82,11 @@ export default function EditProfile(): React.JSX.Element {
         <form onSubmit={submitHandler}>
           <div className="container mx-auto mt-8 p-8 max-w-4xl flex justify-center items-center flex flex-col">
             <div className="px-4 sm:px-0">
-              <h3 className="text-base font-semibold leading-7 text-gray-900">
-                Ваши личные данные
-              </h3>
+              <h1 className="text-2xl font-bold leading-7 text-gray-900">
+                Анкета для получения консультации
+              </h1>
               <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-                Добавить или изменить личные данные
+                Заполните, пожалуйста, как можно больше полей для более эффективной консультации
               </p>
             </div>
             <div className="mt-6 border-t border-gray-100">
@@ -194,7 +195,7 @@ export default function EditProfile(): React.JSX.Element {
                     <select
                       name="visaT"
                       id="visaT"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border border-black-300 py-1.5  pr-20 text-gray-900  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       onChange={(e) => setvisaType(e.target.value)}
                     >
                       <option value={visaType}>{visaType}</option>
@@ -211,7 +212,7 @@ export default function EditProfile(): React.JSX.Element {
                     <select
                       name="visaT"
                       id="visaT"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border border-black-300 py-1.5  pr-20 text-gray-900  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       onChange={(e) => setvisaShare(e.target.value)}
                     >
                       <option value={visaShare}>{visaShare}</option>
