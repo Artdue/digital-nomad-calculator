@@ -56,9 +56,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full rounded overflow-hidden shadow-lg bg-white flex flex-col p-6 md:py-8 lg:py-12 xl:py-10 md:px-8 lg:px-12 xl:px-20">
-          <Calculator />
-        </div>
+        {/* <div className="w-full rounded overflow-hidden shadow-lg bg-white flex flex-col p-6 md:py-8 lg:py-12 xl:py-10 md:px-8 lg:px-12 xl:px-20"> */}
+        <Calculator />
+        {/* </div> */}
 
         <div>
           <Qualities />

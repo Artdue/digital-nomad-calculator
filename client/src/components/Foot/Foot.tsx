@@ -9,13 +9,13 @@ export default function Foot() {
           <div className="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
             <Link to="/">
               <img
-                className="h-1/2 w-full sm:h-full sm:w-1/2 object-cover"
+                className="h-[100px] w-full sm:h-full  object-cover mt-4"
                 src="/src/assets/logo.png"
                 alt="logo"
               />
             </Link>
 
-            <div className="mt-4">
+            {/* <div className="mt-4">
               <span className="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
                 <a
                   href="https://www.facebook.com/kycconsulting"
@@ -33,7 +33,7 @@ export default function Foot() {
                   </svg>
                 </a>
               </span>
-            </div>
+            </div> */}
           </div>
           <div className="flex flex-wrap justify-evenly flex-grow mt-10 -mb-10 text-center md:pl-20 md:mt-0 md:text-left">
             <div className="w-full px-4 lg:w-1/4 md:w-1/2">
