@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const navApi = createAsyncThunk('navApp', async () => {
+const navApi = createAsyncThunk('navApp', () => {
   return fetch('http://localhost:3000/user/auth', {
     credentials: 'include',
   })

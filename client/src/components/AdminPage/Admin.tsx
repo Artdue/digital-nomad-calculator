@@ -121,21 +121,21 @@ function AdminStates(): React.JSX.Element {
               <div key={state.id} className="flex items-stretch">
                 {editingStateId === state.id ? (
                   // модалка
-                  <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-                    <div className="bg-white p-4 rounded-md w-[1000px] h-[900px]">
-                      <div className="px-4 sm:px-0 text-center">
+                  <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full]  ">
+                    <div className="bg-white p-4 rounded-md w-[1000px] h-[850px]  ">
+                      <div className="px-4 sm:px-0 text-center ">
                         <h1 className="text-2xl font-bold leading-7 text-gray-900">
                           Редактирование государства
                         </h1>
                       </div>
-                      <div className="mt-6 border-t border-gray-100">
+                      <div className="mr-6 ml-6 mt-4 border-t border-gray-100">
                         <dl className="divide-y divide-gray-100">
                           {' '}
                           <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                             <dt className="text-sm font-medium leading-6 text-gray-900">
                               Название страны
                             </dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                            <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                               <input
                                 type="text"
                                 className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -292,7 +292,7 @@ function AdminStates(): React.JSX.Element {
                               </select>
                             </dd>
                           </div>
-                          <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                          {/* <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                               <label className="flex items-center space-x-2">
                                 <input
@@ -304,7 +304,7 @@ function AdminStates(): React.JSX.Element {
                                   }
                                 />
                                 <span className="text-sm font-medium leading-6 text-gray-900">
-                                  Судимость
+                                  допустимость въезда с судимость
                                 </span>
 
                                 <span
@@ -333,7 +333,7 @@ function AdminStates(): React.JSX.Element {
                                 </span>
                               </label>
                             </dd>
-                          </div>
+                          </div> */}
                           <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                             <dt className="text-sm font-medium leading-6 text-gray-900">
                               Шаги для получения визы
@@ -341,7 +341,7 @@ function AdminStates(): React.JSX.Element {
                             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                               <textarea
                                 // className="w-[640px] h-[200px] mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none overflow-auto"
-                                className="block w-full h-[150px] px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                className="block w-full h-[200px] px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 defaultValue={editedFields.actions}
                                 placeholder="Действия"
                                 //! почему-то ограничивает количество символов ~ до 3100б даже если maxLength={5000} или maxLength={10000}
@@ -352,16 +352,16 @@ function AdminStates(): React.JSX.Element {
                               />
                             </dd>
                           </div>
-                          <div className="flex justify-center">
+                          <div className="m-2 flex justify-center">
                             <button
                               onClick={() => handleEditState(state.id)}
-                              className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                              className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-6 "
                             >
                               Сохранить
                             </button>
                             <button
                               onClick={() => setEditingStateId(null)}
-                              className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                              className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-6 "
                             >
                               Отмена
                             </button>
