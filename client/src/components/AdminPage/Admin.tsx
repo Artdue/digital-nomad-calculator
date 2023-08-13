@@ -155,7 +155,7 @@ function AdminStates(): React.JSX.Element {
   return (
     <>
       <TestPage />
-      <div>
+      <div className="ml-10 sm:ml-0">
         <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white mb-8">
           <br /> Добро пожаловать, Админ
         </h1>
@@ -165,21 +165,27 @@ function AdminStates(): React.JSX.Element {
             {states.map((state) => (
               <div key={state.id} className="flex items-stretch">
                 {editingStateId === state.id ? (
+                  // модалка
                   <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-                    <div className="bg-white p-4 rounded-md ">
+                    <div className="bg-white p-4 rounded-md w-[1000px] h-[900px]">
                       <h2 className="text-lg font-semibold mb-4 text-center">
                         Редактирование государства
                       </h2>
                       <div className="space-y-2 flex flex-col items-center">
-                        <input
-                          type="text"
-                          className="mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
-                          defaultValue={editedFields.state_name}
-                          placeholder="Название"
-                          onChange={(e) =>
-                            setEditedFields({ ...editedFields, state_name: e.target.value })
-                          }
-                        />
+                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                          <dt className="text-sm font-medium leading-6 text-gray-900">
+                            Название страны
+                          </dt>
+                          <input
+                            type="text"
+                            className="mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
+                            defaultValue={editedFields.state_name}
+                            placeholder="Название"
+                            onChange={(e) =>
+                              setEditedFields({ ...editedFields, state_name: e.target.value })
+                            }
+                          />
+                        </div>
                         <input
                           type="number"
                           className="mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
@@ -279,9 +285,9 @@ function AdminStates(): React.JSX.Element {
                           <option value="Персональная">Персональная</option>
                           <option value="Семейная">Семейная</option>
                         </select>
-                        <input
+                        <textarea
                           type="text"
-                          className="mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
+                          className="w-[800px] h-[300px] mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none overflow-auto"
                           defaultValue={editedFields.actions}
                           placeholder="Действия"
                           onChange={(e) =>
@@ -299,8 +305,20 @@ function AdminStates(): React.JSX.Element {
                           />
                           Судимость
                         </label>
-                        <button onClick={() => handleEditState(state.id)}>Сохранить</button>
-                        <button onClick={() => setEditingStateId(null)}>Отмена</button>
+                        <div className="flex">
+                          <button
+                            onClick={() => handleEditState(state.id)}
+                            className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                          >
+                            Сохранить
+                          </button>
+                          <button
+                            onClick={() => setEditingStateId(null)}
+                            className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                          >
+                            Отмена
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>

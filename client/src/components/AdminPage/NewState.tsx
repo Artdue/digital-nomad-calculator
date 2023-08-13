@@ -55,26 +55,46 @@ export default function NewState() {
       console.error('Ошибка при добавлении данных:', error);
     }
   };
+
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <>
       <TestPage />
       <div className="flex justify-center mb-4">
-        <button
+        {/* <button
           onClick={() => {
             setShowForm(!showForm);
           }}
+          type="button"
+          className="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+        > */}
+        <button
+          onClick={() => openModal()}
           type="button"
           className="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
         >
           Добавление данных в калькулятор
         </button>
       </div>
-      {showForm && (
-        <div className="flex justify-center items-center h-screen">
-          <div ref={formRef} className="border-2 p-4 w-full max-w-lg mx-auto">
+      {showModal && (
+        <div
+          className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 "
+          style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          }}
+        >
+          <div ref={formRef} className="p-4 w-full max-w-lg mx-auto m-4  ">
             <div className="px-4 sm:px-0" />
 
-            <div className="mt-6 border-t border-gray-100">
+            <div className="mt-6 border-t border-gray-100  w-[700px] bg-white">
               <form onSubmit={(e) => e.preventDefault()} className="divide-y divide-gray-100">
                 <div className="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <label
@@ -277,6 +297,18 @@ export default function NewState() {
                     >
                       Добавить
                     </button>
+                    <button
+                      onClick={closeModal}
+                      className="px-8 py-1 ml-2 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+                    >
+                      Закрыть
+                    </button>
+                    {/* <button
+                      onClick={handleAddState}
+                      className="px-8 py-1 ml-2 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+                    >
+                      Добавить
+                    </button> */}
                   </div>
                 </div>
               </form>

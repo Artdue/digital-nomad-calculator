@@ -98,8 +98,10 @@ const people = [
 export default function Strengths() {
   return (
     <>
-      <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-0 lg:px-6">
-        <div className="bg-white py-16 sm:py-20">
+      <div className=" px-4 mx-auto max-w-screen-xl lg:py-0 lg:px-6">
+        {/* <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-0 lg:px-6"> */}
+        <div className="bg-white py-4 sm:py-10">
+          {/* <div className="bg-white py-16 sm:py-20"> */}
           <div className="mx-auto px-6 lg:px-8">
             <div className="mx-auto lg:text-center">
               <h2 className="text-base font-semibold leading-7 text-blue-400">
