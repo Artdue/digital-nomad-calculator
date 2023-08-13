@@ -16,9 +16,9 @@ export default function EditProfile(): React.JSX.Element {
   const [lastName, setLastName] = useState(userData?.last_name || '');
   //   const [email, setEmail] = useState('super-Multer@was-born-on-Phiket.th');
   const [citizenship, setCitizenship] = useState(userData?.citizenship || '');
-  const [income, setIncome] = useState(userData?.income || '');
+  const [income, setIncome] = useState(userData?.income || 0);
   const [employmentDate, setEmploymentDate] = useState(userData?.work_date || '');
-  const [workExp, setworkExp] = useState(userData?.work_exp || '');
+  const [workExp, setworkExp] = useState(userData?.work_exp || 0);
   const [phone, setPhone] = useState(userData?.phoneNumber || '');
   const [birthDate, setbirthDate] = useState(userData?.birthDate || '');
   const [visaType, setvisaType] = useState(userData?.visaType || '');
@@ -36,6 +36,7 @@ export default function EditProfile(): React.JSX.Element {
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
+    e.stopPropagation();
     window.scrollTo(0, 0);
     setFirstName(firstName);
     setMiddleName(middleName);
@@ -269,7 +270,7 @@ export default function EditProfile(): React.JSX.Element {
         </form>
       )}
       <div>
-        {/* {showModal && (
+        {showModal && (
           <div
             className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50"
             style={{
@@ -289,7 +290,7 @@ export default function EditProfile(): React.JSX.Element {
               </button>
             </div>{' '}
           </div>
-        )} */}
+        )}
       </div>
     </>
   );

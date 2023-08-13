@@ -28,7 +28,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(session(sessionConfig));
-app.use(cors({ credentials: true, origin: true }));
+app.use(cors({ credentials: true, origin: 'http://localhost:5173' }));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

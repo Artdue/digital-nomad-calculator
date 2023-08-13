@@ -38,16 +38,16 @@ router
         const checkPass = await bcrypt.compare(password, user.password);
 
         if (checkPass) {
-          req.session.email = user.email;
+          req.session.user = user;
           console.log('TTUT REEQ SESSIOOOOOOOON', req.session);
-          req.session.save(() => {
-            res.json({
-              msg: 'Вы успешно авторизованы!',
-              email: user.email,
-              admin: false,
-              auth: true,
-            });
+          // req.session.save(() => {
+          res.json({
+            msg: 'Вы успешно авторизованы!',
+            email: user.email,
+            admin: false,
+            auth: true,
           });
+          // });
         } else {
           res.json({ msg: 'Пароль неверный' });
         }
@@ -60,12 +60,13 @@ router
   })
   .get('/logout', (req, res) => {
     req.session.destroy(() => {
-      res.clearCookie('Todos');
+      res.clearCookie('name');
       res.status(200).json({ message: 'Logged out successfully' });
     });
   })
 
   .get('/auth', async (req, res) => {
+    // console.log('auth session =============>', req.session);
     res.json({
       email: req.session?.email,
       admin: req.session?.admin,
