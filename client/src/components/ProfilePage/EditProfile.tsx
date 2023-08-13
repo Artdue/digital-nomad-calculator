@@ -179,17 +179,24 @@ export default function EditProfile(): React.JSX.Element {
                 <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900">Гражданство</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    <input
-                      type="text"
-                      className="w-full py-1 px-2 border rounded-md"
+                    <select
                       name="citizenship"
-                      value={citizenship}
+                      id="citizenship"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       onChange={(e) => setCitizenship(e.target.value)}
-                    />
+                    >
+                      <option value={citizenship}>{citizenship}</option>
+                      <option value="RU">RU - гражданин РФ</option>
+                      <option value="UKR">UKR - гражданин Украины</option>
+                      <option value="KZ">KZ - гражданин Казахстана</option>
+                      <option value="UZ">UZ - гражданин Узбекистана</option>
+                      <option value="TJ">TJ - гражданин Таджикистана</option>
+                      <option value="AZ">AZ - гражданин Азербайджана</option>
+                    </select>
                   </dd>
                 </div>
                 <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-gray-900">Чистый доход</dt>
+                  <dt className="text-sm font-medium leading-6 text-gray-900">Чистый доход, в $</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
                       type="text"
@@ -212,6 +219,7 @@ export default function EditProfile(): React.JSX.Element {
                       <option value={visaType}>{visaType}</option>
                       <option value="ВНЖ">ВНЖ</option>
                       <option value="Виза">Виза</option>
+                      <option value="Не имеет значения">Не имеет значения</option>
                     </select>
                   </dd>
                 </div>
@@ -229,6 +237,7 @@ export default function EditProfile(): React.JSX.Element {
                       <option value={visaShare}>{visaShare}</option>
                       <option value="Персональная">Персональная</option>
                       <option value="Семейная">Семейная</option>
+                      <option value="Не имеет значения">Не имеет значения</option>
                     </select>
                   </dd>
                 </div>
