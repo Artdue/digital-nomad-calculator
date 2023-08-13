@@ -66,18 +66,10 @@ router
   })
 
   .get('/auth', async (req, res) => {
-    if (req.user) {
-      res.json({
-        email: req.user.email,
-        admin: false, // Устанавливайте права админа в зависимости от вашей логики
-        auth: true,
-      });
-     } else {
     res.json({
       email: req.session?.email,
       admin: req.session?.admin,
     });
-  }
-});
+  });
 
 module.exports = router;
