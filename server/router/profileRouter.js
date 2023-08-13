@@ -69,7 +69,7 @@ profileRouter.post(
         { passport: `/uploads/passport/${originalname}` },
         { where: { id } }
       );
-      res.send('Паспорт успешно загружен.');
+      res.send({ msg: 'Паспорт успешно загружен' });
     } catch (error) {
       console.log('error', error);
     }
@@ -81,12 +81,15 @@ profileRouter.post(
   async (req, res) => {
     const { id } = req.params;
     const originalname = req.file.filename;
-
-    await User.update(
-      { balance: `/uploads/balance/${originalname}` },
-      { where: { id } }
-    );
-    res.send('Банковская выписка успешно загружена.');
+    try {
+      await User.update(
+        { balance: `/uploads/balance/${originalname}` },
+        { where: { id } }
+      );
+      res.send({ msg: 'Банковская выписка успешно загружена' });
+    } catch (error) {
+      console.log('error', error);
+    }
   }
 );
 
@@ -96,12 +99,15 @@ profileRouter.post(
   async (req, res) => {
     const { id } = req.params;
     const originalname = req.file.filename;
-
-    await User.update(
-      { lease: `/uploads/lease/${originalname}` },
-      { where: { id } }
-    );
-    res.send('Справка о работе успешно загружена.');
+    try {
+      await User.update(
+        { lease: `/uploads/lease/${originalname}` },
+        { where: { id } }
+      );
+      res.send({ msg: 'Справка о работе успешно загружена' });
+    } catch (error) {
+      console.log('error', error);
+    }
   }
 );
 

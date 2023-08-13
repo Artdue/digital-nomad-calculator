@@ -38,7 +38,7 @@ router
         const checkPass = await bcrypt.compare(password, user.password);
 
         if (checkPass) {
-          req.session.user = user;
+          req.session.email = user.email;
           console.log('TTUT REEQ SESSIOOOOOOOON', req.session);
           // req.session.save(() => {
           res.json({
