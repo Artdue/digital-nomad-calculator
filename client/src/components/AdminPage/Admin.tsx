@@ -15,40 +15,6 @@ function AdminStates(): React.JSX.Element {
   const states = useSelector((state: RootState) => state.adminSlice.states);
 
   const dispatch = useDispatch();
-  // const [stateName, setStateName] = useState<string>('');
-  // const [minIncome, setMinIncome] = useState<string>('');
-  // const [bannedCitizenship, setBannedCitizenship] = useState<string>('');
-  // const [workExp, setWorkExp] = useState<string>('');
-  // const [minAge, setMinAge] = useState<string>('');
-  // const [maxAge, setMaxAge] = useState<string>('');
-  // const [gender, setGender] = useState<string>('');
-  // const [criminal, setCriminal] = useState<boolean>(false);
-
-  // const handleAddState = async () => {
-  //   const newState = {
-  //     state_name: stateName,
-  //     min_income: Number(minIncome),
-  //     banned_citizenship: bannedCitizenship,
-  //     work_exp: Number(workExp),
-  //     min_age: Number(minAge),
-  //     max_age: Number(maxAge),
-  //     gender,
-  //     criminal,
-  //   };
-  //   try {
-  //     void dispatch(addState(newState));
-  //     setStateName('');
-  //     setMinIncome('');
-  //     setBannedCitizenship('');
-  //     setWorkExp('');
-  //     setMinAge('');
-  //     setMaxAge('');
-  //     setGender('');
-  //     setCriminal(false);
-  //   } catch (error) {
-  //     console.error('Ошибка при добавлении данных:', error);
-  //   }
-  // };
 
   const handleDeleteState = async (id: number) => {
     try {
@@ -97,17 +63,6 @@ function AdminStates(): React.JSX.Element {
       console.error('Ошибка при редактировании данных:', error);
     }
   };
-
-  // const handleFormToggle = () => {
-  //   setShowForm(!showForm);
-
-  //   if (!showForm && formRef.current) {
-  //     formRef.current.scrollIntoView({
-  //       behavior: 'smooth',
-  //       block: 'start',
-  //     });
-  //   }
-  // };
 
   useEffect(() => {
     dispatch(getAdmin());
@@ -168,157 +123,250 @@ function AdminStates(): React.JSX.Element {
                   // модалка
                   <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
                     <div className="bg-white p-4 rounded-md w-[1000px] h-[900px]">
-                      <h2 className="text-lg font-semibold mb-4 text-center">
-                        Редактирование государства
-                      </h2>
-                      <div className="space-y-2 flex flex-col items-center">
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                          <dt className="text-sm font-medium leading-6 text-gray-900">
-                            Название страны
-                          </dt>
-                          <input
-                            type="text"
-                            className="mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
-                            defaultValue={editedFields.state_name}
-                            placeholder="Название"
-                            onChange={(e) =>
-                              setEditedFields({ ...editedFields, state_name: e.target.value })
-                            }
-                          />
-                        </div>
-                        <input
-                          type="number"
-                          className="mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
-                          value={editedFields.min_income}
-                          placeholder="Минимальный доход"
-                          onChange={(e) =>
-                            setEditedFields({ ...editedFields, min_income: e.target.value })
-                          }
-                        />
-                        <select
-                          id="banned_citizenship"
-                          className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
-                          value={editedFields.banned_citizenship}
-                          onChange={(e) =>
-                            setEditedFields({ ...editedFields, banned_citizenship: e.target.value })
-                          }
-                        >
-                          <option value="">Выберите </option>
-                          <option value="RU">RU - гражданин РФ</option>
-                          <option value="UKR">UKR - гражданин Украины</option>
-                          <option value="KZ">KZ - гражданин Казахстана</option>
-                          <option value="UZ">UZ - гражданин Узбекистана</option>
-                          <option value="TJ">TJ - гражданин Таджикистана</option>
-                          <option value="AZ">AZ - гражданин Азербайджана</option>
-                          <option value="MD">MD - гражданин Молдавии</option>
-                          <option value="BY">BY - гражданин Беларуси</option>
-                          <option value="AM">AM - гражданин Армении</option>
-                          <option value="KG">KG - гражданин Киргизии</option>
-                          <option value="TM">TM - гражданин Туркменистана</option>
-                        </select>
-                        <input
-                          type="number"
-                          className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
-                          value={editedFields.work_exp}
-                          placeholder="Опыт работы"
-                          onChange={(e) =>
-                            setEditedFields({ ...editedFields, work_exp: e.target.value })
-                          }
-                        />
-                        <input
-                          type="number"
-                          className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
-                          value={editedFields.min_age}
-                          placeholder="Минимальный возраст"
-                          onChange={(e) =>
-                            setEditedFields({ ...editedFields, min_age: e.target.value })
-                          }
-                        />
-                        <input
-                          type="number"
-                          className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
-                          value={editedFields.max_age}
-                          placeholder="Максимальный возраст"
-                          onChange={(e) =>
-                            setEditedFields({ ...editedFields, max_age: e.target.value })
-                          }
-                        />
-                        {/* <input
-                      type="text"
-                      className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
-                      value={editedFields.gender}
-                      placeholder="Пол"
-                      onChange={(e) =>
-                        setEditedFields({ ...editedFields, gender: e.target.value })
-                      }
-                    /> */}
-                        <select
-                          id="visaType"
-                          className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
-                          value={editedFields.visaType}
-                          onChange={(e) =>
-                            setEditedFields({ ...editedFields, visaType: e.target.value })
-                          }
-                        >
-                          <option value="">Выберите тип визы</option>
-                          <option value="ВНЖ">ВНЖ</option>
-                          <option value="Виза">Виза</option>
-                        </select>
-                        <input
-                          type="number"
-                          className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
-                          value={editedFields.visaTerm}
-                          placeholder="Максимальный срок визы"
-                          onChange={(e) =>
-                            setEditedFields({ ...editedFields, visaTerm: e.target.value })
-                          }
-                        />
-                        <select
-                          id="visaShare"
-                          className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
-                          value={editedFields.visaShare}
-                          onChange={(e) =>
-                            setEditedFields({ ...editedFields, visaShare: e.target.value })
-                          }
-                        >
-                          <option value="">Выберите </option>
-                          <option value="Персональная">Персональная</option>
-                          <option value="Семейная">Семейная</option>
-                        </select>
-                        <textarea
-                          type="text"
-                          className="w-[800px] h-[300px] mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none overflow-auto"
-                          defaultValue={editedFields.actions}
-                          placeholder="Действия"
-                          onChange={(e) =>
-                            setEditedFields({ ...editedFields, actions: e.target.value })
-                          }
-                        />
-                        <label>
-                          <input
-                            type="checkbox"
-                            className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
-                            checked={editedFields.criminal}
-                            onChange={(e) =>
-                              setEditedFields({ ...editedFields, criminal: e.target.checked })
-                            }
-                          />
-                          Судимость
-                        </label>
-                        <div className="flex">
-                          <button
-                            onClick={() => handleEditState(state.id)}
-                            className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                          >
-                            Сохранить
-                          </button>
-                          <button
-                            onClick={() => setEditingStateId(null)}
-                            className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                          >
-                            Отмена
-                          </button>
-                        </div>
+                      <div className="px-4 sm:px-0 text-center">
+                        <h1 className="text-2xl font-bold leading-7 text-gray-900">
+                          Редактирование государства
+                        </h1>
+                      </div>
+                      <div className="mt-6 border-t border-gray-100">
+                        <dl className="divide-y divide-gray-100">
+                          {' '}
+                          <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">
+                              Название страны
+                            </dt>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                              <input
+                                type="text"
+                                className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                // value={firstName}
+                                value={editedFields.state_name}
+                                onChange={(e) =>
+                                  setEditedFields({ ...editedFields, state_name: e.target.value })
+                                }
+                              />
+                            </dd>
+                          </div>
+                          <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">
+                              Минимальный доход
+                            </dt>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                              <input
+                                type="number"
+                                className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                value={editedFields.min_income}
+                                onChange={(e) =>
+                                  setEditedFields({ ...editedFields, min_income: e.target.value })
+                                }
+                              />
+                            </dd>
+                          </div>
+                          <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">
+                              Гражданство
+                            </dt>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                              <select
+                                id="banned_citizenship"
+                                className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                value={editedFields.banned_citizenship}
+                                onChange={(e) =>
+                                  setEditedFields({
+                                    ...editedFields,
+                                    banned_citizenship: e.target.value,
+                                  })
+                                }
+                              >
+                                {' '}
+                                <option value="">Выберите </option>
+                                <option value="RU">RU - гражданин РФ</option>
+                                <option value="UKR">UKR - гражданин Украины</option>
+                                <option value="KZ">KZ - гражданин Казахстана</option>
+                                <option value="UZ">UZ - гражданин Узбекистана</option>
+                                <option value="TJ">TJ - гражданин Таджикистана</option>
+                                <option value="AZ">AZ - гражданин Азербайджана</option>
+                                <option value="MD">MD - гражданин Молдавии</option>
+                                <option value="BY">BY - гражданин Беларуси</option>
+                                <option value="AM">AM - гражданин Армении</option>
+                                <option value="KG">KG - гражданин Киргизии</option>
+                                <option value="TM">TM - гражданин Туркменистана</option>{' '}
+                              </select>
+                            </dd>
+                          </div>
+                          <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">
+                              Опыт работы
+                            </dt>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                              <input
+                                type="number"
+                                className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                value={editedFields.work_exp}
+                                onChange={(e) =>
+                                  setEditedFields({ ...editedFields, work_exp: e.target.value })
+                                }
+                              />
+                            </dd>
+                          </div>
+                          <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">
+                              Минимальный возраст
+                            </dt>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                              <input
+                                type="number"
+                                className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                value={editedFields.min_age}
+                                onChange={(e) =>
+                                  setEditedFields({ ...editedFields, min_age: e.target.value })
+                                }
+                              />
+                            </dd>
+                          </div>
+                          <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">
+                              Максимальный возраст
+                            </dt>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                              <input
+                                type="number"
+                                className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                value={editedFields.max_age}
+                                onChange={(e) =>
+                                  setEditedFields({ ...editedFields, max_age: e.target.value })
+                                }
+                              />
+                            </dd>
+                          </div>
+                          <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">
+                              Тип визы
+                            </dt>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                              <select
+                                id="visaType"
+                                className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                value={editedFields.visaType}
+                                onChange={(e) =>
+                                  setEditedFields({ ...editedFields, visaType: e.target.value })
+                                }
+                              >
+                                <option value="">Выберите тип визы</option>
+                                <option value="ВНЖ">ВНЖ</option>
+                                <option value="Виза">Виза</option>
+                              </select>
+                            </dd>
+                          </div>
+                          <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">
+                              Максимальный срок визы
+                            </dt>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                              <input
+                                type="number"
+                                className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                value={editedFields.visaTerm}
+                                onChange={(e) =>
+                                  setEditedFields({ ...editedFields, visaTerm: e.target.value })
+                                }
+                              />
+                            </dd>
+                          </div>
+                          <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">
+                              Тип визы
+                            </dt>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                              <select
+                                id="visaShare"
+                                className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                value={editedFields.visaShare}
+                                onChange={(e) =>
+                                  setEditedFields({ ...editedFields, visaShare: e.target.value })
+                                }
+                              >
+                                <option value="">Выберите </option>
+                                <option value="Персональная">Персональная</option>
+                                <option value="Семейная">Семейная</option>
+                              </select>
+                            </dd>
+                          </div>
+                          <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                              <label className="flex items-center space-x-2">
+                                <input
+                                  type="checkbox"
+                                  className="hidden"
+                                  checked={editedFields.criminal}
+                                  onChange={(e) =>
+                                    setEditedFields({ ...editedFields, criminal: e.target.checked })
+                                  }
+                                />
+                                <span className="text-sm font-medium leading-6 text-gray-900">
+                                  Судимость
+                                </span>
+
+                                <span
+                                  className={`w-5 h-5 rounded-md flex items-center justify-center ${
+                                    editedFields.criminal
+                                      ? 'bg-purple-600'
+                                      : 'bg-white border border-gray-300'
+                                  } border focus:ring focus:ring-purple-300 focus:outline-none`}
+                                >
+                                  {editedFields.criminal && (
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke="white"
+                                      className="w-3 h-3"
+                                    >
+                                      <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="3"
+                                        d="M5 13l4 4L19 7"
+                                      />
+                                    </svg>
+                                  )}
+                                </span>
+                              </label>
+                            </dd>
+                          </div>
+                          <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">
+                              Шаги для получения визы
+                            </dt>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                              <textarea
+                                // className="w-[640px] h-[200px] mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none overflow-auto"
+                                className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                defaultValue={editedFields.actions}
+                                placeholder="Действия"
+                                //! почему-то ограничивает количество символов ~ до 3100б даже если maxLength={5000} или maxLength={10000}
+                                // maxLength={5000}
+                                onChange={(e) =>
+                                  setEditedFields({ ...editedFields, actions: e.target.value })
+                                }
+                              />
+                            </dd>
+                          </div>
+                          <div className="flex">
+                            <button
+                              onClick={() => handleEditState(state.id)}
+                              className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                            >
+                              Сохранить
+                            </button>
+                            <button
+                              onClick={() => setEditingStateId(null)}
+                              className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                            >
+                              Отмена
+                            </button>
+                          </div>
+                        </dl>
                       </div>
                     </div>
                   </div>
@@ -329,25 +377,7 @@ function AdminStates(): React.JSX.Element {
                         <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
                           {state.state_name}
                         </h1>
-                        {/* <p className="text-gray-500 dark:text-gray-300">
-                      Мин. доход: {state.min_income}
-                    </p>
-                    <p className="text-gray-500 dark:text-gray-300">
-                      Нельзя с гражданством: {state.banned_citizenship}
-                    </p>
-                    <p className="text-gray-500 dark:text-gray-300">
-                      Опыт работы: {state.work_exp}
-                    </p>
-                    <p className="text-gray-500 dark:text-gray-300">
-                      Мин. возраст: {state.min_age}
-                    </p>
-                    <p className="text-gray-500 dark:text-gray-300">
-                      Макс. возраст: {state.max_age}
-                    </p>
-                    <p className="text-gray-500 dark:text-gray-300">Пол: {state.gender}</p>
-                    <p className="text-gray-500 dark:text-gray-300">
-                      Судимость: {state.criminal}
-                    </p> */}
+
                         <div className="mt-auto">
                           <button
                             type="button"
