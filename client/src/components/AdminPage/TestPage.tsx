@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 export default function TestPage() {
   return (
-    <div className="min-h-screen flex flex-col flex-auto flex-shrink-0  bg-gray-50 text-gray-800">
+    <div className="  flex flex-col   text-gray-800">
+      {/* <div className="min-h-screen w-[10px] flex flex-col flex-auto flex-shrink-0  bg-gray-50 text-gray-800"></div> */}
       <div className="fixed flex flex-col top-16 left-0  bg-none h-full w-[300px]">
         <div className=" flex-grow">
           <ul className="flex flex-col py-10 space-y-3">

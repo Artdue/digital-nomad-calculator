@@ -140,7 +140,7 @@ export default function Register() {
             backgroundColor: 'rgba(0, 0, 0, 0.5)',
           }}
         >
-          <div className="w-[1000px] h-[1000px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
+          <div className="w-[1000px] h-[900px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
             <div className="actions flex-grow overflow-y-auto">
               <PrivacyPolicy />
             </div>
