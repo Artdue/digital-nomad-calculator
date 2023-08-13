@@ -5,6 +5,7 @@ import Qualities from '../Qualities/Qualities';
 
 export default function Home() {
   return (
+
     <>
       <div>
         <div
@@ -35,8 +36,11 @@ export default function Home() {
                   Записаться на консультацию <span aria-hidden="true">→</span>
                 </a>
               </div>
+
             </div>
           </div>
+        </div>
+
 
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="absolute inset-0 -z-10 " />
@@ -53,26 +57,27 @@ export default function Home() {
                 </blockquote>
               </figure>
             </div>
+
           </div>
         </div>
+      </div>
 
-        {/* <div className="w-full rounded overflow-hidden shadow-lg bg-white flex flex-col p-6 md:py-8 lg:py-12 xl:py-10 md:px-8 lg:px-12 xl:px-20"> */}
-        <Calculator />
-        {/* </div> */}
+      {/* <div className="w-full rounded overflow-hidden shadow-lg bg-white flex flex-col p-6 md:py-8 lg:py-12 xl:py-10 md:px-8 lg:px-12 xl:px-20"> */}
+      <Calculator />
+      {/* </div> */}
 
-        <div>
-          <Qualities />
-        </div>
-        {/* <div>
+      <div>
+        <Qualities />
+      </div>
+      {/* <div>
           <Strengths />
         </div> */}
-        {/* <div>
+      {/* <div>
           <ServicesCompanies />
         </div> */}
-        <div>
-          <Contact />
-        </div>
+      <div>
+        <Contact />
       </div>
-    </>
+    </div>
   );
 }
