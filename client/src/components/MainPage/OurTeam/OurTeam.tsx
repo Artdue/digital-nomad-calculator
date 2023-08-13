@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'flowbite-react';
+
 const people = [
   {
     name: 'Петр Герчиков',
@@ -16,14 +16,14 @@ const people = [
   },
   {
     name: 'Надежда Белоусова',
-    role: ' Адвокат. Руководитель практики',
+    role: 'Адвокат. Руководитель практики',
     position: 'Litigation KYC Consulting',
 
     imageUrl: '/src/assets/belousova.jpg',
   },
   {
     name: 'Людмила Устюжина',
-    role: 'Управляющий Партнер',
+    role: 'Адвокат. Руководитель практики',
     position: 'WEALTH KYC Consulting',
     imageUrl: '/src/assets/ustuzhanina.jpg',
   },

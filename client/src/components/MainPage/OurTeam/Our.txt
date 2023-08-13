@@ -1,3 +1,5 @@
+import { Card } from 'flowbite-react';
+
      {/* <div className="relative">
         <Card className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 aspect-[1155/678] w-[36.125rem] rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:w-[72.1875rem]">
           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
