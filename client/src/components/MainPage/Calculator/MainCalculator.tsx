@@ -87,11 +87,14 @@ export default function MainCalculator(): React.JSX.Element {
     // console.log(editUser);
     void dispatch(profilePut(editUser));
 
-    const visaTypeFilter = states.filter((state) => state.visaType == visaT);
-    // console.log('Отфильтрованные по типу визы:', visaTypeFilter);
+    console.log('visas', visaT, visaS, states);
 
-    const visaShareFilter = states.filter((state) => state.visaShare == visaS);
-    // console.log('Отфильтрованные по семейной визе:', visaShareFilter);
+    const visaTypeFilter =
+      visaT !== 'Не имеет значения' ? states.filter((state) => state.visaType == visaT) : states;
+    console.log('Отфильтрованные по типу визы:', visaTypeFilter);
+    const visaShareFilter =
+      visaS !== 'Не имеет значения' ? states.filter((state) => state.visaShare == visaS) : states;
+    console.log('Отфильтрованные по семейной визе:', visaShareFilter);
 
     const incomeFilter = states.filter((state) => state.min_income < income);
     // console.log('Отфильтрованные по доходу:', incomeFilter);
@@ -174,6 +177,7 @@ export default function MainCalculator(): React.JSX.Element {
                       <option value={visaT}>{visaT}</option>
                       <option value="ВНЖ">ВНЖ</option>
                       <option value="Виза">Виза</option>
+                      <option value="Не имеет значения">Не имеет значения</option>
                     </select>
                   </div>
                 </div>
@@ -194,6 +198,7 @@ export default function MainCalculator(): React.JSX.Element {
                       <option value={visaS}>{visaS}</option>
                       <option value="Семейная">Семейная</option>
                       <option value="Персональная">Персональная</option>
+                      <option value="Не имеет значения">Не имеет значения</option>
                     </select>
                   </div>
                 </div>

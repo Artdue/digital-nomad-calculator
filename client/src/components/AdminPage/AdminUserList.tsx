@@ -108,13 +108,16 @@ function AdminUserList() {
                         {user.first_name} {user.last_name} {user.middle_name}
                       </h1>
                       <p className="text-gray-500 dark:text-gray-300">Email: {user.email}</p>
-                      <p className="text-gray-500 dark:text-gray-300">Паспорт: {user.passport}</p>
+                      {/* <p className="text-gray-500 dark:text-gray-300">Паспорт: {user.passport}</p>
                       <p className="text-gray-500 dark:text-gray-300">
                         Выписка из Банка: {user.balance}
                       </p>
                       <p className="text-gray-500 dark:text-gray-300">
                         Bыписка c работы: {user.balance}
-                      </p>
+                      </p> */}
+                        <button className="btn btn-primary resume-btn" onClick={() => window.open(`http://localhost:3000${user.passport}`, '_blank')}>Паспорт</button>
+                      <button className="btn btn-primary resume-btn" onClick={() => window.open(`http://localhost:3000${user.balance}`, '_blank')}>Выписка из Банка</button>
+                      <button className="btn btn-primary resume-btn" onClick={() => window.open(`http://localhost:3000${user.lease}`, '_blank')}>Справка о работе</button> 
                       <p className="text-gray-500 dark:text-gray-300">
                         Телефон: {user.phoneNumber}
                       </p>

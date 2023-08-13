@@ -39,9 +39,10 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/uploads/passport', express.static('passport'));
-app.use('/uploads/balance', express.static(' balance'));
-app.use('/uploads/lease', express.static('lease'));
+app.use('/uploads/', express.static('uploads'));
+// app.use('/uploads/passport', express.static('passport'));
+// app.use('/uploads/balance', express.static(' balance'));
+// app.use('/uploads/lease', express.static('lease'));
 
 app.use('/user', userRouter);
 app.use('/profile', profileRouter);
