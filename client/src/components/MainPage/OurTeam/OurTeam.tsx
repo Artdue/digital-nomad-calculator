@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'flowbite-react';
+
 const people = [
   {
     name: 'Петр Герчиков',
