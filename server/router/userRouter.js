@@ -66,10 +66,15 @@ router
   })
 
   .get('/auth', async (req, res) => {
-    res.json({
-      email: req.session?.email,
-      admin: req.session?.admin,
-    });
+    const { passport } = req.session;
+    if (passport) {
+      res.json({ email: passport.user.email });
+    } else {
+      res.json({
+        email: req.session?.email,
+        admin: req.session?.admin,
+      });
+    }
   });
 
 module.exports = router;

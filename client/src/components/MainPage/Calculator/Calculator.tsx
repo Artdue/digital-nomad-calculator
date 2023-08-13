@@ -184,8 +184,8 @@ export default function Calculator(): React.JSX.Element {
               </div>
             </form>{' '}
           </div>
-
-          <div className="flex-1 m-2 bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+          {/* это стили */}
+          {/* <div className="flex-1 m-2 bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
             <h5 className="mb-2 text-xl text-center font-medium leading-tight text-neutral-800 dark:text-neutral-50">
               Страны подходящие для Вас
             </h5>
@@ -209,7 +209,7 @@ export default function Calculator(): React.JSX.Element {
                 </h6>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       {/* карточки снизу */}
@@ -262,7 +262,7 @@ export default function Calculator(): React.JSX.Element {
         </h6>
       </div> */}
       {/* НЕ ТРОГАТь */}
-      {/* {filterStates.length ? (
+      {filterStates.length ? (
         <div className="justify-center items-center flex flex-col rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
           <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
             Страны подходящие для Вас:
@@ -284,7 +284,7 @@ export default function Calculator(): React.JSX.Element {
             Зарегистрируетесь чтобы увидеть подробную информацию
           </h6>
         </div>
-      ) : null} */}
+      ) : null}
     </>
   );
 }
