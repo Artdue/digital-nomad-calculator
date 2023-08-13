@@ -92,34 +92,37 @@ export default function EditProfile(): React.JSX.Element {
       ) : (
         <form onSubmit={submitHandler}>
           <div className="container mx-auto mt-8 p-8 max-w-4xl justify-center items-center flex-col block rounded-lg bg-white shadow-md dark:bg-neutral-700">
-            <div className="px-4 sm:px-0">
+            <div className="px-4 sm:px-0 text-center ">
               <h1 className="text-2xl font-bold leading-7 text-gray-900">
                 Анкета для получения консультации
               </h1>
-              <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
+              <p className="mt-1 max-w-full text-sm leading-6 text-gray-500">
                 Заполните, пожалуйста, как можно больше полей для более эффективной консультации
               </p>
             </div>
             <div className="mt-6 border-t border-gray-100">
               <dl className="divide-y divide-gray-100">
                 <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-gray-900">Имя</dt>
+                  <dt className="text-sm font-medium leading-6 text-gray-900 mt-[11.2px]">Имя</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
                       type="text"
                       name="firstName"
-                      className="w-full py-1 px-2 border rounded-md"
+                      className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
                     />
                   </dd>
                 </div>
+
                 <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-gray-900">Отчество</dt>
+                  <dt className="text-sm font-medium leading-6 text-gray-900 mt-[11.2px]">
+                    Отчество
+                  </dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
                       type="text"
-                      className="w-full py-1 px-2 border rounded-md"
+                      className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       name="middleName"
                       value={middleName}
                       onChange={(e) => setMiddleName(e.target.value)}
@@ -127,11 +130,13 @@ export default function EditProfile(): React.JSX.Element {
                   </dd>
                 </div>
                 <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-gray-900">Фамилия</dt>
+                  <dt className="text-sm font-medium leading-6 text-gray-900 mt-[11.2px]">
+                    Фамилия
+                  </dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
                       type="text"
-                      className="w-full py-1 px-2 border rounded-md"
+                      className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       name="lastName"
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
@@ -139,13 +144,13 @@ export default function EditProfile(): React.JSX.Element {
                   </dd>
                 </div>
                 <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-gray-900">
+                  <dt className="text-sm font-medium leading-6 text-gray-900 mt-[11.2px]">
                     Дата устройства на текущую работу
                   </dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
                       type="date"
-                      className="w-full py-1 px-2 border rounded-md"
+                      className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       name="birthDate"
                       value={birthDate}
                       onChange={(e) => setbirthDate(e.target.value)}
@@ -153,36 +158,28 @@ export default function EditProfile(): React.JSX.Element {
                   </dd>
                 </div>
                 <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-gray-900">Номер телефона</dt>
+                  <dt className="text-sm font-medium leading-6 text-gray-900 mt-[11.2px]">
+                    Номер телефона
+                  </dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
                       type="text"
                       name="phone"
-                      className="w-full py-1 px-2 border rounded-md"
+                      className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                     />
                   </dd>
                 </div>
-                {/* <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-gray-900">Электронная почта</dt>
-                  <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    <input
-                      type="text"
-                      className="w-full py-1 px-2 border rounded-md"
-                      name="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </dd>
-                </div> */}
                 <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-gray-900">Гражданство</dt>
+                  <dt className="text-sm font-medium leading-6 text-gray-900 mt-[11.2px]">
+                    Гражданство
+                  </dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                    <select
+                  <select
                       name="citizenship"
                       id="citizenship"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       onChange={(e) => setCitizenship(e.target.value)}
                     >
                       <option value={citizenship}>{citizenship}</option>
@@ -196,11 +193,13 @@ export default function EditProfile(): React.JSX.Element {
                   </dd>
                 </div>
                 <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-gray-900">Чистый доход, в $</dt>
+                  <dt className="text-sm font-medium leading-6 text-gray-900 mt-[11.2px]">
+                    Чистый доход в $
+                  </dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
                       type="text"
-                      className="w-full py-1 px-2 border rounded-md"
+                      className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       name="income"
                       value={income}
                       onChange={(e) => setIncome(e.target.value)}
@@ -208,12 +207,14 @@ export default function EditProfile(): React.JSX.Element {
                   </dd>
                 </div>
                 <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-gray-900">Виза или ВНЖ</dt>
+                  <dt className="text-sm font-medium leading-6 text-gray-900 mt-[11.2px]">
+                    Виза или ВНЖ
+                  </dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <select
                       name="visaT"
                       id="visaT"
-                      className="block w-full rounded-md border border-black-300 py-1.5  pr-20 text-gray-900  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       onChange={(e) => setvisaType(e.target.value)}
                     >
                       <option value={visaType}>{visaType}</option>
@@ -224,14 +225,14 @@ export default function EditProfile(): React.JSX.Element {
                   </dd>
                 </div>
                 <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-gray-900">
+                  <dt className="text-sm font-medium leading-6 text-gray-900 mt-[11.2px]">
                     Персональная или семейная виза
                   </dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <select
                       name="visaT"
                       id="visaT"
-                      className="block w-full rounded-md border border-black-300 py-1.5  pr-20 text-gray-900  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       onChange={(e) => setvisaShare(e.target.value)}
                     >
                       <option value={visaShare}>{visaShare}</option>
@@ -242,13 +243,13 @@ export default function EditProfile(): React.JSX.Element {
                   </dd>
                 </div>
                 <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-gray-900">
+                  <dt className="text-sm font-medium leading-6 text-gray-900 mt-[11.2px]">
                     Дата устройства на текущую работу
                   </dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
                       type="date"
-                      className="w-full py-1 px-2 border rounded-md"
+                      className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       name="employmentDate"
                       value={employmentDate}
                       onChange={(e) => setEmploymentDate(e.target.value)}
@@ -263,18 +264,15 @@ export default function EditProfile(): React.JSX.Element {
                 </div>
               </dl>
             </div>
-            <button className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
-              Сохранить
-            </button>
+            <div className="m-2 flex justify-center">
+              <button className="m-2 mt-4 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2">
+                Сохранить
+              </button>
+            </div>{' '}
           </div>
         </form>
       )}
-      <div className="flex h-screen items-flex-start justify-center mt-2">
-        <div className="w-[900px] h-[500px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
-          <h1 className="text-2xl font-bold mb-4">Форма загрузки документов:</h1>
-          <Profile />
-        </div>
-      </div>
+      <Profile />
     </>
   );
 }
