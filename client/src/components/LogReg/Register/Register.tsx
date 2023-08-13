@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { Link, useNavigate } from 'react-router-dom';
 import userRegister from '../../../Redux/thunks/user/reg.api';
+import RegGoogle from './RegGoogle';
 import PrivacyPolicy from '../../PrivacyPolicy/PrivacyPolicy';
+
 
 interface IReg {
   email: string;
@@ -123,14 +125,16 @@ export default function Register() {
           </Link>
           <span className="border-b w-1/5 md:w-1/4" />
         </div>
-        <div className="mt-10">
-          <button
-            type="submit"
-            className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Зарегистрироваться через gmail
-          </button>
-        </div>
+        {/* <div className="mt-10">
+        <button
+  type="submit"
+  className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+>
+  <a href="http://localhost:3000/google">Зарегистрироваться через gmail</a>
+</button> 
+
+        </div> */}
+        <RegGoogle/>
       </form>
 
       {showModal && (
@@ -140,7 +144,7 @@ export default function Register() {
             backgroundColor: 'rgba(0, 0, 0, 0.5)',
           }}
         >
-          <div className="w-[1000px] h-[1000px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
+          <div className="w-[1000px] h-[900px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
             <div className="actions flex-grow overflow-y-auto">
               <PrivacyPolicy />
             </div>

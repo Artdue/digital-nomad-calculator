@@ -10,7 +10,13 @@ const profileRouter = require('./router/profileRouter');
 const adminRouter = require('./router/adminRouter');
 const statesRouter = require('./router/statesRouter');
 const usProfRouter = require('./router/usProfRouter');
+const googleRouter = require('./router/googleRouter');
 const mainAdminRouter = require('./router/mainAdminRouter');
+
+require('./googleAuth');
+
+
+
 
 const sessionConfig = {
   name: 'name',
@@ -42,6 +48,8 @@ app.use('/profile', profileRouter);
 app.use('/admin', adminRouter);
 app.use('/states', statesRouter);
 app.use('/changeProfile', usProfRouter);
+app.use('/google', googleRouter);
 app.use('/mainAdmin', mainAdminRouter);
+
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));

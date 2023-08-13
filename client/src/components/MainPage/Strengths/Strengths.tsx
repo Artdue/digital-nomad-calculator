@@ -5,7 +5,6 @@ import {
   DocumentCheckIcon,
   FaceSmileIcon,
   LightBulbIcon,
-  ChartBarIcon,
   ArrowUturnUpIcon,
 } from '@heroicons/react/24/outline';
 import 'animate.css/animate.min.css'; // Подключение анимаций Tailwind CSS
@@ -55,51 +54,15 @@ const benefits = [
   },
 ];
 
-const people = [
-  {
-    name: 'Упрощение',
-    description:
-      'Оформление визы может быть сложным. Компания занимается всеми тонкостями, сводя стресс для клиента к минимуму.',
-    icon: DocumentCheckIcon,
-  },
-  {
-    name: 'Повышение шансов на положительное решение',
-    description: 'Профессиональная помощь может повысить вероятность получения визы и/или ВНЖ.',
-  },
-  {
-    name: 'Экономия на налогах',
-    description:
-      'Правильное налоговое планирование всегда приводит к экономии и предотвращает правовые проблемы.',
-  },
-  {
-    name: 'Местные инсайты',
-    description:
-      'Получение информации о местных обычаях, правилах и регламентах, что необходимо для органичного переезда.',
-  },
-  {
-    name: 'Экономия времени',
-    description:
-      'Клиент может сосредоточиться на своей работе или планировании путешествий, пока компания занимается миграционными вопросами.',
-  },
-  {
-    name: 'Спокойствие',
-    description:
-      'Поддержка в случае чрезвычайных обстоятельств или неожиданных сложностей – как страховка от форс-мажора.',
-  },
-  {
-    name: 'Гибкость',
-    description:
-      'Имея подходящую визу, цифровые кочевники могут законно работать и проживать в стране, сочетая работу и отдых, и иметь возможность погрузиться в новую культуру.',
-  },
-];
-
 // здесь есть всплытие при загрузке страницы
 
 export default function Strengths() {
   return (
     <>
-      <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-0 lg:px-6">
-        <div className="bg-white py-16 sm:py-20">
+      <div className=" px-4 mx-auto max-w-screen-xl lg:py-0 lg:px-6">
+        {/* <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-0 lg:px-6"> */}
+        <div className="bg-white py-4 sm:py-10">
+          {/* <div className="bg-white py-16 sm:py-20"> */}
           <div className="mx-auto px-6 lg:px-8">
             <div className="mx-auto lg:text-center">
               <h2 className="text-base font-semibold leading-7 text-blue-400">
