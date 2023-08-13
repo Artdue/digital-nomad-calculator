@@ -341,7 +341,7 @@ function AdminStates(): React.JSX.Element {
                             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                               <textarea
                                 // className="w-[640px] h-[200px] mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none overflow-auto"
-                                className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                className="block w-full h-[150px] px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 defaultValue={editedFields.actions}
                                 placeholder="Действия"
                                 //! почему-то ограничивает количество символов ~ до 3100б даже если maxLength={5000} или maxLength={10000}
@@ -352,7 +352,7 @@ function AdminStates(): React.JSX.Element {
                               />
                             </dd>
                           </div>
-                          <div className="flex">
+                          <div className="flex justify-center">
                             <button
                               onClick={() => handleEditState(state.id)}
                               className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
