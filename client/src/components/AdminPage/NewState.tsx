@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addState } from '../../Redux/thunks/addStates';
+import TestPage from './TestPage';
 
 export default function NewState() {
   const formRef = useRef(null);
@@ -34,7 +35,7 @@ export default function NewState() {
       visaType,
       visaTerm,
       visaShare,
-      actions
+      actions,
     };
     try {
       void dispatch(addState(newState));
@@ -54,68 +55,91 @@ export default function NewState() {
       console.error('Ошибка при добавлении данных:', error);
     }
   };
+
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <>
+      <TestPage />
       <div className="flex justify-center mb-4">
-        <button
+        {/* <button
           onClick={() => {
             setShowForm(!showForm);
           }}
+          type="button"
+          className="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+        > */}
+        <button
+          onClick={() => openModal()}
           type="button"
           className="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
         >
           Добавление данных в калькулятор
         </button>
       </div>
-      {showForm && (
- <div className="flex justify-center items-center h-screen">
- <div ref={formRef} className="border-2 p-4 w-full max-w-lg mx-auto">
-   <div className="px-4 sm:px-0" />
+      {showModal && (
+        <div
+          className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 "
+          style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          }}
+        >
+          <div ref={formRef} className="p-4 w-full max-w-lg mx-auto m-4  ">
+            <div className="px-4 sm:px-0" />
 
-   <div className="mt-6 border-t border-gray-100">
-     <form onSubmit={(e) => e.preventDefault()} className="divide-y divide-gray-100">
-       <div className="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-         <label
-           className="text-sm font-medium leading-6 text-gray-900"
-           htmlFor="stateName"
-         >
-           Название государства
-         </label>
-         <input
-           id="stateName"
-           type="text"
-           className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
-           placeholder=""
-           value={stateName}
-           onChange={(e) => setStateName(e.target.value)}
-         />
-       </div>
+            <div className="mt-6 border-t border-gray-100  w-[700px] bg-white">
+              <form onSubmit={(e) => e.preventDefault()} className="divide-y divide-gray-100">
+                <div className="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <label
+                    className="text-sm font-medium leading-6 text-gray-900"
+                    htmlFor="stateName"
+                  >
+                    Название государства
+                  </label>
+                  <input
+                    id="stateName"
+                    type="text"
+                    className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
+                    placeholder=""
+                    value={stateName}
+                    onChange={(e) => setStateName(e.target.value)}
+                  />
+                </div>
 
-       <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <label className="text-sm font-medium leading-6 text-gray-900" htmlFor="banned_citizenship">
-                Нельзя с гражданством
+                <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                  <label
+                    className="text-sm font-medium leading-6 text-gray-900"
+                    htmlFor="banned_citizenship"
+                  >
+                    Нельзя с гражданством
                   </label>
                   <select
                     id="banned_citizenship"
                     className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
                     value={bannedCitizenship}
-                    onChange={(e) =>  setBannedCitizenship(e.target.value)}
+                    onChange={(e) => setBannedCitizenship(e.target.value)}
                   >
                     <option value="">Выберите </option>
                     <option value="RU">RU - гражданин РФ</option>
-                <option value="UKR">UKR - гражданин Украины</option>
-                <option value="KZ">KZ - гражданин Казахстана</option>
-                <option value="UZ">UZ - гражданин Узбекистана</option>
-                <option value="TJ">TJ - гражданин Таджикистана</option>
-                <option value="AZ">AZ - гражданин Азербайджана</option>
-                <option value="MD">MD - гражданин Молдавии</option>
-                <option value="BY">BY - гражданин Беларуси</option>
-                <option value="AM">AM - гражданин Армении</option>
-                <option value="KG">KG - гражданин Киргизии</option>
-                <option value="TM">TM - гражданин Туркменистана</option>
+                    <option value="UKR">UKR - гражданин Украины</option>
+                    <option value="KZ">KZ - гражданин Казахстана</option>
+                    <option value="UZ">UZ - гражданин Узбекистана</option>
+                    <option value="TJ">TJ - гражданин Таджикистана</option>
+                    <option value="AZ">AZ - гражданин Азербайджана</option>
+                    <option value="MD">MD - гражданин Молдавии</option>
+                    <option value="BY">BY - гражданин Беларуси</option>
+                    <option value="AM">AM - гражданин Армении</option>
+                    <option value="KG">KG - гражданин Киргизии</option>
+                    <option value="TM">TM - гражданин Туркменистана</option>
                   </select>
                 </div>
-
 
                 <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <label
@@ -191,13 +215,13 @@ export default function NewState() {
                 </div>
                 <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <label className="text-sm font-medium leading-6 text-gray-900" htmlFor="visaType">
-                  Выберите тип визы
+                    Выберите тип визы
                   </label>
                   <select
                     id="visaType"
                     className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
                     value={visaType}
-                    onChange={(e) =>  setVisaType(e.target.value)}
+                    onChange={(e) => setVisaType(e.target.value)}
                   >
                     <option value="">Выберите тип визы</option>
                     <option value="ВНЖ">ВНЖ</option>
@@ -218,22 +242,23 @@ export default function NewState() {
                   />
                 </div>
                 <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <label className="text-sm font-medium leading-6 text-gray-900" htmlFor="visaShare">
-                  Семейная?
+                  <label
+                    className="text-sm font-medium leading-6 text-gray-900"
+                    htmlFor="visaShare"
+                  >
+                    Семейная?
                   </label>
                   <select
                     id="visaShare"
                     className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
                     value={visaShare}
-                    onChange={(e) =>  setVisaShare(e.target.value)}
+                    onChange={(e) => setVisaShare(e.target.value)}
                   >
                     <option value="">Выберите </option>
                     <option value="Персональная">Персональная</option>
                     <option value="Семейная">Семейная</option>
-                  
                   </select>
                 </div>
-
 
                 <div className="px-4 py-3 sm:flex sm:items-center sm:gap-4 sm:px-0">
                   <label className="text-sm font-medium leading-6 text-gray-900" htmlFor="criminal">
@@ -259,8 +284,8 @@ export default function NewState() {
                     type="text"
                     className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
                     placeholder="Действия"
-                    value={ actions}
-                    onChange={(e) =>  setActions(e.target.value)}
+                    value={actions}
+                    onChange={(e) => setActions(e.target.value)}
                   />
                 </div>
                 {/* Кнопка "Добавить" */}
@@ -272,6 +297,18 @@ export default function NewState() {
                     >
                       Добавить
                     </button>
+                    <button
+                      onClick={closeModal}
+                      className="px-8 py-1 ml-2 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+                    >
+                      Закрыть
+                    </button>
+                    {/* <button
+                      onClick={handleAddState}
+                      className="px-8 py-1 ml-2 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+                    >
+                      Добавить
+                    </button> */}
                   </div>
                 </div>
               </form>

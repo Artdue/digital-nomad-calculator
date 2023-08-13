@@ -6,6 +6,7 @@ import { addState } from '../../Redux/thunks/addStates';
 import { deleteState } from '../../Redux/thunks/deleteState';
 import { editState } from '../../Redux/thunks/editState';
 import NewState from './NewState';
+import TestPage from './TestPage';
 // import './Admin.css';
 
 function AdminStates(): React.JSX.Element {
@@ -69,9 +70,9 @@ function AdminStates(): React.JSX.Element {
     gender: '',
     criminal: false,
     visaType: '',
-    visaTerm:'',
-    visaShare:'',
-    actions:'',
+    visaTerm: '',
+    visaShare: '',
+    actions: '',
   });
 
   const handleEditState = async (id: number) => {
@@ -88,9 +89,9 @@ function AdminStates(): React.JSX.Element {
         gender: '',
         criminal: false,
         visaType: '',
-        visaTerm:'',
-        visaShare:'',
-        actions:'',
+        visaTerm: '',
+        visaShare: '',
+        actions: '',
       });
     } catch (error) {
       console.error('Ошибка при редактировании данных:', error);
@@ -128,9 +129,9 @@ function AdminStates(): React.JSX.Element {
         gender: editingState.gender,
         criminal: editingState.criminal,
         visaType: editingState.visaType,
-        visaTerm:editingState. visaTerm,
-        visaShare:editingState.visaShare,
-        actions:editingState.actions
+        visaTerm: editingState.visaTerm,
+        visaShare: editingState.visaShare,
+        actions: editingState.actions,
       });
     } else {
       // Если не редактируется, сбросьте editedFields
@@ -144,216 +145,237 @@ function AdminStates(): React.JSX.Element {
         gender: '',
         criminal: false,
         visaType: '',
-        visaTerm:'',
-        visaShare:'',
-        actions:''
+        visaTerm: '',
+        visaShare: '',
+        actions: '',
       });
     }
   }, [editingStateId, states]);
 
   return (
-    <div>
-      <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white mb-8">
-        <br /> Добро пожаловать, Админ
-      </h1>
-      <NewState />
-      <div className="grid justify-center">
-        <div className="grid grid-cols-1 gap-8 xl:gap-12 md:grid-cols-3">
-          {states.map((state) => (
-            <div key={state.id} className="flex items-stretch">
-              {editingStateId === state.id ? (
-                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-                  <div className="bg-white p-4 rounded-md">
-                    <h2 className="text-lg font-semibold mb-4 text-center">
-                      Редактирование государства
-                    </h2>
-                    <div className="space-y-2 flex flex-col items-center">
-                      <input
-                        type="text"
-                        className="mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
-                        defaultValue={editedFields.state_name}
-                        placeholder="Название"
-                        onChange={(e) =>
-                          setEditedFields({ ...editedFields, state_name: e.target.value })
-                        }
-                      />
-                      <input
-                        type="number"
-                        className="mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
-                        value={editedFields.min_income}
-                        placeholder="Минимальный доход"
-                        onChange={(e) =>
-                          setEditedFields({ ...editedFields, min_income: e.target.value })
-                        }
-                      />
-                    <select
-                    id="banned_citizenship"
-                    className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
-                    value={editedFields.banned_citizenship}
-                    onChange={(e) =>
-                      setEditedFields({ ...editedFields, banned_citizenship: e.target.value })}
-                  >
-                    <option value="">Выберите </option>
-                    <option value="RU">RU - гражданин РФ</option>
-                <option value="UKR">UKR - гражданин Украины</option>
-                <option value="KZ">KZ - гражданин Казахстана</option>
-                <option value="UZ">UZ - гражданин Узбекистана</option>
-                <option value="TJ">TJ - гражданин Таджикистана</option>
-                <option value="AZ">AZ - гражданин Азербайджана</option>
-                <option value="MD">MD - гражданин Молдавии</option>
-                <option value="BY">BY - гражданин Беларуси</option>
-                <option value="AM">AM - гражданин Армении</option>
-                <option value="KG">KG - гражданин Киргизии</option>
-                <option value="TM">TM - гражданин Туркменистана</option>
-                  </select>
-                      <input
-                        type="number"
-                        className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
-                        value={editedFields.work_exp}
-                        placeholder="Опыт работы"
-                        onChange={(e) =>
-                          setEditedFields({ ...editedFields, work_exp: e.target.value })
-                        }
-                      />
-                      <input
-                        type="number"
-                        className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
-                        value={editedFields.min_age}
-                        placeholder="Минимальный возраст"
-                        onChange={(e) =>
-                          setEditedFields({ ...editedFields, min_age: e.target.value })
-                        }
-                      />
-                      <input
-                        type="number"
-                        className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
-                        value={editedFields.max_age}
-                        placeholder="Максимальный возраст"
-                        onChange={(e) =>
-                          setEditedFields({ ...editedFields, max_age: e.target.value })
-                        }
-                      />
-                      {/* <input
-                        type="text"
-                        className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
-                        value={editedFields.gender}
-                        placeholder="Пол"
-                        onChange={(e) =>
-                          setEditedFields({ ...editedFields, gender: e.target.value })
-                        }
-                      /> */}
-                      <select
-                    id="visaType"
-                    className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
-                    value={editedFields.visaType}
-                    onChange={(e) =>
-                      setEditedFields({ ...editedFields, visaType: e.target.value })}
-                  >
-                    <option value="">Выберите тип визы</option>
-                    <option value="ВНЖ">ВНЖ</option>
-                    <option value="Виза">Виза</option>
-                  </select>
-                  <input
-                        type="number"
-                        className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
-                        value={editedFields.visaTerm}
-                        placeholder="Максимальный срок визы"
-                        onChange={(e) =>
-                          setEditedFields({ ...editedFields, visaTerm: e.target.value })
-                        }
-                      />
-            <select
-                    id="visaShare"
-                    className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
-                    value={editedFields.visaShare}
-                    onChange={(e) =>
-                      setEditedFields({ ...editedFields, visaShare: e.target.value })}
-                  >
-                    <option value="">Выберите </option>
-                    <option value="Персональная">Персональная</option>
-                    <option value="Семейная">Семейная</option>
-                  </select>
-                  <input
-                        type="text"
-                        className="mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
-                        defaultValue={editedFields.actions}
-                        placeholder="Действия"
-                        onChange={(e) =>
-                          setEditedFields({ ...editedFields, actions: e.target.value })
-                        }
-                      />
-                  <label>
+    <>
+      <TestPage />
+      <div className="ml-10 sm:ml-0">
+        <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white mb-8">
+          <br /> Добро пожаловать, Админ
+        </h1>
+        <NewState />
+        <div className="grid justify-center">
+          <div className="grid grid-cols-1 gap-8 xl:gap-12 md:grid-cols-3">
+            {states.map((state) => (
+              <div key={state.id} className="flex items-stretch">
+                {editingStateId === state.id ? (
+                  // модалка
+                  <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+                    <div className="bg-white p-4 rounded-md w-[1000px] h-[900px]">
+                      <h2 className="text-lg font-semibold mb-4 text-center">
+                        Редактирование государства
+                      </h2>
+                      <div className="space-y-2 flex flex-col items-center">
+                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                          <dt className="text-sm font-medium leading-6 text-gray-900">
+                            Название страны
+                          </dt>
+                          <input
+                            type="text"
+                            className="mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
+                            defaultValue={editedFields.state_name}
+                            placeholder="Название"
+                            onChange={(e) =>
+                              setEditedFields({ ...editedFields, state_name: e.target.value })
+                            }
+                          />
+                        </div>
                         <input
-                          type="checkbox"
-                          className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
-                          checked={editedFields.criminal}
+                          type="number"
+                          className="mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
+                          value={editedFields.min_income}
+                          placeholder="Минимальный доход"
                           onChange={(e) =>
-                            setEditedFields({ ...editedFields, criminal: e.target.checked })
+                            setEditedFields({ ...editedFields, min_income: e.target.value })
                           }
                         />
-                        Судимость
-                      </label>
-                      <button onClick={() => handleEditState(state.id)}>Сохранить</button>
-                      <button onClick={() => setEditingStateId(null)}>Отмена</button>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <section className="bg-white dark:bg-gray-900">
-                  <div className="w-full">
-                    <div className="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl h-full flex flex-col">
-                      <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-                        {state.state_name}
-                      </h1>
-                      {/* <p className="text-gray-500 dark:text-gray-300">
-                        Мин. доход: {state.min_income}
-                      </p>
-                      <p className="text-gray-500 dark:text-gray-300">
-                        Нельзя с гражданством: {state.banned_citizenship}
-                      </p>
-                      <p className="text-gray-500 dark:text-gray-300">
-                        Опыт работы: {state.work_exp}
-                      </p>
-                      <p className="text-gray-500 dark:text-gray-300">
-                        Мин. возраст: {state.min_age}
-                      </p>
-                      <p className="text-gray-500 dark:text-gray-300">
-                        Макс. возраст: {state.max_age}
-                      </p>
-                      <p className="text-gray-500 dark:text-gray-300">Пол: {state.gender}</p>
-                      <p className="text-gray-500 dark:text-gray-300">
-                        Судимость: {state.criminal}
-                      </p> */}
-                      <div className="mt-auto">
-                        <button
-                          type="button"
-                          onClick={() => setEditingStateId(state.id)}
-                          className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                        <select
+                          id="banned_citizenship"
+                          className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
+                          value={editedFields.banned_citizenship}
+                          onChange={(e) =>
+                            setEditedFields({ ...editedFields, banned_citizenship: e.target.value })
+                          }
                         >
-                          Редактировать
-                        </button>
-
-                        <button
-                          type="button"
-                          onClick={() => dispatch(deleteState(state.id))}
-                          className="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                          <option value="">Выберите </option>
+                          <option value="RU">RU - гражданин РФ</option>
+                          <option value="UKR">UKR - гражданин Украины</option>
+                          <option value="KZ">KZ - гражданин Казахстана</option>
+                          <option value="UZ">UZ - гражданин Узбекистана</option>
+                          <option value="TJ">TJ - гражданин Таджикистана</option>
+                          <option value="AZ">AZ - гражданин Азербайджана</option>
+                          <option value="MD">MD - гражданин Молдавии</option>
+                          <option value="BY">BY - гражданин Беларуси</option>
+                          <option value="AM">AM - гражданин Армении</option>
+                          <option value="KG">KG - гражданин Киргизии</option>
+                          <option value="TM">TM - гражданин Туркменистана</option>
+                        </select>
+                        <input
+                          type="number"
+                          className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
+                          value={editedFields.work_exp}
+                          placeholder="Опыт работы"
+                          onChange={(e) =>
+                            setEditedFields({ ...editedFields, work_exp: e.target.value })
+                          }
+                        />
+                        <input
+                          type="number"
+                          className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
+                          value={editedFields.min_age}
+                          placeholder="Минимальный возраст"
+                          onChange={(e) =>
+                            setEditedFields({ ...editedFields, min_age: e.target.value })
+                          }
+                        />
+                        <input
+                          type="number"
+                          className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
+                          value={editedFields.max_age}
+                          placeholder="Максимальный возраст"
+                          onChange={(e) =>
+                            setEditedFields({ ...editedFields, max_age: e.target.value })
+                          }
+                        />
+                        {/* <input
+                      type="text"
+                      className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
+                      value={editedFields.gender}
+                      placeholder="Пол"
+                      onChange={(e) =>
+                        setEditedFields({ ...editedFields, gender: e.target.value })
+                      }
+                    /> */}
+                        <select
+                          id="visaType"
+                          className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
+                          value={editedFields.visaType}
+                          onChange={(e) =>
+                            setEditedFields({ ...editedFields, visaType: e.target.value })
+                          }
                         >
-                          Удалить
-                        </button>
+                          <option value="">Выберите тип визы</option>
+                          <option value="ВНЖ">ВНЖ</option>
+                          <option value="Виза">Виза</option>
+                        </select>
+                        <input
+                          type="number"
+                          className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
+                          value={editedFields.visaTerm}
+                          placeholder="Максимальный срок визы"
+                          onChange={(e) =>
+                            setEditedFields({ ...editedFields, visaTerm: e.target.value })
+                          }
+                        />
+                        <select
+                          id="visaShare"
+                          className="mt-1 text-sm text-gray-700 sm:col-span-1 focus:ring focus:ring-blue-300 focus:outline-none"
+                          value={editedFields.visaShare}
+                          onChange={(e) =>
+                            setEditedFields({ ...editedFields, visaShare: e.target.value })
+                          }
+                        >
+                          <option value="">Выберите </option>
+                          <option value="Персональная">Персональная</option>
+                          <option value="Семейная">Семейная</option>
+                        </select>
+                        <textarea
+                          type="text"
+                          className="w-[800px] h-[300px] mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none overflow-auto"
+                          defaultValue={editedFields.actions}
+                          placeholder="Действия"
+                          onChange={(e) =>
+                            setEditedFields({ ...editedFields, actions: e.target.value })
+                          }
+                        />
+                        <label>
+                          <input
+                            type="checkbox"
+                            className="mt-1 text-sm text-gray-700 sm:col-span-2 focus:ring focus:ring-blue-300 focus:outline-none"
+                            checked={editedFields.criminal}
+                            onChange={(e) =>
+                              setEditedFields({ ...editedFields, criminal: e.target.checked })
+                            }
+                          />
+                          Судимость
+                        </label>
+                        <div className="flex">
+                          <button
+                            onClick={() => handleEditState(state.id)}
+                            className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                          >
+                            Сохранить
+                          </button>
+                          <button
+                            onClick={() => setEditingStateId(null)}
+                            className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                          >
+                            Отмена
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </section>
-              )}
-            </div>
-          ))}
+                ) : (
+                  <section className="bg-white dark:bg-gray-900">
+                    <div className="w-full">
+                      <div className="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl h-full flex flex-col">
+                        <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
+                          {state.state_name}
+                        </h1>
+                        {/* <p className="text-gray-500 dark:text-gray-300">
+                      Мин. доход: {state.min_income}
+                    </p>
+                    <p className="text-gray-500 dark:text-gray-300">
+                      Нельзя с гражданством: {state.banned_citizenship}
+                    </p>
+                    <p className="text-gray-500 dark:text-gray-300">
+                      Опыт работы: {state.work_exp}
+                    </p>
+                    <p className="text-gray-500 dark:text-gray-300">
+                      Мин. возраст: {state.min_age}
+                    </p>
+                    <p className="text-gray-500 dark:text-gray-300">
+                      Макс. возраст: {state.max_age}
+                    </p>
+                    <p className="text-gray-500 dark:text-gray-300">Пол: {state.gender}</p>
+                    <p className="text-gray-500 dark:text-gray-300">
+                      Судимость: {state.criminal}
+                    </p> */}
+                        <div className="mt-auto">
+                          <button
+                            type="button"
+                            onClick={() => setEditingStateId(state.id)}
+                            className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                          >
+                            Редактировать
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => dispatch(deleteState(state.id))}
+                            className="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                          >
+                            Удалить
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
-
-  
 }
-
 
 export default AdminStates;

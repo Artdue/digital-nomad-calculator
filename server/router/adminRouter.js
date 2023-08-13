@@ -64,7 +64,7 @@ adminRouter.delete('/:id', async (req, res) => {
     //   res.status(200).json({ message: 'Государство успешно удалено' });
     // }
     const states = await State.findAll({ raw: true });
-    console.log(states);
+    // console.log(states);
     res.json(states);
   } catch (error) {
     console.error('Ошибка при удалении данных государства:', error);

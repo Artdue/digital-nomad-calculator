@@ -25,6 +25,9 @@ import AdminUserList from './components/AdminPage/AdminUserList';
 // import AdminStates from './components/AdminPage/Admin';
 import ServicesAndPrice from './components/ServicesAndPrice/ServicesAndPrice';
 import RegGoogle from './components/LogReg/Register/RegGoogle';
+import LogAdmin from './components/AdminPage/LogAdmin/LogAdmin';
+import TestPage from './components/AdminPage/TestPage';
+
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
@@ -48,18 +51,19 @@ function App(): JSX.Element {
           <Route path="/about" element={<AboutCompany />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/CompanyServices" element={<OurTeam />} />
-          <Route path="/digitalNomandCalculator" element={<Calculator />} />
+          {/* <Route path="/digitalNomadCalculator" element={<Calculator />} /> */}
           <Route path="/user/register" element={<Register />} />
           <Route path="/user/login" element={<Login />} />
           <Route path="/path-to-privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/user/profile" element={<EditProfile />} />
           <Route path="/user/main" element={<MainCalculator />} />
-          {/* <Route path="/google"element={<RegGoogle/>} /> */}
-          <Route path="/admin" element={<Admin />} /> 
+          <Route path="/admin" element={<Admin />} />
           <Route path="/admin/users" element={<AdminUserList />} />
           <Route path="/services-and-price" element={<ServicesAndPrice />} />
+          <Route path="/mainAdmin" element={<LogAdmin />} />
         </Route>
       </Routes>
+      {/* <TestPage /> */}
       <Foot />
     </>
   );

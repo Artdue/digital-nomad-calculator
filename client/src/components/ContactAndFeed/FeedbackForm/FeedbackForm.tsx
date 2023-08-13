@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import PrivacyPolicy from '../../PrivacyPolicy/PrivacyPolicy';
 
 export default function FeedbackForm() {
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+  };
   return (
     <>
       {/* Сторона с инпутами */}
@@ -88,10 +97,9 @@ export default function FeedbackForm() {
 
           <span className="block mb-4">
             Нажимая на кнопку, вы соглашаетесь на{' '}
-            <Link to="/path-to-privacy-policy" className="underline dark:text-blue-400">
+            <Link className="underline dark:text-blue-400" onClick={() => openModal()}>
               обработку персональных данных
             </Link>
-            .
           </span>
           <div className="text-center">
             <button
@@ -102,6 +110,29 @@ export default function FeedbackForm() {
             </button>
           </div>
         </form>
+        {showModal && (
+          <div
+            className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50"
+            style={{
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            }}
+          >
+            <div className="w-[1000px] h-[900px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
+              <div className="actions flex-grow overflow-y-auto">
+                <PrivacyPolicy />
+              </div>
+              <button
+                onClick={closeModal}
+                className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
+                style={{
+                  alignSelf: 'center',
+                }}
+              >
+                Закрыть
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

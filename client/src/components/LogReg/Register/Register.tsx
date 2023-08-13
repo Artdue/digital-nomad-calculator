@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import userRegister from '../../../Redux/thunks/user/reg.api';
 import RegGoogle from './RegGoogle';
+import PrivacyPolicy from '../../PrivacyPolicy/PrivacyPolicy';
+
 
 interface IReg {
   email: string;
@@ -31,6 +33,15 @@ export default function Register() {
     } else {
       state.msg;
     }
+  };
+
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -96,16 +107,22 @@ export default function Register() {
           <button
             onClick={(e) => Hendler(e)}
             type="submit"
-            className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mb-2"
           >
-            Зарегистрироваться
+            Зарегистрироваться *
           </button>
+          <p className="text-xs text-gray-500 uppercase">
+            * регистрируясь, вы принимаете условия
+            <Link className="underline dark:text-blue-400" onClick={() => openModal()}>
+              Пользовательского соглашения
+            </Link>
+          </p>
         </div>
         <div className="mt-10 flex items-center justify-between">
           <span className="border-b w-1/5 md:w-1/4" />
-          <a href="/user/login" className="text-xs text-gray-500 uppercase">
+          <Link to="/user/login" className="text-xs text-gray-500 uppercase">
             или войдите в аккаунт
-          </a>
+          </Link>
           <span className="border-b w-1/5 md:w-1/4" />
         </div>
         {/* <div className="mt-10">
@@ -119,6 +136,30 @@ export default function Register() {
         </div> */}
         <RegGoogle/>
       </form>
+
+      {showModal && (
+        <div
+          className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50"
+          style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          }}
+        >
+          <div className="w-[1000px] h-[900px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
+            <div className="actions flex-grow overflow-y-auto">
+              <PrivacyPolicy />
+            </div>
+            <button
+              onClick={closeModal}
+              className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
+              style={{
+                alignSelf: 'center',
+              }}
+            >
+              Закрыть
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

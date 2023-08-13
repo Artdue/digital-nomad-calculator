@@ -29,17 +29,17 @@ router
   })
 
   .post('/login', async (req, res) => {
-    console.log('SMOTRIM TUT REQ BODY ', req.body);
+    // console.log('SMOTRIM TUT REQ BODY ', req.body);
     const { email, password } = req.body;
     try {
       const user = await User.findOne({ where: { email } });
-      console.log('SMOTRIM TUT USER ', user);
+      // console.log('SMOTRIM TUT USER ', user);
       if (user) {
         const checkPass = await bcrypt.compare(password, user.password);
 
         if (checkPass) {
           req.session.email = user.email;
-          // console.log('TTUT REEQ SESSIOOOOOOOON', req.session);
+          console.log('TTUT REEQ SESSIOOOOOOOON', req.session);
           req.session.save(() => {
             res.json({
               msg: 'Вы успешно авторизованы!',

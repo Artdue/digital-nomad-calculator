@@ -48,7 +48,8 @@ const services = [
 
 export default function ServicesCompanies() {
   return (
-    <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+    <div className="px-4 mx-auto max-w-screen-xl lg:px-6">
+      {/* <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6"> */}
       <section className="bg-white dark:bg-gray-900">
         <h1 className="text-2xl text-center font-semibold text-gray-800 lg:text-3xl dark:text-white">
           <br /> Перечень <span className="underline decoration-blue-500">услуг</span>

@@ -58,26 +58,44 @@ const uploadsLease = multer({ storage: storageLease });
 //   await User.update({ passport: `/uploads/passport/${originalname}` }, { where: { id: userId } });
 //   res.send('Паспорт успешно загружен.');
 // });
-profileRouter.post('/passport', uploadsPassport.single('file'), async (req, res) => {
-  const userId = 1;
-  const originalname = req.file.filename;
+profileRouter.post(
+  '/passport',
+  uploadsPassport.single('file'),
+  async (req, res) => {
+    console.log('seeeeeesiiiiooooon', req.session);
+    const { userId } = req.session;
+    const originalname = req.file.filename;
 
-  await User.update({ passport: `/uploads/passport/${originalname}` }, { where: { id: userId } });
-  res.send('Паспорт успешно загружен.');
-});
-profileRouter.post('/balance', uploadsBalance.single('file'), async (req, res) => {
-  const userId = 1;
-  const originalname = req.file.filename;
+    await User.update(
+      { passport: `/uploads/passport/${originalname}` },
+      { where: { id: userId } }
+    );
+    res.send('Паспорт успешно загружен.');
+  }
+);
+profileRouter.post(
+  '/balance',
+  uploadsBalance.single('file'),
+  async (req, res) => {
+    const { userId } = req.session;
+    const originalname = req.file.filename;
 
-  await User.update({ balance: `/uploads/balance/${originalname}` }, { where: { id: userId } });
-  res.send('Банковская выписка успешно загружена.');
-});
+    await User.update(
+      { balance: `/uploads/balance/${originalname}` },
+      { where: { id: userId } }
+    );
+    res.send('Банковская выписка успешно загружена.');
+  }
+);
 
 profileRouter.post('/lease', uploadsLease.single('file'), async (req, res) => {
-  const userId = 1;
+  const { userId } = req.session;
   const originalname = req.file.filename;
 
-  await User.update({ lease: `/uploads/lease/${originalname}` }, { where: { id: userId } });
+  await User.update(
+    { lease: `/uploads/lease/${originalname}` },
+    { where: { id: userId } }
+  );
   res.send('Справка о работе успешно загружена.');
 });
 
