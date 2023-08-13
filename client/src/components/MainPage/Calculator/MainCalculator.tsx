@@ -128,9 +128,9 @@ export default function MainCalculator(): React.JSX.Element {
         </div>
       ) : (
         <div className="flex flex-row space-x-4 justify-center">
-          <div className='flex justify-center items-center flex flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'>
+          <div className='flex justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'>
             <form ref={formRef} onSubmit={submitHandler} className="form-container">
-              <div className="flex justify-center items-center flex flex-col">
+              <div className="flex justify-center items-center flex-col">
                 <h1 className="text-2xl font-bold mb-4">Узнать подходящие направления</h1>
 
                 <div style={{ width: '500px' }}>
