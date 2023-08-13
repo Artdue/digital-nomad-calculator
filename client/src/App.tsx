@@ -24,6 +24,7 @@ import Admin from './components/AdminPage/Admin';
 import AdminUserList from './components/AdminPage/AdminUserList';
 // import AdminStates from './components/AdminPage/Admin';
 import ServicesAndPrice from './components/ServicesAndPrice/ServicesAndPrice';
+import RegGoogle from './components/LogReg/Register/RegGoogle';
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
@@ -53,8 +54,8 @@ function App(): JSX.Element {
           <Route path="/path-to-privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/user/profile" element={<EditProfile />} />
           <Route path="/user/main" element={<MainCalculator />} />
-
-          <Route path="/admin" element={<Admin />} />
+          {/* <Route path="/google"element={<RegGoogle/>} /> */}
+          <Route path="/admin" element={<Admin />} /> 
           <Route path="/admin/users" element={<AdminUserList />} />
           <Route path="/services-and-price" element={<ServicesAndPrice />} />
         </Route>

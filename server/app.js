@@ -5,12 +5,18 @@ const cors = require('cors');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
+
 const indexRouter = require('./router/indexRouter');
 const userRouter = require('./router/userRouter');
 const profileRouter = require('./router/profileRouter');
 const adminRouter = require('./router/adminRouter');
 const statesRouter = require('./router/statesRouter');
 const usProfRouter = require('./router/usProfRouter');
+const googleRouter = require('./router/googleRouter');
+
+
+
+require('./googleAuth');
 
 const sessionConfig = {
   name: 'name',
@@ -43,5 +49,6 @@ app.use('/profile', profileRouter);
 app.use('/admin', adminRouter);
 app.use('/states', statesRouter);
 app.use('/changeProfile', usProfRouter);
+app.use('/google', googleRouter);
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));
