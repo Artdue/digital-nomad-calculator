@@ -90,7 +90,7 @@ export default function EditProfile(): React.JSX.Element {
         </div>
       ) : (
         <form onSubmit={submitHandler}>
-          <div className="container mx-auto mt-8 p-8 max-w-4xl flex justify-center items-center flex flex-col block rounded-lg bg-white p-6 shadow-md dark:bg-neutral-700">
+          <div className="container mx-auto mt-8 p-8 max-w-4xl justify-center items-center flex-col block rounded-lg bg-white shadow-md dark:bg-neutral-700">
             <div className="px-4 sm:px-0">
               <h1 className="text-2xl font-bold leading-7 text-gray-900">
                 Анкета для получения консультации
