@@ -72,7 +72,7 @@ export default function Calculator(): React.JSX.Element {
       {/* <form ref={formRef} onSubmit={submitHandler} className="space-y-12  ">  */}
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         <div className="flex flex-col sm:flex-row justify-center items-stretch gap-4">
-          <div className="flex-1 m-2 sm:w-[400px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+          <div className="flex-1 m-2 sm:w-[400px] bg-[#F5F5F5] p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
             <form ref={formRef} onSubmit={submitHandler} className="space-y-12 p-6">
               <div className="flex justify-center items-center flex-col">
                 <h1 className="text-2xl font-bold mb-4 text-center">
@@ -171,12 +171,12 @@ export default function Calculator(): React.JSX.Element {
                 </div>
                 <div className="flex justify-center mt-2">
                   {' '}
-                  <button className="m-2 mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+                  <button className="m-2 mt-4 px-4 py-2m-2 mt-4 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2">
                     Подобрать
                   </button>
                   <button
                     onClick={resetCalc}
-                    className="m-2 mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+                    className="m-2 mt-4 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2 "
                   >
                     Сбросить
                   </button>
