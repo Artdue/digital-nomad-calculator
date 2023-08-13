@@ -16,26 +16,27 @@ export default function EditProfile(): React.JSX.Element {
   const [lastName, setLastName] = useState(userData?.last_name || '');
   //   const [email, setEmail] = useState('super-Multer@was-born-on-Phiket.th');
   const [citizenship, setCitizenship] = useState(userData?.citizenship || '');
-  const [income, setIncome] = useState(userData?.income || '');
+  const [income, setIncome] = useState(userData?.income || 0);
   const [employmentDate, setEmploymentDate] = useState(userData?.work_date || '');
-  const [workExp, setworkExp] = useState(userData?.work_exp || '');
+  const [workExp, setworkExp] = useState(userData?.work_exp || 0);
   const [phone, setPhone] = useState(userData?.phoneNumber || '');
   const [birthDate, setbirthDate] = useState(userData?.birthDate || '');
   const [visaType, setvisaType] = useState(userData?.visaType || '');
   const [visaShare, setvisaShare] = useState(userData?.visaShare || '');
 
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
 
-  const openModal = () => {
-    window.scrollTo(0, 0);
-    setShowModal(true);
-  };
-  const closeModal = () => {
-    setShowModal(false);
-  };
+  // const openModal = () => {
+  //   window.scrollTo(0, 0);
+  //   setShowModal(true);
+  // };
+  // const closeModal = () => {
+  //   setShowModal(false);
+  // };
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
+    e.stopPropagation();
     window.scrollTo(0, 0);
     setFirstName(firstName);
     setMiddleName(middleName);
@@ -244,8 +245,6 @@ export default function EditProfile(): React.JSX.Element {
                       onChange={(e) => setEmploymentDate(e.target.value)}
                     />
                     <div
-                      type="text"
-                      name="workExp"
                       className="text-sm font-medium leading-6 text-gray-900 mt-2"
                       style={{ border: 'none', padding: '0' }}
                     >
@@ -258,38 +257,14 @@ export default function EditProfile(): React.JSX.Element {
             <button className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
               Сохранить
             </button>
-            <button
-              type="button"
-              className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
-              onClick={() => openModal()}
-            >
-              Загрузить документы
-            </button>
           </div>
         </form>
       )}
-      <div>
-        {/* {showModal && (
-          <div
-            className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50"
-            style={{
-              backgroundColor: 'rgba(0, 0, 0, 0.5)',
-              marginLeft: '0',
-            }}
-          >
-            <div className="w-[700px] h-[500px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
-              <h1 className="text-2xl font-bold mb-4">Форма загрузки документов:</h1>
-              <Profile />
-              <button
-                type="button"
-                className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
-                onClick={() => closeModal()}
-              >
-                Закрыть окно
-              </button>
-            </div>{' '}
-          </div>
-        )} */}
+      <div className="flex h-screen items-flex-start justify-center mt-2">
+        <div className="w-[900px] h-[500px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
+          <h1 className="text-2xl font-bold mb-4">Форма загрузки документов:</h1>
+          <Profile />
+        </div>
       </div>
     </>
   );

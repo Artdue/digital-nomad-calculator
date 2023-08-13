@@ -40,14 +40,14 @@ router
         if (checkPass) {
           req.session.email = user.email;
           console.log('TTUT REEQ SESSIOOOOOOOON', req.session);
-          req.session.save(() => {
-            res.json({
-              msg: 'Вы успешно авторизованы!',
-              email: user.email,
-              admin: false,
-              auth: true,
-            });
+          // req.session.save(() => {
+          res.json({
+            msg: 'Вы успешно авторизованы!',
+            email: user.email,
+            admin: false,
+            auth: true,
           });
+          // });
         } else {
           res.json({ msg: 'Пароль неверный' });
         }
@@ -60,7 +60,7 @@ router
   })
   .get('/logout', (req, res) => {
     req.session.destroy(() => {
-      res.clearCookie('Todos');
+      res.clearCookie('name');
       res.status(200).json({ message: 'Logged out successfully' });
     });
   })

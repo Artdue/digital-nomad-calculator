@@ -59,44 +59,56 @@ const uploadsLease = multer({ storage: storageLease });
 //   res.send('Паспорт успешно загружен.');
 // });
 profileRouter.post(
-  '/passport',
+  '/:id/passport',
   uploadsPassport.single('file'),
   async (req, res) => {
-    console.log('seeeeeesiiiiooooon', req.session);
-    const { userId } = req.session;
+    const { id } = req.params;
     const originalname = req.file.filename;
-
-    await User.update(
-      { passport: `/uploads/passport/${originalname}` },
-      { where: { id: userId } }
-    );
-    res.send('Паспорт успешно загружен.');
+    try {
+      await User.update(
+        { passport: `/uploads/passport/${originalname}` },
+        { where: { id } }
+      );
+      res.send({ msg: 'Паспорт успешно загружен' });
+    } catch (error) {
+      console.log('error', error);
+    }
   }
 );
 profileRouter.post(
-  '/balance',
+  '/:id/balance',
   uploadsBalance.single('file'),
   async (req, res) => {
-    const { userId } = req.session;
+    const { id } = req.params;
     const originalname = req.file.filename;
-
-    await User.update(
-      { balance: `/uploads/balance/${originalname}` },
-      { where: { id: userId } }
-    );
-    res.send('Банковская выписка успешно загружена.');
+    try {
+      await User.update(
+        { balance: `/uploads/balance/${originalname}` },
+        { where: { id } }
+      );
+      res.send({ msg: 'Банковская выписка успешно загружена' });
+    } catch (error) {
+      console.log('error', error);
+    }
   }
 );
 
-profileRouter.post('/lease', uploadsLease.single('file'), async (req, res) => {
-  const { userId } = req.session;
-  const originalname = req.file.filename;
-
-  await User.update(
-    { lease: `/uploads/lease/${originalname}` },
-    { where: { id: userId } }
-  );
-  res.send('Справка о работе успешно загружена.');
-});
+profileRouter.post(
+  '/:id/lease',
+  uploadsLease.single('file'),
+  async (req, res) => {
+    const { id } = req.params;
+    const originalname = req.file.filename;
+    try {
+      await User.update(
+        { lease: `/uploads/lease/${originalname}` },
+        { where: { id } }
+      );
+      res.send({ msg: 'Справка о работе успешно загружена' });
+    } catch (error) {
+      console.log('error', error);
+    }
+  }
+);
 
 module.exports = profileRouter;
