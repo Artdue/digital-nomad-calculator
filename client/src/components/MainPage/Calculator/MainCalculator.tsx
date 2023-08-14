@@ -50,7 +50,7 @@ export default function MainCalculator(): React.JSX.Element {
   const resetCalc = () => {
     console.log('resetCalc');
     setIncome(0);
-    setworkExp(0);
+    // setworkExp(0);
     setCitizenship('');
     setvisaT('');
     setvisaS('');
@@ -103,7 +103,14 @@ export default function MainCalculator(): React.JSX.Element {
       return !bannedCitizenships.includes(citizenship);
     });
     // console.log('Отфильтрованные по гр-у:', citiFilter);
-    const workFilter = states.filter((state) => state.work_exp < workExp);
+
+    const currentDate = new Date();
+    const [year, month, day] = employmentDate.split('-').map(Number);
+    const targetDate = new Date(year, month - 1, day);
+    const timeDiff = currentDate - targetDate;
+    const monthsPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44));
+    setworkExp(monthsPassed);
+    const workFilter = states.filter((state) => state.work_exp < monthsPassed);
     // console.log('Отфильтрованные по работе:', workFilter);
 
     const commonStates = incomeFilter.filter((state) => {
@@ -245,7 +252,7 @@ export default function MainCalculator(): React.JSX.Element {
                     />
                   </div>
                 </div>
-                <div style={{ width: '500px' }}>
+                {/* <div style={{ width: '500px' }}>
                   <label
                     htmlFor="work_exp"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -268,17 +275,19 @@ export default function MainCalculator(): React.JSX.Element {
                       <option value="18">24 месяца</option>
                     </select>
                   </div>
+                </div> */}
+                <div className="flex flex-row space-x-4 justify-space-between">
+                  <button className="mt-4 mr-8 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-green-500">
+                    Подобрать
+                  </button>
+                  <button
+                    type="button"
+                    onClick={resetCalc}
+                    className="mt-4 ml-4 px-8 py-2 bg-indigo-600 text-white rounded-md hover:bg-green-500"
+                  >
+                    Сбросить
+                  </button>
                 </div>
-                <button className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-green-500">
-                  Подобрать
-                </button>
-                <button
-                  type="button"
-                  onClick={resetCalc}
-                  className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-green-500"
-                >
-                  Сбросить
-                </button>
               </div>
             </form>
           </div>
@@ -321,11 +330,13 @@ export default function MainCalculator(): React.JSX.Element {
             </div>
           )}
           {filterStates.length ? (
-            <div className="flex justify-flex-start items-center flex flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-              <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-                Страны подходящие для Вас:
-              </h5>
+            <div className="flex justify-flex-space-between items-center flex flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
               <div className="states-container mt-4">
+                <div className="flex justify-center items-center flex flex-col state mt-3">
+                  <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                    Страны подходящие для Вас:
+                  </h5>
+                </div>
                 {filterStates.length ? (
                   <div
                     className="flex justify-flex-start items-center flex flex-col w-full"
@@ -351,15 +362,26 @@ export default function MainCalculator(): React.JSX.Element {
                         </div>
                       </div>
                     ))}
-                    <button
-                      type="button"
-                      onClick={resetStates}
-                      className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-green-500"
-                    >
-                      Закрыть
-                    </button>
                   </div>
                 ) : null}
+              </div>
+              <div className="flex flex-row space-x-4 justify-space-between">
+                <button
+                  type="button"
+                  onClick={resetStates}
+                  className="mt-4 mr-8 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-green-500"
+                >
+                  Закрыть
+                </button>
+                <button
+                  onClick={toConsult}
+                  className="mt-4 ml-8 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-green-500"
+                  style={{
+                    alignSelf: 'center',
+                  }}
+                >
+                  Консультация
+                </button>
               </div>
             </div>
           ) : null}

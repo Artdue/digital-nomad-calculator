@@ -70,7 +70,7 @@ function Profile() {
           >
             Загрузить
           </button>
-          <span>{uploadResponse3}</span>
+          {uploadResponse3 ? <span>{uploadResponse3}</span> : <div />}
         </form>
       </div>
       <div className="mb-4">
@@ -92,7 +92,7 @@ function Profile() {
           >
             Загрузить
           </button>
-          <span>{uploadResponse2}</span>
+          {uploadResponse2 ? <span>{uploadResponse2}</span> : <div />}
         </form>
       </div>
       <div>
@@ -114,7 +114,7 @@ function Profile() {
           >
             Загрузить
           </button>
-          <span>{uploadResponse1}</span>
+          {uploadResponse1 ? <span>{uploadResponse1}</span> : <div />}
         </form>
       </div>
     </div>

@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
+// import { Card } from 'flowbite-react';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { getStates } from '../../../Redux/thunks/getStates';
 import type { RootState } from '../../../Types/types';
-import { Card } from 'flowbite-react';
 
 // import type { RootState } from '../../../Types/types';
 
@@ -10,6 +11,7 @@ export default function Calculator(): React.JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return
   const states = useAppSelector((state: RootState) => state.stateSlice.states);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const formRef = useRef<HTMLFormElement | null>(null);
   const [income, setIncome] = useState<string>('');
   const [employmentDate, setEmploymentDate] = useState('');
@@ -31,6 +33,10 @@ export default function Calculator(): React.JSX.Element {
       formRef.current.reset();
     }
     setFilterStates([]);
+  };
+  const toReg = () => {
+    window.scrollTo(0, 0);
+    navigate('/user/register');
   };
 
   console.log(states);
@@ -110,7 +116,7 @@ export default function Calculator(): React.JSX.Element {
                     htmlFor="citizenship"
                     className="block text-sm font-medium leading-6 text-gray-900 mt-2"
                   >
-                    На текущей работе более
+                    Примерная дата устройства на текущую работу:
                   </label>
                   <div className="relative mt-2 rounded-md shadow-sm">
                     <input
@@ -280,9 +286,15 @@ export default function Calculator(): React.JSX.Element {
                 ))
               : null}
           </div>
-          <h6 className="mt-3 font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+          {/* <h6 className="mt-3 font-medium leading-tight text-neutral-800 dark:text-neutral-50">
             Зарегистрируетесь чтобы увидеть подробную информацию
-          </h6>
+          </h6> */}
+          <button
+            onClick={toReg}
+            className="m-2 mt-4 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2 "
+          >
+            Зарегистрируетесь чтобы увидеть подробную информацию
+          </button>
         </div>
       ) : null}
     </>
