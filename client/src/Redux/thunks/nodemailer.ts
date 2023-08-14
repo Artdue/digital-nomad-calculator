@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-
-export const nodemailerSend = createAsyncThunk('/nodemailer', async (inputs) => {
-    try{
+const nodemailerSend = createAsyncThunk('/nodemailer', async (inputs) => {
+  console.log('FETCH');
+  try {
     const response = await fetch('http://localhost:3000/nodemailer', {
       method: 'POST',
       headers: {
@@ -10,10 +10,10 @@ export const nodemailerSend = createAsyncThunk('/nodemailer', async (inputs) => 
       },
       body: JSON.stringify(inputs),
     });
-const result = response.json();
-return await result;
-    }
-    catch(error){
-        console.error('Oops', error);
-    }
+    // const result = await response.json();
+    // return result;
+  } catch (error) {
+    console.error('Oops', error);
+  }
 });
+export default nodemailerSend;

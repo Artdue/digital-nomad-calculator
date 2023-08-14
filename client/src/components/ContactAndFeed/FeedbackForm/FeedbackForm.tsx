@@ -1,9 +1,33 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PrivacyPolicy from '../../PrivacyPolicy/PrivacyPolicy';
+import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
+import nodemailerSend from '../../../Redux/thunks/nodemailer';
+
+const initState = {
+  name: '',
+  email: '',
+  phone: '',
+  message: '',
+};
 
 export default function FeedbackForm() {
   const [showModal, setShowModal] = useState(false);
+  const [inputs, setInputs] = useState(initState);
+
+  const state = useAppSelector((state) => state.nodeSlise);
+  console.log(state);
+  const dispatch = useAppDispatch();
+
+  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputs((pre) => ({ ...pre, [event.target.name]: event.target.value }));
+  };
+
+  const sendMesg = () => {
+    // console.log('DISPATCHING');
+    void dispatch(nodemailerSend(inputs));
+    setInputs(initState);
+  };
 
   const openModal = () => {
     setShowModal(true);
@@ -23,10 +47,12 @@ export default function FeedbackForm() {
         <form>
           <div className="relative z-0 w-full mb-6 group">
             <input
+              onChange={inputHandler}
+              value={inputs.name}
               type="text"
-              name="first_name"
-              id="first_name"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              name="name"
+              id="name"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />
@@ -42,6 +68,8 @@ export default function FeedbackForm() {
           <div className="grid md:grid-cols-1">
             <div className="relative z-0 w-full mb-6 group">
               <input
+                value={inputs.email}
+                onChange={inputHandler}
                 type="email"
                 name="email"
                 id="floating_email"
@@ -58,10 +86,12 @@ export default function FeedbackForm() {
             </div>
             <div className="relative z-0 w-full mb-6 group">
               <input
+                onChange={inputHandler}
+                value={inputs.phone}
                 type="tel"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                name="floating_phone"
-                id="floating_phone"
+                name="phone"
+                id="phone"
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
@@ -78,6 +108,8 @@ export default function FeedbackForm() {
           {/* Message */}
           <div className="relative z-0 w-full mb-6 group">
             <input
+              onChange={inputHandler}
+              value={inputs.message}
               type="text"
               maxLength="1000"
               name="message"
@@ -103,6 +135,7 @@ export default function FeedbackForm() {
           </span>
           <div className="text-center">
             <button
+              onClick={sendMesg}
               type="button"
               className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
             >
