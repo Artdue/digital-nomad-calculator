@@ -4,7 +4,6 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import userLogout from '../../Redux/thunks/user/logout.api';
-import Foot from '../Foot/Foot';
 
 const navigation = [
   // { name: 'На главную', href: '/', current: false },
@@ -44,7 +43,7 @@ export default function Namvbar() {
               <div className="relative flex h-16 items-center justify-between">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                   {/* Mobile menu button */}
-                  <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-[#162E3C] hover:bg-gray-700 hover:text-[#a1a6a8] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                  <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-[#162E3C] hover:bg-[#76a1dd]] hover:text-[#76a1dd] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="absolute -inset-0.5" />
                     <span className="sr-only">Open main menu</span>
                     {open ? (
@@ -65,8 +64,8 @@ export default function Namvbar() {
                           to={item.href}
                           className={classNames(
                             item.current
-                              ? 'bg-[#162E3C] text-[#162E3C]'
-                              : ' text-[#162E3C] hover:bg-[#d3dfe5] hover:text-white',
+                              ? 'bg-[#0c4a6e] text-[#76a1dd]'
+                              : ' text-[#0c4a6e] hover:text-[#76a1dd]  ',
                             'rounded-md px-3 py-2 text-base font-medium',
                           )}
                           aria-current={item.current ? 'page' : undefined}
@@ -108,7 +107,7 @@ export default function Namvbar() {
                                 <Link
                                   to="/admin/users"
                                   className={classNames(
-                                    active ? 'bg-gray-100' : '',
+                                    active ? 'bg-[#c8ddfb]' : '',
                                     'block px-4 py-2 text-base text-gray-700',
                                   )}
                                 >
@@ -121,8 +120,8 @@ export default function Namvbar() {
                                 <button
                                   onClick={logout}
                                   className={classNames(
-                                    active ? 'bg-gray-100' : '',
-                                    'block px-4 py-2 text-base text-gray-700',
+                                    active ? 'bg-[#c8ddfb]' : '',
+                                    'block  px-3 py-2 text-base font-medium',
                                   )}
                                 >
                                   Выйти из профиля
@@ -137,7 +136,7 @@ export default function Namvbar() {
                     <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                       <Menu as="div" className="relative ml-3">
                         <div>
-                          <Menu.Button className="relative flex rounded-full bg-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                          <Menu.Button className="relative flex rounded-full bg-[#c8ddfb] text-base focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#c8ddfb]">
                             <span className="absolute -inset-1.5" />
                             <span className="sr-only">Open user menu</span>
                             <div className="flex flex-wrap gap-2">
@@ -175,7 +174,7 @@ export default function Namvbar() {
                                 <Link
                                   to="/user/profile"
                                   className={classNames(
-                                    active ? 'bg-gray-100' : '',
+                                    active ? 'bg-[#c8ddfb]' : '',
                                     'block px-4 py-2 text-base text-gray-700',
                                   )}
                                 >
@@ -188,7 +187,7 @@ export default function Namvbar() {
                                 <button
                                   onClick={logout}
                                   className={classNames(
-                                    active ? 'bg-gray-100' : '',
+                                    active ? 'bg-[#c8ddfb]' : '',
                                     'block px-4 py-2 text-base text-gray-700',
                                   )}
                                 >
@@ -210,9 +209,9 @@ export default function Namvbar() {
                           to={item.href}
                           className={classNames(
                             item.current
-                              ? 'bg-[#162E3C] text-[#162E3C]'
-                              : ' text-[#162E3C] hover:bg-[#d3dfe5] hover:text-white',
-                            'rounded-md px-3 py-2 text-base font-medium',
+                              ? 'bg-[#0c4a6e] text-[#76a1dd]'
+                              : ' text-[#0c4a6e] hover:text-[#76a1dd]',
+                            'block  px-3 py-2 text-base font-medium',
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
@@ -226,21 +225,22 @@ export default function Namvbar() {
             </div>
 
             <Disclosure.Panel className="sm:hidden">
-              <div className="space-y-1 px-2 pb-3 pt-2">
+              <div className="space-y-1 px-2 pb-3 pt-2 flex-col">
                 {navigation.map((item) => (
-                  <Disclosure.Button
-                    key={item.name}
-                    as="Link"
-                    to={item.href}
-                    className={classNames(
-                      item.current
-                        ? 'bg-[#162E3C] text-[#162E3C]'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'block rounded-md px-3 py-2 text-base font-medium',
-                    )}
-                    aria-current={item.current ? 'page' : undefined}
-                  >
-                    {item.name}
+                  <Disclosure.Button>
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className={classNames(
+                        item.current
+                          ? 'bg-[#0c4a6e] text-[#76a1dd]'
+                          : ' text-[#0c4a6e] hover:text-[#76a1dd]',
+                        'block  px-3 py-2 text-base font-medium',
+                      )}
+                      aria-current={item.current ? 'page' : undefined}
+                    >
+                      {item.name}
+                    </Link>
                   </Disclosure.Button>
                 ))}
               </div>
