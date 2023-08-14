@@ -23,9 +23,11 @@ function AdminUserList() {
     }
   };
 
+
   useEffect(() => {
     dispatch(getUsers());
   }, []);
+
 
   useEffect(() => {
     if (selectedStatus === '' && searchText === '') {
@@ -115,10 +117,59 @@ function AdminUserList() {
                       <p className="text-gray-500 dark:text-gray-300">
                         Bыписка c работы: {user.balance}
                       </p> */}
-                        <button className="btn btn-primary resume-btn" onClick={() => window.open(`http://localhost:3000${user.passport}`, '_blank')}>Паспорт</button>
+                        {/* <button className="btn btn-primary resume-btn" onClick={() => window.open(`http://localhost:3000${user.passport}`, '_blank')}>Паспорт</button>
                       <button className="btn btn-primary resume-btn" onClick={() => window.open(`http://localhost:3000${user.balance}`, '_blank')}>Выписка из Банка</button>
-                      <button className="btn btn-primary resume-btn" onClick={() => window.open(`http://localhost:3000${user.lease}`, '_blank')}>Справка о работе</button> 
-                      <p className="text-gray-500 dark:text-gray-300">
+                      <button className="btn btn-primary resume-btn" onClick={() => window.open(`http://localhost:3000${user.lease}`, '_blank')}>Справка о работе</button>  */}
+<div className="document-buttons">
+  {user.passport ? (
+    <div>
+      <button
+        className="btn btn-primary resume-btn"
+        onClick={() => window.open(`http://localhost:3000${user.passport}`, '_blank')}
+      >
+        Паспорт
+      </button>
+      <br />
+    </div>
+  ) : (
+    <div className="text-gray-500 dark:text-gray-300">Паспорт: нет</div>
+  )}
+  
+  {user.balance ? (
+    <div>
+      <button
+        className="btn btn-primary resume-btn"
+        onClick={() => window.open(`http://localhost:3000${user.balance}`, '_blank')}
+      >
+        Выписка из Банка
+      </button>
+      <br />
+    </div>
+  ) : (
+    <div className="text-gray-500 dark:text-gray-300">Выписка из Банка: нет</div>
+  
+  )}
+  
+  {user.lease ? (
+    <div>
+      <button
+        className="btn btn-primary resume-btn"
+        onClick={() => window.open(`http://localhost:3000${user.lease}`, '_blank')}
+      >
+        Справка о работе
+      </button>
+      <br />
+    </div>
+  ) : (
+    <div className="text-gray-500 dark:text-gray-300">Справка о работе: нет</div>
+  )}
+</div>
+
+
+
+
+                      <p className="text-gray-500 dark:text-gray-300"> 
+              
                         Телефон: {user.phoneNumber}
                       </p>
                       <p className="text-gray-500 dark:text-gray-300">Документы:</p>
