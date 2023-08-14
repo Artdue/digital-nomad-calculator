@@ -17,16 +17,16 @@ const transporter = nodemailer.createTransport({
 });
 
 nodemailerRouter.post('/', async (req, res) => {
-  const {
-    name, phone, email, message,
-  } = req.body;
+  console.log(11111111);
+  console.log('ETO REQ BODY==============>', req.body);
+  const { phone, name, email, message } = req.body;
   const mailData = {
     from: 'visaproject123@gmail.com',
-    to: email,
+    to: 'visaproject123@gmail.com',
     subject: 'Запрос консультации',
     text: ' ',
 
-    html: ` <b> Посетитель сайта ${name} запросил консультацию. </b><br> Для уточнения данных пользователь оставил номер телефона: ${phone} и почту${email}<br/> {message}`,
+    html: ` <b> Посетитель сайта ${name} запросил консультацию. </b><br> Для уточнения данных пользователь оставил номер телефона: ${phone} и почту${email}<br/> ${message}`,
   };
 
   transporter.sendMail(mailData, (error, info) => {
