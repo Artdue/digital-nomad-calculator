@@ -84,17 +84,20 @@ export default function NewState() {
           Добавление данных в калькулятор
         </button>
       </div>
-      {showModal && (
-        <div
-          className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 "
-          style={{
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          }}
-        >
-          <div ref={formRef} className="p-4 w-full max-w-lg mx-auto m-4  ">
-            <div className="px-4 sm:px-0" />
 
-            <div className="mt-6 border-t border-gray-100  w-[700px] bg-white">
+      {showModal && (
+        // <div
+        //   className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 "
+        //   style={{
+        //     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        //   }}
+        // >
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full]  ">
+          <div ref={formRef} className="p-4 w-full max-w-l mx-auto m-4 flex justify-center ">
+            <div className="px-4 sm:px-0 " />
+
+            {/* <div className="mt-6 border-t border-gray-100  w-[700px] bg-white"> */}
+            <div className="bg-white p-4 rounded-md w-[1000px] h-[850px] flex justify-center ">
               <form onSubmit={(e) => e.preventDefault()} className="divide-y divide-gray-100">
                 <div className="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <label
@@ -157,6 +160,7 @@ export default function NewState() {
                     onChange={(e) => setMinIncome(e.target.value)}
                   />
                 </div>
+
                 {/* <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <label className="text-sm font-medium leading-6 text-gray-900" htmlFor="gender">
                     Пол
