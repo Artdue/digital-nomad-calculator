@@ -1,10 +1,11 @@
 import React from 'react';
 import * as Scroll from 'react-scroll';
 // import { Link } from 'react-router-dom';
-import { Link } from 'react-scroll';
+
 import Calculator from '../Calculator/Calculator';
 import Contact from '../../ContactAndFeed/Contact/Contact';
 import Qualities from '../Qualities/Qualities';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   return (
@@ -37,7 +38,7 @@ export default function Home() {
               </a>
 
               <Link to="/contact" className="text-sm font-semibold leading-6 text-gray-900">
-                Записаться на консультацию <span aria-hidden="true">→</span>
+                <button>Записаться на консультацию</button> <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>
@@ -64,7 +65,7 @@ export default function Home() {
       {/* <div className="w-full rounded overflow-hidden shadow-lg bg-white flex flex-col p-6 md:py-8 lg:py-12 xl:py-10 md:px-8 lg:px-12 xl:px-20"> */}
       <Calculator />
       {/* </div> */}
-      <div>
+      <div className="mt-8">
         <Qualities />
       </div>
       {/* <div>

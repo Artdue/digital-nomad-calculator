@@ -5,7 +5,6 @@ import userRegister from '../../../Redux/thunks/user/reg.api';
 import RegGoogle from './RegGoogle';
 import PrivacyPolicy from '../../PrivacyPolicy/PrivacyPolicy';
 
-
 interface IReg {
   email: string;
   password: string;
@@ -29,7 +28,7 @@ export default function Register() {
     e.preventDefault();
     const actionResult = await dispatch(userRegister(reg));
     if (actionResult.payload.msg === 'Пользователь зарегистрирован') {
-      navigate('/');
+      navigate('/user/main');
     } else {
       state.msg;
     }
@@ -125,7 +124,7 @@ export default function Register() {
           </Link>
           <span className="border-b w-1/5 md:w-1/4" />
         </div>
-        <RegGoogle/>
+        <RegGoogle />
       </form>
 
       {showModal && (

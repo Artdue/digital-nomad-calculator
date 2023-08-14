@@ -121,7 +121,7 @@ function AdminStates(): React.JSX.Element {
               <div key={state.id} className="flex items-stretch">
                 {editingStateId === state.id ? (
                   // модалка
-                  <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full]  ">
+                  <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full] overflow-auto ">
                     <div className="bg-white p-4 rounded-md w-[1000px] h-[850px]  ">
                       <div className="px-4 sm:px-0 text-center ">
                         <h1 className="text-2xl font-bold leading-7 text-gray-900">
@@ -133,7 +133,7 @@ function AdminStates(): React.JSX.Element {
                           {' '}
                           <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                             <dt className="text-sm font-medium leading-6 text-gray-900">
-                              Название страны
+                              Название государства
                             </dt>
                             <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                               <input
@@ -164,7 +164,7 @@ function AdminStates(): React.JSX.Element {
                           </div>
                           <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                             <dt className="text-sm font-medium leading-6 text-gray-900">
-                              Гражданство
+                              Гражданство с запретом на въезд
                             </dt>
                             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                               <select

@@ -53,12 +53,11 @@ export default function Qualities() {
                   <p className="mt-2 font-light text-gray-900  sm:text-l dark:text-gray-700 ">
                     {post.description}
                   </p>
-
                 </div>
               </article>
             ))}
           </div>
-          <div className="mx-auto max-w-4xl text-center mt-14 ">
+          <div className="mx-auto max-w-4xl text-center mt-24 mb-20">
             <h2 className="text-2xl tracking-tight  text-gray-800 dark:text-white">
               Реализуйте свои глобальные рабочие амбиции с помощью Digital Nomad Calculator. Живите
               и работайте там, где вам хочется, а мы поможем на любом этапе пути.

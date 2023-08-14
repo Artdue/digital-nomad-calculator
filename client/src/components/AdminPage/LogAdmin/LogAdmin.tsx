@@ -30,7 +30,7 @@ export default function LoginAdmin() {
     const actionResult = await dispatch(logAdmin(loginAdmin));
     // console.log(actionResult.payload);
     if (actionResult.payload.msg === 'Вы успешно авторизованы!') {
-      navigate('/');
+      navigate('/admin/users');
     } else {
       admin.msg;
     }

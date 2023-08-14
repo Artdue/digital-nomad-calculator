@@ -30,7 +30,7 @@ export default function Login() {
     const actionResult = await dispatch(userLogin(login));
     // console.log(actionResult.payload);
     if (actionResult.payload.msg === 'Вы успешно авторизованы!') {
-      navigate('/');
+      navigate('/user/main');
     } else {
       state.msg;
     }
@@ -108,7 +108,7 @@ export default function Login() {
           </Link>
           <span className="border-b w-1/5 md:w-1/4" />
         </div>
-       < RegGoogle/>
+        <RegGoogle />
       </form>
     </div>
   );

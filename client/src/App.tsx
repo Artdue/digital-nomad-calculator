@@ -28,7 +28,6 @@ import RegGoogle from './components/LogReg/Register/RegGoogle';
 import LogAdmin from './components/AdminPage/LogAdmin/LogAdmin';
 import TestPage from './components/AdminPage/TestPage';
 
-
 function App(): JSX.Element {
   const dispatch = useDispatch();
   const user = useAppSelector((state) => state.userSlice);
