@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-// import { Card } from 'flowbite-react';
-import { useNavigate } from 'react-router-dom';
+import { Card } from 'flowbite-react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { getStates } from '../../../Redux/thunks/getStates';
 import type { RootState } from '../../../Types/types';
@@ -190,113 +190,43 @@ export default function Calculator(): React.JSX.Element {
               </div>
             </form>{' '}
           </div>
-          {/* это стили */}
-          {/* <div className="flex-1 m-2 bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-            <h5 className="mb-2 text-xl text-center font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-              Страны подходящие для Вас
-            </h5>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {states.length
-                ? states.map((state: postType, i) => (
-                    <Card
-                      key={`${i}`}
-                      className="max-w-sm"
-                      style={{ backgroundImage: 'linear-gradient(to top right, #a0d8ff, #c3e3fd)' }}
+          {filterStates.length ? (
+            <div className="flex-1 m-2 bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+              <h5 className=" text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-900 text-center mb-4">
+                Страны подходящие для Вас
+              </h5>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {filterStates.length
+                  ? filterStates.map((state: postType, i) => (
+                      <Card
+                        key={i}
+                        className="max-w-sm"
+                        // style={{ backgroundImage: 'linear-gradient(to top right, #a0d8ff, #c3e3fd)' }}
+                      >
+                        <h5 className="font-normal text-gray-700 dark:text-gray-400 text-center">
+                          <p>{state.state_name}</p>
+                        </h5>
+                      </Card>
+                    ))
+                  : null}
+                <div className="flex justify-center items-center col-span-2 mt-3">
+                  <p className="text-center">
+                    <Link
+                      to="/user/register"
+                      className="text-base font-semibold leading-7 text-blue-500 "
                     >
-                      <h5 className="font-normal text-gray-700 dark:text-gray-400 text-center">
-                        <p>{state.state_name}</p>
-                      </h5>
-                    </Card>
-                  ))
-                : null}
-              <div className="flex justify-center items-center col-span-2 mt-3">
-                <h6 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-                  Войдите в личный кабинет или зарегистрируйтесь, чтобы увидеть подробную информацию
-                </h6>
+                      {' '}
+                      Зарегистрируйтесь
+                    </Link>
+                    , чтобы увидеть подробную информацию
+                  </p>
+                </div>
               </div>
             </div>
-          </div> */}
+          ) : null}
         </div>
       </div>
-      {/* карточки снизу */}
-      {/* <div className="justify-center items-center flex flex-col rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-        <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-          Страны подходящие для Вас:
-        </h5>
-        <div className="grid grid-cols-2 gap-4">
-          {states.length
-            ? states.map((state: postType, i) => (
-                <Card
-                  key={`${i}`}
-                  className="max-w-sm"
-                  href="#"
-                  style={{ backgroundImage: 'linear-gradient(to top right, #a0d8ff, #c3e3fd)' }}
-                >
-                  <h5 className="font-normal text-gray-700 dark:text-gray-400 text-center">
-                    <p>{state.state_name}</p>
-                  </h5>
-                </Card>
-              ))
-            : null}
-          <div className="flex justify-center items-center col-span-2 mt-3">
-            <h6 className="font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-              Зарегистрируетесь чтобы увидеть подробную информацию
-            </h6>
-          </div>
-        </div>
-      </div> */}
-      {/* map */}
-      {/* <div className="justify-center items-center flex flex-col rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-        <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-          Страны подходящие для Вас:
-        </h5>
-        <div className="states-container mt-4">
-          {states.length
-            ? states.map((state: postType, i) => (
-                <div key={`${i}`} className="state mt-3">
-                  <div className="state-header">
-                    <p className="title mt-1 font-large leading-tight text-neutral-800 dark:text-neutral-50">
-                      {`${i + 1}. `} {state.state_name}
-                    </p>
-                  </div>
-                </div>
-              ))
-            : null}
-        </div>
-        <h6 className="mt-3 font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-          Зарегистрируетесь чтобы увидеть подробную информацию
-        </h6>
-      </div> */}
-      {/* НЕ ТРОГАТь */}
-      {filterStates.length ? (
-        <div className="justify-center items-center flex flex-col rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-          <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-            Страны подходящие для Вас:
-          </h5>
-          <div className="states-container mt-4">
-            {filterStates.length
-              ? filterStates.map((state: postType, i) => (
-                  <div key={`${i}`} className="state mt-3">
-                    <div className="state-header">
-                      <p className="title mt-1 font-large leading-tight text-neutral-800 dark:text-neutral-50">
-                        {`${i + 1} - `} {state.state_name}
-                      </p>
-                    </div>
-                  </div>
-                ))
-              : null}
-          </div>
-          {/* <h6 className="mt-3 font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-            Зарегистрируетесь чтобы увидеть подробную информацию
-          </h6> */}
-          <button
-            onClick={toReg}
-            className="m-2 mt-4 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2 "
-          >
-            Зарегистрируетесь чтобы увидеть подробную информацию
-          </button>
-        </div>
-      ) : null}
     </>
   );
 }
