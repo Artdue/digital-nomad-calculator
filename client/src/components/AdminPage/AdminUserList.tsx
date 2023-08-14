@@ -141,7 +141,9 @@ function AdminUserList() {
                       </dd>
                     </div>
                     <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">Отчество</dt>
+                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                        Отчество
+                      </dt>
                       <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                         <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                           {' '}
@@ -154,7 +156,9 @@ function AdminUserList() {
                       </dd>
                     </div>
                     <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">Фамилия</dt>
+                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                        Фамилия
+                      </dt>
                       <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                         <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                           {' '}
@@ -168,7 +172,9 @@ function AdminUserList() {
                     </div>
                     {/*  */}
                     <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">Дата рождения</dt>
+                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                        Дата рождения
+                      </dt>
                       <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                         <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                           {' '}
@@ -196,7 +202,9 @@ function AdminUserList() {
                       </dd>
                     </div>{' '}
                     <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">Email</dt>
+                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                        Email
+                      </dt>
                       <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                         <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                           {' '}
@@ -205,7 +213,9 @@ function AdminUserList() {
                       </dd>
                     </div>{' '}
                     <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">Гражданство</dt>
+                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                        Гражданство
+                      </dt>
                       <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                         <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                           {' '}
@@ -229,7 +239,9 @@ function AdminUserList() {
                       </dd>
                     </div>{' '}
                     <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">Виза или ВНЖ</dt>
+                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                        Виза или ВНЖ
+                      </dt>
                       <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                         <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                           {' '}
@@ -371,7 +383,7 @@ function AdminUserList() {
                       <p className="text-gray-500 dark:text-gray-300">
                         Телефон: {user.phoneNumber}
                       </p>
-                      <p className="text-gray-500 dark:text-gray-300">Документы:</p>
+                      <p className="btn btn-primary resume-btn  text-center">Статус документов</p>
                       <select
                         className="rounded-lg text-sm px-2 py-1.5 w-full"
                         value={userStatusMap[user.id] || user.document_status}
