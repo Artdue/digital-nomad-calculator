@@ -190,7 +190,7 @@ export default function Calculator(): React.JSX.Element {
               </div>
             </form>{' '}
           </div>
-          {filterStates.length ? (
+          {/* {filterStates.length ? (
             <div className="flex-1 m-2 bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
               <h5 className=" text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-900 text-center mb-4">
                 Страны подходящие для Вас
@@ -222,6 +222,38 @@ export default function Calculator(): React.JSX.Element {
                     , чтобы увидеть подробную информацию
                   </p>
                 </div>
+              </div>
+            </div>
+          ) : null} */}
+          {filterStates.length ? (
+            <div className="flex-1 m-2 bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+              <h5 className="text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-900 text-center mb-4">
+                Страны подходящие для Вас
+              </h5>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {filterStates.map((state: postType, i) => (
+                  <div key={i} className="max-w-sm">
+                    <Card>
+                      <h5 className="font-normal text-gray-700 dark:text-gray-400 text-center">
+                        <p>{state.state_name}</p>
+                      </h5>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex justify-center items-end col-span-2 mt-3 space-between">
+                <p className="text-center">
+                  <Link
+                    to="/user/register"
+                    className="text-base font-semibold leading-7 text-blue-500"
+                  >
+                    {' '}
+                    Зарегистрируйтесь
+                  </Link>
+                  , чтобы увидеть подробную информацию
+                </p>
               </div>
             </div>
           ) : null}
