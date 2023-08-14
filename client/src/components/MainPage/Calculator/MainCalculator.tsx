@@ -148,7 +148,7 @@ export default function MainCalculator(): React.JSX.Element {
                     htmlFor="citizenship"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Гражданство:
+                    Гражданство
                   </label>
                   <div className="relative mt-2 rounded-md shadow-sm">
                     <select
@@ -172,7 +172,7 @@ export default function MainCalculator(): React.JSX.Element {
                     htmlFor="criminal"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Предпочтительный тип визы:
+                    Предпочтительный тип визы
                   </label>
                   <div className="relative mt-2 rounded-md shadow-sm">
                     <select
@@ -193,7 +193,7 @@ export default function MainCalculator(): React.JSX.Element {
                     htmlFor="criminal"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Персональная виза или семейная:
+                    Персональная виза или семейная
                   </label>
                   <div className="relative mt-2 rounded-md shadow-sm">
                     <select
@@ -214,7 +214,7 @@ export default function MainCalculator(): React.JSX.Element {
                     htmlFor="citizenship"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Доход в месяц более:
+                    Доход в месяц более
                   </label>
                   <div className="relative mt-2 rounded-md shadow-sm">
                     <select
@@ -240,7 +240,7 @@ export default function MainCalculator(): React.JSX.Element {
                     htmlFor="citizenship"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Примерная дата устройства на текущую работу:
+                    Примерная дата устройства на текущую работу
                   </label>
                   <div className="relative mt-2 rounded-md shadow-sm">
                     <input
@@ -299,7 +299,7 @@ export default function MainCalculator(): React.JSX.Element {
                 marginLeft: '0',
               }}
             >
-              <div className="w-[600px] h-[500px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
+              <div className="w-[800px] h-[700px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
                 <h1 className="text-2xl font-bold mb-4">{oneState.state_name}</h1>
                 <div className="actions flex-grow overflow-y-auto">
                   <ul>
@@ -308,33 +308,35 @@ export default function MainCalculator(): React.JSX.Element {
                     ))}
                   </ul>
                 </div>
-                <button
-                  onClick={closeModal}
-                  className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
-                  style={{
-                    alignSelf: 'center',
-                  }}
-                >
-                  Закрыть
-                </button>
-                <button
-                  onClick={toConsult}
-                  className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
-                  style={{
-                    alignSelf: 'center',
-                  }}
-                >
-                  Получить консультацию
-                </button>
+                <div className="flex flex-row space-x-4 justify-space-between">
+                  <button
+                    onClick={closeModal}
+                    className="mt-4 mr-8 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
+                    style={{
+                      alignSelf: 'center',
+                    }}
+                  >
+                    Закрыть
+                  </button>
+                  <button
+                    onClick={toConsult}
+                    className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
+                    style={{
+                      alignSelf: 'center',
+                    }}
+                  >
+                    Получить консультацию
+                  </button>
+                </div>
               </div>
             </div>
           )}
           {filterStates.length ? (
-            <div className="flex justify-flex-space-between items-center flex flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+            <div className="flex justify-between items-center flex flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
               <div className="states-container mt-4">
                 <div className="flex justify-center items-center flex flex-col state mt-3">
                   <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-                    Страны подходящие для Вас:
+                    Страны подходящие для Вас
                   </h5>
                 </div>
                 {filterStates.length ? (

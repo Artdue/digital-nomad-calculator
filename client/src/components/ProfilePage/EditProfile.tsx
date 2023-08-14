@@ -174,7 +174,7 @@ export default function EditProfile(): React.JSX.Element {
                     Гражданство
                   </dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                  <select
+                    <select
                       name="citizenship"
                       id="citizenship"
                       className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -242,7 +242,7 @@ export default function EditProfile(): React.JSX.Element {
                 </div>
                 <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900 mt-[11.2px]">
-                    Дата устройства на текущую работу
+                    Примерная дата устройства на текущую работу
                   </dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
