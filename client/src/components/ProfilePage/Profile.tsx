@@ -49,75 +49,83 @@ function Profile() {
   };
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md dark:bg-neutral-700 w-[500px] h-[400px]">
-      <h1 className="text-xl font-bold mb-4">Профиль пользователя</h1>
-      <div className="mb-4">
-        <form
-          className="w-full py-1 px-2 border rounded-md"
-          onSubmit={(e) => {
-            e.preventDefault();
-            const file = e.target.elements.passportFile.files[0];
-            handleFileUpload(file, 'passport');
-          }}
-        >
-          <label className="block mb-1 border rounded-md text-md font-medium leading-6 text-gray-900 mt-2">
-            Загрузите паспорт:
-          </label>
-          <input type="file" name="passportFile" className="mb-2 border rounded-md mr-2" />
-          <button
-            type="submit"
-            className="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-          >
-            Загрузить
-          </button>
-          {uploadResponse3 ? <span>{uploadResponse3}</span> : <div />}
-        </form>
+    <>
+      <div className="container mx-auto mt-8 p-8 max-w-4xl justify-center items-center flex-col block rounded-lg bg-white shadow-md dark:bg-neutral-700">
+        <div className="px-4 sm:px-0 text-center ">
+          {' '}
+          <h1 className="text-2xl font-bold mb-4">Форма загрузки документов</h1>
+          <div className="mt-6 ">
+            <div className="mb-4">
+              <form
+                className="w-full py-1 px-2 rounded-md"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const file = e.target.elements.passportFile.files[0];
+                  handleFileUpload(file, 'passport');
+                }}
+              >
+                <label className="text-center block mb-1 s text-md font-medium leading-6 text-gray-900 mt-2">
+                  Загрузите паспорт
+                </label>
+                <input type="file" name="passportFile" className="mb-2 border rounded-md mr-2" />
+
+                <button
+                  type="submit"
+                  className="m-2 mt-4 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2"
+                >
+                  Загрузить
+                </button>
+                <span>{uploadResponse3}</span>
+              </form>
+            </div>
+            <div className="mb-4">
+              <form
+                className="w-full py-1 px-2 rounded-md"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const file = e.target.elements.balanceFile.files[0];
+                  handleFileUpload(file, 'balance');
+                }}
+              >
+                <label className="text-center block mb-1 s text-md font-medium leading-6 text-gray-900 mt-2">
+                  Загрузите банковскую выписку
+                </label>
+                <input type="file" name="balanceFile" className="mb-2 border rounded-md mr-2" />
+                <button
+                  type="submit"
+                  className="m-2 mt-4 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2"
+                >
+                  Загрузить
+                </button>
+                <span>{uploadResponse2}</span>
+              </form>
+            </div>
+            <div>
+              <form
+                className="w-full py-1 px-2 rounded-md"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const file = e.target.elements.leaseFile.files[0];
+                  handleFileUpload(file, 'lease');
+                }}
+              >
+                <label className="text-center block mb-1 rounded-md text-md font-medium leading-6 text-gray-900 mt-2">
+                  Загрузите справку о работе
+                </label>
+                <input type="file" name="leaseFile" className="mb-2 border rounded-md mr-2 " />
+                <button
+                  type="submit"
+                  className="m-2 mt-4 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2"
+                >
+                  Загрузить
+                </button>
+                <span>{uploadResponse1}</span>
+              </form>
+            </div>{' '}
+          </div>
+        </div>
       </div>
-      <div className="mb-4">
-        <form
-          className="w-full py-1 px-2 border rounded-md"
-          onSubmit={(e) => {
-            e.preventDefault();
-            const file = e.target.elements.balanceFile.files[0];
-            handleFileUpload(file, 'balance');
-          }}
-        >
-          <label className="block mb-1 border rounded-md text-md font-medium leading-6 text-gray-900 mt-2">
-            Загрузите банковскую выписку:
-          </label>
-          <input type="file" name="balanceFile" className="mb-2 border rounded-md mr-2" />
-          <button
-            type="submit"
-            className="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-          >
-            Загрузить
-          </button>
-          {uploadResponse2 ? <span>{uploadResponse2}</span> : <div />}
-        </form>
-      </div>
-      <div>
-        <form
-          className="w-full py-1 px-2 border rounded-md"
-          onSubmit={(e) => {
-            e.preventDefault();
-            const file = e.target.elements.leaseFile.files[0];
-            handleFileUpload(file, 'lease');
-          }}
-        >
-          <label className="block mb-1 border rounded-md text-md font-medium leading-6 text-gray-900 mt-2">
-            Загрузите справку о работе:
-          </label>
-          <input type="file" name="leaseFile" className="mb-2 border rounded-md mr-2 " />
-          <button
-            type="submit"
-            className="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-          >
-            Загрузить
-          </button>
-          {uploadResponse1 ? <span>{uploadResponse1}</span> : <div />}
-        </form>
-      </div>
-    </div>
+    </>
   );
 }
 
