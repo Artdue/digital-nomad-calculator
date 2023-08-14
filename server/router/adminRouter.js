@@ -16,6 +16,36 @@ const adminRouter = express.Router();
 
 //   const uploadsCountry = multer({ storage: storageCountry });
 
+async function sendEmail(email, first_name, middle_name) {
+  // Настройте транспорт для отправки письма
+  let transporter = nodemailer.createTransport({
+    // Укажите настройки для отправки почты, например, SMTP или Sendmail
+    // Например, для использования Gmail как SMTP-сервера:
+    service: 'outlook',
+    auth: {
+      user: 'checkmax95@outlook.com',
+      pass: 'Dolgov95',
+    },
+  });
+  
+// Укажите данные для отправки письма
+let mailOptions = {
+  from:'Maxim',
+  to: email,
+  subject:'Hello',
+  text: `${candidateName}! Как дела?`,
+};
+
+// Отправьте письмо
+let info = await transporter.sendMail(mailOptions);
+
+console.log('Email sent: ' + info.response);
+}
+
+
+
+
+
 adminRouter.get('/', async (req, res) => {
   try {
     const states = await State.findAll({ raw: true });

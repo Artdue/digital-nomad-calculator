@@ -4,6 +4,7 @@ import adminSlice from './admin.slice';
 import stateSlice from './state.slice';
 import profileSlice from './profileSlice';
 import adminUserSlice from './adminuser.slice';
+import nodeSlice from './node.slice';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     stateSlice,
     profileSlice,
     adminUserSlice,
+    nodeSlice,
   },
 });
 
