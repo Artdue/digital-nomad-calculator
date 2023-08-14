@@ -30,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       work_exp: DataTypes.INTEGER,
       work_date: DataTypes.STRING,
       document_status: DataTypes.STRING,
+      appStatus: DataTypes.BOOLEAN,
       admin: DataTypes.BOOLEAN,
       visaType: DataTypes.STRING,
       visaTerm: DataTypes.INTEGER,
