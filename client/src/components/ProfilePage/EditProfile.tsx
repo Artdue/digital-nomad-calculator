@@ -144,9 +144,7 @@ export default function EditProfile(): React.JSX.Element {
                   </dd>
                 </div>
                 <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-gray-900 mt-[11.2px]">
-                    Дата устройства на текущую работу
-                  </dt>
+                  <dt className="text-sm font-medium leading-6 text-gray-900">Дата рождения</dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input
                       type="date"
