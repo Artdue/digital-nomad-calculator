@@ -21,6 +21,7 @@ const profileSlice = createSlice({
         state.loading = false;
       })
       .addCase(profilePut.pending, (state, action) => {
+        console.log('action===========>', action);
         state.profile = action.payload;
         state.loading = true;
       })

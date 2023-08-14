@@ -36,6 +36,8 @@ export type IUser = {
   citizenship: string;
   income: string;
   work_exp: string;
+  appStatus: boolean;
+  document_status: string;
 };
 
 export type RootState = ReturnType<typeof store.getState>;
