@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import { profileGet, profilePut } from '../../Redux/thunks/profileThunk';
 import Profile from './Profile';
+import Status from './Status';
 
 export default function EditProfile(): React.JSX.Element {
   const dispatch = useAppDispatch();
 
   const profile = useAppSelector((state) => state.profileSlice);
-  const status = useAppSelector((state) => state.profileSlice);
+  const statusS = useAppSelector((state) => state.profileSlice);
   const userData = profile.profile;
-  const { loading } = status;
+  const { loading } = statusS;
+
+  const [status, setStatus] = useState('');
 
   const [firstName, setFirstName] = useState(userData?.first_name || '');
   const [middleName, setMiddleName] = useState(userData?.middle_name || '');
@@ -33,6 +36,16 @@ export default function EditProfile(): React.JSX.Element {
   // const closeModal = () => {
   //   setShowModal(false);
   // };
+
+  useEffect(() => {
+    if (userData && userData.document_status) {
+      if (userData.document_status === 'Новый пользователь') {
+        setStatus('');
+      } else {
+        setStatus(userData.document_status);
+      }
+    }
+  }, [userData?.document_status]);
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
@@ -77,6 +90,7 @@ export default function EditProfile(): React.JSX.Element {
       work_date: employmentDate,
       visaType,
       visaShare,
+      appStatus: userData.appStatus,
     };
     console.log(editUser);
     void dispatch(profilePut(editUser));
@@ -93,6 +107,16 @@ export default function EditProfile(): React.JSX.Element {
         <form onSubmit={submitHandler}>
           <div className="container mx-auto mt-8 p-8 max-w-4xl justify-center items-center flex-col block rounded-lg bg-white shadow-md dark:bg-neutral-700">
             <div className="px-4 sm:px-0 text-center ">
+              {status && (
+                <div className="flex items-start justify-center mb-8 mt-0">
+                  <div
+                    className=" px-4 py-2 text-white rounded-md bg-gradient-to-br from-green-600 to-green-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2"
+                    style={{ width: '700px' }}
+                  >
+                    Заявка отправлена! Статус рассмотрения документов: {status}
+                  </div>
+                </div>
+              )}
               <h1 className="text-2xl font-bold leading-7 text-gray-900">
                 Анкета для получения консультации
               </h1>
@@ -271,6 +295,7 @@ export default function EditProfile(): React.JSX.Element {
         </form>
       )}
       <Profile />
+      <Status />
     </>
   );
 }

@@ -17,27 +17,33 @@ router.post('/', async (req, res) => {
 
 router.put('/', async (req, res) => {
   console.log('REQ BODY', req.body);
-  await User.update(
-    {
-      first_name: req.body.first_name,
-      middle_name: req.body.second_name,
-      last_name: req.body.last_name,
-      birthDate: req.body.birthDate,
-      phoneNumber: req.body.phone,
-      citizenship: req.body.citizenship,
-      income: req.body.income,
-      work_exp: req.body.work_exp,
-      work_date: req.body.work_date,
-      visaType: req.body.visaType,
-      visaShare: req.body.visaShare,
-    },
-    {
-      where: {
-        id: req.body.id,
+  try {
+    await User.update(
+      {
+        first_name: req.body.first_name,
+        middle_name: req.body.second_name,
+        last_name: req.body.last_name,
+        birthDate: req.body.birthDate,
+        phoneNumber: req.body.phone,
+        citizenship: req.body.citizenship,
+        income: req.body.income,
+        work_exp: req.body.work_exp,
+        work_date: req.body.work_date,
+        visaType: req.body.visaType,
+        visaShare: req.body.visaShare,
+        appStatus: req.body.appStatus,
+        document_status: req.body.document_status,
       },
-    }
-  );
-  const profile = await User.findOne({ where: { id: req.body.id } });
-  res.json(profile);
+      {
+        where: {
+          id: req.body.id,
+        },
+      }
+    );
+    const profile = await User.findOne({ where: { id: req.body.id } });
+    res.json(profile);
+  } catch (error) {
+    console.log(error);
+  }
 });
 module.exports = router;
