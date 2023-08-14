@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Foot() {
   return (
-    <div className="flex items-end w-full min-h-screen bg-white">
+    <div className="flex items-end  w-full  bg-white">
       <footer className="w-full text-gray-700 bg-gray-100 body-font">
         <div className="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap ">
           <div className="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
@@ -82,14 +82,14 @@ export default function Foot() {
                 <li className="mt-3">
                   <a className="text-gray-500 cursor-pointer hover:text-gray-900">Help Resources</a>
                 </li> */}
-                <li className="mt-3">
+                {/* <li className="mt-3">
                   <Link
                     to="/digitalNomandCalculator"
                     className="text-gray-500 cursor-pointer hover:text-gray-900"
                   >
                     Подбери свою страну
                   </Link>
-                </li>
+                </li> */}
                 <li className="mt-3">
                   <Link to="/contact" className="text-gray-500 cursor-pointer hover:text-gray-900">
                     Записаться на консультацию

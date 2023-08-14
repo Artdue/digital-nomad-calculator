@@ -3,25 +3,25 @@ const { User } = require('./db/models');
 const cors = require('cors');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-passport.use(new GoogleStrategy(
-  {
-    clientID: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: process.env.CALLBACKURL,
-  },
-  (accessToken, refreshToken, profile, done) => {
-    done(null, profile);
-  },
-));
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
+      callbackURL: process.env.CALLBACKURL,
+    },
+    (accessToken, refreshToken, profile, done) => {
+      done(null, profile);
+    }
+  )
+);
 passport.serializeUser(async (user, done) => {
   console.log('=============>');
   const email = user.emails.map((el) => el.value).join('');
   try {
     const foundUser = await User.findOne({ where: { email }, raw: true });
     if (foundUser) {
-      const {
-        email,
-      } = foundUser;
+      const { email } = foundUser;
       done(null, {
         email,
       });

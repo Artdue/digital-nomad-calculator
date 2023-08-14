@@ -4,6 +4,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import userLogout from '../../Redux/thunks/user/logout.api';
+import Foot from '../Foot/Foot';
 
 const navigation = [
   // { name: 'На главную', href: '/', current: false },
