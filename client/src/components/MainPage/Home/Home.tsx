@@ -1,4 +1,7 @@
 import React from 'react';
+import * as Scroll from 'react-scroll';
+// import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll';
 import Calculator from '../Calculator/Calculator';
 import Contact from '../../ContactAndFeed/Contact/Contact';
 import Qualities from '../Qualities/Qualities';
@@ -16,23 +19,26 @@ export default function Home() {
       >
         <div className="mt-16 mx-auto max-w-2xl lg:max-w-4xl">
           <div className="mx-auto max-w-screen-l text-center mb-4 lg:mb-12">
-            <h1 className="text-xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-7xl font-bold tracking-tight text-gray-900">
+            <h1 className="text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-6xl font-bold tracking-tight text-[#233862]">
               Digital Nomad Calculator
             </h1>
             <br />
-            <p className="text-sm sm:text-base md:text-lg lg:text-base text-gray-600">
-              Легко и просто ориентируйтесь в мире виз для цифровых кочевников
-            </p>
+            <div className="mx-auto max-w-sm ">
+              <p className="mt-6 text-center text-l sm:text-sm md:text-xl lg:text-[23px] lg:leading-6 text-gray-500">
+                Легко и просто ориентируйтесь в мире виз для цифровых кочевников
+              </p>
+            </div>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
-                href="#"
-                className="rounded-md m-2 mt-4 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2"
+                className="rounded-md m-2 mt-4 px-4 h-[] py-2 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2 scroll-button"
+                href="#bottom-section"
               >
                 Подобрать страну
               </a>
-              <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+
+              <Link to="/contact" className="text-sm font-semibold leading-6 text-gray-900">
                 Записаться на консультацию <span aria-hidden="true">→</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -44,7 +50,7 @@ export default function Home() {
             <figure className="mt-20">
               <blockquote className="text-center font-light text-gray-500 lg:mb-16 sm:text-2xl dark:text-gray-700">
                 <p>
-                  Digital Nomad Calculator —идеальное руководство для определения стран, открытых
+                  Digital Nomad Calculator — идеальное руководство для определения стран, открытых
                   для вашего следующего переезда. Удобное веб-приложение создано специально для
                   профессионалов, желающих сочетать работу и путешествия, предлагая список стран,
                   доступных для подачи заявления на визу/ВНЖ.
@@ -54,6 +60,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div id="bottom-section"></div>
       {/* <div className="w-full rounded overflow-hidden shadow-lg bg-white flex flex-col p-6 md:py-8 lg:py-12 xl:py-10 md:px-8 lg:px-12 xl:px-20"> */}
       <Calculator />
       {/* </div> */}
