@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { EyeIcon } from '@heroicons/react/20/solid';
 import { getUsers } from '../../Redux/thunks/getUsers';
 import { editUser } from '../../Redux/thunks/editUsersList';
 import TestPage from './SideBarAdmin';
-import { EyeIcon } from '@heroicons/react/20/solid';
 
 function AdminUserList() {
   const users = useSelector((state) => state.adminUserSlice.users);
@@ -334,6 +334,7 @@ function AdminUserList() {
           {filteredUsers.length ? (
             filteredUsers.map((user) => (
               <div key={user.id} className="flex items-stretch">
+                  {user.login !== 'admin' && (
                 <section className="bg-white dark:bg-gray-900">
                   <div className="w-full h-[450px] overflow-auto">
                     <div className="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl h-full flex flex-col">
@@ -464,8 +465,10 @@ function AdminUserList() {
                     </div>
                   </div>
                 </section>
-              </div>
-            ))
+            )}
+            </div>
+            )
+            )
           ) : (
             <span>Нет Юзеров</span>
           )}
