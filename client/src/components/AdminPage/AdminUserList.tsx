@@ -371,10 +371,10 @@ function AdminUserList() {
                               }
                             >
                               Паспорт
-                            <EyeIcon
-                              className="h-5 w-5 ml-2 text-[#76a1dd] cursor-pointer"
-                              aria-hidden="true"
-                            />
+                              <EyeIcon
+                                className="h-5 w-5 ml-2 text-[#76a1dd] cursor-pointer"
+                                aria-hidden="true"
+                              />
                             </button>
                           </div>
                         ) : (
@@ -388,12 +388,12 @@ function AdminUserList() {
                               onClick={() =>
                                 window.open(`http://localhost:3000${user.balance}`, '_blank')
                               }
-
+                            >
                               Выписка из Банка
-                            <EyeIcon
-                              className="h-5 w-5 ml-2 text-[#76a1dd] cursor-pointer"
-                              aria-hidden="true"
-                            />
+                              <EyeIcon
+                                className="h-5 w-5 ml-2 text-[#76a1dd] cursor-pointer"
+                                aria-hidden="true"
+                              />
                             </button>
                           </div>
                         ) : (
@@ -403,7 +403,7 @@ function AdminUserList() {
                         )}
 
                         {user.lease ? (
-                           <div >
+                          <div>
                             <button
                               className="flex items-center "
                               onClick={() =>
@@ -412,11 +412,10 @@ function AdminUserList() {
                             >
                               Справка о работе
                               <EyeIcon
-                              className="h-5 w-5 ml-2 text-[#76a1dd] cursor-pointer"
-                              aria-hidden="true"
-                            />
+                                className="h-5 w-5 ml-2 text-[#76a1dd] cursor-pointer"
+                                aria-hidden="true"
+                              />
                             </button>
-                         
                           </div>
                         ) : (
                           <div className="text-gray-500 dark:text-gray-300">

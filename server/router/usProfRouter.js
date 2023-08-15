@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const { email } = req.body;
-  console.log(req.body);
+
   const profile = await User.findOne({ where: { email } });
   res.json(profile);
 });
