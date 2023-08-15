@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import { profilePut } from '../../Redux/thunks/profileThunk';
-import './Status.css';
 
 export default function Status(): React.JSX.Element {
   const dispatch = useAppDispatch();
@@ -45,7 +44,8 @@ export default function Status(): React.JSX.Element {
         <div className="m-2 flex justify-center items-center flex-col">
           {showNotification1 && (
             <div
-              className="fixed top-10 left-1/2 transform -translate-x-1/2 w-300 bg-gradient-to-br from-purple-600 to-blue-500 p-4 rounded-md text-white text-center"
+              id="status"
+              className="fixed top-16 left-1/2 animate-pulse transform -translate-x-1/2 w-300 bg-gradient-to-br from-purple-600 to-blue-500 p-4 rounded-md text-white text-center"
               style={{ transition: 'opacity 0.5s', opacity: showNotification1 ? 1 : 0 }}
             >
               Данные актуализированы
