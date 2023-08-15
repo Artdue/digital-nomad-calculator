@@ -29,6 +29,7 @@ const adminUserSlice = createSlice({
       })
       .addCase(editUser.fulfilled, (state, action) => {
         state.loading = false;
+       console.log('============>Я в диспатче');
        
         //* колхоз, но работает
         state.users = action.payload;

@@ -3,7 +3,7 @@ const express = require('express');
 const nodemailerRouter = express.Router();
 const nodemailer = require('nodemailer');
 
-// const { User } = require('../db/models');
+const { User } = require('../db/models');
 
 const transporter = nodemailer.createTransport({
   port: 465,
@@ -19,7 +19,9 @@ const transporter = nodemailer.createTransport({
 nodemailerRouter.post('/', async (req, res) => {
   // console.log(11111111);
   // console.log('ETO REQ BODY==============>', req.body);
-  const { phone, name, email, message } = req.body;
+  const {
+    phone, name, email, message,
+  } = req.body;
   const mailData = {
     from: 'visaproject123@gmail.com',
     to: 'visaproject123@gmail.com',
@@ -33,8 +35,9 @@ nodemailerRouter.post('/', async (req, res) => {
     if (error) {
       return console.log('==========', error);
     }
-    res.sendStatus(200);
-  });
+    res.sendStatus(200); 
+   });
+
 });
 
 nodemailerRouter.post('/user', async (req, res) => {
@@ -52,6 +55,27 @@ nodemailerRouter.post('/user', async (req, res) => {
       return console.log('==========', error);
     }
     res.sendStatus(200);
+  });
+});
+
+nodemailerRouter.post('/admin', async (req, res) => {
+  const {
+    first_name, middle_name, last_name, email, document_status,
+  } = req.body;
+  const mailData = {
+    from: 'visaproject123@gmail.com',
+    to: email,
+    subject: 'Статус документов',
+    text: ' ',
+
+    html: ` <b> Уважаемый(ая) ${first_name} ${middle_name} . </b><br> Статус ваших документов изменился : ${document_status}.Ваш юрист с Вами свяжется. Хорошего дня`,
+  };
+  transporter.sendMail(mailData, (error, info) => {
+    if (error) {
+      return console.log('==========', error);
+    }
+    res.sendStatus(200);
+
   });
 });
 
