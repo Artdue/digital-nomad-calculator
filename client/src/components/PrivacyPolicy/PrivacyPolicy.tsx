@@ -3,7 +3,7 @@ import React from 'react';
 export default function PrivacyPolicy() {
   return (
     <div className=" px-4 mx-auto max-w-screen-xl  lg:px-6 ">
-      <div class="w-full rounded overflow-hidden shadow-lg bg-white flex flex-col p-6 md:py-8 lg:py-12 xl:py-16 md:px-8 lg:px-12 xl:px-20">
+      <div className="w-full rounded overflow-hidden shadow-lg bg-white flex flex-col p-6 md:py-8 lg:py-12 xl:py-16 md:px-8 lg:px-12 xl:px-20">
         <div>
           <h1 className="text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
             Согласие на обработку персональных данных
@@ -96,7 +96,9 @@ export default function PrivacyPolicy() {
             <br />
             1.3. Операторами персональных данных для целей настоящей Политики являются сотрудники
             KYC Consulting and Legal services.
-            <h2>2. ЦЕЛИ ОБРАБОТКИ ПЕРСОНАЛЬНОЙ ИНФОРМАЦИИ ПОЛЬЗОВАТЕЛЕЙ</h2>
+            <h2 className="mt-6 mb-1 text-base font-medium leading-6 text-gray-800 sm:text-lg sm:leading-7">
+              2. ЦЕЛИ ОБРАБОТКИ ПЕРСОНАЛЬНОЙ ИНФОРМАЦИИ ПОЛЬЗОВАТЕЛЕЙ
+            </h2>
             2.1. Сайт собирает и хранит только ту персональную информацию, которая необходима для
             предоставления сервисов или исполнения соглашений и договоров с Пользователем, за
             исключением случаев, когда законодательством предусмотрено обязательное хранение
@@ -117,7 +119,7 @@ export default function PrivacyPolicy() {
             <br />
             2.2.3. Предоставления Пользователю эффективной клиентской и технической поддержки при
             возникновении проблем, связанных с использованием Сайта.
-            <h2>
+            <h2 className="mt-6 mb-1 text-base font-medium leading-6 text-gray-800 sm:text-lg sm:leading-7">
               3. УСЛОВИЯ ОБРАБОТКИ ПЕРСОНАЛЬНОЙ ИНФОРМАЦИИ ПОЛЬЗОВАТЕЛЕЙ И ЕЕ ПЕРЕДАЧИ ТРЕТЬИМ ЛИЦАМ
             </h2>
             <div>
@@ -155,7 +157,9 @@ export default function PrivacyPolicy() {
               уничтожения, изменения, блокирования, копирования, распространения, а также от иных
               неправомерных действий третьих лиц.
             </div>
-            <h2>4. ОБЯЗАТЕЛЬСТВА СТОРОН</h2>
+            <h2 className="mt-6 mb-1 text-base font-medium leading-6 text-gray-800 sm:text-lg sm:leading-7">
+              4. ОБЯЗАТЕЛЬСТВА СТОРОН
+            </h2>
             <div>
               4.1. Пользователь обязан:
               <br />
@@ -193,7 +197,9 @@ export default function PrivacyPolicy() {
               на период проверки в случае выявления недостоверных персональных данных или
               неправомерных действий.
             </div>
-            <h2>5. ОТВЕТСТВЕННОСТЬ СТОРОН</h2>
+            <h2 className="mt-6 mb-1 text-base font-medium leading-6 text-gray-800 sm:text-lg sm:leading-7">
+              5. ОТВЕТСТВЕННОСТЬ СТОРОН
+            </h2>
             <div>
               5.1. Администрация Сайта, не исполнившая свои обязательства, несет ответственность за
               убытки, понесенные Пользователем в связи с неправомерным использованием персональных
@@ -212,7 +218,9 @@ export default function PrivacyPolicy() {
               <br />
               5.2.3. Была разглашена с согласия Пользователя.
             </div>
-            <h2>6. РАЗРЕШЕНИЕ СПОРОВ</h2>
+            <h2 className="mt-6 mb-1 text-base font-medium leading-6 text-gray-800 sm:text-lg sm:leading-7">
+              6. РАЗРЕШЕНИЕ СПОРОВ
+            </h2>
             <div>
               6.1. До обращения в суд с иском по спорам, возникающим из отношений между
               Пользователем Сайта и Администрацией Сайта, обязательным является предъявление
@@ -231,7 +239,9 @@ export default function PrivacyPolicy() {
               6.4. К настоящей Политике конфиденциальности и отношениям между Пользователем и
               Администрацией Сайта применяется действующее законодательство Российской Федерации.
             </div>
-            <h2>7. ДОПОЛНИТЕЛЬНЫЕ УСЛОВИЯ</h2>
+            <h2 className="mt-6 mb-1 text-base font-medium leading-6 text-gray-800 sm:text-lg sm:leading-7">
+              7. ДОПОЛНИТЕЛЬНЫЕ УСЛОВИЯ
+            </h2>
             <div>
               7.1. Оператор вправе вносить изменения в настоящую Политику конфиденциальности без
               согласия Пользователя.
@@ -246,7 +256,7 @@ export default function PrivacyPolicy() {
               <br />
               <br />
               7.4. Действующая Политика конфиденциальности размещена на странице по адресу:
-              {/* https://kycconsulting.ru/privacy */}
+              https://kycconsulting.ru/privacy
             </div>
           </div>
         </div>
