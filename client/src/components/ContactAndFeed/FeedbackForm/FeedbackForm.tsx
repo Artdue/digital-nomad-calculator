@@ -15,7 +15,7 @@ export default function FeedbackForm() {
   const [showModal, setShowModal] = useState(false);
   const [inputs, setInputs] = useState(initState);
 
-  const state = useAppSelector((state) => state.nodeSlise);
+  const state = useAppSelector((state) => state.nodeSlice);
   console.log(state);
   const dispatch = useAppDispatch();
 

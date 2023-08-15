@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import nodemailerSend from './thunks/nodemailer';
 import userNod from './thunks/userNod';
+import nodemailerAdminSend from './thunks/nodemaileradmin'
 
 const initialState = {
   message: '',
@@ -29,6 +30,16 @@ const nodeSlice = createSlice({
         console.log('документы отправлены');
       })
       .addCase(userNod.rejected, (state) => {
+        console.error('ERROR!');
+      })
+      .addCase(nodemailerAdminSend.pending, (state) => {
+        console.log('pending');
+      })
+      .addCase(nodemailerAdminSend.fulfilled, (state) => {
+        // state.message = 'Ваш запрос на консультацию отправлен';
+        console.log('документы отправлены');
+      })
+      .addCase(nodemailerAdminSend.rejected, (state) => {
         console.error('ERROR!');
       })
       .addDefaultCase(() => {});
