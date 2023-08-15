@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../../Redux/thunks/getUsers';
 import { editUser } from '../../Redux/thunks/editUsersList';
 import TestPage from './SideBarAdmin';
+import { EyeIcon } from '@heroicons/react/20/solid';
 
 function AdminUserList() {
   const users = useSelector((state) => state.adminUserSlice.users);
@@ -65,6 +66,37 @@ function AdminUserList() {
       <TestPage />
       <div className="py-8 px-20 mx-auto max-w-screen-xl lg:py-16 lg:px-10">
         <div className="flex justify-center mb-6">
+          <div className="absolute inset-0 -z-10 overflow-hidden">
+            <svg
+              className="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]"
+              aria-hidden="true"
+            >
+              <defs>
+                <pattern
+                  id="e813992c-7d03-4cc4-a2bd-151760b470a0"
+                  width={200}
+                  height={200}
+                  x="50%"
+                  y={-1}
+                  patternUnits="userSpaceOnUse"
+                >
+                  <path d="M100 200V.5M.5 .5H200" fill="none" />
+                </pattern>
+              </defs>
+              <svg x="50%" y={-1} className="overflow-visible fill-gray-50">
+                <path
+                  d="M-100.5 0h201v201h-201Z M699.5 0h201v201h-201Z M499.5 400h201v201h-201Z M-300.5 600h201v201h-201Z"
+                  strokeWidth={0}
+                />
+              </svg>
+              <rect
+                width="100%"
+                height="100%"
+                strokeWidth={0}
+                fill="url(#e813992c-7d03-4cc4-a2bd-151760b470a0)"
+              />
+            </svg>
+          </div>
           <button
             type="button"
             className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
@@ -330,14 +362,17 @@ function AdminUserList() {
                         {user.passport ? (
                           <div>
                             <button
-                              className="btn btn-primary resume-btn"
+                              className="flex items-center "
                               onClick={() =>
                                 window.open(`http://localhost:3000${user.passport}`, '_blank')
                               }
                             >
                               Паспорт
+                            <EyeIcon
+                              className="h-5 w-5 ml-2 text-[#76a1dd] cursor-pointer"
+                              aria-hidden="true"
+                            />
                             </button>
-                            <br />
                           </div>
                         ) : (
                           <div className="text-gray-500 dark:text-gray-300">Паспорт: нет</div>
@@ -346,14 +381,17 @@ function AdminUserList() {
                         {user.balance ? (
                           <div>
                             <button
-                              className="btn btn-primary resume-btn"
+                              className="flex items-center "
                               onClick={() =>
                                 window.open(`http://localhost:3000${user.balance}`, '_blank')
                               }
                             >
                               Выписка из Банка
+                            <EyeIcon
+                              className="h-5 w-5 ml-2 text-[#76a1dd] cursor-pointer"
+                              aria-hidden="true"
+                            />
                             </button>
-                            <br />
                           </div>
                         ) : (
                           <div className="text-gray-500 dark:text-gray-300">
@@ -362,16 +400,20 @@ function AdminUserList() {
                         )}
 
                         {user.lease ? (
-                          <div>
+                           <div >
                             <button
-                              className="btn btn-primary resume-btn"
+                              className="flex items-center "
                               onClick={() =>
                                 window.open(`http://localhost:3000${user.lease}`, '_blank')
                               }
                             >
                               Справка о работе
+                              <EyeIcon
+                              className="h-5 w-5 ml-2 text-[#76a1dd] cursor-pointer"
+                              aria-hidden="true"
+                            />
                             </button>
-                            <br />
+                         
                           </div>
                         ) : (
                           <div className="text-gray-500 dark:text-gray-300">
