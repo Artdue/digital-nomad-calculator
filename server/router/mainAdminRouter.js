@@ -9,7 +9,7 @@ router
     const { email, password } = req.body;
     try {
       const user = await User.findOne({ where: { email } });
-      console.log('SMOTRIM TUT USER ', user);
+      // console.log('SMOTRIM TUT USER ', user);
       if (user && user.admin === true) {
         const checkPass = await bcrypt.compare(password, user.password);
 

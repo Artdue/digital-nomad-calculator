@@ -58,7 +58,7 @@ const OurTeam = () => {
                       {person.name}
                     </h3>
 
-                    <p className="text-sm font-semibold leading-6 text-blue-500">
+                    <p className="text-sm font-semibold leading-6  text-[#76a1dd]">
                       {person.position}
                     </p>
                     <span className="text-gray-500 dark:text-gray-400">{person.role}</span>

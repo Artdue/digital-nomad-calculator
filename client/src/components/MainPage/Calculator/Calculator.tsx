@@ -261,7 +261,8 @@ export default function Calculator(): React.JSX.Element {
                     className="text-base font-semibold leading-7 text-blue-500"
                   >
                     {' '}
-                    Зарегистрируйтесь
+                    {/* <span className="bg-clip-text text-transparent bg-gradient-to-tr from-purple-600 to-blue-500 hover:to-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300"> */}
+                    Зарегистрируйтесь {/* </span> */}
                   </Link>
                   , чтобы увидеть подробную информацию
                 </p>

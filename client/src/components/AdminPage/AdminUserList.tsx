@@ -424,7 +424,6 @@ function AdminUserList() {
                             </div>
                           )}
                         </div>
-
                         <p className="btn btn-primary resume-btn  text-center">Статус документов</p>
                         <select
                           className="rounded-lg text-sm px-2 py-1.5 w-full"

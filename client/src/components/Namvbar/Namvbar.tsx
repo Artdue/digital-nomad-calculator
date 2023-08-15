@@ -25,7 +25,7 @@ function classNames(...classes) {
 export default function Namvbar() {
   // const user = useAppSelector((state) => state.adminUserSlice);
   const user = useAppSelector((state) => state.userSlice);
-  console.log('user', user);
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
