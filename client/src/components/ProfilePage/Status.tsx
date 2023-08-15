@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import { profilePut } from '../../Redux/thunks/profileThunk';
+import userNod from '../../Redux/thunks/userNod';
 
 export default function Status(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const profile = useAppSelector((state) => state.profileSlice);
   const userData = profile.profile;
+  // console.log('userData', userData);
   const statusS = useAppSelector((state) => state.profileSlice);
   const { loading } = statusS;
 
@@ -25,13 +27,14 @@ export default function Status(): React.JSX.Element {
       setShowNotification2(false);
     }, 3000);
   };
-
   const editHandler = () => {
     window.scrollTo(0, 0);
     setShowNotification1(true);
     setTimeout(() => {
       setShowNotification1(false);
-    }, 3000);
+    }, 3000)
+    void dispatch(profilePut(editUser));
+    void dispatch(userNod(userData));
   };
 
   return (
