@@ -3,47 +3,6 @@ const { State } = require('../db/models');
 const { User } = require('../db/models');
 
 const adminRouter = express.Router();
-// в случае если будем подгружать фотку страны
-// const multer = require('multer');
-// const storageCountry = multer.diskStorage({
-//     destination(req, file, cb) {
-//       cb(null, './uploads/country');
-//     },
-//     filename(req, file, cb) {
-//       cb(null, `${file.originalname}`);
-//     },
-//   });
-
-//   const uploadsCountry = multer({ storage: storageCountry });
-
-async function sendEmail(email, first_name, middle_name) {
-  // Настройте транспорт для отправки письма
-  let transporter = nodemailer.createTransport({
-    // Укажите настройки для отправки почты, например, SMTP или Sendmail
-    // Например, для использования Gmail как SMTP-сервера:
-    service: 'outlook',
-    auth: {
-      user: 'checkmax95@outlook.com',
-      pass: 'Dolgov95',
-    },
-  });
-  
-// Укажите данные для отправки письма
-let mailOptions = {
-  from:'Maxim',
-  to: email,
-  subject:'Hello',
-  text: `${candidateName}! Как дела?`,
-};
-
-// Отправьте письмо
-let info = await transporter.sendMail(mailOptions);
-
-console.log('Email sent: ' + info.response);
-}
-
-
-
 
 
 adminRouter.get('/', async (req, res) => {
@@ -113,6 +72,7 @@ adminRouter.get('/users', async (req, res) => {
 });
 
 adminRouter.put('/users/:id', async (req, res) => {
+  console.log('=========>  Я В РУЧКЕ');
   const userId = req.params.id;
   try {
     await User.update(req.body, {

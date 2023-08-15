@@ -4,6 +4,8 @@ import { EyeIcon } from '@heroicons/react/20/solid';
 import { getUsers } from '../../Redux/thunks/getUsers';
 import { editUser } from '../../Redux/thunks/editUsersList';
 import TestPage from './SideBarAdmin';
+import nodemailerAdminSend from '../../Redux/thunks/nodemaileradmin'
+import { useAppSelector } from '../../Redux/hooks';
 
 function AdminUserList() {
   const users = useSelector((state) => state.adminUserSlice.users);
@@ -20,10 +22,22 @@ function AdminUserList() {
   const [showModal, setShowModal] = useState(false);
   console.log('🚀 ', showModal);
 
+  const state = useAppSelector((state) => state.nodeSlice);
+  console.log(state);
+
+  
+  const sendMesg = (user) => {
+    console.log('Отправка письма', user)
+    void dispatch(nodemailerAdminSend(user));
+  };
+
+
   const [modalForUser, setModalForUser] = useState(''); // пока не важно
   console.log('🚀 ~ file: AdminUserList.tsx:23 ~ AdminUserList ~ modalForUser:', modalForUser);
 
   const handleStatusChange = async (id) => {
+
+    
     try {
       const newStatus = userStatusMap[id] || selectedStatus;
       await dispatch(editUser({ id, data: { document_status: newStatus } }));
@@ -332,140 +346,142 @@ function AdminUserList() {
         )}
         <div className="grid grid-cols-1 gap-8 xl:gap-12 md:grid-cols-3">
           {filteredUsers.length ? (
-            filteredUsers.map((user) => (
-              <div key={user.id} className="flex items-stretch">
-                {user.login !== 'admin' && (
-                  <section className="bg-white dark:bg-gray-900">
-                    <div className="w-full h-[450px] overflow-auto">
-                      <div className="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl h-full flex flex-col">
-                        <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-                          ФИО: {user.first_name} {user.last_name} {user.middle_name}
-                        </h1>
-                        <p className="text-gray-500 dark:text-gray-300">Email: {user.email}</p>
-                        <p className="text-gray-500 dark:text-gray-300">
-                          Телефон: {user.phoneNumber}
-                        </p>
-                        <button
-                          type="button"
-                          className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
-                          onClick={() => openModal(user)}
-                        >
-                          Анкета
-                        </button>
-                        {/* <p className="text-gray-500 dark:text-gray-300">Паспорт: {user.passport}</p>
+            filteredUsers
+              .filter((user) => user.login !== 'admin')
+              .map((user) => (
+                <section key={user.id} className="bg-white dark:bg-gray-900">
+                  <div className="w-full h-[450px] overflow-auto">
+                    <div className="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl h-full flex flex-col">
+                      <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
+                        ФИО: {user.first_name} {user.last_name} {user.middle_name}
+                      </h1>
+                      <p className="text-gray-500 dark:text-gray-300">Email: {user.email}</p>
+                      <button
+                        type="button"
+                        className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
+                        onClick={() => openModal(user)}
+                      >
+                        Анкета
+                      </button>
+                      {/* <p className="text-gray-500 dark:text-gray-300">Паспорт: {user.passport}</p>
                       <p className="text-gray-500 dark:text-gray-300">
                         Выписка из Банка: {user.balance}
                       </p>
                       <p className="text-gray-500 dark:text-gray-300">
                         Bыписка c работы: {user.balance}
                       </p> */}
-                        {/* <button className="btn btn-primary resume-btn" onClick={() => window.open(`http://localhost:3000${user.passport}`, '_blank')}>Паспорт</button>
+                      {/* <button className="btn btn-primary resume-btn" onClick={() => window.open(`http://localhost:3000${user.passport}`, '_blank')}>Паспорт</button>
                       <button className="btn btn-primary resume-btn" onClick={() => window.open(`http://localhost:3000${user.balance}`, '_blank')}>Выписка из Банка</button>
                       <button className="btn btn-primary resume-btn" onClick={() => window.open(`http://localhost:3000${user.lease}`, '_blank')}>Справка о работе</button>  */}
-                        <div className="document-buttons">
-                          {user.passport ? (
-                            <div>
-                              <button
-                                className="flex items-center "
-                                onClick={() =>
-                                  window.open(`http://localhost:3000${user.passport}`, '_blank')
-                                }
-                              >
-                                Паспорт
-                                <EyeIcon
-                                  className="h-5 w-5 ml-2 text-[#76a1dd] cursor-pointer"
-                                  aria-hidden="true"
-                                />
-                              </button>
-                            </div>
-                          ) : (
-                            <div className="text-gray-500 dark:text-gray-300">Паспорт: нет</div>
-                          )}
+                      <div className="document-buttons">
+                        {user.passport ? (
+                          <div>
+                            <button
+                              className="flex items-center "
+                              onClick={() =>
+                                window.open(`http://localhost:3000${user.passport}`, '_blank')
+                              }
+                            >
+                              Паспорт
+                              <EyeIcon
+                                className="h-5 w-5 ml-2 text-[#76a1dd] cursor-pointer"
+                                aria-hidden="true"
+                              />
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="text-gray-500 dark:text-gray-300">Паспорт: нет</div>
+                        )}
 
-                          {user.balance ? (
-                            <div>
-                              <button
-                                className="flex items-center "
-                                onClick={() =>
-                                  window.open(`http://localhost:3000${user.balance}`, '_blank')
-                                }
-                              >
-                                Выписка из Банка
-                                <EyeIcon
-                                  className="h-5 w-5 ml-2 text-[#76a1dd] cursor-pointer"
-                                  aria-hidden="true"
-                                />
-                              </button>
-                            </div>
-                          ) : (
-                            <div className="text-gray-500 dark:text-gray-300">
-                              Выписка из Банка: нет
-                            </div>
-                          )}
+                        {user.balance ? (
+                          <div>
+                            <button
+                              className="flex items-center "
+                              onClick={() =>
+                                window.open(`http://localhost:3000${user.balance}`, '_blank')
+                              }
+                            >
+                              Выписка из Банка
+                              <EyeIcon
+                                className="h-5 w-5 ml-2 text-[#76a1dd] cursor-pointer"
+                                aria-hidden="true"
+                              />
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="text-gray-500 dark:text-gray-300">
+                            Выписка из Банка: нет
+                          </div>
+                        )}
 
-                          {user.lease ? (
-                            <div>
-                              <button
-                                className="flex items-center "
-                                onClick={() =>
-                                  window.open(`http://localhost:3000${user.lease}`, '_blank')
-                                }
-                              >
-                                Справка о работе
-                                <EyeIcon
-                                  className="h-5 w-5 ml-2 text-[#76a1dd] cursor-pointer"
-                                  aria-hidden="true"
-                                />
-                              </button>
-                            </div>
-                          ) : (
-                            <div className="text-gray-500 dark:text-gray-300">
-                              Справка о работе: нет
-                            </div>
-                          )}
-                        </div>
-                        <p className="btn btn-primary resume-btn  text-center">Статус документов</p>
-                        <select
-                          className="rounded-lg text-sm px-2 py-1.5 w-full"
-                          value={userStatusMap[user.id] || user.document_status}
-                          onChange={(event) => {
-                            const { value } = event.target;
-                            setUserStatusMap((prevState) => ({ ...prevState, [user.id]: value }));
-                          }}
+                        {user.lease ? (
+                          <div>
+                            <button
+                              className="flex items-center "
+                              onClick={() =>
+                                window.open(`http://localhost:3000${user.lease}`, '_blank')
+                              }
+                            >
+                              Справка о работе
+                              <EyeIcon
+                                className="h-5 w-5 ml-2 text-[#76a1dd] cursor-pointer"
+                                aria-hidden="true"
+                              />
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="text-gray-500 dark:text-gray-300">
+                            Справка о работе: нет
+                          </div>
+                        )}
+                      </div>
+
+                      <p className="text-gray-500 dark:text-gray-300">
+                        Телефон: {user.phoneNumber}
+                      </p>
+                      <p className="btn btn-primary resume-btn  text-center">Статус документов</p>
+                      <select
+                        className="rounded-lg text-sm px-2 py-1.5 w-full"
+                        value={userStatusMap[user.id] || user.document_status}
+                        onChange={(event) => {
+                          const { value } = event.target;
+                          setUserStatusMap((prevState) => ({ ...prevState, [user.id]: value }));
+                        }}
+                      >
+                        <option value={null}>Новый пользователь</option>
+                        <option value="Получены документы">Получены документы</option>
+                        <option value="Приняты в работу">Приняты в работу</option>
+                        <option value="Требуют уточнения">Требуют уточнения</option>
+                        <option value="Готово">Готово</option>
+                      </select>
+                      <div className="mt-auto pt-5">
+                       
+     			 <button
+                        onClick={()=>sendMesg(user)}
+                          type="button"
+                          className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                         >
-                          <option value={null}>Новый пользователь</option>
-                          <option value="Получены документы">Получены документы</option>
-                          <option value="Приняты в работу">Приняты в работу</option>
-                          <option value="Требуют уточнения">Требуют уточнения</option>
-                          <option value="Готово">Готово</option>
-                        </select>
-                        <div className="mt-auto pt-5">
-                          <button
-                            type="button"
-                            className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                          >
-                            Отправить письмо
-                          </button>
-                          <button
-                            onClick={() => handleStatusChange(user.id)}
-                            className="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                          >
-                            Сохранить
-                          </button>
-                          {/* <button
+                          Отправить письмо
+                        </button>
+                         <button
+                          onClick={() => handleStatusChange(user.id)}
+                          className="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                        >
+                          Сохранить
+                        </button> 
+
+                        {/* <button
                         type="button"
                         className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
                         onClick={() => openModal(user)}
                       >
                         Анкета Подробнее
                       </button> */}
-                        </div>
                       </div>
                     </div>
-                  </section>
-                )}
-              </div>
-            ))
+                  </div>
+                </section>
+              ))
           ) : (
             <span>Нет Юзеров</span>
           )}
