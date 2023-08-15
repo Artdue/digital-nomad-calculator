@@ -39,7 +39,7 @@ router
 
         if (checkPass) {
           req.session.email = user.email;
-          console.log('TTUT REEQ SESSIOOOOOOOON', req.session);
+          // console.log('TTUT REEQ SESSIOOOOOOOON', req.session);
           // req.session.save(() => {
           res.json({
             msg: 'Вы успешно авторизованы!',
