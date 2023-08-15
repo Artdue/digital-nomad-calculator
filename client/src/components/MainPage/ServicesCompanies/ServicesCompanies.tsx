@@ -52,13 +52,13 @@ export default function ServicesCompanies() {
       {/* <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6"> */}
       <section className="bg-white dark:bg-gray-900">
         <h1 className="text-2xl text-center font-semibold text-gray-800 lg:text-3xl dark:text-white">
-          <br /> Перечень <span className="underline decoration-blue-500">услуг</span>
+          <br /> Перечень <span className="underline decoration-[#76a1dd]">услуг</span>
         </h1>
         <div className="grid grid-cols-1 gap-4 mt-8 xl:mt-12 xl:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <div
               key={index}
-              className="p-12 border-2 border-blue-400 dark:border-blue-300 rounded-xl max-w-sm mx-auto h-[449px] flex flex-col"
+              className="p-12 border-2 border-[#76a1dd] dark:border-blue-300 rounded-xl max-w-sm mx-auto h-[449px] flex flex-col"
             >
               <div className="h-[100px] flex flex-col">
                 <h1 className="text-xl font-semibold text-gray-700 dark:text-white">

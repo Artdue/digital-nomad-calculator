@@ -65,7 +65,7 @@ export default function Strengths() {
           {/* <div className="bg-white py-16 sm:py-20"> */}
           <div className="mx-auto px-6 lg:px-8">
             <div className="mx-auto lg:text-center">
-              <h2 className="text-base font-semibold leading-7 text-blue-400">
+              <h2 className="text-base font-semibold leading-7  text-[#76a1dd]">
                 Мы создаем комфортную обстановку для вас, позаботившись о каждой детали
               </h2>
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -82,7 +82,7 @@ export default function Strengths() {
                     }`}
                   >
                     <dt className="text-base font-semibold leading-7 text-gray-900">
-                      <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500">
+                      <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-300">
                         <benefit.icon className="h-6 w-6 text-white" aria-hidden="true" />
                       </div>
                       {benefit.name}
@@ -98,7 +98,7 @@ export default function Strengths() {
             <div className="h-1 bg-gray-200 mx-auto mt-12 max-w-full" />
             <div className="mx-auto lg:text-center">
               <p className="mt-20 text-2xl leading-8 text-gray-600 font-bold">
-                <span className="bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text">
+                <span className="bg-gradient-to-r from-purple-600 to-[#76a1dd] text-transparent bg-clip-text">
                   Ваш успех - наш приоритет
                 </span>
                 <p className="mt-4 text-2xl leading-6 text-gray-600">
