@@ -128,12 +128,13 @@ export default function FeedbackForm() {
             <span className="text-gray-500 text-sm">До 1000 символов</span>
           </div>
 
-          <span className="block mb-4">
+          <span className="block mb-4 text-xs text-gray-500 uppercase">
             Нажимая на кнопку, вы соглашаетесь на{' '}
             <Link className="underline dark:text-blue-400" onClick={() => openModal()}>
               обработку персональных данных
             </Link>
           </span>
+
           <div className="text-center">
             <button
               onClick={sendMesg}

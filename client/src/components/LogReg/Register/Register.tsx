@@ -110,7 +110,7 @@ export default function Register() {
           >
             Зарегистрироваться
           </button>
-          <p className="text-xs text-gray-500 uppercase">
+          <p className="text-xs text-gray-500 uppercase text-center">
             * регистрируясь, вы принимаете условия{' '}
             <Link className="underline dark:text-blue-400" onClick={() => openModal()}>
               Пользовательского соглашения
