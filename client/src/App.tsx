@@ -26,7 +26,7 @@ import AdminUserList from './components/AdminPage/AdminUserList';
 import ServicesAndPrice from './components/ServicesAndPrice/ServicesAndPrice';
 import RegGoogle from './components/LogReg/Register/RegGoogle';
 import LogAdmin from './components/AdminPage/LogAdmin/LogAdmin';
-import TestPage from './components/AdminPage/TestPage';
+import TestPage from './components/AdminPage/SideBarAdmin';
 
 function App(): JSX.Element {
   const dispatch = useDispatch();

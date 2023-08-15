@@ -8,6 +8,10 @@ import Qualities from '../Qualities/Qualities';
 import { Link } from 'react-router-dom';
 
 export default function Home() {
+  const calculateScroll = () => {
+    window.scrollTo(0, 700);
+  };
+
   return (
     <div>
       <div
@@ -30,14 +34,15 @@ export default function Home() {
               </p>
             </div>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                className="rounded-md m-2 mt-4 px-4 h-[] py-2 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2 scroll-button"
-                href="#bottom-section"
+              <button
+                onClick={calculateScroll}
+                className="rounded-md m-2 mt-4 px-4 h-[45px] w-[230px] py-2 text-white text-[18px] bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2 scroll-button"
+                // href="#bottom-section"
               >
                 Подобрать страну
-              </a>
+              </button>
 
-              <Link to="/contact" className="text-sm font-semibold leading-6 text-gray-900">
+              <Link to="/contact" className="text-l font-semibold leading-6 text-gray-900">
                 <button>Записаться на консультацию</button> <span aria-hidden="true">→</span>
               </Link>
             </div>
@@ -61,7 +66,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div id="bottom-section"></div>
+      {/* <div id="bottom-section"></div> */}
       {/* <div className="w-full rounded overflow-hidden shadow-lg bg-white flex flex-col p-6 md:py-8 lg:py-12 xl:py-10 md:px-8 lg:px-12 xl:px-20"> */}
       <Calculator />
       {/* </div> */}

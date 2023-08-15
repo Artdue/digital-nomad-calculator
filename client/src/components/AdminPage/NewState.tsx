@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addState } from '../../Redux/thunks/addStates';
-import TestPage from './TestPage';
+import TestPage from './SideBarAdmin';
 
 export default function NewState() {
   const formRef = useRef(null);

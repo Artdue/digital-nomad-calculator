@@ -6,7 +6,7 @@ import { addState } from '../../Redux/thunks/addStates';
 import { deleteState } from '../../Redux/thunks/deleteState';
 import { editState } from '../../Redux/thunks/editState';
 import NewState from './NewState';
-import TestPage from './TestPage';
+import TestPage from './SideBarAdmin';
 // import './Admin.css';
 
 function AdminStates(): React.JSX.Element {
