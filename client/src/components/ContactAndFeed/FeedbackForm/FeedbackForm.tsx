@@ -47,7 +47,7 @@ export default function FeedbackForm() {
 
         {/* <span className="block mb-4">Оставьте заявку, и наш специалист свяжется с вами</span> */}
         <figure className="">
-          <blockquote className="text-center font-light text-gray-400 lg:mb-14 sm:text-lg dark:text-gray-700">
+          <blockquote className="text-center font-light text-gray-500 lg:mb-14 sm:text-lg dark:text-gray-700">
             <p>Оставьте заявку, и наш специалист свяжется с вами</p>
           </blockquote>
         </figure>
@@ -65,7 +65,7 @@ export default function FeedbackForm() {
             />
             <label
               htmlFor="first_name"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#76a1dd] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              className="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#76a1dd] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Ваше имя
             </label>
@@ -86,7 +86,7 @@ export default function FeedbackForm() {
               />
               <label
                 htmlFor="floating_email"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#76a1dd] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#76a1dd] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Email
               </label>
@@ -105,7 +105,7 @@ export default function FeedbackForm() {
               />
               <label
                 htmlFor="floating_phone"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#76a1dd] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#76a1dd] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Телефон
               </label>
@@ -127,16 +127,16 @@ export default function FeedbackForm() {
             />
             <label
               htmlFor="floating_message"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#76a1dd] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              className="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#76a1dd] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Сообщение{' '}
             </label>
-            <span className="text-gray-500 text-sm">До 1000 символов</span>
+            <span className="text-gray-400 text-sm">До 1000 символов</span>
           </div>
 
           <span className="text-center block mb-4 text-xs text-gray-500 uppercase">
             Нажимая на кнопку, вы соглашаетесь на{' '}
-            <Link className="underline dark:text-blue-400" onClick={() => openModal()}>
+            <Link className="underline  text-gray-500" onClick={() => openModal()}>
               обработку персональных данных
             </Link>
           </span>
