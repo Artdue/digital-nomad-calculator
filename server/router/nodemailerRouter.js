@@ -37,6 +37,7 @@ nodemailerRouter.post('/', async (req, res) => {
     }
     res.sendStatus(200); 
    });
+
 });
 
 nodemailerRouter.post('/user', async (req, res) => {
@@ -74,6 +75,7 @@ nodemailerRouter.post('/admin', async (req, res) => {
       return console.log('==========', error);
     }
     res.sendStatus(200);
+
   });
 });
 

@@ -11,7 +11,7 @@ const nodemailerSend = createAsyncThunk('/nodemailer', async (inputs) => {
       body: JSON.stringify(inputs),
     });
     // const result = await response.json();
-    // return result;
+    return;
   } catch (error) {
     console.error('Oops', error);
   }
