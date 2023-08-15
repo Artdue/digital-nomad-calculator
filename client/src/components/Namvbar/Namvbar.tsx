@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import userLogout from '../../Redux/thunks/user/logout.api';
 
 const navigation = [
-  // { name: 'На главную', href: '/', current: false },
+  { name: 'На главную', href: '/', current: false },
   { name: 'О компании', href: '/about', current: false },
   { name: 'Контакты', href: '/contact', current: false },
   { name: 'Наша команда', href: '/CompanyServices', current: false },
@@ -34,6 +34,11 @@ export default function Namvbar() {
     navigate('/');
   };
 
+  const calculNavig = () => {
+    navigate('/');
+    window.scrollTo(0, 780);
+  };
+
   return (
     <>
       <Disclosure as="nav" className="">
@@ -53,7 +58,12 @@ export default function Namvbar() {
                     )}
                   </Disclosure.Button>
                 </div>
-                <Link to="/">KYC</Link>
+                <button
+                  onClick={calculNavig}
+                  className="m-2 mt-4 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2 "
+                >
+                  Digital Nomad Calculator
+                </button>
                 {/* это меню текст */}
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-center">
                   <div className="hidden sm:ml-6 sm:block">

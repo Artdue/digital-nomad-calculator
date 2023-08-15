@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../../Redux/thunks/getUsers';
 import { editUser } from '../../Redux/thunks/editUsersList';
-import TestPage from './TestPage';
+import TestPage from './SideBarAdmin';
 
 function AdminUserList() {
   const users = useSelector((state) => state.adminUserSlice.users);
@@ -63,7 +63,7 @@ function AdminUserList() {
   return (
     <>
       <TestPage />
-      <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div className="py-8 px-20 mx-auto max-w-screen-xl lg:py-16 lg:px-10">
         <div className="flex justify-center mb-6">
           <button
             type="button"
@@ -303,10 +303,10 @@ function AdminUserList() {
             filteredUsers.map((user) => (
               <div key={user.id} className="flex items-stretch">
                 <section className="bg-white dark:bg-gray-900">
-                  <div className="w-full">
+                  <div className="w-full h-[450px] overflow-auto">
                     <div className="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl h-full flex flex-col">
                       <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-                        {user.first_name} {user.last_name} {user.middle_name}
+                        ФИО: {user.first_name} {user.last_name} {user.middle_name}
                       </h1>
                       <p className="text-gray-500 dark:text-gray-300">Email: {user.email}</p>
                       <button
@@ -398,7 +398,7 @@ function AdminUserList() {
                         <option value="Требуют уточнения">Требуют уточнения</option>
                         <option value="Готово">Готово</option>
                       </select>
-                      <div className="mt-auto">
+                      <div className="mt-auto pt-5">
                         <button
                           type="button"
                           className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"

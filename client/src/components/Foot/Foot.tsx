@@ -1,7 +1,39 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Foot() {
+  const navigate = useNavigate();
+
+  const aboutComp = () => {
+    navigate('/about');
+    window.scrollTo(0, 0);
+  };
+
+  const contactNav = () => {
+    navigate('/contact');
+    window.scrollTo(0, 0);
+  };
+
+  const ourTeamNav = () => {
+    navigate('/CompanyServices');
+    window.scrollTo(0, 0);
+  };
+
+  const politPrivNav = () => {
+    navigate('/path-to-privacy-policy');
+    window.scrollTo(0, 0);
+  };
+
+  const feedbNav = () => {
+    navigate('/contact');
+    window.scrollTo(0, 0);
+  };
+
+  const servAndPriceNav = () => {
+    navigate('/services-and-price');
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="flex items-end  w-full  bg-white">
       <footer className="w-full text-gray-700 bg-gray-100 body-font">
@@ -42,30 +74,37 @@ export default function Foot() {
               </h2> */}
               <nav className="mb-10 list-none">
                 <li className="mt-3">
-                  <Link to="/about" className="text-gray-500 cursor-pointer hover:text-gray-900">
-                    О компании
-                  </Link>
-                </li>
-                <li className="mt-3">
-                  <Link to="/contact" className="text-gray-500 cursor-pointer hover:text-gray-900">
-                    Контакты
-                  </Link>
-                </li>
-                <li className="mt-3">
-                  <Link
-                    to="/CompanyServices"
+                  <button
+                    to="/about"
                     className="text-gray-500 cursor-pointer hover:text-gray-900"
+                    onClick={aboutComp}
+                  >
+                    О компании
+                  </button>
+                </li>
+                <li className="mt-3">
+                  <button
+                    className="text-gray-500 cursor-pointer hover:text-gray-900"
+                    onClick={contactNav}
+                  >
+                    Контакты
+                  </button>
+                </li>
+                <li className="mt-3">
+                  <button
+                    className="text-gray-500 cursor-pointer hover:text-gray-900"
+                    onClick={ourTeamNav}
                   >
                     Наша команда
-                  </Link>
+                  </button>
                 </li>
                 <li className="mt-3">
-                  <Link
-                    to="/path-to-privacy-policy"
+                  <button
+                    onClick={politPrivNav}
                     className="text-gray-500 cursor-pointer hover:text-gray-900"
                   >
                     Политика конфиденциальности
-                  </Link>
+                  </button>
                 </li>
               </nav>
             </div>
@@ -91,17 +130,20 @@ export default function Foot() {
                   </Link>
                 </li> */}
                 <li className="mt-3">
-                  <Link to="/contact" className="text-gray-500 cursor-pointer hover:text-gray-900">
+                  <button
+                    onClick={feedbNav}
+                    className="text-gray-500 cursor-pointer hover:text-gray-900"
+                  >
                     Записаться на консультацию
-                  </Link>
+                  </button>
                 </li>
                 <li className="mt-3">
-                  <Link
-                    to="/services-and-price"
+                  <button
+                    onClick={servAndPriceNav}
                     className="text-gray-500 cursor-pointer hover:text-gray-900"
                   >
                     Услуги и цены
-                  </Link>
+                  </button>
                 </li>
               </nav>
             </div>

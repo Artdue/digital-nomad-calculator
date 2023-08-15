@@ -5,9 +5,9 @@ export default function TestPage() {
   return (
     <div className="  flex flex-col   text-gray-800">
       {/* <div className="min-h-screen w-[10px] flex flex-col flex-auto flex-shrink-0  bg-gray-50 text-gray-800"></div> */}
-      <div className="fixed flex flex-col top-16 left-0  bg-none h-full w-[300px]">
+      <div className="fixed flex flex-col top-14 left-0  bg-none h-full w-[250px]">
         <div className=" flex-grow">
-          <ul className="flex flex-col py-10 space-y-3">
+          <ul className="flex flex-col py-6 space-y-3">
             <li>
               <Link
                 to="/admin/users"
@@ -30,7 +30,7 @@ export default function TestPage() {
                   </svg>
                 </span>
                 <span className="ml-2 text-sm tracking-wide truncate">
-                  Входящие заявки и клиенты
+                  Входящие заявки и <br /> клиенты
                 </span>
               </Link>
             </li>
