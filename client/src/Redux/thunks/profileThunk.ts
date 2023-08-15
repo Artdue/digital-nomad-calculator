@@ -9,7 +9,7 @@ export const profileGet = createAsyncThunk('getUser', async (user) => {
       body: JSON.stringify(user),
     });
     const res = await response.json();
-    console.log('res', res);
+    // console.log('res', res);
     return res;
   } catch (error) {
     console.error('Oops', error);
