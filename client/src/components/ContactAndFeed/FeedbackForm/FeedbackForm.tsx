@@ -15,8 +15,9 @@ export default function FeedbackForm() {
   const [showModal, setShowModal] = useState(false);
   const [inputs, setInputs] = useState(initState);
 
-  const state = useAppSelector((state) => state.nodeSlise);
+  const state = useAppSelector((state) => state.nodeSlice);
   console.log(state);
+
   const dispatch = useAppDispatch();
 
   const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,7 +44,7 @@ export default function FeedbackForm() {
           KYC поможет вам любом юридическом вопросе
         </h2>
 
-        <span className="block mb-4">Оставьте заявку, и наш специалист свяжется с вами</span>
+        <span className="block mb-4">{state.message}</span>
 
         <form>
           <div className="relative z-0 w-full mb-6 group">

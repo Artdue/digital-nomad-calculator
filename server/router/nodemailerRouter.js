@@ -33,7 +33,7 @@ nodemailerRouter.post('/', async (req, res) => {
     if (error) {
       return console.log('==========', error);
     }
-    res.status(200);
+    res.sendStatus(200);
   });
 });
 
@@ -51,7 +51,7 @@ nodemailerRouter.post('/user', async (req, res) => {
     if (error) {
       return console.log('==========', error);
     }
-    res.status(200);
+    res.sendStatus(200);
   });
 });
 
