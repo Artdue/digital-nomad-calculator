@@ -43,12 +43,23 @@ export default function Calculator(): React.JSX.Element {
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    const currentDate = new Date();
-    const [year, month, day] = employmentDate.split('-').map(Number);
-    const targetDate = new Date(year, month - 1, day);
-    const timeDiff = currentDate - targetDate;
-    const monthsPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44));
-    setWorkExp(monthsPassed.toString());
+    let monthsPassed = 0;
+    if (employmentDate === '') {
+      monthsPassed = 12;
+      // setworkExp(monthsPassed);
+      console.log('Отфильтрованные по работе1111111111:', monthsPassed);
+    } else {
+      const currentDate = new Date();
+      const [year, month, day] = employmentDate.split('-').map(Number);
+      const targetDate = new Date(year, month - 1, day);
+      const timeDiff = currentDate - targetDate;
+      monthsPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44));
+      // setworkExp(monthsPassed);
+      console.log('Отфильтрованные по работе222222222222:', monthsPassed);
+    }
+    console.log('Отфильтрованные по работе:', monthsPassed);
+    const workFilter = states.filter((state) => state.work_exp < monthsPassed);
+    console.log('Отфильтрованные по работе:', workFilter);
     console.log('Выбранные значения:', income, employmentDate, monthsPassed, citizenship);
     const incomeFilter = states.filter((state) => state.min_income < income);
     console.log('Отфильтрованные по доходу:', incomeFilter);
@@ -59,8 +70,8 @@ export default function Calculator(): React.JSX.Element {
     });
     console.log('Отфильтрованные по гр-у:', citiFilter);
 
-    const workFilter = states.filter((state) => state.work_exp < monthsPassed);
-    console.log('Отфильтрованные по работе:', workFilter);
+    // const workFilter = states.filter((state) => state.work_exp < monthsPassed);
+    // console.log('Отфильтрованные по работе:', workFilter);
 
     const commonStates = incomeFilter.filter((state) => {
       const isInCitiFilter = citiFilter.some((filteredState) => filteredState.id === state.id);
