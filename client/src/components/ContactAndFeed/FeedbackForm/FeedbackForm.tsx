@@ -39,12 +39,18 @@ export default function FeedbackForm() {
     <>
       {/* Сторона с инпутами */}
       <div className="w-full md:w-1/2 p-4 md:p-8 flex flex-col justify-center items-center">
-        <h2 className="text-2xl font-semibold mb-4 text-center ">
-          KYC поможет вам любом юридическом вопросе
+        <h2>
+          <span className=" text-xl font-medium mb-3 text-center bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 rounded-lg px-5 py-2.5 text-[#76a1dd] text-transparent bg-clip-text">
+            KYC поможет вам любом юридическом вопросе
+          </span>
         </h2>
 
-        <span className="block mb-4">Оставьте заявку, и наш специалист свяжется с вами</span>
-
+        {/* <span className="block mb-4">Оставьте заявку, и наш специалист свяжется с вами</span> */}
+        <figure className="">
+          <blockquote className="text-center font-light text-gray-400 lg:mb-14 sm:text-lg dark:text-gray-700">
+            <p>Оставьте заявку, и наш специалист свяжется с вами</p>
+          </blockquote>
+        </figure>
         <form>
           <div className="relative z-0 w-full mb-6 group">
             <input
