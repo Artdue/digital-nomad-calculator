@@ -110,10 +110,11 @@ export default function EditProfile(): React.JSX.Element {
               {status && (
                 <div className="flex items-start justify-center mb-8 mt-0">
                   <div
-                    className=" px-4 py-2 text-white rounded-md bg-gradient-to-br from-green-600 to-green-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2"
+                    className=" px-4 py-2 text-white rounded-md bg-gradient-to-br from-green-700 to-green-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2"
                     style={{ width: '700px' }}
                   >
-                    Заявка отправлена! Статус рассмотрения документов: {status}
+                    <h4>Заявка отправлена!</h4>
+                    <h6>Данные актуальны. Статус рассмотрения документов: {status}</h6>
                   </div>
                 </div>
               )}

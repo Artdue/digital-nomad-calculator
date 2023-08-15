@@ -103,13 +103,21 @@ export default function MainCalculator(): React.JSX.Element {
       return !bannedCitizenships.includes(citizenship);
     });
     // console.log('Отфильтрованные по гр-у:', citiFilter);
-
-    const currentDate = new Date();
-    const [year, month, day] = employmentDate.split('-').map(Number);
-    const targetDate = new Date(year, month - 1, day);
-    const timeDiff = currentDate - targetDate;
-    const monthsPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44));
-    setworkExp(monthsPassed);
+    let monthsPassed = 0;
+    if (employmentDate === '') {
+      monthsPassed = 12;
+      // setworkExp(monthsPassed);
+      console.log('Отфильтрованные по работе1111111111:', monthsPassed);
+    } else {
+      const currentDate = new Date();
+      const [year, month, day] = employmentDate.split('-').map(Number);
+      const targetDate = new Date(year, month - 1, day);
+      const timeDiff = currentDate - targetDate;
+      monthsPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44));
+      // setworkExp(monthsPassed);
+      console.log('Отфильтрованные по работе222222222222:', monthsPassed);
+    }
+    console.log('Отфильтрованные по работе:', monthsPassed);
     const workFilter = states.filter((state) => state.work_exp < monthsPassed);
     // console.log('Отфильтрованные по работе:', workFilter);
 
@@ -138,7 +146,7 @@ export default function MainCalculator(): React.JSX.Element {
         </div>
       ) : (
         <div className="flex flex-row space-x-4 justify-center">
-          <div className='flex justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'>
+          <div className='justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'>
             <form ref={formRef} onSubmit={submitHandler} className="form-container">
               <div className="flex justify-center items-center flex-col">
                 <h1 className="text-2xl font-bold mb-4">Узнать подходящие направления</h1>
