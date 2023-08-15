@@ -3,7 +3,7 @@ import nodemailerSend from './thunks/nodemailer';
 import userNod from './thunks/userNod';
 
 const initialState = {
-  message: '',
+  message: 'Оставьте заявку, и наш специалист свяжется с вами',
 };
 
 const nodeSlice = createSlice({
@@ -25,8 +25,7 @@ const nodeSlice = createSlice({
         console.log('pending');
       })
       .addCase(userNod.fulfilled, (state) => {
-        // state.message = 'Ваш запрос на консультацию отправлен';
-        console.log('документы отправлены');
+        state.message = 'Ваш запрос на консультацию отправлен';
       })
       .addCase(userNod.rejected, (state) => {
         console.error('ERROR!');
