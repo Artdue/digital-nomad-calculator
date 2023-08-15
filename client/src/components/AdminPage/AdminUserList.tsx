@@ -309,6 +309,9 @@ function AdminUserList() {
                         ФИО: {user.first_name} {user.last_name} {user.middle_name}
                       </h1>
                       <p className="text-gray-500 dark:text-gray-300">Email: {user.email}</p>
+                      <p className="text-gray-500 dark:text-gray-300">
+                        Телефон: {user.phoneNumber}
+                      </p>
                       <button
                         type="button"
                         className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
@@ -351,7 +354,7 @@ function AdminUserList() {
                                 window.open(`http://localhost:3000${user.balance}`, '_blank')
                               }
                             >
-                              Выписка из Банка
+                              Выписка из Банка{' '}
                             </button>
                             <br />
                           </div>
@@ -380,9 +383,6 @@ function AdminUserList() {
                         )}
                       </div>
 
-                      <p className="text-gray-500 dark:text-gray-300">
-                        Телефон: {user.phoneNumber}
-                      </p>
                       <p className="btn btn-primary resume-btn  text-center">Статус документов</p>
                       <select
                         className="rounded-lg text-sm px-2 py-1.5 w-full"

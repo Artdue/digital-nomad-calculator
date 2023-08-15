@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import { profilePut } from '../../Redux/thunks/profileThunk';
+import userNod from '../../Redux/thunks/userNod';
 
 export default function Status(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const profile = useAppSelector((state) => state.profileSlice);
   const userData = profile.profile;
+  // console.log('userData', userData);
   const statusS = useAppSelector((state) => state.profileSlice);
   const { loading } = statusS;
 
@@ -15,7 +17,9 @@ export default function Status(): React.JSX.Element {
       appStatus: true,
       document_status: 'Документы отправлены',
     };
+    console.log(11111111);
     void dispatch(profilePut(editUser));
+    void dispatch(userNod(userData));
   };
 
   return (

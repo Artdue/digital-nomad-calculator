@@ -42,6 +42,7 @@ export default function FeedbackForm() {
         <h2 className="text-2xl font-semibold mb-4 text-center ">
           KYC поможет вам любом юридическом вопросе
         </h2>
+
         <span className="block mb-4">Оставьте заявку, и наш специалист свяжется с вами</span>
 
         <form>
