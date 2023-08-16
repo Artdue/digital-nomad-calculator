@@ -408,10 +408,17 @@ export default function MainCalculator(): React.JSX.Element {
                   <button className="m-2 mt-4 px-4 py-3 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2">
                     Подобрать
                   </button>
-                  <button
+                  {/* <button
                     type="button"
                     onClick={resetCalc}
                     className="w-[106.28px] m-2 mt-4 px-4 py-3 text-white rounded-md  bg-indigo-600 hover:bg-indigo-500 font-medium text-sm text-center mr-2"
+                  >
+                    Сбросить
+                  </button> */}
+                  <button
+                    type="button"
+                    onClick={resetCalc}
+                    className="w-[106.28px] m-2 mt-4 px-4 py-3 text-white bg-gradient-to-br from-blue-500 to-purple-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm text-center mr-2 mb-2"
                   >
                     Сбросить
                   </button>
@@ -428,6 +435,12 @@ export default function MainCalculator(): React.JSX.Element {
               }}
             >
               <div className="w-[800px] h-[700px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
+                <button
+                  onClick={closeModal}
+                  className="ml-auto w-[40px] px-0 py-1 pt-2 text-white bg-gradient-to-br from-blue-400 to-purple-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm text-center"
+                >
+                  X
+                </button>
                 <h1 className="text-2xl font-bold mb-4">{oneState.state_name}</h1>
                 <div className="actions flex-grow overflow-y-auto">
                   <ul>
@@ -437,16 +450,7 @@ export default function MainCalculator(): React.JSX.Element {
                   </ul>
                 </div>
                 <div className="flex flex-row space-x-4 justify-space-between">
-                  <button
-                    onClick={closeModal}
-                    className="mt-4 mr-8 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
-                    style={{
-                      alignSelf: 'center',
-                    }}
-                  >
-                    Закрыть
-                  </button>
-                  <button
+                  {/* <button
                     onClick={toConsult}
                     className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
                     style={{
@@ -454,7 +458,23 @@ export default function MainCalculator(): React.JSX.Element {
                     }}
                   >
                     Получить консультацию
+                  </button> */}
+                  <button
+                    type="button"
+                    onClick={toConsult}
+                    className="w-[180.28px] mt-4 px-2 py-1 text-white bg-gradient-to-br from-blue-500 to-purple-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm text-center mr-2 mb-2"
+                  >
+                    Запросить консультацию
                   </button>
+                  {/* <button
+                    onClick={closeModal}
+                    className="mt-4 mr-8 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
+                    style={{
+                      alignSelf: 'center',
+                    }}
+                  >
+                    Закрыть
+                  </button> */}
                 </div>
               </div>
             </div>
