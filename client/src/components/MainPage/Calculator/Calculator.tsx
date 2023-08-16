@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Card } from 'flowbite-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { getStates } from '../../../Redux/thunks/getStates';
 import type { RootState } from '../../../Types/types';
@@ -36,11 +36,11 @@ export default function Calculator(): React.JSX.Element {
     setFilterStates([]);
   };
 
+  const navigate = useNavigate();
   const toReg = () => {
     navigate('/user/register');
     window.scrollTo(0, 0);
   };
-
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();

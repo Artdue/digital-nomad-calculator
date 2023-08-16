@@ -4,7 +4,7 @@ import { EyeIcon } from '@heroicons/react/20/solid';
 import { getUsers } from '../../Redux/thunks/getUsers';
 import { editUser } from '../../Redux/thunks/editUsersList';
 import TestPage from './SideBarAdmin';
-import nodemailerAdminSend from '../../Redux/thunks/nodemaileradmin'
+import nodemailerAdminSend from '../../Redux/thunks/nodemaileradmin';
 import { useAppSelector } from '../../Redux/hooks';
 
 function AdminUserList() {
@@ -25,19 +25,15 @@ function AdminUserList() {
   const state = useAppSelector((state) => state.nodeSlice);
   console.log(state);
 
-  
   const sendMesg = (user) => {
-    console.log('Отправка письма', user)
+    console.log('Отправка письма', user);
     void dispatch(nodemailerAdminSend(user));
   };
-
 
   const [modalForUser, setModalForUser] = useState(''); // пока не важно
   console.log('🚀 ~ file: AdminUserList.tsx:23 ~ AdminUserList ~ modalForUser:', modalForUser);
 
   const handleStatusChange = async (id) => {
-
-    
     try {
       const newStatus = userStatusMap[id] || selectedStatus;
       await dispatch(editUser({ id, data: { document_status: newStatus } }));
@@ -356,6 +352,9 @@ function AdminUserList() {
                         ФИО: {user.first_name} {user.last_name} {user.middle_name}
                       </h1>
                       <p className="text-gray-500 dark:text-gray-300">Email: {user.email}</p>
+                      <p className="text-gray-500 dark:text-gray-300">
+                        Телефон: {user.phoneNumber}
+                      </p>
                       <button
                         type="button"
                         className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
@@ -436,9 +435,6 @@ function AdminUserList() {
                         )}
                       </div>
 
-                      <p className="text-gray-500 dark:text-gray-300">
-                        Телефон: {user.phoneNumber}
-                      </p>
                       <p className="btn btn-primary resume-btn  text-center">Статус документов</p>
                       <select
                         className="rounded-lg text-sm px-2 py-1.5 w-full"
@@ -455,20 +451,19 @@ function AdminUserList() {
                         <option value="Готово">Готово</option>
                       </select>
                       <div className="mt-auto pt-5">
-                       
-     			 <button
-                        onClick={()=>sendMesg(user)}
+                        <button
+                          onClick={() => sendMesg(user)}
                           type="button"
                           className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                         >
                           Отправить письмо
                         </button>
-                         <button
+                        <button
                           onClick={() => handleStatusChange(user.id)}
                           className="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                         >
                           Сохранить
-                        </button> 
+                        </button>
 
                         {/* <button
                         type="button"
