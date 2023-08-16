@@ -7,7 +7,7 @@ const adminRouter = express.Router();
 
 adminRouter.get('/', async (req, res) => {
   try {
-    const states = await State.findAll({ raw: true });
+    const states = await State.findAll({ order: [['state_name', 'ASC']], raw: true });
     res.json(states);
   } catch (error) {
     console.error('Ошибка при получении данных калькулятора:', error);
