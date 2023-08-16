@@ -133,7 +133,7 @@ module.exports = {
         citizenship: 'Россия',
         income: 55000,
         work_exp: 4,
-        document_status: 'Принят в работу',
+        document_status: 'Приняты в работу',
         work_date: '2023-07-05',
         createdAt: '2023-08-16T13:00:00Z',
         updatedAt: '2023-08-16T13:00:00Z',
