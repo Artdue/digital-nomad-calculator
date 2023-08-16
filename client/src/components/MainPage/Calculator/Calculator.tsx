@@ -118,7 +118,7 @@ export default function Calculator(): React.JSX.Element {
                       className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       onChange={(e) => setIncome(e.target.value)}
                     >
-                      <option value={income}>Выберите</option>
+                      <option value={income}>{income}</option>
                       <option value="500">500€</option>
                       <option value="1000">1000€</option>
                       <option value="1500">1500€</option>
@@ -185,7 +185,7 @@ export default function Calculator(): React.JSX.Element {
                       className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       onChange={(e) => setCitizenship(e.target.value)}
                     >
-                      <option value={citizenship}>Выберите</option>
+                      <option value={citizenship}>{citizenship}</option>
                       <option value="RU">RU - гражданин РФ</option>
                       <option value="UKR">UKR - гражданин Украины</option>
                       <option value="KZ">KZ - гражданин Казахстана</option>
