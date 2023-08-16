@@ -98,10 +98,10 @@ export default function MainCalculator(): React.JSX.Element {
 
     const visaTypeFilter =
       visaT !== 'Не имеет значения' ? states.filter((state) => state.visaType == visaT) : states;
-    console.log('Отфильтрованные по типу визы:', visaTypeFilter);
+    // console.log('Отфильтрованные по типу визы:', visaTypeFilter);
     const visaShareFilter =
       visaS !== 'Не имеет значения' ? states.filter((state) => state.visaShare == visaS) : states;
-    console.log('Отфильтрованные по семейной визе:', visaShareFilter);
+    // console.log('Отфильтрованные по семейной визе:', visaShareFilter);
 
     const incomeFilter = states.filter((state) => state.min_income < income);
     // console.log('Отфильтрованные по доходу:', incomeFilter);
@@ -114,7 +114,7 @@ export default function MainCalculator(): React.JSX.Element {
     if (employmentDate === '') {
       monthsPassed = 12;
       // setworkExp(monthsPassed);
-      console.log('Отфильтрованные по работе1111111111:', monthsPassed);
+      // console.log('Отфильтрованные по работе1111111111:', monthsPassed);
     } else {
       const currentDate = new Date();
       const [year, month, day] = employmentDate.split('-').map(Number);
@@ -122,7 +122,7 @@ export default function MainCalculator(): React.JSX.Element {
       const timeDiff = currentDate - targetDate;
       monthsPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44));
       // setworkExp(monthsPassed);
-      console.log('Отфильтрованные по работе222222222222:', monthsPassed);
+      // console.log('Отфильтрованные по работе222222222222:', monthsPassed);
     }
     console.log('Отфильтрованные по работе:', monthsPassed);
     const workFilter = states.filter((state) => state.work_exp < monthsPassed);
@@ -165,7 +165,7 @@ export default function MainCalculator(): React.JSX.Element {
           {/* <div className='justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'> */}
           <div
             className='justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'
-            style={{ maxHeight: '55vh' }}
+            style={{ maxHeight: '65vh' }}
           >
             <form ref={formRef} onSubmit={submitHandler} className="form-container">
               <div className="flex justify-center items-center flex-col">
@@ -178,8 +178,8 @@ export default function MainCalculator(): React.JSX.Element {
                 </div>
 
                 <div className="w-[500px]">
-                  <figure className="mt-2">
-                    <blockquote className="font-light text-gray-700 sm:text-base dark:text-gray-700">
+                  <figure className="mb-2">
+                    <blockquote className=" font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="citizenship">Гражданство</label>{' '}
                     </blockquote>
                   </figure>
@@ -188,10 +188,10 @@ export default function MainCalculator(): React.JSX.Element {
                     <select
                       name="citizenship"
                       id="citizenship"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       onChange={(e) => setCitizenship(e.target.value)}
                     >
-                      <option value={citizenship}>Выберите</option>
+                      <option value={citizenship}>{citizenship}</option>
                       <option value="RU">RU - гражданин РФ</option>
                       <option value="UKR">UKR - гражданин Украины</option>
                       <option value="KZ">KZ - гражданин Казахстана</option>
@@ -203,8 +203,8 @@ export default function MainCalculator(): React.JSX.Element {
                 </div>
 
                 <div className="w-[500px]">
-                  <figure className="mt-2">
-                    <blockquote className="font-light text-gray-700 sm:text-base dark:text-gray-700">
+                  <figure className="mt-4 mb-2">
+                    <blockquote className=" font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="visaT">Предпочтительный тип визы</label>{' '}
                     </blockquote>
                   </figure>
@@ -213,10 +213,10 @@ export default function MainCalculator(): React.JSX.Element {
                     <select
                       name="visaT"
                       id="visaT"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       onChange={(e) => setvisaT(e.target.value)}
                     >
-                      <option value={visaT}>Выберите</option>
+                      <option value={visaT}>{visaT}</option>
                       <option value="ВНЖ">ВНЖ</option>
                       <option value="Виза">Виза</option>
                       <option value="Не имеет значения">Не имеет значения</option>
@@ -225,8 +225,8 @@ export default function MainCalculator(): React.JSX.Element {
                 </div>
 
                 <div className="w-[500px]">
-                  <figure className="mt-2">
-                    <blockquote className="font-light text-gray-700 sm:text-base dark:text-gray-700">
+                  <figure className="mt-4 mb-2">
+                    <blockquote className=" font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="visaS">Персональная виза или семейная</label>{' '}
                     </blockquote>
                   </figure>
@@ -234,10 +234,10 @@ export default function MainCalculator(): React.JSX.Element {
                     <select
                       name="visaS"
                       id="visaS"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       onChange={(e) => setvisaS(e.target.value)}
                     >
-                      <option value={visaS}>Выберите</option>
+                      <option value={visaS}>{visaS}</option>
                       <option value="Семейная">Семейная</option>
                       <option value="Персональная">Персональная</option>
                       <option value="Не имеет значения">Не имеет значения</option>
@@ -246,8 +246,8 @@ export default function MainCalculator(): React.JSX.Element {
                 </div>
 
                 <div className="w-[500px]">
-                  <figure className="mt-2">
-                    <blockquote className="font-light text-gray-700 sm:text-base dark:text-gray-700">
+                  <figure className="mt-4 mb-2">
+                    <blockquote className=" font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="income"> Доход в месяц более</label>{' '}
                     </blockquote>
                   </figure>
@@ -255,10 +255,10 @@ export default function MainCalculator(): React.JSX.Element {
                     <select
                       name="income"
                       id="income"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       onChange={(e) => setIncome(e.target.value)}
                     >
-                      <option value={income}>Выберите</option>
+                      <option value={income}>{income}</option>
                       <option value="500">500€</option>
                       <option value="1000">1000€</option>
                       <option value="1500">1500€</option>
@@ -272,8 +272,8 @@ export default function MainCalculator(): React.JSX.Element {
                 </div>
 
                 <div className="w-[500px]">
-                  <figure className="mt-2">
-                    <blockquote className="font-light text-gray-700 sm:text-base dark:text-gray-700">
+                  <figure className="mt-4 mb-2">
+                    <blockquote className=" font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="date"> Примерная дата устройства на текущую работу</label>{' '}
                     </blockquote>
                   </figure>
@@ -282,7 +282,7 @@ export default function MainCalculator(): React.JSX.Element {
                     <input
                       id="date"
                       type="date"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      className="block w-full px-4 py-2  rounded-md border-0  pl-5 pr-2 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       name="employmentDate"
                       value={employmentDate}
                       onChange={(e) => setEmploymentDate(e.target.value)}
@@ -290,7 +290,7 @@ export default function MainCalculator(): React.JSX.Element {
                   </div>
                 </div>
 
-                <div className="flex flex-row ">
+                <div className="flex mt-2 ">
                   <button className="m-2 mt-4 px-4 py-3 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2">
                     Подобрать
                   </button>
@@ -350,7 +350,7 @@ export default function MainCalculator(): React.JSX.Element {
                   Подходящие страны
                 </h1>
                 <figure className="mt-2">
-                  <blockquote className="text-center font-light text-gray-700 lg:mb-3 sm:text-lg dark:text-gray-700">
+                  <blockquote className="text-center text-base font-semibold leading-7 text-[#76a1dd]">
                     Выберите страну, чтобы узнать подробности
                   </blockquote>
                 </figure>
@@ -374,9 +374,9 @@ export default function MainCalculator(): React.JSX.Element {
                   <blockquote className="text-center font-light text-gray-700 lg:mb-0 sm:text-lg dark:text-gray-700">
                     <button
                       onClick={toConsult}
-                      className="text-base font-semibold leading-7 text-[#76a1dd]"
+                      className="text-base font-semibold bg-gradient-to-r from-purple-600 to-[#76a1dd] text-transparent bg-clip-text"
                     >
-                      Запишитесь на консультацию
+                      Запишитесь на консультацию <span aria-hidden="true">→</span>
                     </button>
                     <br />И мы поможем вам в подборе идеальной страны{' '}
                   </blockquote>

@@ -14,6 +14,9 @@ function AdminStates(): React.JSX.Element {
   // const formRef = useRef(null);
   const states = useSelector((state: RootState) => state.adminSlice.states);
 
+  const [showNotification1, setShowNotification1] = useState(false);
+  const [showNotification2, setShowNotification2] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleDeleteState = async (id: number) => {
@@ -23,6 +26,18 @@ function AdminStates(): React.JSX.Element {
     } catch (error) {
       console.error('Ошибка при удалении данных:', error);
     }
+  };
+
+  const deleteOneState = async (id: number) => {
+    try {
+      void dispatch(deleteState(id));
+    } catch (error) {
+      console.error('Ошибка при удалении данных:', error);
+    }
+    setShowNotification1(true);
+    setTimeout(() => {
+      setShowNotification1(false);
+    }, 3000);
   };
 
   const [editingStateId, setEditingStateId] = useState<number | null>(null);
@@ -62,6 +77,10 @@ function AdminStates(): React.JSX.Element {
     } catch (error) {
       console.error('Ошибка при редактировании данных:', error);
     }
+    setShowNotification2(true);
+    setTimeout(() => {
+      setShowNotification2(false);
+    }, 3000);
   };
 
   useEffect(() => {
@@ -111,6 +130,23 @@ function AdminStates(): React.JSX.Element {
     <>
       <TestPage />
       <div className="ml-10 sm:ml-0">
+        {showNotification1 && (
+          <div
+            id="status"
+            className="fixed top-16 left-1/2 animate-pulse transform -translate-x-1/2 w-300 bg-gradient-to-br from-purple-600 to-blue-500 p-4 rounded-md text-white text-center"
+            style={{ transition: 'opacity 0.5s', opacity: showNotification1 ? 1 : 0 }}
+          >
+            Страна удалена
+          </div>
+        )}
+        {showNotification2 && (
+          <div
+            className="fixed top-10 left-1/2 transform -translate-x-1/2 w-300 bg-gradient-to-br from-purple-600 to-blue-500 p-4 rounded-md text-white text-center"
+            style={{ transition: 'opacity 0.5s', opacity: showNotification2 ? 1 : 0 }}
+          >
+            Данные актуализированы
+          </div>
+        )}
         <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white mb-8">
           <br /> Добро пожаловать, Админ
         </h1>
@@ -149,7 +185,7 @@ function AdminStates(): React.JSX.Element {
                           </div>
                           <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                             <dt className="text-sm font-medium leading-6 text-gray-900">
-                              Минимальный доход
+                              Минимальный доход €
                             </dt>
                             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                               <input
@@ -389,7 +425,7 @@ function AdminStates(): React.JSX.Element {
 
                           <button
                             type="button"
-                            onClick={() => dispatch(deleteState(state.id))}
+                            onClick={() => deleteOneState(state.id)}
                             className="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                           >
                             Удалить

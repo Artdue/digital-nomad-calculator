@@ -22,6 +22,9 @@ function AdminUserList() {
   const [showModal, setShowModal] = useState(false);
   console.log('🚀 ', showModal);
 
+  const [showNotification1, setShowNotification1] = useState(false);
+  const [showNotification2, setShowNotification2] = useState(false);
+
   const state = useAppSelector((state) => state.nodeSlice);
   console.log(state);
 
@@ -33,6 +36,25 @@ function AdminUserList() {
   const [modalForUser, setModalForUser] = useState(''); // пока не важно
   console.log('🚀 ~ file: AdminUserList.tsx:23 ~ AdminUserList ~ modalForUser:', modalForUser);
 
+  const handleStatusChange1 = async (user) => {
+    try {
+      const newStatus = userStatusMap[user.id] || selectedStatus;
+      await dispatch(editUser({ userId: user.id, data: { document_status: newStatus } }));
+
+      // Обновите userStatusMap до отправки письма
+      setUserStatusMap((prevState) => ({ ...prevState, [user.id]: newStatus }));
+
+      // Теперь вызовите sendMesg с актуальным статусом
+      await sendMesg({ ...user, document_status: newStatus });
+    } catch (error) {
+      console.error('Ошибка при изменении статуса и отправке сообщения:', error);
+    }
+    setShowNotification2(true);
+    setTimeout(() => {
+      setShowNotification2(false);
+    }, 3000);
+  };
+
   const handleStatusChange = async (id) => {
     try {
       const newStatus = userStatusMap[id] || selectedStatus;
@@ -41,6 +63,10 @@ function AdminUserList() {
     } catch (error) {
       console.error('Ошибка при изменении статуса:', error);
     }
+    setShowNotification1(true);
+    setTimeout(() => {
+      setShowNotification1(false);
+    }, 3000);
   };
 
   useEffect(() => {
@@ -75,6 +101,23 @@ function AdminUserList() {
     <>
       <TestPage />
       <div className="py-8 px-20 mx-auto max-w-screen-xl lg:py-16 lg:px-10">
+        {showNotification1 && (
+          <div
+            id="status"
+            className="fixed top-16 left-1/2 animate-pulse transform -translate-x-1/2 w-300 bg-gradient-to-br from-purple-600 to-blue-500 p-4 rounded-md text-white text-center"
+            style={{ transition: 'opacity 0.5s', opacity: showNotification1 ? 1 : 0 }}
+          >
+            Сохранено
+          </div>
+        )}
+        {showNotification2 && (
+          <div
+            className="fixed top-10 left-1/2 transform -translate-x-1/2 w-300 bg-gradient-to-br from-purple-600 to-blue-500 p-4 rounded-md text-white text-center"
+            style={{ transition: 'opacity 0.5s', opacity: showNotification2 ? 1 : 0 }}
+          >
+            Письмо отправлено и данные сохранены
+          </div>
+        )}
         <div className="flex justify-center mb-6">
           <div className="absolute inset-0 -z-10 overflow-hidden">
             <svg
@@ -452,7 +495,9 @@ function AdminUserList() {
                         }}
                       >
                         <option value={null}>Новый пользователь</option>
-                        <option value="Документы отправлены">Пользователь отправил документы</option>
+                        <option value="Документы отправлены">
+                          Пользователь отправил документы
+                        </option>
                         <option value="Получены документы">Получены документы</option>
                         <option value="Приняты в работу">Приняты в работу</option>
                         <option value="Требуют уточнения">Требуют уточнения</option>
@@ -460,7 +505,10 @@ function AdminUserList() {
                       </select>
                       <div className="mt-auto pt-5">
                         <button
-                          onClick={() => sendMesg(user)}
+                          onClick={() => {
+                            handleStatusChange1(user);
+                            handleStatusChange(user.id);
+                          }}
                           type="button"
                           className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                         >
