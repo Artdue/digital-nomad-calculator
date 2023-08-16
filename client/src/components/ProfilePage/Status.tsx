@@ -27,12 +27,13 @@ export default function Status(): React.JSX.Element {
       setShowNotification2(false);
     }, 3000);
   };
+
   const editHandler = () => {
     window.scrollTo(0, 0);
     setShowNotification1(true);
     setTimeout(() => {
       setShowNotification1(false);
-    }, 3000)
+    }, 3000);
     void dispatch(profilePut(editUser));
     void dispatch(userNod(userData));
   };
