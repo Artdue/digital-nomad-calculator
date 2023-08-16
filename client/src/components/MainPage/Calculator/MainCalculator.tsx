@@ -165,7 +165,7 @@ export default function MainCalculator(): React.JSX.Element {
           {/* <div className='justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'> */}
           <div
             className='justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'
-            style={{ maxHeight: '55vh' }}
+            style={{ maxHeight: '90vh' }}
           >
             <form ref={formRef} onSubmit={submitHandler} className="form-container">
               <div className="flex justify-center items-center flex-col">
@@ -178,8 +178,8 @@ export default function MainCalculator(): React.JSX.Element {
                 </div>
 
                 <div className="w-[500px]">
-                  <figure className="mt-2">
-                    <blockquote className="font-light text-gray-700 sm:text-base dark:text-gray-700">
+                  <figure className="mb-2">
+                    <blockquote className="text-center font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="citizenship">Гражданство</label>{' '}
                     </blockquote>
                   </figure>
@@ -188,7 +188,7 @@ export default function MainCalculator(): React.JSX.Element {
                     <select
                       name="citizenship"
                       id="citizenship"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       onChange={(e) => setCitizenship(e.target.value)}
                     >
                       <option value={citizenship}>Выберите</option>
@@ -203,8 +203,8 @@ export default function MainCalculator(): React.JSX.Element {
                 </div>
 
                 <div className="w-[500px]">
-                  <figure className="mt-2">
-                    <blockquote className="font-light text-gray-700 sm:text-base dark:text-gray-700">
+                  <figure className="mt-4 mb-2">
+                    <blockquote className="text-center font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="visaT">Предпочтительный тип визы</label>{' '}
                     </blockquote>
                   </figure>
@@ -213,7 +213,7 @@ export default function MainCalculator(): React.JSX.Element {
                     <select
                       name="visaT"
                       id="visaT"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       onChange={(e) => setvisaT(e.target.value)}
                     >
                       <option value={visaT}>Выберите</option>
@@ -225,8 +225,8 @@ export default function MainCalculator(): React.JSX.Element {
                 </div>
 
                 <div className="w-[500px]">
-                  <figure className="mt-2">
-                    <blockquote className="font-light text-gray-700 sm:text-base dark:text-gray-700">
+                  <figure className="mt-4 mb-2">
+                    <blockquote className="text-center font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="visaS">Персональная виза или семейная</label>{' '}
                     </blockquote>
                   </figure>
@@ -234,7 +234,7 @@ export default function MainCalculator(): React.JSX.Element {
                     <select
                       name="visaS"
                       id="visaS"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       onChange={(e) => setvisaS(e.target.value)}
                     >
                       <option value={visaS}>Выберите</option>
@@ -246,8 +246,8 @@ export default function MainCalculator(): React.JSX.Element {
                 </div>
 
                 <div className="w-[500px]">
-                  <figure className="mt-2">
-                    <blockquote className="font-light text-gray-700 sm:text-base dark:text-gray-700">
+                  <figure className="mt-4 mb-2">
+                    <blockquote className="text-center font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="income"> Доход в месяц более</label>{' '}
                     </blockquote>
                   </figure>
@@ -255,7 +255,7 @@ export default function MainCalculator(): React.JSX.Element {
                     <select
                       name="income"
                       id="income"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       onChange={(e) => setIncome(e.target.value)}
                     >
                       <option value={income}>Выберите</option>
@@ -272,8 +272,8 @@ export default function MainCalculator(): React.JSX.Element {
                 </div>
 
                 <div className="w-[500px]">
-                  <figure className="mt-2">
-                    <blockquote className="font-light text-gray-700 sm:text-base dark:text-gray-700">
+                  <figure className="mt-4 mb-2">
+                    <blockquote className="text-center font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="date"> Примерная дата устройства на текущую работу</label>{' '}
                     </blockquote>
                   </figure>
@@ -282,7 +282,7 @@ export default function MainCalculator(): React.JSX.Element {
                     <input
                       id="date"
                       type="date"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      className="block w-full px-4 py-2  rounded-md border-0  pl-5 pr-2 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       name="employmentDate"
                       value={employmentDate}
                       onChange={(e) => setEmploymentDate(e.target.value)}
