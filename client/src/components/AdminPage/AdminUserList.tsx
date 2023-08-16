@@ -33,6 +33,23 @@ function AdminUserList() {
   const [modalForUser, setModalForUser] = useState(''); // пока не важно
   console.log('🚀 ~ file: AdminUserList.tsx:23 ~ AdminUserList ~ modalForUser:', modalForUser);
 
+  const handleStatusChange1 = async (user) => {
+    try {
+      const newStatus = userStatusMap[user.id] || selectedStatus;
+      await dispatch(editUser({ userId: user.id, data: { document_status: newStatus } }));
+  
+      // Обновите userStatusMap до отправки письма
+      setUserStatusMap((prevState) => ({ ...prevState, [user.id]: newStatus }));
+  
+      // Теперь вызовите sendMesg с актуальным статусом
+      await sendMesg({ ...user, document_status: newStatus });
+    } catch (error) {
+      console.error('Ошибка при изменении статуса и отправке сообщения:', error);
+    }
+  };
+  
+
+
   const handleStatusChange = async (id) => {
     try {
       const newStatus = userStatusMap[id] || selectedStatus;
@@ -460,11 +477,14 @@ function AdminUserList() {
                       </select>
                       <div className="mt-auto pt-5">
                         <button
-                          onClick={() => sendMesg(user)}
+                        onClick={() => {
+                          handleStatusChange1(user);
+                      
+                        }}
                           type="button"
                           className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                         >
-                          Отправить письмо
+                        Отправить письмо
                         </button>
                         <button
                           onClick={() => handleStatusChange(user.id)}
