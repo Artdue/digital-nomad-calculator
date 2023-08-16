@@ -26,6 +26,7 @@ export default function Status(): React.JSX.Element {
     setTimeout(() => {
       setShowNotification2(false);
     }, 3000);
+    void dispatch(userNod(userData));
   };
 
   const editHandler = () => {
@@ -34,7 +35,6 @@ export default function Status(): React.JSX.Element {
     setTimeout(() => {
       setShowNotification1(false);
     }, 3000);
-    void dispatch(profilePut(editUser));
     void dispatch(userNod(userData));
   };
 
