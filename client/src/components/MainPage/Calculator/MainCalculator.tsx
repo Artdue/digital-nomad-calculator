@@ -193,7 +193,7 @@ export default function MainCalculator(): React.JSX.Element {
                       className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       onChange={(e) => setCitizenship(e.target.value)}
                     >
-                      <option value={citizenship}>{citizenship}</option>
+                      <option value={citizenship}>Выберите</option>
                       <option value="RU">RU - гражданин РФ</option>
                       <option value="UKR">UKR - гражданин Украины</option>
                       <option value="KZ">KZ - гражданин Казахстана</option>
@@ -242,7 +242,7 @@ export default function MainCalculator(): React.JSX.Element {
                       className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       onChange={(e) => setvisaT(e.target.value)}
                     >
-                      <option value={visaT}>{visaT}</option>
+                      <option value={visaT}>Выберите</option>
                       <option value="ВНЖ">ВНЖ</option>
                       <option value="Виза">Виза</option>
                       <option value="Не имеет значения">Не имеет значения</option>
@@ -285,7 +285,7 @@ export default function MainCalculator(): React.JSX.Element {
                       className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       onChange={(e) => setvisaS(e.target.value)}
                     >
-                      <option value={visaS}>{visaS}</option>
+                      <option value={visaS}>Выберите</option>
                       <option value="Семейная">Семейная</option>
                       <option value="Персональная">Персональная</option>
                       <option value="Не имеет значения">Не имеет значения</option>
@@ -328,7 +328,7 @@ export default function MainCalculator(): React.JSX.Element {
                       className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       onChange={(e) => setIncome(e.target.value)}
                     >
-                      <option value={income}>{income}€</option>
+                      <option value={income}>Выберите</option>
                       <option value="500">500€</option>
                       <option value="1000">1000€</option>
                       <option value="1500">1500€</option>
