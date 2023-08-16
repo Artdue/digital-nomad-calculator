@@ -487,36 +487,42 @@ export default function MainCalculator(): React.JSX.Element {
                   {/* Страны, подходящие Вам */}
                   Подходящие страны
                 </h1>
+                <figure className="mt-2">
+                  <blockquote className="text-center font-light text-gray-700 lg:mb-4 sm:text-lg dark:text-gray-700">
+                    Тапните на страну, чтобы узнать подробности
+                  </blockquote>
+                </figure>
               </div>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {filterStates.map((state, i) => (
-                  <div key={i} className="max-w-sm">
-                    <Card>
-                      <h5 className="font-normal text-gray-700 dark:text-gray-400 text-center">
-                        <p>{state.state_name}</p>
-                      </h5>{' '}
-                      <button
+                  <button className="" onClick={() => openModal(state)}>
+                    <div key={i} className="max-w-sm border rounded">
+                      <figure className="py-3">
+                        <blockquote className="font-light text-gray-500 sm:text-lg dark:text-gray-700">
+                          {state.state_name}
+                        </blockquote>
+                      </figure>
+                      {/* <button
                         type="button"
-                        className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
-                        onClick={() => openModal(state)}
+                        className=" px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
+                        // onClick={() => openModal(state)}
                       >
                         Подробнее
-                      </button>
-                    </Card>
-                  </div>
+                      </button> */}
+                    </div>
+                  </button>
                 ))}
               </div>
 
               <div className="flex flex-row space-x-4 justify-center">
                 <button
                   type="button"
-                  onClick={resetStates}
-                  className="mt-4 mr-8 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-green-500"
+                  onClick={toConsult}
+                  className="w-[180.28px] mt-4 px-2 py-1 text-white bg-gradient-to-br from-blue-500 to-purple-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm text-center mr-2 mb-2"
                 >
-                  Закрыть
+                  Запросить консультацию
                 </button>
-                <button
+                {/* <button
                   onClick={toConsult}
                   className="mt-4 ml-8 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-green-500"
                   style={{
@@ -524,7 +530,21 @@ export default function MainCalculator(): React.JSX.Element {
                   }}
                 >
                   Консультация
+                </button> */}
+                <button
+                  type="button"
+                  onClick={resetStates}
+                  className="w-[106.28px] m-2 mt-4 px-4 py-3 text-white bg-gradient-to-br from-blue-500 to-purple-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm text-center mr-2 mb-2"
+                >
+                  Закрыть
                 </button>
+                {/* <button
+                    type="button"
+                    onClick={resetStates}
+                    className="mt-4 mr-8 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-green-500"
+                  >
+                    Закрыть
+                  </button> */}
               </div>
             </div>
           ) : null}
