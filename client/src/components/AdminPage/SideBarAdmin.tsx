@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 export default function TestPage() {
   return (
-    <div className="  flex flex-col   text-gray-800">
+    <div className="flex flex-col text-gray-800">
       {/* <div className="min-h-screen w-[10px] flex flex-col flex-auto flex-shrink-0  bg-gray-50 text-gray-800"></div> */}
-      <div className="fixed flex flex-col top-14 left-0  bg-none h-full w-[250px]">
+      <div className="fixed flex flex-col top-14 left-0  bg-none h-[100px] w-[250px]">
         <div className=" flex-grow">
           <ul className="flex flex-col py-6 space-y-3">
             <li>
