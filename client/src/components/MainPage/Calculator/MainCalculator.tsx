@@ -139,7 +139,7 @@ export default function MainCalculator(): React.JSX.Element {
   };
 
   return (
-    <>
+    <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
       {loading ? (
         <div className="flex h-screen items-center justify-center">
           <img src="/src/assets/reload-cat.gif" alt="" />
@@ -149,8 +149,17 @@ export default function MainCalculator(): React.JSX.Element {
           <div className='justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'>
             <form ref={formRef} onSubmit={submitHandler} className="form-container">
               <div className="flex justify-center items-center flex-col">
-                <h1 className="text-2xl font-bold mb-4">Узнать подходящие направления</h1>
-
+                {/* <h1 className="text-2xl font-bold mb-4">Узнать подходящие направления</h1> */}
+                <h1 className="text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-3xl font-bold tracking-tight text-[#233862]">
+                  Узнать подходящие направления
+                </h1>
+                {/* <div className="mx-auto max-w-2xl lg:max-w-4xl">
+                  <figure className="mt-20">
+                    <blockquote className="text-center font-light text-gray-500 lg:mb-16 sm:text-2xl dark:text-gray-700">
+                      Узнать подходящие направления
+                    </blockquote>
+                  </figure>
+                </div> */}
                 <div style={{ width: '500px' }}>
                   <label
                     htmlFor="citizenship"
@@ -398,6 +407,6 @@ export default function MainCalculator(): React.JSX.Element {
         </div>
       )}
       <div />
-    </>
+    </div>
   );
 }
