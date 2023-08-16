@@ -12,6 +12,8 @@ export default function MainCalculator(): React.JSX.Element {
   const profile = useAppSelector((state) => state.profileSlice);
   const userData = profile.profile;
   const { loading } = status;
+  const userInputs = useAppSelector((state) => state.unregSlice);
+  console.log('userInputs=================>', userInputs);
 
   // console.log('USER', userData);
   // console.log('LOADING', loading);
@@ -23,9 +25,13 @@ export default function MainCalculator(): React.JSX.Element {
 
   // const [criminal, setСriminal] = useState<string>('false');
   // const [gender, setGender] = useState<string>('Male');
-  const [citizenship, setCitizenship] = useState(userData?.citizenship || '');
-  const [income, setIncome] = useState(userData?.income || 0);
-  const [employmentDate, setEmploymentDate] = useState(userData?.work_date || '');
+  const [citizenship, setCitizenship] = useState(
+    userData?.citizenship || userInputs?.citizenship || '',
+  );
+  const [income, setIncome] = useState(userData?.income || userInputs?.income || 0);
+  const [employmentDate, setEmploymentDate] = useState(
+    userData?.work_date || userInputs?.employmentDate || '',
+  );
   const [workExp, setworkExp] = useState(userData?.work_exp || 0);
   const [visaT, setvisaT] = useState(userData?.visaType || '');
   const [visaS, setvisaS] = useState(userData?.visaShare || '');
@@ -136,6 +142,15 @@ export default function MainCalculator(): React.JSX.Element {
 
     // console.log('Подходящие страны:', commonStates);
     setFilterStates(commonStates);
+    const userInputs = {
+      income,
+      employmentDate,
+      citizenship,
+      visaT,
+      visaS,
+    };
+
+    void dispatch(unregtUserGet(userInputs));
   };
 
   return (
@@ -231,15 +246,15 @@ export default function MainCalculator(): React.JSX.Element {
                       className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       onChange={(e) => setIncome(e.target.value)}
                     >
-                      <option value={income}>{income}$</option>
-                      <option value="500">500$</option>
-                      <option value="1000">1000$</option>
-                      <option value="1500">1500$</option>
-                      <option value="2000">2000$</option>
-                      <option value="2500">2500$</option>
-                      <option value="3000">3000$</option>
-                      <option value="4000">4000$</option>
-                      <option value="5000">5000$</option>
+                      <option value={income}>{income}€</option>
+                      <option value="500">500€</option>
+                      <option value="1000">1000€</option>
+                      <option value="1500">1500€</option>
+                      <option value="2000">2000€</option>
+                      <option value="2500">2500€</option>
+                      <option value="3000">3000€</option>
+                      <option value="4000">4000€</option>
+                      <option value="5000">5000€</option>
                     </select>
                   </div>
                 </div>

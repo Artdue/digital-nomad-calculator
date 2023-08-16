@@ -5,6 +5,7 @@ import stateSlice from './state.slice';
 import profileSlice from './profileSlice';
 import adminUserSlice from './adminuser.slice';
 import nodeSlice from './node.slice';
+import unregSlice from './unreged.slice';
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     profileSlice,
     adminUserSlice,
     nodeSlice,
+    unregSlice,
   },
 });
 
