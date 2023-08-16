@@ -350,7 +350,7 @@ export default function MainCalculator(): React.JSX.Element {
                   Подходящие страны
                 </h1>
                 <figure className="mt-2">
-                  <blockquote className="text-center font-light text-gray-700 lg:mb-3 sm:text-lg dark:text-gray-700">
+                  <blockquote className="text-center text-base font-semibold leading-7 text-[#76a1dd]">
                     Выберите страну, чтобы узнать подробности
                   </blockquote>
                 </figure>
@@ -374,9 +374,9 @@ export default function MainCalculator(): React.JSX.Element {
                   <blockquote className="text-center font-light text-gray-700 lg:mb-0 sm:text-lg dark:text-gray-700">
                     <button
                       onClick={toConsult}
-                      className="text-base font-semibold leading-7 text-[#76a1dd]"
+                      className="text-base font-semibold bg-gradient-to-r from-purple-600 to-[#76a1dd] text-transparent bg-clip-text"
                     >
-                      Запишитесь на консультацию
+                      Запишитесь на консультацию <span aria-hidden="true">→</span>
                     </button>
                     <br />И мы поможем вам в подборе идеальной страны{' '}
                   </blockquote>
