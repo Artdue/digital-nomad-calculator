@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import { useDispatch } from 'react-redux';
 import Login from './components/LogReg/Login/Login';
@@ -42,11 +42,25 @@ function App(): JSX.Element {
     }
   }, [user]);
 
+  const navigate = useNavigate();
+
+  const calculator = useRef(null);
+
+  const scrollToBlock = () => {
+    navigate('/');
+    setTimeout(() => {
+      calculator.current.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }, 1);
+  };
+
   return (
     <>
       <Routes>
-        <Route element={<Namvbar />}>
-          <Route path="/" element={<Home />} />
+        <Route element={<Namvbar scrollToBlock={scrollToBlock} />}>
+          <Route path="/" element={<Home calculator={calculator} />} />
+
           <Route path="/about" element={<AboutCompany />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/CompanyServices" element={<OurTeam />} />

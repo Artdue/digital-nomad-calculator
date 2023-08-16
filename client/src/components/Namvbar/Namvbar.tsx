@@ -7,11 +7,11 @@ import userLogout from '../../Redux/thunks/user/logout.api';
 
 const navigation = [
   { name: 'На главную', href: '/', current: false },
-  { name: 'О компании', href: '/about', current: false },
-  { name: 'Контакты', href: '/contact', current: false },
-  { name: 'Наша команда', href: '/CompanyServices', current: false },
   // { name: 'Подбери свою страну', href: '/digitalNomadCalculator', current: false },
   { name: 'Услуги и цены', href: '/services-and-price', current: false },
+  { name: 'Наша команда', href: '/CompanyServices', current: false },
+  { name: 'О компании', href: '/about', current: false },
+  { name: 'Контакты', href: '/contact', current: false },
 ];
 
 const navigationT = [
@@ -22,7 +22,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Namvbar() {
+export default function Namvbar({ scrollToBlock }) {
   // const user = useAppSelector((state) => state.adminUserSlice);
   const user = useAppSelector((state) => state.userSlice);
 
@@ -34,10 +34,11 @@ export default function Namvbar() {
     navigate('/');
   };
 
-  const calculNavig = () => {
-    navigate('/');
-    window.scrollTo(0, 780);
-  };
+  // const calculNavig = () => {
+  //   navigate('/');
+  //   window.scrollTo(0, 780);
+  //   console.log(window.screenY);
+  // };
 
   return (
     <>
@@ -59,8 +60,8 @@ export default function Namvbar() {
                   </Disclosure.Button>
                 </div>
                 <button
-                  onClick={calculNavig}
-                  className="m-2 mt-4 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2 "
+                  onClick={scrollToBlock}
+                  className="m-2 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center"
                 >
                   Digital Nomad Calculator
                 </button>
@@ -117,8 +118,8 @@ export default function Namvbar() {
                                 <Link
                                   to="/admin/users"
                                   className={classNames(
-                                    active ? 'bg-[#c8ddfb]' : '',
-                                    'block px-4 py-2 text-base text-gray-700',
+                                    active ? 'bg-gray-100' : '',
+                                    'block px-4 py-2 text-base text-[#0c4a6e] hover:text-[#76a1dd]',
                                   )}
                                 >
                                   Кабинет администратора
@@ -130,8 +131,8 @@ export default function Namvbar() {
                                 <button
                                   onClick={logout}
                                   className={classNames(
-                                    active ? 'bg-[#c8ddfb]' : '',
-                                    'block  px-3 py-2 text-base font-medium',
+                                    active ? 'bg-gray-100' : '',
+                                    'w-full flex px-4 py-2 text-base text-[#0c4a6e]  hover:text-[#76a1dd]',
                                   )}
                                 >
                                   Выйти из профиля
@@ -172,7 +173,7 @@ export default function Namvbar() {
                                   to="/user/main"
                                   className={classNames(
                                     active ? 'bg-gray-100' : '',
-                                    'block px-4 py-2 text-base text-gray-700',
+                                    'block px-4 py-2 text-base text-[#0c4a6e]  hover:text-[#76a1dd]',
                                   )}
                                 >
                                   Digital Nomad Calculator
@@ -184,8 +185,8 @@ export default function Namvbar() {
                                 <Link
                                   to="/user/profile"
                                   className={classNames(
-                                    active ? 'bg-[#c8ddfb]' : '',
-                                    'block px-4 py-2 text-base text-gray-700',
+                                    active ? 'bg-gray-100' : '',
+                                    ' block px-4 py-2 text-base text-[#0c4a6e]  hover:text-[#76a1dd]',
                                   )}
                                 >
                                   Консультация
@@ -197,8 +198,8 @@ export default function Namvbar() {
                                 <button
                                   onClick={logout}
                                   className={classNames(
-                                    active ? 'bg-[#c8ddfb]' : '',
-                                    'block px-4 py-2 text-base text-gray-700',
+                                    active ? 'bg-gray-100' : '',
+                                    'w-full flex px-4 py-2 text-base text-[#0c4a6e]  hover:text-[#76a1dd]',
                                   )}
                                 >
                                   Выйти

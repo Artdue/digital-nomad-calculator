@@ -34,18 +34,23 @@ export default function Foot() {
     window.scrollTo(0, 0);
   };
 
+  const goToHome = () => {
+    navigate('/');
+    window.scrollTo(0, 0);
+  };
+
   return (
-    <div className="flex items-end  w-full  bg-white">
+    <div className="flex items-end  w-full  bg-white mt-7">
       <footer className="w-full text-gray-700 bg-gray-100 body-font">
         <div className="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap ">
           <div className="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
-            <Link to="/">
+            <button onClick={goToHome}>
               <img
                 className="h-[100px] w-full sm:h-full  object-cover mt-4"
                 src="/src/assets/logo.png"
                 alt="logo"
               />
-            </Link>
+            </button>
 
             {/* <div className="mt-4">
               <span className="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
@@ -185,8 +190,11 @@ export default function Foot() {
                   </a>
                 </li> */}
                 <li className="mt-3">
-                  <a className="text-gray-500 cursor-pointer hover:text-gray-900">
-                    +7 (495) 018 51 81
+                  <a
+                    href="tel:+74957951054"
+                    className="text-gray-500 cursor-pointer hover:text-gray-900"
+                  >
+                    +7 (921) 018 51 81
                   </a>
                 </li>
               </nav>

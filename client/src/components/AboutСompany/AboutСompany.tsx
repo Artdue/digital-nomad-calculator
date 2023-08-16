@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  CloudArrowUpIcon,
-  LockClosedIcon,
-  PuzzlePieceIcon,
-  HandThumbUpIcon,
-} from '@heroicons/react/20/solid';
-import { Link } from 'react-router-dom';
+import { LockClosedIcon, PuzzlePieceIcon, HandThumbUpIcon } from '@heroicons/react/20/solid';
+import { Link, useNavigate } from 'react-router-dom';
 
 const features = [
   {
@@ -29,6 +24,12 @@ const features = [
 ];
 
 export default function AboutCompany() {
+  const navigate = useNavigate();
+
+  const toContact = () => {
+    navigate('/contact');
+    window.scrollTo(0, 0);
+  };
   return (
     <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -119,10 +120,13 @@ export default function AboutCompany() {
                 Остались вопросы?{' '}
               </h2>
               <p className="mt-6">
-                <Link to="/contact" className="text-base font-semibold leading-7 text-[#76a1dd]">
+                <button
+                  onClick={toContact}
+                  className="text-base font-semibold leading-7 text-[#76a1dd]"
+                >
                   {' '}
                   Запишитесь на консультацию
-                </Link>
+                </button>
                 , и мы поможем вам в поиске оптимального и рационального решения вашей правовой
                 проблемы.
               </p>
