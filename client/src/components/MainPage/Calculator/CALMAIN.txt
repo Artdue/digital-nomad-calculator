@@ -83,3 +83,323 @@
                     </select>
                   </div>
                 </div> */}
+
+
+
+
+                КНОПКИ!!!!
+
+
+                <div className="flex flex-row space-x-4 justify-center">
+                  {/* <button
+                  type="button"
+                  onClick={toConsult}
+                  className="w-[180.28px] mt-4 px-2 py-1 text-white bg-gradient-to-br from-blue-500 to-purple-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm text-center mr-2 mb-2"
+                ></button> */}
+                  {/* <button
+                  type="button"
+                  onClick={toConsult}
+                  className="w-[180.28px] mt-4 px-2 py-1  text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm text-center mr-2 mb-2"
+                >
+                  Запросить консультацию
+                </button> */}
+                  {/* <div className="mt-8 text-lg">
+            
+                  <p>
+                    <button
+                      onClick={toConsult}
+                      className="text-base font-semibold leading-7 text-[#76a1dd]"
+                    >
+                      Запишитесь на консультацию,
+                    </button>{' '}
+                    и мы поможем вам в подборе идеальной страны
+                  </p>
+                </div> */}
+                  <figure className="mt-6">
+                    <blockquote className="text-center font-light text-gray-700 lg:mb-0 sm:text-lg dark:text-gray-700">
+                      <button
+                        onClick={toConsult}
+                        className="text-base font-semibold leading-7 text-[#76a1dd]"
+                      >
+                        Запишитесь на консультацию
+                      </button>
+                      <br />И мы поможем вам в подборе идеальной страны{' '}
+                    </blockquote>
+                  </figure>
+                  {/* <button
+                  type="button"
+                  onClick={resetStates}
+                  className="w-[106.28px] m-2 mt-4 px-4 py-3 text-white bg-gradient-to-br from-blue-500 to-purple-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm text-center mr-2 mb-2"
+                >
+                  Закрыть
+                </button> */}
+                </div>
+
+
+                // СТАРЫЕ ИНПУТЫ
+
+<div className="flex flex-row space-x-4 justify-center">
+          <div className='justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'>
+            <form ref={formRef} onSubmit={submitHandler} className="form-container">
+              <div className="flex justify-center items-center flex-col">
+                {/* <h1 className="text-2xl font-bold mb-4">Узнать подходящие направления</h1> */}
+                <div className="mb-6">
+                  <h1 className="text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-3xl font-bold tracking-tight text-[#233862]">
+                    {/* Узнать подходящие страны */}
+                    Digital Nomad Calculator
+                  </h1>
+                </div>
+                {/* <div className="mx-auto max-w-2xl lg:max-w-4xl">
+                  <figure className="mt-20">
+                    <blockquote className="text-center font-light text-gray-500 lg:mb-16 sm:text-2xl dark:text-gray-700">
+                      Узнать подходящие направления
+                    </blockquote>
+                  </figure>
+                </div> */}
+                <div className="w-[500px]">
+                  <figure className="mt-2">
+                    <blockquote className="font-light text-gray-700 sm:text-base dark:text-gray-700">
+                      <label htmlFor="citizenship">Гражданство</label>{' '}
+                    </blockquote>
+                  </figure>
+
+                  <div className="relative mt-2 rounded-md shadow-sm">
+                    <select
+                      name="citizenship"
+                      id="citizenship"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      onChange={(e) => setCitizenship(e.target.value)}
+                    >
+                      <option value={citizenship}>{citizenship}</option>
+                      <option value="RU">RU - гражданин РФ</option>
+                      <option value="UKR">UKR - гражданин Украины</option>
+                      <option value="KZ">KZ - гражданин Казахстана</option>
+                      <option value="UZ">UZ - гражданин Узбекистана</option>
+                      <option value="TJ">TJ - гражданин Таджикистана</option>
+                      <option value="AZ">AZ - гражданин Азербайджана</option>
+                    </select>
+                  </div>
+                </div>
+                {/* <div style={{ width: '500px' }}>
+                  <label
+                    htmlFor="citizenship"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Гражданство
+                  </label>
+                  <div className="relative mt-2 shadow-sm">
+                    <select
+                      name="citizenship"
+                      id="citizenship"
+                      className="block w-full border-0 py-2.5 px-0 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#76a1dd] peer focus:text-[#76a1dd]"
+                      onChange={(e) => setCitizenship(e.target.value)}
+                    >
+                      <option value={citizenship}>{citizenship}</option>
+                      <option value="RU">RU - гражданин РФ</option>
+                      <option value="UKR">UKR - гражданин Украины</option>
+                      <option value="KZ">KZ - гражданин Казахстана</option>
+                      <option value="UZ">UZ - гражданин Узбекистана</option>
+                      <option value="TJ">TJ - гражданин Таджикистана</option>
+                      <option value="AZ">AZ - гражданин Азербайджана</option>
+                    </select>
+                  </div>
+                </div> */}
+
+                <div className="w-[500px]">
+                  <figure className="mt-2">
+                    <blockquote className="font-light text-gray-700 sm:text-base dark:text-gray-700">
+                      <label htmlFor="visaT">Предпочтительный тип визы</label>{' '}
+                    </blockquote>
+                  </figure>
+
+                  <div className="relative mt-2 rounded-md shadow-sm">
+                    <select
+                      name="visaT"
+                      id="visaT"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      onChange={(e) => setvisaT(e.target.value)}
+                    >
+                      <option value={visaT}>{visaT}</option>
+                      <option value="ВНЖ">ВНЖ</option>
+                      <option value="Виза">Виза</option>
+                      <option value="Не имеет значения">Не имеет значения</option>
+                    </select>{' '}
+                  </div>
+                </div>
+                {/* 
+                <div style={{ width: '500px' }}>
+                  <label
+                    htmlFor="citizenship"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Предпочтительный тип визы
+                  </label>
+                  <div className="relative mt-2 shadow-sm">
+                    <select
+                      name="visaT"
+                      id="visaT"
+                      className="block w-full border-0 py-2.5 px-0 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#76a1dd] peer focus:text-[#76a1dd]"
+                      onChange={(e) => setvisaT(e.target.value)}
+                    >
+                      <option value={visaT}>{visaT}</option>
+                      <option value="ВНЖ">ВНЖ</option>
+                      <option value="Виза">Виза</option>
+                      <option value="Не имеет значения">Не имеет значения</option>
+                    </select>
+                  </div>
+                </div> */}
+
+                <div className="w-[500px]">
+                  <figure className="mt-2">
+                    <blockquote className="font-light text-gray-700 sm:text-base dark:text-gray-700">
+                      <label htmlFor="visaS">Персональная виза или семейная</label>{' '}
+                    </blockquote>
+                  </figure>
+                  <div className="relative mt-2 rounded-md shadow-sm">
+                    <select
+                      name="visaS"
+                      id="visaS"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      onChange={(e) => setvisaS(e.target.value)}
+                    >
+                      <option value={visaS}>{visaS}</option>
+                      <option value="Семейная">Семейная</option>
+                      <option value="Персональная">Персональная</option>
+                      <option value="Не имеет значения">Не имеет значения</option>
+                    </select>
+                  </div>{' '}
+                </div>
+
+                {/* <div style={{ width: '500px' }}>
+                  <label
+                    htmlFor="criminal"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Персональная виза или семейная
+                  </label>
+                  <div className="relative mt-2 rounded-md shadow-sm">
+                    <select
+                      name="visaS"
+                      id="visaS"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      onChange={(e) => setvisaS(e.target.value)}
+                    >
+                      <option value={visaS}>{visaS}</option>
+                      <option value="Семейная">Семейная</option>
+                      <option value="Персональная">Персональная</option>
+                      <option value="Не имеет значения">Не имеет значения</option>
+                    </select>
+                  </div>
+                </div> */}
+
+                <div className="w-[500px]">
+                  <figure className="mt-2">
+                    <blockquote className="font-light text-gray-700 sm:text-base dark:text-gray-700">
+                      <label htmlFor="income"> Доход в месяц более</label>{' '}
+                    </blockquote>
+                  </figure>
+                  <div className="relative mt-2 rounded-md shadow-sm">
+                    <select
+                      name="income"
+                      id="income"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      onChange={(e) => setIncome(e.target.value)}
+                    >
+                      <option value={income}>{income}$</option>
+                      <option value="500">500€</option>
+                      <option value="1000">1000€</option>
+                      <option value="1500">1500€</option>
+                      <option value="2000">2000€</option>
+                      <option value="2500">2500€</option>
+                      <option value="3000">3000€</option>
+                      <option value="4000">4000€</option>
+                      <option value="5000">5000€</option>
+                    </select>
+                  </div>{' '}
+                </div>
+
+                {/* <div style={{ width: '500px' }}>
+                  <label
+                    htmlFor="citizenship"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Доход в месяц более
+                  </label>
+                  <div className="relative mt-2 rounded-md shadow-sm">
+                    <select
+                      name="income"
+                      id="income"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      onChange={(e) => setIncome(e.target.value)}
+                    >
+                      <option value={income}>{income}€</option>
+                      <option value="500">500€</option>
+                      <option value="1000">1000€</option>
+                      <option value="1500">1500€</option>
+                      <option value="2000">2000€</option>
+                      <option value="2500">2500€</option>
+                      <option value="3000">3000€</option>
+                      <option value="4000">4000€</option>
+                      <option value="5000">5000€</option>
+                    </select>
+                  </div>
+                </div> */}
+
+                <div className="w-[500px]">
+                  <figure className="mt-2">
+                    <blockquote className="font-light text-gray-700 sm:text-base dark:text-gray-700">
+                      <label htmlFor="date"> Примерная дата устройства на текущую работу</label>{' '}
+                    </blockquote>
+                  </figure>
+
+                  <div className="relative mt-2 rounded-md shadow-sm">
+                    <input
+                      id="date"
+                      type="date"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      name="employmentDate"
+                      value={employmentDate}
+                      onChange={(e) => setEmploymentDate(e.target.value)}
+                    />
+                  </div>
+                </div>
+                {/* <div style={{ width: '500px' }}>
+                  <label
+                    htmlFor="citizenship"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Примерная дата устройства на текущую работу
+                  </label>
+                  <div className="relative mt-2 rounded-md shadow-sm">
+                    <input
+                      type="date"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      name="employmentDate"
+                      value={employmentDate}
+                      onChange={(e) => setEmploymentDate(e.target.value)}
+                    />
+                  </div>
+                </div> */}
+
+                <div className="flex flex-row ">
+                  <button className="m-2 mt-4 px-4 py-3 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2">
+                    Подобрать
+                  </button>
+                  {/* <button
+                    type="button"
+                    onClick={resetCalc}
+                    className="w-[106.28px] m-2 mt-4 px-4 py-3 text-white rounded-md  bg-indigo-600 hover:bg-indigo-500 font-medium text-sm text-center mr-2"
+                  >
+                    Сбросить
+                  </button> */}
+                  <button
+                    type="button"
+                    onClick={resetCalc}
+                    className="w-[106.28px] m-2 mt-4 px-4 py-3 text-white bg-gradient-to-br from-blue-500 to-purple-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm text-center mr-2 mb-2"
+                  >
+                    Сбросить
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
