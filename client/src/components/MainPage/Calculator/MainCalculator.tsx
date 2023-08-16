@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { getStates } from '../../../Redux/thunks/getStates';
 import type { RootState } from '../../../Types/types';
 import { profilePut } from '../../../Redux/thunks/profileThunk';
+import { Card } from 'flowbite-react';
 
 export default function MainCalculator(): React.JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return
@@ -139,7 +140,7 @@ export default function MainCalculator(): React.JSX.Element {
   };
 
   return (
-    <>
+    <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
       {loading ? (
         <div className="flex h-screen items-center justify-center">
           <img src="/src/assets/reload-cat.gif" alt="" />
@@ -149,20 +150,32 @@ export default function MainCalculator(): React.JSX.Element {
           <div className='justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'>
             <form ref={formRef} onSubmit={submitHandler} className="form-container">
               <div className="flex justify-center items-center flex-col">
-                <h1 className="text-2xl font-bold mb-4">Узнать подходящие направления</h1>
+                {/* <h1 className="text-2xl font-bold mb-4">Узнать подходящие направления</h1> */}
+                <div className="mb-6">
+                  <h1 className="text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-3xl font-bold tracking-tight text-[#233862]">
+                    {/* Узнать подходящие страны */}
+                    Digital Nomad Calculator
+                  </h1>
+                </div>
+                {/* <div className="mx-auto max-w-2xl lg:max-w-4xl">
+                  <figure className="mt-20">
+                    <blockquote className="text-center font-light text-gray-500 lg:mb-16 sm:text-2xl dark:text-gray-700">
+                      Узнать подходящие направления
+                    </blockquote>
+                  </figure>
+                </div> */}
+                <div className="w-[500px]">
+                  <figure className="mt-2">
+                    <blockquote className="font-light text-gray-500 sm:text-base dark:text-gray-700">
+                      <label htmlFor="citizenship">Гражданство</label>{' '}
+                    </blockquote>
+                  </figure>
 
-                <div style={{ width: '500px' }}>
-                  <label
-                    htmlFor="citizenship"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Гражданство
-                  </label>
                   <div className="relative mt-2 rounded-md shadow-sm">
                     <select
                       name="citizenship"
                       id="citizenship"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       onChange={(e) => setCitizenship(e.target.value)}
                     >
                       <option value={citizenship}>{citizenship}</option>
@@ -175,18 +188,65 @@ export default function MainCalculator(): React.JSX.Element {
                     </select>
                   </div>
                 </div>
-                <div style={{ width: '500px' }}>
+                {/* <div style={{ width: '500px' }}>
                   <label
-                    htmlFor="criminal"
+                    htmlFor="citizenship"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Предпочтительный тип визы
+                    Гражданство
                   </label>
+                  <div className="relative mt-2 shadow-sm">
+                    <select
+                      name="citizenship"
+                      id="citizenship"
+                      className="block w-full border-0 py-2.5 px-0 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#76a1dd] peer focus:text-[#76a1dd]"
+                      onChange={(e) => setCitizenship(e.target.value)}
+                    >
+                      <option value={citizenship}>{citizenship}</option>
+                      <option value="RU">RU - гражданин РФ</option>
+                      <option value="UKR">UKR - гражданин Украины</option>
+                      <option value="KZ">KZ - гражданин Казахстана</option>
+                      <option value="UZ">UZ - гражданин Узбекистана</option>
+                      <option value="TJ">TJ - гражданин Таджикистана</option>
+                      <option value="AZ">AZ - гражданин Азербайджана</option>
+                    </select>
+                  </div>
+                </div> */}
+
+                <div className="w-[500px]">
+                  <figure className="mt-2">
+                    <blockquote className="font-light text-gray-500 sm:text-base dark:text-gray-700">
+                      <label htmlFor="visaT">Предпочтительный тип визы</label>{' '}
+                    </blockquote>
+                  </figure>
+
                   <div className="relative mt-2 rounded-md shadow-sm">
                     <select
                       name="visaT"
                       id="visaT"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      onChange={(e) => setvisaT(e.target.value)}
+                    >
+                      <option value={visaT}>{visaT}</option>
+                      <option value="ВНЖ">ВНЖ</option>
+                      <option value="Виза">Виза</option>
+                      <option value="Не имеет значения">Не имеет значения</option>
+                    </select>{' '}
+                  </div>
+                </div>
+                {/* 
+                <div style={{ width: '500px' }}>
+                  <label
+                    htmlFor="citizenship"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Предпочтительный тип визы
+                  </label>
+                  <div className="relative mt-2 shadow-sm">
+                    <select
+                      name="visaT"
+                      id="visaT"
+                      className="block w-full border-0 py-2.5 px-0 text-sm text-gray-900 bg-transparent border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#76a1dd] peer focus:text-[#76a1dd]"
                       onChange={(e) => setvisaT(e.target.value)}
                     >
                       <option value={visaT}>{visaT}</option>
@@ -195,8 +255,30 @@ export default function MainCalculator(): React.JSX.Element {
                       <option value="Не имеет значения">Не имеет значения</option>
                     </select>
                   </div>
+                </div> */}
+
+                <div className="w-[500px]">
+                  <figure className="mt-2">
+                    <blockquote className="font-light text-gray-500 sm:text-base dark:text-gray-700">
+                      <label htmlFor="visaS">Персональная виза или семейная</label>{' '}
+                    </blockquote>
+                  </figure>
+                  <div className="relative mt-2 rounded-md shadow-sm">
+                    <select
+                      name="visaS"
+                      id="visaS"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      onChange={(e) => setvisaS(e.target.value)}
+                    >
+                      <option value={visaS}>{visaS}</option>
+                      <option value="Семейная">Семейная</option>
+                      <option value="Персональная">Персональная</option>
+                      <option value="Не имеет значения">Не имеет значения</option>
+                    </select>
+                  </div>{' '}
                 </div>
-                <div style={{ width: '500px' }}>
+
+                {/* <div style={{ width: '500px' }}>
                   <label
                     htmlFor="criminal"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -216,8 +298,35 @@ export default function MainCalculator(): React.JSX.Element {
                       <option value="Не имеет значения">Не имеет значения</option>
                     </select>
                   </div>
+                </div> */}
+
+                <div className="w-[500px]">
+                  <figure className="mt-2">
+                    <blockquote className="font-light text-gray-500 sm:text-base dark:text-gray-700">
+                      <label htmlFor="income"> Доход в месяц более</label>{' '}
+                    </blockquote>
+                  </figure>
+                  <div className="relative mt-2 rounded-md shadow-sm">
+                    <select
+                      name="income"
+                      id="income"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      onChange={(e) => setIncome(e.target.value)}
+                    >
+                      <option value={income}>{income}$</option>
+                      <option value="500">500$</option>
+                      <option value="1000">1000$</option>
+                      <option value="1500">1500$</option>
+                      <option value="2000">2000$</option>
+                      <option value="2500">2500$</option>
+                      <option value="3000">3000$</option>
+                      <option value="4000">4000$</option>
+                      <option value="5000">5000$</option>
+                    </select>
+                  </div>{' '}
                 </div>
-                <div style={{ width: '500px' }}>
+
+                {/* <div style={{ width: '500px' }}>
                   <label
                     htmlFor="citizenship"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -242,8 +351,27 @@ export default function MainCalculator(): React.JSX.Element {
                       <option value="5000">5000$</option>
                     </select>
                   </div>
+                </div> */}
+
+                <div className="w-[500px]">
+                  <figure className="mt-2">
+                    <blockquote className="font-light text-gray-500 sm:text-base dark:text-gray-700">
+                      <label htmlFor="date"> Примерная дата устройства на текущую работу</label>{' '}
+                    </blockquote>
+                  </figure>
+
+                  <div className="relative mt-2 rounded-md shadow-sm">
+                    <input
+                      id="date"
+                      type="date"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      name="employmentDate"
+                      value={employmentDate}
+                      onChange={(e) => setEmploymentDate(e.target.value)}
+                    />
+                  </div>
                 </div>
-                <div style={{ width: '500px' }}>
+                {/* <div style={{ width: '500px' }}>
                   <label
                     htmlFor="citizenship"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -253,37 +381,14 @@ export default function MainCalculator(): React.JSX.Element {
                   <div className="relative mt-2 rounded-md shadow-sm">
                     <input
                       type="date"
-                      className="w-full py-1 px-2 border rounded-md"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       name="employmentDate"
                       value={employmentDate}
                       onChange={(e) => setEmploymentDate(e.target.value)}
                     />
                   </div>
-                </div>
-                {/* <div style={{ width: '500px' }}>
-                  <label
-                    htmlFor="work_exp"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    На текущей работе более (в месяцах):
-                  </label>
-                  <div className="relative mt-2 rounded-md shadow-sm">
-                    <select
-                      name="work_exp"
-                      id="work_exp"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      onChange={(e) => setworkExp(e.target.value)}
-                    >
-                      <option value={workExp}>{workExp}</option>
-                      <option value="3">3 месяца</option>
-                      <option value="6">6 месяцев</option>
-                      <option value="9">9 месяцев</option>
-                      <option value="12">12 месяцев</option>
-                      <option value="18">18 месяцев</option>
-                      <option value="18">24 месяца</option>
-                    </select>
-                  </div>
                 </div> */}
+
                 <div className="flex flex-row space-x-4 justify-space-between">
                   <button className="mt-4 mr-8 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-green-500">
                     Подобрать
@@ -339,43 +444,36 @@ export default function MainCalculator(): React.JSX.Element {
               </div>
             </div>
           )}
+
           {filterStates.length ? (
-            <div className="flex justify-between items-center flex flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-              <div className="states-container mt-4">
-                <div className="flex justify-center items-center flex flex-col state mt-3">
-                  <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-                    Страны подходящие для Вас
-                  </h5>
-                </div>
-                {filterStates.length ? (
-                  <div
-                    className="flex justify-flex-start items-center flex flex-col w-full"
-                    style={{ width: '500px' }}
-                  >
-                    {filterStates.map((state, i) => (
-                      <div
-                        key={`${i}`}
-                        className="flex justify-center items-center flex flex-col state mt-3"
-                        style={{ width: '300px' }}
-                      >
-                        <div className="flex justify-center items-center flex flex-col state-header">
-                          <p className="title mt-1 font-large leading-tight text-neutral-800 dark:text-neutral-50">
-                            {`${i + 1} - `} {state.state_name}
-                          </p>
-                          <button
-                            type="button"
-                            className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
-                            onClick={() => openModal(state)}
-                          >
-                            Подробнее
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : null}
+            <div className="text-center flex-1 bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+              <div className="mb-6">
+                <h1 className="text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-3xl font-bold tracking-tight text-[#233862]">
+                  {/* Страны, подходящие Вам */}
+                  Подходящие страны
+                </h1>
               </div>
-              <div className="flex flex-row space-x-4 justify-space-between">
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {filterStates.map((state, i) => (
+                  <div key={i} className="max-w-sm">
+                    <Card>
+                      <h5 className="font-normal text-gray-700 dark:text-gray-400 text-center">
+                        <p>{state.state_name}</p>
+                      </h5>{' '}
+                      <button
+                        type="button"
+                        className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
+                        onClick={() => openModal(state)}
+                      >
+                        Подробнее
+                      </button>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-row space-x-4 justify-center">
                 <button
                   type="button"
                   onClick={resetStates}
@@ -398,6 +496,6 @@ export default function MainCalculator(): React.JSX.Element {
         </div>
       )}
       <div />
-    </>
+    </div>
   );
 }

@@ -1,0 +1,85 @@
+        {filterStates.length ? (
+            <div className="flex justify-between items-center flex flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+              <div className="states-container mt-4">
+                <div className="flex justify-center items-center flex flex-col state mt-3">
+                  <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                    Страны подходящие для Вас
+                  </h5>
+                </div>
+                {filterStates.length ? (
+                  <div
+                    className="flex justify-flex-start items-center flex flex-col w-full"
+                    style={{ width: '500px' }}
+                  >
+                    {filterStates.map((state, i) => (
+                      <div
+                        key={`${i}`}
+                        className="flex justify-center items-center flex flex-col state mt-3"
+                        style={{ width: '300px' }}
+                      >
+                        <div className="flex justify-center items-center flex flex-col state-header">
+                          <p className="title mt-1 font-large leading-tight text-neutral-800 dark:text-neutral-50">
+                            {`${i + 1} - `} {state.state_name}
+                          </p>
+                          <button
+                            type="button"
+                            className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
+                            onClick={() => openModal(state)}
+                          >
+                            Подробнее
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+              
+              <div className="flex flex-row space-x-4 justify-space-between">
+                <button
+                  type="button"
+                  onClick={resetStates}
+                  className="mt-4 mr-8 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-green-500"
+                >
+                  Закрыть
+                </button>
+                <button
+                  onClick={toConsult}
+                  className="mt-4 ml-8 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-green-500"
+                  style={{
+                    alignSelf: 'center',
+                  }}
+                >
+                  Консультация
+                </button>
+              </div>
+            </div>
+          ) : null}
+
+
+          старый код до изменений 
+
+                  {/* <div style={{ width: '500px' }}>
+                  <label
+                    htmlFor="work_exp"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    На текущей работе более (в месяцах):
+                  </label>
+                  <div className="relative mt-2 rounded-md shadow-sm">
+                    <select
+                      name="work_exp"
+                      id="work_exp"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      onChange={(e) => setworkExp(e.target.value)}
+                    >
+                      <option value={workExp}>{workExp}</option>
+                      <option value="3">3 месяца</option>
+                      <option value="6">6 месяцев</option>
+                      <option value="9">9 месяцев</option>
+                      <option value="12">12 месяцев</option>
+                      <option value="18">18 месяцев</option>
+                      <option value="18">24 месяца</option>
+                    </select>
+                  </div>
+                </div> */}
