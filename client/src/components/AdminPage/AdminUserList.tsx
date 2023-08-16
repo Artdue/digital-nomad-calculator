@@ -127,6 +127,13 @@ function AdminUserList() {
           </button>
           <button
             type="button"
+            className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            onClick={() => setSelectedStatus('Документы отправлены')}
+          >
+            Пользователь отправил документы
+          </button>
+          <button
+            type="button"
             className="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
             onClick={() => setSelectedStatus('Получены документы')}
           >
@@ -449,6 +456,7 @@ function AdminUserList() {
                         }}
                       >
                         <option value={null}>Новый пользователь</option>
+                        <option value="Документы отправлены">Пользователь отправил документы</option>
                         <option value="Получены документы">Получены документы</option>
                         <option value="Приняты в работу">Приняты в работу</option>
                         <option value="Требуют уточнения">Требуют уточнения</option>

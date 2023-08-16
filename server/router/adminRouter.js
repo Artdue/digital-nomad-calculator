@@ -72,7 +72,6 @@ adminRouter.get('/users', async (req, res) => {
 });
 
 adminRouter.put('/users/:id', async (req, res) => {
-  console.log('=========>  Я В РУЧКЕ');
   const userId = req.params.id;
   try {
     await User.update(req.body, {
