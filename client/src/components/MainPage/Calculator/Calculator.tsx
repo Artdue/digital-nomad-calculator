@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Card } from 'flowbite-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { getStates } from '../../../Redux/thunks/getStates';
 import type { RootState } from '../../../Types/types';
+import { unregtUserGet } from '../../../Redux/thunks/unregThunk';
 
 // import type { RootState } from '../../../Types/types';
 
@@ -11,7 +12,7 @@ export default function Calculator(): React.JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return
   const states = useAppSelector((state: RootState) => state.stateSlice.states);
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const formRef = useRef<HTMLFormElement | null>(null);
   const [income, setIncome] = useState<string>('');
   const [employmentDate, setEmploymentDate] = useState('');
@@ -34,10 +35,10 @@ export default function Calculator(): React.JSX.Element {
     }
     setFilterStates([]);
   };
-  const toReg = () => {
-    window.scrollTo(0, 0);
-    navigate('/user/register');
-  };
+  // const toReg = () => {
+  //   window.scrollTo(0, 0);
+  //   navigate('/user/register');
+  // };
 
   console.log(states);
 
@@ -81,6 +82,14 @@ export default function Calculator(): React.JSX.Element {
 
     console.log('Подходящие страны:', commonStates);
     setFilterStates(commonStates);
+
+    const userInputs = {
+      income,
+      employmentDate,
+      citizenship,
+    };
+
+    void dispatch(unregtUserGet(userInputs));
   };
 
   return (
@@ -110,14 +119,14 @@ export default function Calculator(): React.JSX.Element {
                       onChange={(e) => setIncome(e.target.value)}
                     >
                       <option value={income}>Выберите</option>
-                      <option value="500">500$</option>
-                      <option value="1000">1000$</option>
-                      <option value="1500">1500$</option>
-                      <option value="2000">2000$</option>
-                      <option value="2500">2500$</option>
-                      <option value="3000">3000$</option>
-                      <option value="4000">4000$</option>
-                      <option value="5000">5000$</option>
+                      <option value="500">500€</option>
+                      <option value="1000">1000€</option>
+                      <option value="1500">1500€</option>
+                      <option value="2000">2000€</option>
+                      <option value="2500">2500€</option>
+                      <option value="3000">3000€</option>
+                      <option value="4000">4000€</option>
+                      <option value="5000">5000€</option>
                     </select>
                   </div>
                 </div>
@@ -127,7 +136,7 @@ export default function Calculator(): React.JSX.Element {
                     htmlFor="citizenship"
                     className="block text-sm font-medium leading-6 text-gray-900 mt-2"
                   >
-                    Примерная дата устройства на текущую работу:
+                    Примерная дата устройства на текущую работу
                   </label>
                   <div className="relative mt-2 rounded-md shadow-sm">
                     <input
