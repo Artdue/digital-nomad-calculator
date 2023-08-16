@@ -57,7 +57,7 @@ export default function TestPage() {
                   </svg>
                 </span>
                 <span className="ml-2 text-sm tracking-wide truncate">
-                  Обновление данных для <br />
+                  бновление данных для <br />
                   Digital Nomad Calculator{' '}
                 </span>
               </Link>
