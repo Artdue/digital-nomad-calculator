@@ -452,7 +452,9 @@ function AdminUserList() {
                         }}
                       >
                         <option value={null}>Новый пользователь</option>
-                        <option value="Документы отправлены">Пользователь отправил документы</option>
+                        <option value="Документы отправлены">
+                          Пользователь отправил документы
+                        </option>
                         <option value="Получены документы">Получены документы</option>
                         <option value="Приняты в работу">Приняты в работу</option>
                         <option value="Требуют уточнения">Требуют уточнения</option>
