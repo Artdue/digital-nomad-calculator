@@ -35,11 +35,9 @@ export default function Calculator(): React.JSX.Element {
     setFilterStates([]);
   };
   const toReg = () => {
-    window.scrollTo(0, 0);
     navigate('/user/register');
+    window.scrollTo(0, 0);
   };
-
-  console.log(states);
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
@@ -256,14 +254,14 @@ export default function Calculator(): React.JSX.Element {
 
               <div className="flex justify-center items-end col-span-2 mt-3 space-between">
                 <p className="text-center">
-                  <Link
-                    to="/user/register"
+                  <button
+                    onClick={toReg}
                     className="text-base font-semibold leading-7 text-blue-500"
                   >
                     {' '}
                     {/* <span className="bg-clip-text text-transparent bg-gradient-to-tr from-purple-600 to-blue-500 hover:to-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300"> */}
                     Зарегистрируйтесь {/* </span> */}
-                  </Link>
+                  </button>
                   , чтобы увидеть подробную информацию
                 </p>
               </div>

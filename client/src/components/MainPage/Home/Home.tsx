@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import * as Scroll from 'react-scroll';
 // import { Link } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ import Contact from '../../ContactAndFeed/Contact/Contact';
 import Qualities from '../Qualities/Qualities';
 import { Link } from 'react-router-dom';
 
-export default function Home() {
+export default function Home({ calculator }) {
   const calculateScroll = () => {
     window.scrollTo(0, 700);
   };
@@ -36,13 +36,13 @@ export default function Home() {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <button
                 onClick={calculateScroll}
-                className="rounded-md m-2 mt-4 px-4 h-[45px] w-[230px] py-2 text-white text-[18px] bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2 scroll-button"
+                className="rounded-md m-2  px-4 h-[45px] w-[230px] py-2 text-white text-[18px] font-semibold  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2 scroll-button"
                 // href="#bottom-section"
               >
                 Подобрать страну
               </button>
 
-              <Link to="/contact" className="text-l font-semibold leading-6 text-gray-900">
+              <Link to="/contact" className=" font-semibold text-l leading-6 text-gray-900">
                 <button>Записаться на консультацию</button> <span aria-hidden="true">→</span>
               </Link>
             </div>
@@ -68,9 +68,11 @@ export default function Home() {
       </div>
       {/* <div id="bottom-section"></div> */}
       {/* <div className="w-full rounded overflow-hidden shadow-lg bg-white flex flex-col p-6 md:py-8 lg:py-12 xl:py-10 md:px-8 lg:px-12 xl:px-20"> */}
-      <Calculator />
+      <div ref={calculator}>
+        <Calculator />
+      </div>
       {/* </div> */}
-      <div className="mt-8">
+      <div className="mt-8 pl-10">
         <Qualities />
       </div>
       {/* <div>
