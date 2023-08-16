@@ -404,14 +404,14 @@ export default function MainCalculator(): React.JSX.Element {
                   </div>
                 </div> */}
 
-                <div className="flex flex-row space-x-4 justify-space-between">
-                  <button className="mt-4 mr-8 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-green-500">
+                <div className="flex flex-row ">
+                  <button className="m-2 mt-4 px-4 py-3 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2">
                     Подобрать
                   </button>
                   <button
                     type="button"
                     onClick={resetCalc}
-                    className="mt-4 ml-4 px-8 py-2 bg-indigo-600 text-white rounded-md hover:bg-green-500"
+                    className="w-[106.28px] m-2 mt-4 px-4 py-3 text-white rounded-md  bg-indigo-600 hover:bg-indigo-500 font-medium text-sm text-center mr-2"
                   >
                     Сбросить
                   </button>
