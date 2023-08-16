@@ -67,30 +67,30 @@ profileRouter.post(
     try {
       await User.update(
         { passport: `/uploads/passport/${originalname}` },
-        { where: { id } }
+        { where: { id } },
       );
       res.send({ msg: 'Паспорт успешно загружен' });
     } catch (error) {
       console.log('error', error);
     }
-  }
+  },
 );
 profileRouter.post(
   '/:id/balance',
-  uploadsBalance.single('file'),
+    uploadsBalance.single('file'),
   async (req, res) => {
     const { id } = req.params;
     const originalname = req.file.filename;
     try {
       await User.update(
         { balance: `/uploads/balance/${originalname}` },
-        { where: { id } }
+        { where: { id } },
       );
       res.send({ msg: 'Банковская выписка успешно загружена' });
     } catch (error) {
       console.log('error', error);
     }
-  }
+  },
 );
 
 profileRouter.post(
@@ -102,13 +102,13 @@ profileRouter.post(
     try {
       await User.update(
         { lease: `/uploads/lease/${originalname}` },
-        { where: { id } }
+        { where: { id } },
       );
       res.send({ msg: 'Справка о работе успешно загружена' });
     } catch (error) {
       console.log('error', error);
     }
-  }
+  },
 );
 
 module.exports = profileRouter;
