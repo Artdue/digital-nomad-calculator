@@ -7,6 +7,8 @@ export default function NewState() {
   const formRef = useRef(null);
 
   const [showForm, setShowForm] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
+
 
   const dispatch = useDispatch();
   const [stateName, setStateName] = useState<string>('');
@@ -39,6 +41,7 @@ export default function NewState() {
     };
     try {
       void dispatch(addState(newState));
+      setShowNotification(true);
       setStateName('');
       setMinIncome('');
       setBannedCitizenship('');
@@ -58,6 +61,17 @@ export default function NewState() {
 
   const [showModal, setShowModal] = useState(false);
 
+  useEffect(() => {
+    if (showNotification) {
+      const notificationTimeout = setTimeout(() => {
+        setShowNotification(false); 
+      }, 5000);
+  
+      return () => clearTimeout(notificationTimeout);
+    }
+  }, [showNotification]);
+  
+
   const openModal = () => {
     setShowModal(true);
   };
@@ -69,21 +83,28 @@ export default function NewState() {
     <>
       <TestPage />
       <div className="flex justify-center mb-4">
-        {/* <button
-          onClick={() => {
-            setShowForm(!showForm);
-          }}
-          type="button"
-          className="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-        > */}
-        <button
-          onClick={() => openModal()}
-          type="button"
-          className="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-        >
-          Добавление данных в калькулятор
-        </button>
-      </div>
+  <button
+    onClick={() => openModal()}
+    type="button"
+    className="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+  >
+    Добавление данных в калькулятор
+  </button>
+</div>
+
+{showNotification && (
+  <div
+    id="status"
+    className="fixed top-16 left-1/2 animate-pulse transform -translate-x-1/2 w-300 z- bg-gradient-to-br from-purple-600 to-blue-500 p-4 rounded-md text-white text-center"
+    style={{
+      transition: 'opacity 0.5s',
+      opacity: showNotification ? 1 : 0,
+      zIndex: 9999, // Установите здесь нужное значение z-index
+    }}  
+  >
+    Страна добавлена
+  </div>
+)}
 
       {showModal && (
         // <div

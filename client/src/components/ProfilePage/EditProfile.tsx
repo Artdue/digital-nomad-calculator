@@ -11,6 +11,7 @@ export default function EditProfile(): React.JSX.Element {
   const statusS = useAppSelector((state) => state.profileSlice);
   const userData = profile.profile;
   const { loading } = statusS;
+  const userInputs = useAppSelector((state) => state.unregSlice);
 
   const [status, setStatus] = useState('');
 
@@ -18,14 +19,18 @@ export default function EditProfile(): React.JSX.Element {
   const [middleName, setMiddleName] = useState(userData?.middle_name || '');
   const [lastName, setLastName] = useState(userData?.last_name || '');
   //   const [email, setEmail] = useState('super-Multer@was-born-on-Phiket.th');
-  const [citizenship, setCitizenship] = useState(userData?.citizenship || '');
-  const [income, setIncome] = useState(userData?.income || 0);
-  const [employmentDate, setEmploymentDate] = useState(userData?.work_date || '');
+  const [citizenship, setCitizenship] = useState(
+    userData?.citizenship || userInputs?.citizenship || '',
+  );
+  const [income, setIncome] = useState(userData?.income || userInputs?.income || 0);
+  const [employmentDate, setEmploymentDate] = useState(
+    userData?.work_date || userInputs?.employmentDate || '',
+  );
   const [workExp, setworkExp] = useState(userData?.work_exp || 0);
   const [phone, setPhone] = useState(userData?.phoneNumber || '');
   const [birthDate, setbirthDate] = useState(userData?.birthDate || '');
-  const [visaType, setvisaType] = useState(userData?.visaType || '');
-  const [visaShare, setvisaShare] = useState(userData?.visaShare || '');
+  const [visaType, setvisaType] = useState(userData?.visaType || userInputs?.visaT || '');
+  const [visaShare, setvisaShare] = useState(userData?.visaShare || userInputs?.visaS || '');
 
   // const [showModal, setShowModal] = useState(false);
 
@@ -217,7 +222,7 @@ export default function EditProfile(): React.JSX.Element {
                 </div>
                 <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-gray-900 mt-[11.2px]">
-                    Чистый доход в $
+                    Чистый доход в €
                   </dt>
                   <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                     <input

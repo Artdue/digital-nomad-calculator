@@ -151,6 +151,10 @@ function Profile() {
                   Загрузить
                 </button>
               )}
+              <p>
+                Желательные форматы/расширения загружаемых документов/файлов: .pdf, .txt, .docx,
+                .jpg, .jpeg, .img, .png, .pptx
+              </p>
             </form>
           </div>{' '}
         </div>

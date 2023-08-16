@@ -5,6 +5,8 @@ const cors = require('cors');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
+const checkFileAccess = require('./middleware/checkFileAccess');
+
 const userRouter = require('./router/userRouter');
 const profileRouter = require('./router/profileRouter');
 const adminRouter = require('./router/adminRouter');
@@ -15,9 +17,6 @@ const mainAdminRouter = require('./router/mainAdminRouter');
 const nodemailerRouter = require('./router/nodemailerRouter');
 
 require('./googleAuth');
-
-
-
 
 const sessionConfig = {
   name: 'name',
@@ -40,7 +39,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/uploads/', express.static('uploads'));
+app.use('/uploads/', checkFileAccess, express.static('uploads'));
 // app.use('/uploads/passport', express.static('passport'));
 // app.use('/uploads/balance', express.static(' balance'));
 // app.use('/uploads/lease', express.static('lease'));
@@ -53,6 +52,5 @@ app.use('/changeProfile', usProfRouter);
 app.use('/google', googleRouter);
 app.use('/mainAdmin', mainAdminRouter);
 app.use('/nodemailer', nodemailerRouter);
-
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));

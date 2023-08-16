@@ -12,8 +12,11 @@ export default function Contact() {
             {/* <div className="flex justify-center">
               <h2 className="text-2xl font-semibold mb-4">КОНТАКТЫ</h2>
             </div> */}
-            <h2 className="text-center mt-8">
-              <span className="inline-block text-2xl font-medium mb-3 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 rounded-lg px-5 py-2.5 text-[#76a1dd] text-transparent bg-clip-text sm:text-base md:text-xl lg:text-2xl">
+            <h2 className="mt-0 mb-5">
+              {/* <span className="inline-block text-2xl font-medium mb-3 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 rounded-lg px-5 py-2.5 text-[#76a1dd] text-transparent bg-clip-text sm:text-base md:text-xl lg:text-2xl"> */}
+              <span className="inline-block text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-6xl font-bold tracking-tight text-[#233862] ">
+                {/* здесь градиент */}
+                {/* <span className="nline-block text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-6xl font-bold tracking-tight bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 rounded-lg px-5 py-2.5 text-[#76a1dd] text-transparent bg-clip-text sm:text-base md:text-xl lg:text-2xl "> */}
                 КОНТАКТЫ{' '}
               </span>
             </h2>
@@ -26,8 +29,7 @@ export default function Contact() {
               <blockquote className="font-light text-gray-500 lg:mb-6 sm:text-xl dark:text-gray-700">
                 Мы стремимся к долгосрочному сотрудничеству с каждым клиентом, обеспечивая
                 оперативное и качественное выполнение задач в соответствии с законодательством РФ и
-                других стран. Взаимодействие с нашими клиентами приносит нам огромное удовольствие,
-                и мы всегда рады общению – пишите и звоните нам.{' '}
+                других стран.
               </blockquote>
             </figure>
 
