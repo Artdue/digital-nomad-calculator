@@ -4,7 +4,7 @@ import { EyeIcon } from '@heroicons/react/20/solid';
 import { getUsers } from '../../Redux/thunks/getUsers';
 import { editUser } from '../../Redux/thunks/editUsersList';
 import TestPage from './SideBarAdmin';
-import nodemailerAdminSend from '../../Redux/thunks/nodemaileradmin'
+import nodemailerAdminSend from '../../Redux/thunks/nodemaileradmin';
 import { useAppSelector } from '../../Redux/hooks';
 
 function AdminUserList() {
@@ -25,19 +25,15 @@ function AdminUserList() {
   const state = useAppSelector((state) => state.nodeSlice);
   console.log(state);
 
-  
   const sendMesg = (user) => {
-    console.log('Отправка письма', user)
+    console.log('Отправка письма', user);
     void dispatch(nodemailerAdminSend(user));
   };
-
 
   const [modalForUser, setModalForUser] = useState(''); // пока не важно
   console.log('🚀 ~ file: AdminUserList.tsx:23 ~ AdminUserList ~ modalForUser:', modalForUser);
 
   const handleStatusChange = async (id) => {
-
-    
     try {
       const newStatus = userStatusMap[id] || selectedStatus;
       await dispatch(editUser({ id, data: { document_status: newStatus } }));
@@ -275,7 +271,7 @@ function AdminUserList() {
                     </div>{' '}
                     <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                       <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
-                        Чистый доход в $
+                        Чистый доход в €
                       </dt>
                       <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                         <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -455,20 +451,19 @@ function AdminUserList() {
                         <option value="Готово">Готово</option>
                       </select>
                       <div className="mt-auto pt-5">
-                       
-     			 <button
-                        onClick={()=>sendMesg(user)}
+                        <button
+                          onClick={() => sendMesg(user)}
                           type="button"
                           className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                         >
                           Отправить письмо
                         </button>
-                         <button
+                        <button
                           onClick={() => handleStatusChange(user.id)}
                           className="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                         >
                           Сохранить
-                        </button> 
+                        </button>
 
                         {/* <button
                         type="button"

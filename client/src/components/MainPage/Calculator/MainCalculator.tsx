@@ -328,7 +328,7 @@ export default function MainCalculator(): React.JSX.Element {
                       className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20font-light text-gray-500 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       onChange={(e) => setIncome(e.target.value)}
                     >
-                      <option value={income}>{income}$</option>
+                      <option value={income}>{income}€</option>
                       <option value="500">500€</option>
                       <option value="1000">1000€</option>
                       <option value="1500">1500€</option>
