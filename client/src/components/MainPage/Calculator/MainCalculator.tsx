@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Card } from 'flowbite-react';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { getStates } from '../../../Redux/thunks/getStates';
 import type { RootState } from '../../../Types/types';
 import { profilePut } from '../../../Redux/thunks/profileThunk';
-import { Card } from 'flowbite-react';
 
 export default function MainCalculator(): React.JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return
@@ -329,14 +329,14 @@ export default function MainCalculator(): React.JSX.Element {
                       onChange={(e) => setIncome(e.target.value)}
                     >
                       <option value={income}>{income}$</option>
-                      <option value="500">500$</option>
-                      <option value="1000">1000$</option>
-                      <option value="1500">1500$</option>
-                      <option value="2000">2000$</option>
-                      <option value="2500">2500$</option>
-                      <option value="3000">3000$</option>
-                      <option value="4000">4000$</option>
-                      <option value="5000">5000$</option>
+                      <option value="500">500€</option>
+                      <option value="1000">1000€</option>
+                      <option value="1500">1500€</option>
+                      <option value="2000">2000€</option>
+                      <option value="2500">2500€</option>
+                      <option value="3000">3000€</option>
+                      <option value="4000">4000€</option>
+                      <option value="5000">5000€</option>
                     </select>
                   </div>{' '}
                 </div>
