@@ -165,7 +165,7 @@ export default function MainCalculator(): React.JSX.Element {
           {/* <div className='justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'> */}
           <div
             className='justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'
-            style={{ maxHeight: '90vh' }}
+            style={{ maxHeight: '65vh' }}
           >
             <form ref={formRef} onSubmit={submitHandler} className="form-container">
               <div className="flex justify-center items-center flex-col">
@@ -179,7 +179,7 @@ export default function MainCalculator(): React.JSX.Element {
 
                 <div className="w-[500px]">
                   <figure className="mb-2">
-                    <blockquote className="text-center font-medium text-gray-600 sm:text-base dark:text-gray-700">
+                    <blockquote className=" font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="citizenship">Гражданство</label>{' '}
                     </blockquote>
                   </figure>
@@ -204,7 +204,7 @@ export default function MainCalculator(): React.JSX.Element {
 
                 <div className="w-[500px]">
                   <figure className="mt-4 mb-2">
-                    <blockquote className="text-center font-medium text-gray-600 sm:text-base dark:text-gray-700">
+                    <blockquote className=" font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="visaT">Предпочтительный тип визы</label>{' '}
                     </blockquote>
                   </figure>
@@ -226,7 +226,7 @@ export default function MainCalculator(): React.JSX.Element {
 
                 <div className="w-[500px]">
                   <figure className="mt-4 mb-2">
-                    <blockquote className="text-center font-medium text-gray-600 sm:text-base dark:text-gray-700">
+                    <blockquote className=" font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="visaS">Персональная виза или семейная</label>{' '}
                     </blockquote>
                   </figure>
@@ -247,7 +247,7 @@ export default function MainCalculator(): React.JSX.Element {
 
                 <div className="w-[500px]">
                   <figure className="mt-4 mb-2">
-                    <blockquote className="text-center font-medium text-gray-600 sm:text-base dark:text-gray-700">
+                    <blockquote className=" font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="income"> Доход в месяц более</label>{' '}
                     </blockquote>
                   </figure>
@@ -273,7 +273,7 @@ export default function MainCalculator(): React.JSX.Element {
 
                 <div className="w-[500px]">
                   <figure className="mt-4 mb-2">
-                    <blockquote className="text-center font-medium text-gray-600 sm:text-base dark:text-gray-700">
+                    <blockquote className=" font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="date"> Примерная дата устройства на текущую работу</label>{' '}
                     </blockquote>
                   </figure>
@@ -290,7 +290,7 @@ export default function MainCalculator(): React.JSX.Element {
                   </div>
                 </div>
 
-                <div className="flex flex-row ">
+                <div className="flex mt-2 ">
                   <button className="m-2 mt-4 px-4 py-3 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2">
                     Подобрать
                   </button>
