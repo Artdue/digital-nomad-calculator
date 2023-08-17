@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card } from 'flowbite-react';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { getStates } from '../../../Redux/thunks/getStates';
 import type { RootState } from '../../../Types/types';
@@ -15,7 +14,7 @@ export default function MainCalculator(): React.JSX.Element {
   const userData = profile.profile;
   const { loading } = status;
   const userInputs = useAppSelector((state) => state.unregSlice);
-  console.log('userInputs=================>', userInputs);
+  // console.log('userInputs=================>', userInputs);
 
   // console.log('USER', userData);
   // console.log('LOADING', loading);
@@ -201,15 +200,17 @@ export default function MainCalculator(): React.JSX.Element {
             <form ref={formRef} onSubmit={submitHandler} className="form-container">
               <div className="flex justify-center items-center flex-col">
                 {/* <h1 className="text-2xl font-bold mb-4">Узнать подходящие направления</h1> */}
-                <div className="mb-6">
+                <div className="mb-4">
                   <h1 className="text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-3xl font-bold tracking-tight text-[#233862]">
                     {/* Узнать подходящие страны */}
                     Digital Nomad Calculator
                   </h1>
                 </div>
-
+                <p className="mt-1 max-w-full text-sm leading-6 text-gray-500">
+                  Заполните больше полей, чтобы получить более точные результаты
+                </p>
                 <div className="w-[500px]">
-                  <figure className="mb-2">
+                  <figure className="mb-2 m-6">
                     <blockquote className=" font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="citizenship">Гражданство</label>{' '}
                     </blockquote>
@@ -334,9 +335,6 @@ export default function MainCalculator(): React.JSX.Element {
                     Сбросить
                   </button>
                 </div>
-                <p className="mt-1 max-w-full text-sm leading-6 text-gray-500">
-                  Заполните больше полей, чтобы получить более точные результаты
-                </p>
               </div>
             </form>
           </div>
