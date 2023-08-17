@@ -34,7 +34,7 @@ const OurTeam = () => {
     <>
       <div className="bg-white py-24 sm:py-32">
         <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl  lg:px-0 lg:ml-4 md:px-4 md:pl-7">
             {/* <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Наша Команда
             </h2> */}
@@ -50,7 +50,7 @@ const OurTeam = () => {
           </div>
           <ul
             role="list"
-            className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2 mt-16"
+            className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2 lg:mt-16 md:mt-0 sm:p-4"
           >
             {people.map((person) => (
               <li key={person.name}>
