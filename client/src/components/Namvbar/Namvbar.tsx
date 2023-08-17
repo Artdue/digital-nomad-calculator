@@ -39,7 +39,7 @@ export default function Namvbar({ scrollToBlock }) {
       <Disclosure as="nav" className="">
         {({ open }) => (
           <>
-            <div className="mx-auto max-w-7xl px-2  lg:px-8 md:pt-5 ">
+            <div className="mx-auto max-w-7xl px-2  lg:px-8 md:pt-5 lg:pt-0">
               <div className="relative flex h-16 items-center justify-between">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                   {/* Mobile menu button */}
@@ -55,7 +55,7 @@ export default function Namvbar({ scrollToBlock }) {
                 </div>
                 <button
                   onClick={scrollToBlock}
-                  className="m-2 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center md:text-[10px] md:p-1 md:w-[80px]"
+                  className=" px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center md:text-[10px] md:p-1 md:w-[80px] lg:w-[200px] lg:h-[40px] lg:m-2 hidden md:block lg:text-base"
                 >
                   Digital Nomad Calculator
                 </button>
@@ -216,7 +216,7 @@ export default function Namvbar({ scrollToBlock }) {
                             item.current
                               ? 'bg-[#0c4a6e] text-[#76a1dd]'
                               : ' text-[#0c4a6e] hover:text-[#76a1dd]',
-                            'block  px-3 py-2 text-base font-medium md:text-[10px]',
+                            'block  px-3 py-2 lg:text-base font-medium md:text-[10px]',
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
