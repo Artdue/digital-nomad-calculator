@@ -100,10 +100,14 @@ export default function MainCalculator(): React.JSX.Element {
     console.log('visas', visaT, visaS, states);
 
     const visaTypeFilter =
-      visaT !== 'Не имеет значения' ? states.filter((state) => state.visaType == visaT) : states;
+      visaT !== 'Не имеет значения' && visaT !== ''
+        ? states.filter((state) => state.visaType == visaT)
+        : states;
     console.log('Отфильтрованные по типу визы:', visaTypeFilter);
     const visaShareFilter =
-      visaS !== 'Не имеет значения' ? states.filter((state) => state.visaShare == visaS) : states;
+      visaS !== 'Не имеет значения' && visaS !== ''
+        ? states.filter((state) => state.visaShare == visaS)
+        : states;
     console.log('Отфильтрованные по семейной визе:', visaShareFilter);
 
     const incomeFilter =
