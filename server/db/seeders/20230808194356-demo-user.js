@@ -6,12 +6,12 @@ module.exports = {
     const hashedPassword = await bcrypt.hash('123', 10);
     await queryInterface.bulkInsert('Users', [
       {
-        login: 'user1',
+        login: 'admin',
         first_name: 'Андрей',
         middle_name: 'Викторович',
         last_name: 'Сидоров',
-        email: 'andrey1@example.com',
-        password: hashedPassword,
+        email: 'admin@admin',
+        password: hash,
         subscribed: false,
         passport: '/uploads/passport/demo-passport.jpg',
         balance: '/uploads/balance/demo-balance.pdf',
@@ -23,7 +23,7 @@ module.exports = {
         birthDate: '',
         phoneNumber: '',
         appStatus: false,
-        admin: false,
+        admin: true,
         visaType: '',
         visaTerm: 1,
         visaShare: '',
@@ -620,7 +620,7 @@ module.exports = {
         citizenship: 'Россия',
         income: 1500,
         work_exp: 2,
-        document_status: 'Требуют уточнения'а,
+        document_status: 'Требуют уточнения',
         work_date: '2020-07-15',
         createdAt: new Date(),
         updatedAt: new Date(),
