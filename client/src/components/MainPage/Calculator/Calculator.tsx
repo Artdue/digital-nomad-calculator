@@ -20,6 +20,8 @@ export default function Calculator(): React.JSX.Element {
   const [citizenship, setCitizenship] = useState<string>('');
   const [filterStates, setFilterStates] = useState<string>('');
 
+  const [showNotification1, setShowNotification1] = useState(false);
+
   useEffect(() => {
     void dispatch(getStates());
   }, []);
@@ -81,8 +83,15 @@ export default function Calculator(): React.JSX.Element {
       return isInCitiFilter && isInWorkFilter;
     });
 
-    console.log('Подходящие страны:', commonStates);
-    setFilterStates(commonStates);
+    if (commonStates.length) {
+      console.log('Подходящие страны:', commonStates);
+      setFilterStates(commonStates);
+    } else {
+      setShowNotification1(true);
+      setTimeout(() => {
+        setShowNotification1(false);
+      }, 3000);
+    }
 
     const userInputs = {
       income,
@@ -101,6 +110,21 @@ export default function Calculator(): React.JSX.Element {
         {/* <div className="flex flex-col sm:flex-row justify-center items-stretch gap-4">
           <div className="flex-1 m-2 sm:w-[400px] bg-[#F5F5F5] p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"> */}
         <div className="flex flex-row space-x-4 justify-center">
+          {showNotification1 && (
+            <div
+              id="status"
+              className="fixed top-16 left-1/2 animate-pulse transform -translate-x-1/2 w-300 bg-gradient-to-br from-purple-600 to-blue-500 p-4 rounded-md text-white text-center"
+              style={{
+                transition: 'opacity 0.5s',
+                zIndex: 999999999,
+                opacity: showNotification1 ? 1 : 0,
+              }}
+            >
+              Не нашлось подходящих стран🙈
+              <br />
+              Попробуйте выбрать другие данные
+            </div>
+          )}
           <div
             // className='justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'
             className='h-[70vh] flex-1 m-2 sm:w-[400px] justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'
