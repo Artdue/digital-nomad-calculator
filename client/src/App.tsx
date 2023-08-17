@@ -27,6 +27,8 @@ import TestPage from './components/AdminPage/SideBarAdmin';
 function App(): JSX.Element {
   const dispatch = useDispatch();
   const user = useAppSelector((state) => state.userSlice);
+  console.log(user);
+  
 
   useEffect(() => {
     dispatch(navApi());
@@ -60,16 +62,16 @@ function App(): JSX.Element {
           <Route path="/about" element={<AboutCompany />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/CompanyServices" element={<OurTeam />} />
-          {/* <Route path="/digitalNomadCalculator" element={<Calculator />} /> */}
-          <Route path="/user/register" element={<Register />} />
-          <Route path="/user/login" element={<Login />} />
-          <Route path="/path-to-privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/user/profile" element={<EditProfile />} />
-          <Route path="/user/main" element={<MainCalculator />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/admin/users" element={<AdminUserList />} />
           <Route path="/services-and-price" element={<ServicesAndPrice />} />
-          <Route path="/mainAdmin" element={<LogAdmin />} />
+          {/* <Route path="/digitalNomadCalculator" element={<Calculator />} /> */}
+          <Route path="/user/register" element={user.email ? <EditProfile /> : <Register />} />
+          <Route path="/user/login" element={user.email ?  <EditProfile />: <Login/>} />
+          <Route path="/path-to-privacy-policy" element={<PrivacyPolicy />}/>
+          <Route path="/user/profile" element={user.email ? <EditProfile />: <Login/>} />
+          <Route path="/user/main" element={user.email ? <MainCalculator/>: <Login/>} />
+          <Route path="/admin" element={user.admin ? <Admin/>:<LogAdmin/> } />
+          <Route path="/admin/users" element={user.admin ? <AdminUserList/>: <LogAdmin/>} />
+          <Route path="/mainAdmin" element={user.admin ?<AdminUserList/>: <LogAdmin />  } />
         </Route>
       </Routes>
       {/* <TestPage /> */}
