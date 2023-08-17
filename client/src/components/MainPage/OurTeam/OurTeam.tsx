@@ -35,9 +35,12 @@ const OurTeam = () => {
       <div className="bg-white py-24 sm:py-32">
         <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
           <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            {/* <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Наша Команда
-            </h2>
+            </h2> */}
+            <h1 className="text-[#233862] mt-2 text-3xl font-bold tracking-tigh sm:text-4xl">
+              Наша Команда
+            </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Мы совместили наш впечатляющий опыт в области арбитражных дел и долголетней практикой
               работы с клиентами с нашим обширным опытом в сфере миграции. <br /> <br /> Наша
@@ -54,14 +57,16 @@ const OurTeam = () => {
                 <div className="flex items-center gap-x-6">
                   <img className="h-16 w-16 rounded-full" src={person.imageUrl} alt="" />
                   <div>
-                    <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900 ">
+                    <h3 className="text-base sm:text-lg xl:text-xl font-semibold leading-7 tracking-tight text-gray-900">
                       {person.name}
                     </h3>
 
-                    <p className="text-sm font-semibold leading-6  text-[#76a1dd]">
+                    <p className="text-sm sm:text-base font-semibold leading-6 text-[#76a1dd]">
                       {person.position}
                     </p>
-                    <span className="text-gray-500 dark:text-gray-400">{person.role}</span>
+                    <span className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">
+                      {person.role}
+                    </span>
                   </div>
                 </div>
               </li>
