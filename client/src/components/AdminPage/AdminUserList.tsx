@@ -544,7 +544,7 @@ function AdminUserList() {
                 </section>
               ))
           ) : (
-            <span>Нет Юзеров</span>
+            <span>Нет пользователей</span>
           )}
         </div>{' '}
       </div>
