@@ -143,7 +143,7 @@ export default function Calculator(): React.JSX.Element {
 
                 <div className="w-[500px]">
                   <figure className="mb-2">
-                    <blockquote className="text-center font-medium text-gray-600 sm:text-base dark:text-gray-700">
+                    <blockquote className=" font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="citizenship">Гражданство</label>{' '}
                     </blockquote>
                   </figure>
