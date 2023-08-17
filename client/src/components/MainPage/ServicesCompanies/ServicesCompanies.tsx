@@ -51,7 +51,7 @@ export default function ServicesCompanies() {
     <div className="px-4 mx-auto max-w-screen-xl lg:px-6">
       {/* <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6"> */}
       <section className="bg-white dark:bg-gray-900">
-        <h1 className="text-2xl text-center font-semibold text-gray-800 lg:text-3xl dark:text-white">
+        <h1 className="text-[#233862] mt-2 font-medium text-center text-2xl sm:text-3xl md:text-2xl lg:text-3xl dark:text-white">
           <br /> Перечень <span className="underline decoration-[#76a1dd]">услуг</span>
         </h1>
         <div className="grid grid-cols-1 gap-4 mt-8 xl:mt-12 xl:gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -61,16 +61,16 @@ export default function ServicesCompanies() {
               className="p-12 border-2 border-[#76a1dd] dark:border-blue-300 rounded-xl max-w-sm mx-auto h-[449px] flex flex-col"
             >
               <div className="h-[100px] flex flex-col">
-                <h1 className="text-xl font-semibold text-gray-700 dark:text-white">
+                <h1 className="lg:text-xl md:text-lg sm:text-base font-semibold text-[#233862] dark:text-white">
                   {service.title}
                 </h1>
               </div>
               <span className="text-blue-500 dark:text-blue-400 mb-8 text-right">
-                <span className="text-gray-500 dark:text-gray-300">Цена</span>
+                <span className="text-gray-600 dark:text-gray-300">Цена</span>
                 <br /> {service.price}
               </span>
               <div className="h-[92px] border-t-2 border-indigo-500 pt-2">
-                <p className="text-gray-500 dark:text-gray-300 ml-2 overflow-hidden">
+                <p className="text-gray-600 dark:text-gray-300 ml-2 overflow-hidden">
                   {service.description}
                 </p>
               </div>
