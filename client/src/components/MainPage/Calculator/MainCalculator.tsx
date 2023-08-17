@@ -152,7 +152,6 @@ export default function MainCalculator(): React.JSX.Element {
       visaT,
       visaS,
     };
-
     void dispatch(unregtUserGet(userInputs));
   };
 
