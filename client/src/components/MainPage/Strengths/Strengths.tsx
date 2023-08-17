@@ -68,9 +68,12 @@ export default function Strengths() {
               <h2 className="text-base font-semibold leading-7  text-[#76a1dd]">
                 Мы создаем комфортную обстановку для вас, позаботившись о каждой детали
               </h2>
-              <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              {/* <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 За счет чего достигается комфорт в работе с KYC
-              </p>
+              </p> */}{' '}
+              <h1 className="text-[#233862] mt-2 text-3xl font-medium	 tracking-tigh sm:text-4xl">
+                За счет чего достигается комфорт в работе с KYC
+              </h1>
             </div>
             <div className="mx-auto mt-12 sm:mt-16 lg:mt-20">
               <dl className="grid max-w-full grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-3 lg:gap-y-16">
@@ -81,7 +84,7 @@ export default function Strengths() {
                       index + 1
                     }`}
                   >
-                    <dt className="text-base font-semibold leading-7 text-gray-900">
+                    <dt className="text-base font-semibold leading-7 text-[#233862]">
                       <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-300">
                         <benefit.icon className="h-6 w-6 text-white" aria-hidden="true" />
                       </div>
