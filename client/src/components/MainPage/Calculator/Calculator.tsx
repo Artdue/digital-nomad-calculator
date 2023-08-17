@@ -62,7 +62,8 @@ export default function Calculator(): React.JSX.Element {
     const workFilter = states.filter((state) => state.work_exp < monthsPassed);
     console.log('Отфильтрованные по работе:', workFilter);
     console.log('Выбранные значения:', income, employmentDate, monthsPassed, citizenship);
-    const incomeFilter = states.filter((state) => state.min_income < income);
+    const incomeFilter =
+      income !== '' ? states.filter((state) => state.min_income < income) : states;
     console.log('Отфильтрованные по доходу:', incomeFilter);
 
     const citiFilter = states.filter((state) => {
@@ -179,7 +180,7 @@ export default function Calculator(): React.JSX.Element {
                       className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       onChange={(e) => setIncome(e.target.value)}
                     >
-                      <option value={income}>{income}</option>
+                      <option value={income}>Не имеет значения</option>
                       <option value="500">500€</option>
                       <option value="1000">1000€</option>
                       <option value="1500">1500€</option>
