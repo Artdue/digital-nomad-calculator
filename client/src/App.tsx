@@ -1,16 +1,79 @@
-import React from 'react';
-import { Button } from 'flowbite-react';
+import React, { useEffect, useRef } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
-import AboutСompany from './components/AboutСompany/AboutСompany';
+import { useDispatch } from 'react-redux';
+import Login from './components/LogReg/Login/Login';
+import Register from './components/LogReg/Register/Register';
+import Namvbar from './components/Namvbar/Namvbar';
+import Foot from './components/Foot/Foot';
+import AboutCompany from './components/AboutСompany/AboutСompany';
+import navApi from './Redux/thunks/user/nav.api';
+import EditProfile from './components/ProfilePage/EditProfile';
+import { profileGet } from './Redux/thunks/profileThunk';
+import { useAppSelector } from './Redux/hooks';
+import Calculator from './components/MainPage/Calculator/Calculator';
+import Contact from './components/ContactAndFeed/Contact/Contact';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
-import FeedbackForm from './components/FeedbackForm/FeedbackForm';
+import OurTeam from './components/MainPage/OurTeam/OurTeam';
+import Home from './components/MainPage/Home/Home';
+import MainCalculator from './components/MainPage/Calculator/MainCalculator';
+import Admin from './components/AdminPage/Admin';
+import AdminUserList from './components/AdminPage/AdminUserList';
+import ServicesAndPrice from './components/ServicesAndPrice/ServicesAndPrice';
+import RegGoogle from './components/LogReg/Register/RegGoogle';
+import LogAdmin from './components/AdminPage/LogAdmin/LogAdmin';
+import TestPage from './components/AdminPage/SideBarAdmin';
 
 function App(): JSX.Element {
+  const dispatch = useDispatch();
+  const user = useAppSelector((state) => state.userSlice);
+
+  useEffect(() => {
+    dispatch(navApi());
+  }, []);
+
+  useEffect(() => {
+    if (user.email) {
+      dispatch(profileGet(user));
+    }
+  }, [user]);
+
+  const navigate = useNavigate();
+
+  const calculator = useRef(null);
+
+  const scrollToBlock = () => {
+    navigate('/');
+    setTimeout(() => {
+      calculator.current.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }, 1);
+  };
+
   return (
     <>
-      <AboutСompany />
-      <PrivacyPolicy />
-      <FeedbackForm />
+      <Routes>
+        <Route element={<Namvbar scrollToBlock={scrollToBlock} />}>
+          <Route path="/" element={<Home calculator={calculator} />} />
+
+          <Route path="/about" element={<AboutCompany />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/CompanyServices" element={<OurTeam />} />
+          {/* <Route path="/digitalNomadCalculator" element={<Calculator />} /> */}
+          <Route path="/user/register" element={<Register />} />
+          <Route path="/user/login" element={<Login />} />
+          <Route path="/path-to-privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/user/profile" element={<EditProfile />} />
+          <Route path="/user/main" element={<MainCalculator />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/users" element={<AdminUserList />} />
+          <Route path="/services-and-price" element={<ServicesAndPrice />} />
+          <Route path="/mainAdmin" element={<LogAdmin />} />
+        </Route>
+      </Routes>
+      {/* <TestPage /> */}
+      <Foot />
     </>
   );
 }

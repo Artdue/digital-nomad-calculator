@@ -1,14 +1,27 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Users", {
+    await queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: {
+      login: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      first_name: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      middle_name: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      last_name: {
+        allowNull: true,
         type: Sequelize.STRING,
       },
       email: {
@@ -17,8 +30,71 @@ module.exports = {
       password: {
         type: Sequelize.STRING,
       },
-      subscribe: {
+
+      subscribed: {
+        allowNull: true,
         type: Sequelize.BOOLEAN,
+      },
+      birthDate: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      phoneNumber: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      passport: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      balance: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      lease: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      citizenship: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      income: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+      },
+      work_exp: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+      },
+      work_date: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      document_status: {
+        defaultValue: 'Новый пользователь',
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      appStatus: {
+        defaultValue: false,
+        type: Sequelize.BOOLEAN,
+      },
+      admin: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      visaType: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      visaTerm: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+      },
+      visaShare: {
+        allowNull: true,
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
@@ -31,6 +107,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Users");
+    await queryInterface.dropTable('Users');
   },
 };
