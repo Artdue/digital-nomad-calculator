@@ -70,7 +70,10 @@ export default function AboutCompany() {
               <p className="text-base font-semibold leading-7 text-[#76a1dd]">
                 KYC Consulting and Legal services
               </p>
-              <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              {/* <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                О компании
+              </h1> */}
+              <h1 className="text-[#233862] mt-2 text-3xl font-bold tracking-tigh sm:text-4xl">
                 О компании
               </h1>
               {/* <p className="mt-6 text-xl leading-8 text-gray-700">
