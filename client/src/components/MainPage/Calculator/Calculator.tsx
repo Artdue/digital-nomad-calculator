@@ -354,21 +354,7 @@ export default function Calculator(): React.JSX.Element {
                   {/* Страны, подходящие Вам */}
                   Подходящие страны
                 </h1>
-                <div className="flex flex-row space-x-4 justify-center items-end	">
-                  <figure className="mt-6">
-                    <blockquote className="text-center font-light text-gray-700 lg:mb-0 sm:text-lg dark:text-gray-700">
-                      <button
-                        onClick={toReg}
-                        className="text-base font-semibold bg-gradient-to-r from-purple-600 to-[#76a1dd] text-transparent bg-clip-text"
-                      >
-                        Зарегистрируйтесь <span aria-hidden="true">→</span>
-                      </button>
-                      <br /> чтобы увидеть подробную информацию
-                    </blockquote>
-                  </figure>
-                </div>
               </div>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {filterStates.map((state, i) => (
                   <button className="" onClick={() => openModal(state)}>
@@ -381,6 +367,19 @@ export default function Calculator(): React.JSX.Element {
                     </div>
                   </button>
                 ))}
+              </div>{' '}
+              <div className="flex flex-row space-x-4 justify-center items-end	">
+                <figure className="mt-6">
+                  <blockquote className="text-center font-light text-gray-700 lg:mb-0 sm:text-lg dark:text-gray-700">
+                    <button
+                      onClick={toReg}
+                      className="text-base font-semibold bg-gradient-to-r from-purple-600 to-[#76a1dd] text-transparent bg-clip-text"
+                    >
+                      Зарегистрируйтесь <span aria-hidden="true">→</span>
+                    </button>
+                    <br /> чтобы увидеть подробную информацию
+                  </blockquote>
+                </figure>
               </div>
               {/*               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {filterStates.map((state, i) => (
@@ -393,7 +392,6 @@ export default function Calculator(): React.JSX.Element {
                   </div>
                 ))}
               </div> */}
-
               {/* <div className="flex justify-center items-end col-span-2 mt-3 space-between">
                 <p className="text-center">
                   <button
