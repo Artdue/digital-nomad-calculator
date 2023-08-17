@@ -1,6 +1,6 @@
 import React from 'react';
 import { LockClosedIcon, PuzzlePieceIcon, HandThumbUpIcon } from '@heroicons/react/20/solid';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const features = [
   {
@@ -82,8 +82,6 @@ export default function AboutCompany() {
         <div className="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
           <img
             className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]"
-            // src="https://images.law.com/contrib/content/uploads/sites/397/2022/05/Selling-Technology-767x633-2.jpg"
-            // src="/src/assets/aboutCompany.png"
             src="https://uploads-ssl.webflow.com/63d8af1349fdb34d6fab174e/642161a203b6c1c3a58f80f2_THE_COST_AND_THE_PRO.png"
             alt=""
           />
