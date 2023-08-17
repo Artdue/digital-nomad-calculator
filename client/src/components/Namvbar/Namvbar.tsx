@@ -8,7 +8,7 @@ import userLogout from '../../Redux/thunks/user/logout.api';
 const navigation = [
   { name: 'На главную', href: '/', current: false },
   // { name: 'Подбери свою страну', href: '/digitalNomadCalculator', current: false },
-  { name: 'Услуги и цены', href: '/services-and-price', current: false },
+  { name: 'Услуги', href: '/services-and-price', current: false },
   { name: 'Наша команда', href: '/CompanyServices', current: false },
   { name: 'О компании', href: '/about', current: false },
   { name: 'Контакты', href: '/contact', current: false },
