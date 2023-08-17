@@ -334,6 +334,9 @@ export default function MainCalculator(): React.JSX.Element {
                     Сбросить
                   </button>
                 </div>
+                <p className="mt-1 max-w-full text-sm leading-6 text-gray-500">
+                  Заполните больше полей, чтобы получить более точные результаты
+                </p>
               </div>
             </form>
           </div>
