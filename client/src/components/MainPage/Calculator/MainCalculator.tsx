@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { getStates } from '../../../Redux/thunks/getStates';
 import type { RootState } from '../../../Types/types';
 import { profilePut } from '../../../Redux/thunks/profileThunk';
+import { unregtUserGet } from '../../../Redux/thunks/unregThunk';
 
 export default function MainCalculator(): React.JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return
@@ -34,8 +35,8 @@ export default function MainCalculator(): React.JSX.Element {
     userData?.work_date || userInputs?.employmentDate || '',
   );
   const [workExp, setworkExp] = useState(userData?.work_exp || 0);
-  const [visaT, setvisaT] = useState(userData?.visaType || '');
-  const [visaS, setvisaS] = useState(userData?.visaShare || '');
+  const [visaT, setvisaT] = useState(userData?.visaType || 'Не имеет значения');
+  const [visaS, setvisaS] = useState(userData?.visaShare || 'Не имеет значения');
 
   const [filterStates, setFilterStates] = useState<string>('');
   const [oneState, setOneState] = useState();
@@ -98,18 +99,19 @@ export default function MainCalculator(): React.JSX.Element {
 
     const visaTypeFilter =
       visaT !== 'Не имеет значения' ? states.filter((state) => state.visaType == visaT) : states;
-    // console.log('Отфильтрованные по типу визы:', visaTypeFilter);
+    console.log('Отфильтрованные по типу визы:', visaTypeFilter);
     const visaShareFilter =
       visaS !== 'Не имеет значения' ? states.filter((state) => state.visaShare == visaS) : states;
-    // console.log('Отфильтрованные по семейной визе:', visaShareFilter);
+    console.log('Отфильтрованные по семейной визе:', visaShareFilter);
 
-    const incomeFilter = states.filter((state) => state.min_income < income);
-    // console.log('Отфильтрованные по доходу:', incomeFilter);
+    const incomeFilter =
+      income !== 0 ? states.filter((state) => state.min_income < income) : states;
+    console.log('Отфильтрованные по доходу:', incomeFilter);
     const citiFilter = states.filter((state) => {
       const bannedCitizenships = state.banned_citizenship.split(',').map((value) => value.trim());
       return !bannedCitizenships.includes(citizenship);
     });
-    // console.log('Отфильтрованные по гр-у:', citiFilter);
+    console.log('Отфильтрованные по гр-у:', citiFilter);
     let monthsPassed = 0;
     if (employmentDate === '') {
       monthsPassed = 12;
@@ -126,7 +128,7 @@ export default function MainCalculator(): React.JSX.Element {
     }
     console.log('Отфильтрованные по работе:', monthsPassed);
     const workFilter = states.filter((state) => state.work_exp < monthsPassed);
-    // console.log('Отфильтрованные по работе:', workFilter);
+    console.log('Отфильтрованные по работе:', workFilter);
 
     const commonStates = incomeFilter.filter((state) => {
       const isInCitiFilter = citiFilter.some((filteredState) => filteredState.id === state.id);
@@ -141,7 +143,7 @@ export default function MainCalculator(): React.JSX.Element {
       return isInCitiFilter && isInWorkFilter && isInvisaTypeFilter && isInvisaShareFilter;
     });
 
-    // console.log('Подходящие страны:', commonStates);
+    console.log('Подходящие страны:', commonStates);
     setFilterStates(commonStates);
     const userInputs = {
       income,
@@ -258,7 +260,7 @@ export default function MainCalculator(): React.JSX.Element {
                       className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       onChange={(e) => setIncome(e.target.value)}
                     >
-                      <option value={income}>{income}</option>
+                      <option value={income}>Не имеет значения</option>
                       <option value="500">500€</option>
                       <option value="1000">1000€</option>
                       <option value="1500">1500€</option>
