@@ -9,21 +9,15 @@ export default function Contact() {
         {/* <div className="w-full md:w-1/2 p-4 md:p-8 bg-gray-100 text-center md:text-left"> */}
         <div className="w-full md:w-1/2 p-4 md:p-8 flex flex-col justify-center items-center">
           <div className="h-full">
-            {/* <div className="flex justify-center">
-              <h2 className="text-2xl font-semibold mb-4">КОНТАКТЫ</h2>
-            </div> */}
             <h2 className="mt-0 mb-5">
               {/* <span className="inline-block text-2xl font-medium mb-3 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 rounded-lg px-5 py-2.5 text-[#76a1dd] text-transparent bg-clip-text sm:text-base md:text-xl lg:text-2xl"> */}
-              <span className="inline-block text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-6xl font-bold tracking-tight text-[#233862] ">
-                {/* здесь градиент */}
-                {/* <span className="nline-block text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-6xl font-bold tracking-tight bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 rounded-lg px-5 py-2.5 text-[#76a1dd] text-transparent bg-clip-text sm:text-base md:text-xl lg:text-2xl "> */}
-                КОНТАКТЫ{' '}
-              </span>
+              <h1 className="text-center text-[#233862] text-3xl font-bold tracking-tigh sm:text-4xl">
+                Контакты{' '}
+              </h1>
+              {/* <h1 className="text-[#233862] text-3xl font-bold tracking-tigh sm:text-4xl">
+                Контакты{' '}
+              </h1> */}
             </h2>
-            {/* <p className="mb-4">
-              Мы стремимся к долгосрочному сотрудничеству с каждым клиентом, обеспечивая оперативное
-              и качественное выполнение задач в соответствии с законодательством РФ и других стран.
-            </p> */}
 
             <figure className="">
               <blockquote className="font-light text-gray-500 lg:mb-6 sm:text-xl dark:text-gray-700">

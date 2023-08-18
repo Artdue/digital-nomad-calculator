@@ -20,6 +20,8 @@ export default function Calculator(): React.JSX.Element {
   const [citizenship, setCitizenship] = useState<string>('');
   const [filterStates, setFilterStates] = useState<string>('');
 
+  const [showNotification1, setShowNotification1] = useState(false);
+
   useEffect(() => {
     void dispatch(getStates());
   }, []);
@@ -58,10 +60,10 @@ export default function Calculator(): React.JSX.Element {
       // setworkExp(monthsPassed);
       console.log('Отфильтрованные по работе222222222222:', monthsPassed);
     }
-    console.log('Отфильтрованные по работе:', monthsPassed);
+    //
     const workFilter = states.filter((state) => state.work_exp < monthsPassed);
-    console.log('Отфильтрованные по работе:', workFilter);
-    console.log('Выбранные значения:', income, employmentDate, monthsPassed, citizenship);
+    // console.log('Отфильтрованные по работе:', workFilter);
+    // console.log('Выбранные значения:', income, employmentDate, monthsPassed, citizenship);
     const incomeFilter =
       income !== '' ? states.filter((state) => state.min_income < income) : states;
     console.log('Отфильтрованные по доходу:', incomeFilter);
@@ -81,8 +83,15 @@ export default function Calculator(): React.JSX.Element {
       return isInCitiFilter && isInWorkFilter;
     });
 
-    console.log('Подходящие страны:', commonStates);
-    setFilterStates(commonStates);
+    if (commonStates.length) {
+      console.log('Подходящие страны:', commonStates);
+      setFilterStates(commonStates);
+    } else {
+      setShowNotification1(true);
+      setTimeout(() => {
+        setShowNotification1(false);
+      }, 3000);
+    }
 
     const userInputs = {
       income,
@@ -100,21 +109,39 @@ export default function Calculator(): React.JSX.Element {
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         {/* <div className="flex flex-col sm:flex-row justify-center items-stretch gap-4">
           <div className="flex-1 m-2 sm:w-[400px] bg-[#F5F5F5] p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"> */}
-        <div className="flex flex-row space-x-4 justify-center">
+        <div className="flex flex-row space-x-4 justify-center ">
+          {showNotification1 && (
+            <div
+              id="status"
+              className="fixed top-16 left-1/2 animate-pulse transform -translate-x-1/2 w-300 bg-gradient-to-br from-purple-600 to-blue-500 p-4 rounded-md text-white text-center"
+              style={{
+                transition: 'opacity 0.5s',
+                zIndex: 999999999,
+                opacity: showNotification1 ? 1 : 0,
+              }}
+            >
+              Не нашлось подходящих стран🙈
+              <br />
+              Попробуйте выбрать другие данные
+            </div>
+          )}
           <div
             // className='justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'
-            className='h-[70vh] flex-1 m-2 sm:w-[400px] justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'
+            className='h-[70vh] flex-1 sm:w-[400px] justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'
             // style={{ maxHeight: '90vh' }}
           >
             {' '}
             <form ref={formRef} onSubmit={submitHandler} className="space-y-12 p-6">
               <div className="flex justify-center items-center flex-col">
                 <div className="mb-6">
-                  <h1 className="text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-3xl font-bold tracking-tight text-[#233862]">
+                  <h1 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#233862]">
                     {/* Узнать подходящие страны */}
                     Digital Nomad Calculator
                   </h1>
                 </div>
+                <p className="mt-1 max-w-full text-sm leading-6 text-gray-500">
+                  Заполните больше полей, чтобы получить более точные результаты
+                </p>
                 {/* 
                 <div className="w-full sm:w-[400px] mt-2">
                   <label
@@ -142,7 +169,7 @@ export default function Calculator(): React.JSX.Element {
                 </div> */}
 
                 <div className="w-[500px]">
-                  <figure className="mb-2">
+                  <figure className="mb-2 mt-4">
                     <blockquote className=" font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="citizenship">Гражданство</label>{' '}
                     </blockquote>
@@ -323,25 +350,11 @@ export default function Calculator(): React.JSX.Element {
           {filterStates.length ? (
             <div className=" text-center bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
               <div className="w-[500px] mb-6">
-                <h1 className="text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-3xl font-bold tracking-tight text-[#233862]">
+                <h1 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#233862]">
                   {/* Страны, подходящие Вам */}
                   Подходящие страны
                 </h1>
-                <div className="flex flex-row space-x-4 justify-center items-end	">
-                  <figure className="mt-6">
-                    <blockquote className="text-center font-light text-gray-700 lg:mb-0 sm:text-lg dark:text-gray-700">
-                      <button
-                        onClick={toReg}
-                        className="text-base font-semibold bg-gradient-to-r from-purple-600 to-[#76a1dd] text-transparent bg-clip-text"
-                      >
-                        Зарегистрируйтесь <span aria-hidden="true">→</span>
-                      </button>
-                      <br /> чтобы увидеть подробную информацию
-                    </blockquote>
-                  </figure>
-                </div>
               </div>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {filterStates.map((state, i) => (
                   <button className="" onClick={() => openModal(state)}>
@@ -354,6 +367,19 @@ export default function Calculator(): React.JSX.Element {
                     </div>
                   </button>
                 ))}
+              </div>{' '}
+              <div className="flex flex-row space-x-4 justify-center items-end	">
+                <figure className="mt-6">
+                  <blockquote className="text-center font-light text-gray-700 lg:mb-0 sm:text-lg dark:text-gray-700">
+                    <button
+                      onClick={toReg}
+                      className="text-base font-semibold bg-gradient-to-r from-purple-600 to-[#76a1dd] text-transparent bg-clip-text"
+                    >
+                      Зарегистрируйтесь <span aria-hidden="true">→</span>
+                    </button>
+                    <br /> чтобы увидеть подробную информацию
+                  </blockquote>
+                </figure>
               </div>
               {/*               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {filterStates.map((state, i) => (
@@ -366,7 +392,6 @@ export default function Calculator(): React.JSX.Element {
                   </div>
                 ))}
               </div> */}
-
               {/* <div className="flex justify-center items-end col-span-2 mt-3 space-between">
                 <p className="text-center">
                   <button

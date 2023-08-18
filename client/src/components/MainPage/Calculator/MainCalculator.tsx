@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card } from 'flowbite-react';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { getStates } from '../../../Redux/thunks/getStates';
 import type { RootState } from '../../../Types/types';
@@ -15,7 +14,7 @@ export default function MainCalculator(): React.JSX.Element {
   const userData = profile.profile;
   const { loading } = status;
   const userInputs = useAppSelector((state) => state.unregSlice);
-  console.log('userInputs=================>', userInputs);
+  // console.log('userInputs=================>', userInputs);
 
   // console.log('USER', userData);
   // console.log('LOADING', loading);
@@ -24,6 +23,8 @@ export default function MainCalculator(): React.JSX.Element {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const formRef = useRef<HTMLFormElement | null>(null);
+
+  const [showNotification1, setShowNotification1] = useState(false);
 
   // const [criminal, setСriminal] = useState<string>('false');
   // const [gender, setGender] = useState<string>('Male');
@@ -98,10 +99,14 @@ export default function MainCalculator(): React.JSX.Element {
     console.log('visas', visaT, visaS, states);
 
     const visaTypeFilter =
-      visaT !== 'Не имеет значения' ? states.filter((state) => state.visaType == visaT) : states;
+      visaT !== 'Не имеет значения' && visaT !== ''
+        ? states.filter((state) => state.visaType == visaT)
+        : states;
     console.log('Отфильтрованные по типу визы:', visaTypeFilter);
     const visaShareFilter =
-      visaS !== 'Не имеет значения' ? states.filter((state) => state.visaShare == visaS) : states;
+      visaS !== 'Не имеет значения' && visaS !== ''
+        ? states.filter((state) => state.visaShare == visaS)
+        : states;
     console.log('Отфильтрованные по семейной визе:', visaShareFilter);
 
     const incomeFilter =
@@ -144,7 +149,16 @@ export default function MainCalculator(): React.JSX.Element {
     });
 
     console.log('Подходящие страны:', commonStates);
-    setFilterStates(commonStates);
+
+    if (commonStates.length > 0) {
+      setFilterStates(commonStates);
+    } else {
+      setShowNotification1(true);
+      setTimeout(() => {
+        setShowNotification1(false);
+      }, 6000);
+    }
+
     const userInputs = {
       income,
       employmentDate,
@@ -163,23 +177,40 @@ export default function MainCalculator(): React.JSX.Element {
         </div>
       ) : (
         <div className="flex flex-row space-x-4 justify-center">
+          {showNotification1 && (
+            <div
+              id="status"
+              className="fixed top-16 left-1/2 animate-pulse transform -translate-x-1/2 w-300 bg-gradient-to-br from-purple-600 to-blue-500 p-4 rounded-md text-white text-center"
+              style={{
+                transition: 'opacity 0.5s',
+                zIndex: 999999999,
+                opacity: showNotification1 ? 1 : 0,
+              }}
+            >
+              Не нашлось подходящих стран🙈
+              <br />
+              Попробуйте выбрать другие данные
+            </div>
+          )}
           {/* <div className='justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'> */}
           <div
             className='justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'
-            style={{ maxHeight: '65vh' }}
+            style={{ maxHeight: '120vh' }}
           >
             <form ref={formRef} onSubmit={submitHandler} className="form-container">
               <div className="flex justify-center items-center flex-col">
                 {/* <h1 className="text-2xl font-bold mb-4">Узнать подходящие направления</h1> */}
-                <div className="mb-6">
+                <div className="mb-4">
                   <h1 className="text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-3xl font-bold tracking-tight text-[#233862]">
                     {/* Узнать подходящие страны */}
                     Digital Nomad Calculator
                   </h1>
                 </div>
-
+                <p className="mt-1 max-w-full text-sm leading-6 text-gray-500">
+                  Заполните больше полей, чтобы получить более точные результаты
+                </p>
                 <div className="w-[500px]">
-                  <figure className="mb-2">
+                  <figure className="mb-2 m-6">
                     <blockquote className=" font-medium text-gray-600 sm:text-base dark:text-gray-700">
                       <label htmlFor="citizenship">Гражданство</label>{' '}
                     </blockquote>
@@ -259,7 +290,7 @@ export default function MainCalculator(): React.JSX.Element {
                       className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
                       onChange={(e) => setIncome(e.target.value)}
                     >
-                      <option value={income}>Не имеет значения</option>
+                      <option value={income}>{income}€</option>
                       <option value="500">500€</option>
                       <option value="1000">1000€</option>
                       <option value="1500">1500€</option>

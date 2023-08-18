@@ -240,7 +240,7 @@ export default function NewState() {
                       </div>
                       <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 border-t border-gray-100">
                         <dt className="text-sm font-medium leading-6 text-gray-900">
-                          Максимальный срок визы
+                          Максимальный срок визы в годах
                         </dt>
                         <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                           <input
@@ -285,13 +285,16 @@ export default function NewState() {
                           />
                         </dd>
                       </div>
-                      <div className="m-2 flex justify-center ">
-                        <button
-                          onClick={handleAddState}
-                          className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-6 "
-                        >
-                          Добавить
-                        </button>
+                      <div className="m-2 flex justify-center">
+  <button
+    onClick={() => {
+      handleAddState();
+      closeModal();
+    }}
+    className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-6"
+  >
+    Добавить
+  </button>
                         <button
                           onClick={closeModal}
                           className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-6 "

@@ -8,7 +8,7 @@ import userLogout from '../../Redux/thunks/user/logout.api';
 const navigation = [
   { name: 'На главную', href: '/', current: false },
   // { name: 'Подбери свою страну', href: '/digitalNomadCalculator', current: false },
-  { name: 'Услуги и цены', href: '/services-and-price', current: false },
+  { name: 'Услуги', href: '/services-and-price', current: false },
   { name: 'Наша команда', href: '/CompanyServices', current: false },
   { name: 'О компании', href: '/about', current: false },
   { name: 'Контакты', href: '/contact', current: false },
@@ -34,18 +34,12 @@ export default function Namvbar({ scrollToBlock }) {
     navigate('/');
   };
 
-  // const calculNavig = () => {
-  //   navigate('/');
-  //   window.scrollTo(0, 780);
-  //   console.log(window.screenY);
-  // };
-
   return (
     <>
       <Disclosure as="nav" className="">
         {({ open }) => (
           <>
-            <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
+            <div className="mx-auto max-w-7xl px-2  lg:px-8 md:pt-5 lg:pt-0">
               <div className="relative flex h-16 items-center justify-between">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                   {/* Mobile menu button */}
@@ -61,23 +55,23 @@ export default function Namvbar({ scrollToBlock }) {
                 </div>
                 <button
                   onClick={scrollToBlock}
-                  className="m-2 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center"
+                  className=" px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center md:text-[10px] md:p-1 md:w-[80px] lg:w-[200px] lg:h-[40px] lg:m-2 hidden md:block lg:text-base"
                 >
                   Digital Nomad Calculator
                 </button>
                 {/* это меню текст */}
-                <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-center">
+                <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-center ">
                   <div className="hidden sm:ml-6 sm:block">
-                    <div className="flex space-x-4">
+                    <div className="flex space-x-4 sm:items-center">
                       {navigation.map((item) => (
                         <Link
                           key={item.name}
                           to={item.href}
                           className={classNames(
                             item.current
-                              ? 'bg-[#0c4a6e] text-[#76a1dd]'
-                              : ' text-[#0c4a6e] hover:text-[#76a1dd]  ',
-                            'rounded-md px-3 py-2 text-base font-medium',
+                              ? 'bg-[#0c4a6e] text-[#76a1dd] md:text-[10px] '
+                              : ' text-[#0c4a6e] hover:text-[#76a1dd] md:text-[10px] ',
+                            'rounded-md px-3 py-2 lg:text-base font-medium md:text-[10px] md:text-center',
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
@@ -212,7 +206,7 @@ export default function Namvbar({ scrollToBlock }) {
                     </div>
                   )
                 ) : (
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                  <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 md:flex-col">
                     <div className="flex space-x-4">
                       {navigationT.map((item) => (
                         <Link
@@ -222,7 +216,7 @@ export default function Namvbar({ scrollToBlock }) {
                             item.current
                               ? 'bg-[#0c4a6e] text-[#76a1dd]'
                               : ' text-[#0c4a6e] hover:text-[#76a1dd]',
-                            'block  px-3 py-2 text-base font-medium',
+                            'block  px-3 py-2 lg:text-base font-medium md:text-[10px]',
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
