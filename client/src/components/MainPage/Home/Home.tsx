@@ -6,6 +6,7 @@ import Calculator from '../Calculator/Calculator';
 import Contact from '../../ContactAndFeed/Contact/Contact';
 import Qualities from '../Qualities/Qualities';
 import { Link } from 'react-router-dom';
+import Motivation from '../Motivation/Motivation';
 
 export default function Home({ calculator }) {
   const calculateScroll = () => {
@@ -68,12 +69,15 @@ export default function Home({ calculator }) {
       </div>
       {/* <div id="bottom-section"></div> */}
       {/* <div className="w-full rounded overflow-hidden shadow-lg bg-white flex flex-col p-6 md:py-8 lg:py-12 xl:py-10 md:px-8 lg:px-12 xl:px-20"> */}
+      <div className="mt-8 pl-10">
+        <Qualities />
+      </div>
       <div ref={calculator}>
         <Calculator />
       </div>
       {/* </div> */}
       <div className="mt-8 pl-10">
-        <Qualities />
+        <Motivation />
       </div>
       {/* <div>
           <Strengths />
