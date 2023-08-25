@@ -8,7 +8,7 @@ export default function Motivation() {
           <span className="sm:text-3xl bg-gradient-to-r from-purple-600 to-[#76a1dd] text-transparent bg-clip-text">
             Реализуйте свои глобальные рабочие амбиции с помощью Digital Nomad Calculator
           </span>
-          <blockquote className="text-center font-light tracking-tight text-gray-700 lg:mb-16 sm:text-3xl dark:text-gray-700">
+          <blockquote className="text-center font-light tracking-tight text-gray-700 sm:text-3xl dark:text-gray-700">
             {/* Реализуйте свои глобальные рабочие амбиции с помощью Digital Nomad Calculator. */}
             <br /> <br /> Живите и работайте там, где вам хочется, а мы поможем на любом этапе пути{' '}
           </blockquote>

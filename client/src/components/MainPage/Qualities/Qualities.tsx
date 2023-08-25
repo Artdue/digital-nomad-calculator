@@ -32,17 +32,10 @@ export default function Qualities() {
       {' '}
       <div className="bg-white ">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          {/* <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-            <h2 className="text-3xl tracking-tight  text-gray-900 dark:text-white">
-              Особенности Digital Nomad Calculator{' '}
-            </h2>
-          </div> */}
-          <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-            <figure className="mt-20">
-              <blockquote className="text-center font-light text-gray-700 lg:mb-16 sm:text-3xl dark:text-gray-700">
-                <p>Особенности Digital Nomad Calculator </p>
-              </blockquote>
-            </figure>
+          <div className="mx-auto max-w-screen-sm mb-8 lg:mb-16">
+            <h1 className="text-[#233862] mt-2  md:text-2xl font-medium tracking-tight text-base sm:text-2xl lg:text-3xl">
+              Особенности Digital Nomad Calculator
+            </h1>
           </div>
           <div className="mx-auto  grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             {posts.map((post) => (
