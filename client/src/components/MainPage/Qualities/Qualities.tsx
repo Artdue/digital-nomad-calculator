@@ -1,5 +1,6 @@
 import React from 'react';
 import ServicesCompanies from '../ServicesCompanies/ServicesCompanies';
+import { Card, CardBody, Typography } from '@material-tailwind/react';
 
 const posts = [
   {
@@ -30,46 +31,52 @@ export default function Qualities() {
   return (
     <>
       {' '}
-      <div className="bg-white ">
+      {/* <div className="bg-white py-10">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-screen-sm mb-8 lg:mb-16">
-            <h1 className="text-[#233862] mt-2  md:text-2xl font-medium tracking-tight text-base sm:text-2xl lg:text-3xl">
+          <div className="mx-auto max-w-screen-sm mb-8 lg:mb-4">
+            <h1 className="text-[#233862] lg:text-4xl md:text-2xl font-medium tracking-tight text-base sm:text-2xl">
               Особенности Digital Nomad Calculator
             </h1>
           </div>
-          <div className="mx-auto  grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => (
-              <article key={post.id} className="flex max-w-xl flex-col items-start justify-between">
-                <div className="group relative">
-                  {/* <h3 className=" text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-900"> */}
-                  <h3 className=" text-l font-semibold leading-6 text-[#76a1dd] ">
+              <Card className="mt-6 w-96 bg-[#F3F4F6]">
+                <CardBody>
+                  <Typography variant="h5" className="mb-2 text-[#233862]">
                     <span className="absolute inset-0 mb-4" />
                     {post.title}
-                  </h3>
-
-                  {/* <p className="mt-5  text-sm leading-6 text-gray-600">{post.description}</p> */}
-                  {/* <p className="mt-2 font-light text-gray-900  sm:text-l dark:text-gray-700 ">
-                    {post.description}
-                  </p> */}
-                  {/* <div className="mx-auto max-w-2xl lg:max-w-4xl"> */}
-                  <figure className="mt-0">
-                    <blockquote className="mt-2 font-light text-gray-600 lg:mb-16 sm:text-l dark:text-gray-700">
-                      {post.description}
-                    </blockquote>
-                  </figure>
-                  {/* </div> */}
-                </div>
-              </article>
+                  </Typography>
+                  <Typography>{post.description}</Typography>
+                </CardBody>
+              </Card>
             ))}
           </div>
-          {/* <div className="mx-auto max-w-4xl text-center mt-24 mb-20">
-            <h2 className="text-2xl tracking-tight  text-gray-800 dark:text-white">
-              Реализуйте свои глобальные рабочие амбиции с помощью Digital Nomad Calculator. Живите
-              и работайте там, где вам хочется, а мы поможем на любом этапе пути.
-            </h2>
-          </div> */}
+        </div>
+      </div> */}{' '}
+      <div className="bg-white py-20">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="text-center lg:mb-8 md:mb-4">
+            <h1 className="text-[#337CE5] lg:text-4xl md:text-4xl text-2xl font-medium">
+              Особенности Digital Nomad Calculator
+            </h1>
+          </div>
+          <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-3">
+            {posts.map((post) => (
+              <div key={post.id} className="flex w-full">
+                <Card className="mt-6 bg-[#F3F4F6] w-full flex flex-col">
+                  <CardBody className="flex-grow">
+                    <Typography variant="h5" className="mb-2 text-[#233862]">
+                      {post.title}
+                    </Typography>
+                    <Typography>{post.description}</Typography>
+                  </CardBody>
+                </Card>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+      {/*  */}
     </>
   );
 }

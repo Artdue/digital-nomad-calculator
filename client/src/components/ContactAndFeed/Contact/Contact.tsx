@@ -20,7 +20,7 @@ export default function Contact() {
             </h2>
 
             <figure className="">
-              <blockquote className="font-light text-gray-500 lg:mb-6 sm:text-xl dark:text-gray-700">
+              <blockquote className="font-light text-gray-500 lg:mb-6 md:mb-4 mb-2  sm:text-xl dark:text-gray-700">
                 Мы стремимся к долгосрочному сотрудничеству с каждым клиентом, обеспечивая
                 оперативное и качественное выполнение задач в соответствии с законодательством РФ и
                 других стран.

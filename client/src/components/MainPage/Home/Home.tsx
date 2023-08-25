@@ -50,7 +50,7 @@ export default function Home({ calculator }) {
             </div>
           </div>
         </div> */}
-        <div className="mx-auto lg:max-w-3xl  md:max-w-2xl  sm:max-w-2xl sm:py-48 lg:py-14 ">
+        <div className="mx-auto lg:max-w-3xl  md:max-w-2xl  sm:max-w-2xl lg:py-14 md:py-9 py-9">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-[#233862] sm:text-6xl">
               Digital Nomad Calculator
@@ -103,13 +103,13 @@ export default function Home({ calculator }) {
       {/* </div> */}
       {/* <div id="bottom-section"></div> */}
       {/* <div className="w-full rounded overflow-hidden shadow-lg bg-white flex flex-col p-6 md:py-8 lg:py-12 xl:py-10 md:px-8 lg:px-12 xl:px-20"> */}
-      <div className="mt-8 pl-10">
+      <div className="">
         <Qualities />
       </div>
       <div className="bg-[#F4F8FD] py-14 " ref={calculator}>
         <Calculator />
       </div>
-      <div className="mt-8 pl-10">
+      <div>
         <Motivation />
       </div>
 

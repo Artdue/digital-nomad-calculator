@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { getStates } from '../../../Redux/thunks/getStates';
 import type { RootState } from '../../../Types/types';
 import { unregtUserGet } from '../../../Redux/thunks/unregThunk';
+import { Button } from '@material-tailwind/react';
 
 // import type { RootState } from '../../../Types/types';
 
@@ -106,7 +107,7 @@ export default function Calculator(): React.JSX.Element {
     <>
       {/* <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8"> */}{' '}
       <div className="flex justify-center">
-        <div className="max-w-screen-xl w-full lg:flex space-y-4">
+        <div className="max-w-screen-xl w-full lg:flex space-y-0 px-8 ">
           <div className="lg:w-1/2 px-4">
             {showNotification1 && (
               <div
@@ -127,15 +128,12 @@ export default function Calculator(): React.JSX.Element {
             <div className="mt-10 lg:mx-auto lg:w-full lg:max-w-lg md:mx-auto md:w-full md:max-w-md sm:mx-auto sm:w-full sm:max-w-sm">
               {' '}
               {/* <img
-            className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
-          /> 
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign in to your account
-          </h2>*/}
+                className="mx-auto h-10 w-auto"
+                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                alt="Your Company"
+              /> */}
               <div className="mb-6">
-                <h1 className="mt-10 text-center text-2xl leading-9 sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#233862]">
+                <h1 className="mt-10 text-center text-2xl leading-9 sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#337CE5]">
                   Digital Nomad Calculator
                 </h1>
               </div>
@@ -157,7 +155,7 @@ export default function Calculator(): React.JSX.Element {
                     <select
                       name="citizenship"
                       id="citizenship"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#337CE5] sm:leading-6"
                       onChange={(e) => setCitizenship(e.target.value)}
                     >
                       <option value={citizenship}>{citizenship}</option>
@@ -181,7 +179,7 @@ export default function Calculator(): React.JSX.Element {
                     <select
                       name="income"
                       id="income"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#337CE5] sm:leading-6"
                       onChange={(e) => setIncome(e.target.value)}
                     >
                       <option value={income}>{income}</option>
@@ -208,7 +206,7 @@ export default function Calculator(): React.JSX.Element {
                     <input
                       id="date"
                       type="date"
-                      className="block w-full px-4 py-2  rounded-md border-0  pl-5 pr-2 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6"
+                      className="block w-full px-4 py-2  rounded-md border-0  pl-5 pr-2 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#337CE5] sm:leading-6"
                       name="employmentDate"
                       value={employmentDate}
                       onChange={(e) => setEmploymentDate(e.target.value)}
@@ -216,34 +214,21 @@ export default function Calculator(): React.JSX.Element {
                   </div>
                 </div>
 
-                {/* <div className="flex mt-2 ">
-              <button className="m-2 mt-4 px-4 py-3 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2">
-                Подобрать
-              </button>
-
-              <button
-                type="button"
-                onClick={resetCalc}
-                className="w-[106.28px] m-2 mt-4 px-4 py-3 text-white bg-gradient-to-br from-blue-500 to-purple-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm text-center mr-2 mb-2"
-              >
-                Сбросить
-              </button>
-            </div> */}
-
-                <div>
-                  <button
-                    type="submit"
-                    className="flex w-full justify-center rounded-md bg-gradient-to-br from-blue-500 to-purple-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  >
-                    Подобрать
-                  </button>
-                  <button
-                    type="button"
+                <div className="flex justify-center">
+                  <Button
                     onClick={resetCalc}
-                    className="w-[106.28px] m-2 mt-4 px-4 py-3 text-white bg-gradient-to-br from-blue-500 to-purple-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm text-center mr-2 mb-2"
+                    variant="gradient"
+                    className="rounded-full bg-[#233862] bg-[#76a1dd] ml-2 mr-2"
                   >
                     Сбросить
-                  </button>
+                  </Button>
+                  <Button
+                    type="submit"
+                    variant="gradient"
+                    className="rounded-full bg-[#76a1dd] bg-[#233862] mr-2 ml-2 "
+                  >
+                    Подобрать
+                  </Button>
                 </div>
               </form>
             </div>{' '}
@@ -261,8 +246,8 @@ export default function Calculator(): React.JSX.Element {
                 <div className="mt-10 lg:mx-auto lg:w-full lg:max-w-lg sm:mx-auto sm:w-full sm:max-w-sm">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {filterStates.map((state, i) => (
-                      <button className="" onClick={() => openModal(state)}>
-                        <div key={i} className="max-w-sm border rounded">
+                      <button className="bg-white rounded-full border-2 border-[#337CE5]">
+                        <div key={i} className="max-w-sm">
                           <figure className="py-3">
                             <blockquote className="font-light text-gray-700 sm:text-lg dark:text-gray-700">
                               {state.state_name}
@@ -277,11 +262,17 @@ export default function Calculator(): React.JSX.Element {
                       <blockquote className="text-center font-light text-gray-700 lg:mb-0 sm:text-lg dark:text-gray-700">
                         <button
                           onClick={toReg}
-                          className="text-base font-semibold bg-gradient-to-r from-purple-600 to-[#76a1dd] text-transparent bg-clip-text"
+                          className="text-lg font-semibold text-[#337CE5]"
+
+                          // className="text-base font-semibold bg-gradient-to-r from-purple-600 to-[#76a1dd] text-transparent bg-clip-text"
                         >
                           Зарегистрируйтесь <span aria-hidden="true">→</span>
                         </button>
-                        <br /> чтобы увидеть подробную информацию
+
+                        <br />
+                        <p className="mt-1 text-center  max-w-full text-sm leading-6 text-gray-500">
+                          чтобы увидеть подробную информацию
+                        </p>
                       </blockquote>
                     </figure>
                   </div>{' '}
