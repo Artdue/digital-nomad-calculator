@@ -1,5 +1,4 @@
 import React from 'react';
-import ServicesCompanies from '../ServicesCompanies/ServicesCompanies';
 import { Card, CardBody, Typography } from '@material-tailwind/react';
 
 const posts = [
@@ -31,28 +30,6 @@ export default function Qualities() {
   return (
     <>
       {' '}
-      {/* <div className="bg-white py-10">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-screen-sm mb-8 lg:mb-4">
-            <h1 className="text-[#233862] lg:text-4xl md:text-2xl font-medium tracking-tight text-base sm:text-2xl">
-              Особенности Digital Nomad Calculator
-            </h1>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post) => (
-              <Card className="mt-6 w-96 bg-[#F3F4F6]">
-                <CardBody>
-                  <Typography variant="h5" className="mb-2 text-[#233862]">
-                    <span className="absolute inset-0 mb-4" />
-                    {post.title}
-                  </Typography>
-                  <Typography>{post.description}</Typography>
-                </CardBody>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </div> */}{' '}
       <div className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center lg:mb-8 md:mb-4">

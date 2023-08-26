@@ -25,7 +25,7 @@ export default function Home({ calculator }) {
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Легко и просто ориентируйтесь в мире виз для цифровых кочевников
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6 pl-7  lg:pl-0 md:pl-7">
+            <div className="mt-10 flex items-center justify-center gap-x-6 pl-5  lg:pl-0 md:pl-7">
               <Button
                 type="submit"
                 onClick={calculateScroll}

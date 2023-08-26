@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PrivacyPolicy from '../../PrivacyPolicy/PrivacyPolicy';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import nodemailerSend from '../../../Redux/thunks/nodemailer';
+import { Button } from '@material-tailwind/react';
 
 const initState = {
   name: '',
@@ -40,12 +41,17 @@ export default function FeedbackForm() {
     <>
       {/* Сторона с инпутами */}
       <div className="w-full md:w-1/2 p-4 md:p-8 flex flex-col justify-center items-center">
-        <figure className="mt-19">
+        {/* <figure className="mt-19">
           <blockquote className="text-center font-medium	text-[#337CE5] lg:mb-5 sm:text-lg dark:text-gray-700">
             {state.message}
           </blockquote>
-        </figure>
-        <form>
+        </figure> */}
+        <div className="text-center lg:mb-8 md:mb-4">
+          <h1 className="text-[#337CE5] lg:text-lg md:text-sm text-sm font-medium">
+            {state.message}
+          </h1>
+        </div>
+        <form className="mt-4">
           <div className="relative z-0 w-full mb-6 group">
             <input
               onChange={inputHandler}
@@ -134,7 +140,7 @@ export default function FeedbackForm() {
               обработку персональных данных
             </Link>
           </span>
-
+          {/* 
           <div className="text-center">
             <button
               onClick={sendMesg}
@@ -143,6 +149,16 @@ export default function FeedbackForm() {
             >
               Отправить
             </button>
+          </div> */}
+          <div className="flex justify-center">
+            <Button
+              type="button"
+              onClick={sendMesg}
+              variant="gradient"
+              className="rounded-full bg-[#337CE5]  "
+            >
+              Отправить
+            </Button>
           </div>
         </form>
         {showModal && (
@@ -152,7 +168,7 @@ export default function FeedbackForm() {
               backgroundColor: 'rgba(0, 0, 0, 0.5)',
             }}
           >
-            <div className="w-[1000px] h-[900px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
+            {/* <div className="w-[1000px] h-[900px] bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 flex flex-col items-center overflow-hidden">
               <div className="actions flex-grow overflow-y-auto">
                 <PrivacyPolicy />
               </div>
@@ -165,7 +181,7 @@ export default function FeedbackForm() {
               >
                 Закрыть
               </button>
-            </div>
+            </div> */}
           </div>
         )}
       </div>
