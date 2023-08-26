@@ -52,10 +52,10 @@ export default function Contact() {
 
               <figure className="mt-2">
                 <blockquote className="font-light text-[#233862] sm:text-base">
-                  <p>
+                  <a href="https://yandex.ru/maps/-/CDQV6QnA">
                     «Рабочая станция» <br /> Садовническая набережная, 9 <br />
                     Москва, 115035
-                  </p>
+                  </a>
                 </blockquote>
               </figure>
             </div>
