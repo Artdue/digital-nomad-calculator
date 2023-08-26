@@ -143,7 +143,7 @@ export default function Calculator(): React.JSX.Element {
               <form ref={formRef} onSubmit={submitHandler} className="space-y-6">
                 <div>
                   <figure className="mb-2 mt-4">
-                    <blockquote className="block text-sm font-medium leading-6 text-gray-700">
+                    <blockquote className="block text-sm font-medium leading-6 text-[#233862]">
                       <label htmlFor="citizenship">Гражданство</label>{' '}
                     </blockquote>
                   </figure>
@@ -152,7 +152,7 @@ export default function Calculator(): React.JSX.Element {
                     <select
                       name="citizenship"
                       id="citizenship"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#337CE5] sm:leading-6 md:w-full" // Добавлен класс md:w-full
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-[#233862] sm:text-base ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#337CE5] sm:leading-6 md:w-full" // Добавлен класс md:w-full
                       onChange={(e) => setCitizenship(e.target.value)}
                     >
                       <option value={citizenship}>{citizenship}</option>
@@ -168,7 +168,7 @@ export default function Calculator(): React.JSX.Element {
 
                 <div>
                   <figure className="mt-4 mb-2">
-                    <blockquote className="block text-sm font-medium leading-6 text-gray-700">
+                    <blockquote className="block text-sm font-medium leading-6 text-[#233862]">
                       <label htmlFor="income"> Доход в месяц более</label>{' '}
                     </blockquote>
                   </figure>
@@ -176,7 +176,7 @@ export default function Calculator(): React.JSX.Element {
                     <select
                       name="income"
                       id="income"
-                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#337CE5] sm:leading-6 md:w-full" // Добавлен класс md:w-full
+                      className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 font-light text-[#233862] sm:text-basering-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#337CE5] sm:leading-6 md:w-full" // Добавлен класс md:w-full
                       onChange={(e) => setIncome(e.target.value)}
                     >
                       <option value={income}>{income}</option>
@@ -194,7 +194,7 @@ export default function Calculator(): React.JSX.Element {
 
                 <div>
                   <figure className="mt-4 mb-2">
-                    <blockquote className="block text-sm font-medium leading-6 text-gray-700">
+                    <blockquote className="block text-sm font-medium leading-6 text-[#233862]">
                       <label htmlFor="date"> Примерная дата устройства на текущую работу</label>{' '}
                     </blockquote>
                   </figure>
@@ -203,7 +203,7 @@ export default function Calculator(): React.JSX.Element {
                     <input
                       id="date"
                       type="date"
-                      className="block w-full px-4 py-2  rounded-md border-0  pl-5 pr-2 font-light text-gray-900 sm:text-base dark:text-gray-700 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#337CE5] sm:leading-6"
+                      className="block w-full px-4 py-2  rounded-md border-0  pl-5 pr-2 font-light text-[#233862] sm:text-base ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-[#337CE5] sm:leading-6"
                       name="employmentDate"
                       value={employmentDate}
                       onChange={(e) => setEmploymentDate(e.target.value)}
