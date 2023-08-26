@@ -38,6 +38,29 @@ export default function Home({ calculator }) {
                 Записаться на консультацию <span aria-hidden="true">→</span>
               </Link>
             </div>
+            {/* <div className="mt-10 relative">
+              <img
+                src="/src/assets/barthelemy-de-mazenod-1Y5WpVfaAPQ-unsplash_YkeYSQqD.webp"
+                alt=""
+                className="w-full"
+              />
+
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center space-x-4">
+                  <Button
+                    type="submit"
+                    onClick={calculateScroll}
+                    variant="gradient"
+                    className="rounded-full bg-[#337CE5] font-semibold text-white"
+                  >
+                    Подобрать страну
+                  </Button>
+                  <Link to="/contact" className="text-sm font-semibold leading-6 text-[#233862]">
+                    Записаться на консультацию <span aria-hidden="true">→</span>
+                  </Link>
+                </div>{' '}
+              </div>
+            </div> */}
           </div>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-14 md:py-12 lg:py-14">
             <div className="absolute inset-0 -z-10" />

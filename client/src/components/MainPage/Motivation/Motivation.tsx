@@ -9,11 +9,11 @@ export default function Motivation() {
             Реализуйте свои глобальные рабочие амбиции
           </h1> */}
 
-          <span className=" text-base lg:text-4xl md:text-3xl  font-medium text-[#337CE5] ">
+          <span className=" text-sm lg:text-4xl md:text-3xl  font-medium text-[#337CE5] ">
             Реализуйте свои глобальные рабочие амбиции{' '}
           </span>
           <br />
-          <span className=" text-base lg:text-5xl md:text-4xl font-medium text-[#233862] ">
+          <span className=" text-lg lg:text-5xl md:text-4xl font-medium text-[#233862] ">
             <br /> Живите и работайте там, где вам хочется,
             <br /> а мы поможем на любом этапе пути{' '}
           </span>
