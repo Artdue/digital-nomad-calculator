@@ -230,3 +230,105 @@ export default function Foot() {
     </div>
   );
 }
+
+футер без закоменченного команда
+<div className="flex items-end  w-full  bg-white mt-7">
+        <footer className="w-full text-gray-700 bg-gray-100 body-font">
+          <div className="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap ">
+            <div className="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
+              <button onClick={goToHome}>
+                <img
+                  className="h-[100px] w-full sm:h-full  object-cover mt-4"
+                  src="/src/assets/logo.png"
+                  alt="logo"
+                />
+              </button>
+            </div>
+            <div className="flex flex-wrap justify-evenly flex-grow mt-10 -mb-10 text-center md:pl-20 md:mt-0 md:text-left">
+              <div className="w-full px-4 lg:w-1/4 md:w-1/2">
+                <nav className="mb-10 list-none">
+                  <li className="mt-3">
+                    <button
+                      to="/about"
+                      className="text-gray-500 cursor-pointer hover:text-gray-900"
+                      onClick={aboutComp}
+                    >
+                      О компании
+                    </button>
+                  </li>
+                  <li className="mt-3">
+                    <button
+                      className="text-gray-500 cursor-pointer hover:text-gray-900"
+                      onClick={contactNav}
+                    >
+                      Контакты
+                    </button>
+                  </li>
+                  <li className="mt-3">
+                    <button
+                      className="text-gray-500 cursor-pointer hover:text-gray-900"
+                      onClick={ourTeamNav}
+                    >
+                      Наша команда
+                    </button>
+                  </li>
+                  <li className="mt-3">
+                    <button
+                      onClick={politPrivNav}
+                      className="text-gray-500 cursor-pointer hover:text-gray-900"
+                    >
+                      Политика конфиденциальности
+                    </button>
+                  </li>
+                </nav>
+              </div>
+              <div className="w-full px-4 lg:w-1/4 md:w-1/2">
+                <nav className="mb-10 list-none">
+                  <li className="mt-3">
+                    <button
+                      onClick={feedbNav}
+                      className="text-gray-500 cursor-pointer hover:text-gray-900"
+                    >
+                      Записаться на консультацию
+                    </button>
+                  </li>
+                  <li className="mt-3">
+                    <button
+                      onClick={servAndPriceNav}
+                      className="text-gray-500 cursor-pointer hover:text-gray-900"
+                    >
+                      Услуги и цены
+                    </button>
+                  </li>
+                </nav>
+              </div>
+
+              <div className="w-full px-4 lg:w-1/4 md:w-1/2">
+                <nav className="mb-10 list-none">
+                  <li className="mt-3">
+                    <a className="text-gray-500 cursor-pointer hover:text-gray-900">
+                      info@kycconsulting.ru
+                    </a>
+                  </li>
+
+                  <li className="mt-3">
+                    <a
+                      href="tel:+74957951054"
+                      className="text-gray-500 cursor-pointer hover:text-gray-900"
+                    >
+                      +7 (921) 018 51 81
+                    </a>
+                  </li>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <div className="bg-gray-300">
+            <div className="container px-5 py-4 mx-auto">
+              <p className="text-sm text-gray-700 capitalize xl:text-center">
+                © 2023 All rights reserved{' '}
+              </p>
+            </div>
+          </div>
+        </footer>
+      </div> 
