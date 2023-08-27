@@ -103,19 +103,21 @@ export default function Foot() {
             </div>
           </div>
           <Footer.Divider />
-          <div className="w-full sm:flex sm:items-center sm:justify-between">
+          {/*    Вместе с иконками на соц.сети
+                 <div className="w-full sm:flex sm:items-center sm:justify-between"> */}
+          <div className="w-full sm:flex sm:items-center sm:justify-center">
             <Footer.Copyright
               by="Все права защищены
 "
               href="#"
               year={2023}
             />
-            <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+            {/* <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
               <Footer.Icon href="#" icon={BsFacebook} />
-              {/* <Footer.Icon href="#" icon={BsInstagram} />
-              <Footer.Icon href="#" icon={BsTwitter} /> */}
+              <Footer.Icon href="#" icon={BsInstagram} />
+              <Footer.Icon href="#" icon={BsTwitter} />
               <Footer.Icon href="#" icon={BsTelegram} />
-            </div>
+            </div> */}
           </div>
         </div>
       </Footer>
