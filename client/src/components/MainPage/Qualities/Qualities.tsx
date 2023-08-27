@@ -30,7 +30,7 @@ export default function Qualities() {
   return (
     <>
       {' '}
-      <div className="bg-white py-20">
+      <div className="bg-white py-14 lg:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center lg:mb-8 md:mb-4">
             <h1 className="text-[#337CE5] lg:text-4xl md:text-4xl text-2xl font-medium">

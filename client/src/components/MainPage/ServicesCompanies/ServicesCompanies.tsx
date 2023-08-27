@@ -48,17 +48,17 @@ const services = [
 
 export default function ServicesCompanies() {
   return (
-    <div className="px-4 mx-auto max-w-screen-xl lg:px-6">
+    <div className="px-4 py-14  mx-auto max-w-screen-xl lg:px-6 bg-[#F4F8FD]">
       {/* <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6"> */}
-      <section className="bg-white dark:bg-gray-900">
-        <h1 className="text-[#233862] mt-2 font-medium text-center text-2xl sm:text-3xl md:text-2xl lg:text-3xl dark:text-white">
-          <br /> Перечень <span className="underline decoration-[#76a1dd]">услуг</span>
+      <section className=" dark:bg-gray-900 bg-[#F4F8FD]">
+        <h1 className="text-[#233862] font-medium text-center text-2xl sm:text-3xl md:text-2xl lg:text-3xl dark:text-white">
+          Перечень <span className="underline decoration-[#76a1dd]">услуг</span>
         </h1>
         <div className="grid grid-cols-1 gap-4 mt-8 xl:mt-12 xl:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <div
               key={index}
-              className="p-12 border-2 border-[#76a1dd] dark:border-blue-300 rounded-xl max-w-sm mx-auto h-[449px] flex flex-col"
+              className="p-12 border-2 bg-white border-[#76a1dd] dark:border-blue-300 rounded-xl max-w-sm mx-auto h-[449px] flex flex-col"
             >
               <div className="h-[100px] flex flex-col">
                 <h1 className="lg:text-xl md:text-lg sm:text-base font-semibold text-[#233862] dark:text-white">

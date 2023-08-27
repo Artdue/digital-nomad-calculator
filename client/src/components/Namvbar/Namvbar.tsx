@@ -12,7 +12,7 @@ const navigation = [
   { name: 'Главная', href: '/', current: false },
   // { name: 'Подбери свою страну', href: '/digitalNomadCalculator', current: false },
   { name: 'Услуги', href: '/services-and-price', current: false },
-  { name: 'Наша команда', href: '/CompanyServices', current: false },
+  { name: 'Команда', href: '/CompanyServices', current: false },
   { name: 'О компании', href: '/about', current: false },
   { name: 'Контакты', href: '/contact', current: false },
 ];
@@ -38,12 +38,12 @@ export default function Namvbar({ scrollToBlock }) {
     navigate('/');
   };
 
-  const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '#', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
-  ];
+  // const navigation = [
+  //   { name: 'Dashboard', href: '#', current: true },
+  //   { name: 'Team', href: '#', current: false },
+  //   { name: 'Projects', href: '#', current: false },
+  //   { name: 'Calendar', href: '#', current: false },
+  // ];
 
   return (
     <>
