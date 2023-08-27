@@ -19,12 +19,13 @@ export default function Home({ calculator }) {
   return (
     <div>
       <div className="bg-[#F4F8FD]  py-8 md:py-14 lg:py-20">
-        <div className="mx-auto max-w-sm lg:max-w-4xl md:max-w-xl">
+        <div className="mx-auto max-w-md lg:max-w-4xl md:max-w-2xl">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-[#233862] sm:text-6xl">
               Digital Nomad Calculator
             </h1>
-            <p className="mt-6 lg:text-lg md:text-lg text-sm leading-8 text-gray-600">
+            <p className="mt-6 lg:text-lg md:text-lg text-sm max-w-md  lg:max-w-4xl md:max-w-3xl leading-8 text-gray-600">
+              {/* <p className="mt-6 lg:text-lg md:text-lg text-sm leading-8 text-gray-600"> */}
               Легко и просто ориентируйтесь в мире виз для цифровых кочевников
             </p>
             <div className="mt-4 lg:mt-10 flex items-center justify-center gap-x-6 pl-5  lg:pl-0 md:pl-7">
