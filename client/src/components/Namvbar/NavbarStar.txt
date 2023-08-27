@@ -5,7 +5,6 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import userLogout from '../../Redux/thunks/user/logout.api';
 
-import { Button, Navbar } from 'flowbite-react';
 
 const navigation = [
   { name: 'На главную', href: '/', current: false },
@@ -38,30 +37,7 @@ export default function Namvbar({ scrollToBlock }) {
 
   return (
     <>
-      <Navbar fluid rounded>
-        <Navbar.Brand href="/">
-          {/* <img className="mr-3 h-6 sm:h-9" src="/src/assets/logo.png" /> */}
-          <div className="mr-3 h-6 sm:h-9">
-            {' '}
-            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-              Digital Nomad Calculator
-            </span>
-          </div>
-        </Navbar.Brand>
-        <div className="flex md:order-2">
-          <Button>Get started</Button>
-          <Navbar.Toggle />
-        </div>
-        <Navbar.Collapse>
-          <Navbar.Link active href="#">
-            <p>Home</p>
-          </Navbar.Link>
-          <Navbar.Link href="#">About</Navbar.Link>
-          <Navbar.Link href="#">Services</Navbar.Link>
-          <Navbar.Link href="#">Pricing</Navbar.Link>
-          <Navbar.Link href="#">Contact</Navbar.Link>
-        </Navbar.Collapse>
-      </Navbar>
+    
       <Disclosure as="nav" className="">
         {({ open }) => (
           <>

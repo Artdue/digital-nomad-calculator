@@ -67,9 +67,9 @@ export default function Foot() {
                   <Footer.Link href="#" onClick={aboutComp} className="text-white">
                     О компании
                   </Footer.Link>{' '}
-                  <Footer.Link href="#" onClick={ourTeamNav} className="text-white">
+                  {/* <Footer.Link href="#" onClick={ourTeamNav} className="text-white">
                     Наша команда
-                  </Footer.Link>
+                  </Footer.Link> */}
                 </Footer.LinkGroup>
               </div>
               <div>
