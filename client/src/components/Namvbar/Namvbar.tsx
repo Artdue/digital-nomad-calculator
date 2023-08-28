@@ -12,7 +12,6 @@ import {
   ArrowRightOnRectangleIcon,
   UserIcon,
   BriefcaseIcon,
-  BookmarkIcon,
 } from '@heroicons/react/24/outline';
 
 const navigation = [
@@ -75,6 +74,9 @@ export default function Namvbar({ scrollToBlock }) {
                     type="submit"
                     onClick={scrollToBlock}
                     variant="gradient"
+                    // size={window.innerWidth >= 1024 ? 'md' : 'sm'}
+                    // className="rounded-full bg-gradient-to-br from-[#337CE5] to-[#255fd4] font-semibold text-white ml-2 md:ml-0"
+                    size="md"
                     className="rounded-full bg-gradient-to-br from-[#337CE5] to-[#255fd4] font-semibold text-white ml-2 md:ml-0"
                   >
                     Digital Nomad Calculator
@@ -90,7 +92,7 @@ export default function Namvbar({ scrollToBlock }) {
                               item.current
                                 ? 'bg-[#0c4a6e] text-[#76a1dd]'
                                 : 'text-[#0c4a6e] hover:text-[#76a1dd]',
-                              'px-4 py-2 text-sm font-medium',
+                              'px-4 py-2 md:text-sm lg:text-base font-medium',
                             )}
                             aria-current={item.current ? 'page' : undefined}
                           >
