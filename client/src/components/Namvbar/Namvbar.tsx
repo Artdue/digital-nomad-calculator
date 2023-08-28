@@ -24,10 +24,10 @@ const navigation = [
   // { name: 'Войти', href: '#', current: false },
 ];
 
-const navigationT = [
-  { name: 'Войти', href: '/user/login', current: false },
-  // { name: 'Зарегистрироваться', href: '/user/register', current: false },
-];
+// const navigationT = [
+//   { name: 'Войти', href: '/user/login', current: false },
+//    { name: 'Зарегистрироваться', href: '/user/register', current: false },
+// ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
