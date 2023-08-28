@@ -4,23 +4,25 @@ import FeedbackForm from '../FeedbackForm/FeedbackForm';
 
 export default function Contact() {
   return (
-    <div className="py-8 mb-4 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
+    <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
       <div className="flex flex-wrap justify-center">
         {/* <div className="w-full md:w-1/2 p-4 md:p-8 bg-gray-100 text-center md:text-left"> */}
         <div className="w-full md:w-1/2 p-4 md:p-8 flex flex-col justify-center items-center">
           <div className="h-full">
-            <h2 className="mt-0 mb-5">
-              {/* <span className="inline-block text-2xl font-medium mb-3 bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 rounded-lg px-5 py-2.5 text-[#76a1dd] text-transparent bg-clip-text sm:text-base md:text-xl lg:text-2xl"> */}
+            {/* <h2 className="mt-0 mb-5">
               <h1 className="text-center text-[#233862] text-3xl font-bold tracking-tigh sm:text-4xl">
                 Контакты{' '}
               </h1>
-              {/* <h1 className="text-[#233862] text-3xl font-bold tracking-tigh sm:text-4xl">
+            </h2> */}
+            <div className="mb-5">
+              <h1 className="lg:mt-0 mt-0 text-center text-2xl leading-9 sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#233862]">
                 Контакты{' '}
-              </h1> */}
-            </h2>
+              </h1>
+            </div>
 
             <figure className="">
-              <blockquote className="font-light text-gray-500 lg:mb-6 sm:text-xl dark:text-gray-700">
+              <blockquote className="font-light text-[#233862]  lg:mb-6 md:mb-4 mb-2  sm:text-xl ">
+                {/* <blockquote className="block text-sm font-medium leading-6 text-gray-700"> */}
                 Мы стремимся к долгосрочному сотрудничеству с каждым клиентом, обеспечивая
                 оперативное и качественное выполнение задач в соответствии с законодательством РФ и
                 других стран.
@@ -49,11 +51,11 @@ export default function Contact() {
               </p> */}
 
               <figure className="mt-2">
-                <blockquote className="font-light text-gray-500 sm:text-base dark:text-gray-700">
-                  <p>
+                <blockquote className="font-light text-[#233862] sm:text-base">
+                  <a href="https://yandex.ru/maps/-/CDQV6QnA">
                     «Рабочая станция» <br /> Садовническая набережная, 9 <br />
                     Москва, 115035
-                  </p>
+                  </a>
                 </blockquote>
               </figure>
             </div>
@@ -76,7 +78,7 @@ export default function Contact() {
               </svg>
 
               <figure className="mt-2">
-                <blockquote className="font-light text-gray-500 sm:text-base dark:text-gray-700">
+                <blockquote className="font-light text-[#233862] sm:text-base">
                   <a href="tel:+7 (495) 018 51 81">+7 (495) 018 51 81</a>
                 </blockquote>
               </figure>
@@ -102,7 +104,7 @@ export default function Contact() {
                 info@kycconsulting.ru
               </a> */}
               <figure className="mt-0">
-                <blockquote className="font-light text-gray-500 sm:text-base dark:text-gray-700">
+                <blockquote className="font-light text-[#233862] sm:text-base">
                   <a href="mailto:info@kycconsulting.ru">info@kycconsulting.ru</a>
                 </blockquote>
               </figure>

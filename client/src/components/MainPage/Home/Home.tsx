@@ -6,6 +6,10 @@ import Calculator from '../Calculator/Calculator';
 import Contact from '../../ContactAndFeed/Contact/Contact';
 import Qualities from '../Qualities/Qualities';
 import { Link } from 'react-router-dom';
+import Motivation from '../Motivation/Motivation';
+import { Button } from '@material-tailwind/react';
+import Strengths from '../Strengths/Strengths';
+import ServicesCompanies from '../ServicesCompanies/ServicesCompanies';
 
 export default function Home({ calculator }) {
   const calculateScroll = () => {
@@ -14,74 +18,87 @@ export default function Home({ calculator }) {
 
   return (
     <div>
-      <div
-        className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-1 relative bg-cover bg-center "
-        style={{
-          backgroundImage: `url('/src/assets/translucent-image.png')`,
-          backgroundSize: 'cover',
-          minHeight: '850px',
-        }}
-      >
-        <div className="mt-16 mx-auto max-w-2xl lg:max-w-4xl">
-          <div className="mx-auto max-w-screen-l text-center mb-4 lg:mb-12">
-            <h1 className="text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-6xl font-bold tracking-tight text-[#233862]">
+      <div className="bg-[#F4F8FD]  py-8 md:py-14 lg:py-20">
+        <div className="mx-auto max-w-md lg:max-w-4xl md:max-w-2xl">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold tracking-tight text-[#233862] sm:text-6xl">
               Digital Nomad Calculator
             </h1>
-            <br />
-            <div className="mx-auto max-w-sm ">
-              <p className="mt-6 text-center text-l sm:text-sm md:text-xl lg:text-[23px] lg:leading-6 text-gray-500">
-                Легко и просто ориентируйтесь в мире виз для цифровых кочевников
-              </p>
-            </div>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <button
+            <p className="mt-6 lg:text-lg md:text-lg text-sm max-w-md  lg:max-w-4xl md:max-w-3xl leading-8 text-gray-600">
+              {/* <p className="mt-6 lg:text-lg md:text-lg text-sm leading-8 text-gray-600"> */}
+              Легко и просто ориентируйтесь в мире виз для цифровых кочевников
+            </p>
+            <div className="mt-4 lg:mt-10 flex items-center justify-center gap-x-6 pl-5  lg:pl-0 md:pl-7">
+              <Button
+                type="submit"
                 onClick={calculateScroll}
-                className="rounded-md m-2  px-4 h-[45px] w-[230px] py-2 text-white text-[18px] font-semibold  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2 scroll-button"
-                // href="#bottom-section"
+                variant="gradient"
+                className="rounded-full bg-[#337CE5] font-semibold text-white "
               >
                 Подобрать страну
-              </button>
-
-              <Link to="/contact" className=" font-semibold text-l leading-6 text-gray-900">
-                <button>Записаться на консультацию</button> <span aria-hidden="true">→</span>
+              </Button>
+              <Link to="/contact" className="text-sm font-semibold leading-6 text-[#233862]">
+                Записаться на консультацию <span aria-hidden="true">→</span>
               </Link>
+            </div>
+            {/* <div className="mt-10 relative">
+              <img
+                src="/src/assets/barthelemy-de-mazenod-1Y5WpVfaAPQ-unsplash_YkeYSQqD.webp"
+                alt=""
+                className="w-full"
+              />
+
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center space-x-4">
+                  <Button
+                    type="submit"
+                    onClick={calculateScroll}
+                    variant="gradient"
+                    className="rounded-full bg-[#337CE5] font-semibold text-white"
+                  >
+                    Подобрать страну
+                  </Button>
+                  <Link to="/contact" className="text-sm font-semibold leading-6 text-[#233862]">
+                    Записаться на консультацию <span aria-hidden="true">→</span>
+                  </Link>
+                </div>{' '}
+              </div>
+            </div> */}
+          </div>
+          <div className="mx-auto max-w-7xl px-6 lg:px-8 py-8 md:py-8 lg:py-14">
+            <div className="mx-auto max-w-2xl lg:max-w-4xl">
+              <figure>
+                <blockquote className="text-center font-light text-gray-500  lg:text-2xl dark:text-gray-700">
+                  Digital Nomad Calculator — идеальное руководство для определения стран, открытых
+                  для вашего следующего переезда. <br /> Удобное веб-приложение создано специально
+                  для профессионалов, желающих сочетать работу и путешествия, предлагая список
+                  стран, доступных для подачи заявления на визу/ВНЖ.
+                </blockquote>
+              </figure>
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div className="absolute inset-0 -z-10 " />
-          {/* <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg]  sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" /> */}
-          <div className="mx-auto max-w-2xl lg:max-w-4xl">
-            <figure className="mt-20">
-              <blockquote className="text-center font-light text-gray-500 lg:mb-16 sm:text-2xl dark:text-gray-700">
-                <p>
-                  Digital Nomad Calculator — идеальное руководство для определения стран, открытых
-                  для вашего следующего переезда. Удобное веб-приложение создано специально для
-                  профессионалов, желающих сочетать работу и путешествия, предлагая список стран,
-                  доступных для подачи заявления на визу/ВНЖ.
-                </p>
-              </blockquote>
-            </figure>
-          </div>
-        </div>
-      </div>
-      {/* <div id="bottom-section"></div> */}
-      {/* <div className="w-full rounded overflow-hidden shadow-lg bg-white flex flex-col p-6 md:py-8 lg:py-12 xl:py-10 md:px-8 lg:px-12 xl:px-20"> */}
-      <div ref={calculator}>
-        <Calculator />
-      </div>
-      {/* </div> */}
-      <div className="mt-8 pl-10">
+      <div className="">
         <Qualities />
       </div>
-      {/* <div>
-          <Strengths />
-        </div> */}
-      {/* <div>
-          <ServicesCompanies />
-        </div> */}
+      <div className="bg-[#F4F8FD] py-14 " ref={calculator}>
+        <Calculator />
+      </div>
       <div>
+        <Motivation />
+      </div>
+      {/* <div>
+        <Strengths />
+      </div>
+      <div className="bg-[#F4F8FD]">
+        <ServicesCompanies />
+      </div>
+      <div>
+        <Motivation />
+      </div> */}
+      <div className="bg-[#F4F8FD]">
         <Contact />
       </div>
     </div>
