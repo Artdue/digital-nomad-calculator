@@ -281,7 +281,7 @@ export default function Calculator(): React.JSX.Element {
                 <div className="mt-10 lg:mt-4 rounded-lg border overflow-hidden box-border">
                   <img
                     src="/src/assets/danny-g-htYDlrrKfuM-unsplash_YkeYSQqD.webp"
-                    alt=""
+                    alt="laptop_picture"
                     className="w-full h-auto"
                   />
                 </div>
