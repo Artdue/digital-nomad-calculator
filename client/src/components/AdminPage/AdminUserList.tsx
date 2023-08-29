@@ -70,10 +70,8 @@ const AdminUserList: React.FC = () => {
       const newStatus = userStatusMap[user.id] || selectedStatus;
       await dispatch(editUser({ userId: user.id, data: { document_status: newStatus } }));
 
-      // Обновите userStatusMap до отправки письма
       setUserStatusMap((prevState) => ({ ...prevState, [user.id]: newStatus }));
 
-      // Теперь вызовите sendMesg с актуальным статусом
       sendMesg({ ...user, document_status: newStatus });
     } catch (error) {
       console.error('Ошибка при изменении статуса и отправке сообщения:', error);
@@ -413,7 +411,6 @@ const AdminUserList: React.FC = () => {
                         </div>
                       </dd>
                     </div>
-                    {/* кнопка */}
                     <div className="m-2 pt-4 flex justify-center ">
                       <button
                         onClick={closeModal}
@@ -556,7 +553,7 @@ const AdminUserList: React.FC = () => {
           ) : (
             <span>Нет пользователей</span>
           )}
-        </div>{' '}
+        </div>
       </div>
     </>
   );
