@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-
 const nodemailerAdminSend = createAsyncThunk('/nodemailer/admin', async (user) => {
   console.log('FETCH');
   try {
@@ -11,7 +10,6 @@ const nodemailerAdminSend = createAsyncThunk('/nodemailer/admin', async (user) =
       },
       body: JSON.stringify(user),
     });
-
   } catch (error) {
     console.error('Oops', error);
   }
