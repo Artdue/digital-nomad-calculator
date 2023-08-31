@@ -1,3 +1,4 @@
+import { v4 } from 'uuid';
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
@@ -339,9 +340,7 @@ export default function MainCalculator(): React.JSX.Element {
                 <h1 className="text-2xl font-bold mb-4">{oneState?.state_name}</h1>
                 <div className="actions flex-grow overflow-y-auto">
                   <ul>
-                    {oneState?.actions
-                      .split('\n')
-                      .map((action, index) => <li key={index}>{action}</li>)}
+                    {oneState?.actions.split('\n').map((action) => <li key={v4()}>{action}</li>)}
                   </ul>
                 </div>
                 <div className="flex flex-row space-x-4 justify-space-between">
@@ -356,12 +355,10 @@ export default function MainCalculator(): React.JSX.Element {
               </div>
             </div>
           )}
-          {/* <div className='justify-center items-center flex-col block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"'> */}
           {filterStates.length ? (
             <div className=" text-center bg-white p-6 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
               <div className="w-[500px] mb-6">
                 <h1 className="text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-3xl font-bold tracking-tight text-[#233862]">
-                  {/* Страны, подходящие Вам */}
                   Подходящие страны
                 </h1>
                 <figure className="mt-2">
@@ -399,8 +396,7 @@ export default function MainCalculator(): React.JSX.Element {
                 </figure>
               </div>
             </div>
-          ) : null}{' '}
-          {/* </div> */}
+          ) : null}
         </div>
       )}
       <div />
