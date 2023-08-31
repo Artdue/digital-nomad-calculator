@@ -15,11 +15,9 @@ const stateSlice = createSlice({
     builder
       .addCase(getStates.pending, (state) => {
         state.loading = true;
-        // console.log(state.loading);
       })
       .addCase(getStates.fulfilled, (state, action) => {
         state.loading = false;
-        // console.log(state.loading);
         state.states = action.payload;
       })
       .addCase(getStates.rejected, (state) => {
