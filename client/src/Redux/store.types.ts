@@ -6,7 +6,7 @@ export type IstateType = {
 };
 
 export type IprofileType = {
-  profile: IUser[];
+  profile: IUser;
   loading: boolean;
 };
 
@@ -21,4 +21,3 @@ export type IInitialState = {
   auth: boolean;
   msg: string;
 };
-
