@@ -85,4 +85,22 @@ export type Istates = {
   updatedAt: object;
 };
 
-export type { Istate, IInput };
+type IInput2 = {
+  income: number;
+  employmentDate: string;
+  citizenship: string;
+  visaT: string;
+  visaS: string;
+};
+
+type IEditUser = {
+  id: number;
+  citizenship: string;
+  income: number;
+  work_exp: number;
+  work_date: string;
+  visaType: string;
+  visaShare: string;
+};
+
+export type { Istate, IInput, IInput2, IEditUser };
