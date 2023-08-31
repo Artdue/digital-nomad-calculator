@@ -14,3 +14,11 @@ export type IUserType = {
   users: IUser[];
   loading: boolean;
 };
+
+export type IInitialState = {
+  email: string;
+  admin: boolean;
+  auth: boolean;
+  msg: string;
+};
+
