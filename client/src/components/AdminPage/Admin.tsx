@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import type { Istate, RootState } from '../../Types/types';
-import  getAdmin  from '../../Redux/thunks/getAdmin';
-import { deleteState } from '../../Redux/thunks/deleteState';
-import { editState } from '../../Redux/thunks/editState';
+import getAdmin from '../../Redux/thunks/getAdmin';
+import deleteState from '../../Redux/thunks/deleteState';
+import editState from '../../Redux/thunks/editState';
 import NewState from './NewState';
 import TestPage from './SideBarAdmin';
-
 
 function AdminStates(): React.JSX.Element {
   const states = useSelector((state: RootState) => state.adminSlice.states);
@@ -16,9 +15,9 @@ function AdminStates(): React.JSX.Element {
 
   const dispatch = useDispatch();
 
-  const deleteOneState = async (id: number):Promise<void> => {
+  const deleteOneState = async (id: number): Promise<void> => {
     try {
-     void dispatch(deleteState(id) as never);
+     dispatch(deleteState(id) as never);
     } catch (error) {
       console.error('Ошибка при удалении данных:', error);
     }
@@ -43,13 +42,13 @@ function AdminStates(): React.JSX.Element {
     visaTerm: 0,
     visaShare: '',
     actions: '',
-    createdAt:{},
-    updatedAt:{},
+    createdAt: {},
+    updatedAt: {},
   });
 
-  const handleEditState = async (id: number):Promise<void> => {
+  const handleEditState = async (): Promise <void> => {
     try {
-      dispatch(editState({ id, data: editedFields }) as never);
+      dispatch(editState(editedFields)as never);
       setEditingStateId(null);
       setEditedFields({
         id: 0,
@@ -65,8 +64,8 @@ function AdminStates(): React.JSX.Element {
         visaTerm: 0,
         visaShare: '',
         actions: '',
-        createdAt:{},
-        updatedAt:{},
+        createdAt: {},
+        updatedAt: {},
       });
     } catch (error) {
       console.error('Ошибка при редактировании данных:', error);
@@ -101,8 +100,8 @@ function AdminStates(): React.JSX.Element {
         visaTerm: editingState?.visaTerm || 0,
         visaShare: editingState?.visaShare || '',
         actions: editingState?.actions || '',
-        createdAt:editingState?.createdAt|| {},
-        updatedAt:editingState?. updatedAt || {},
+        createdAt: editingState?.createdAt || {},
+        updatedAt: editingState?.updatedAt || {},
       });
     } else {
       // Если не редактируется, сбросьте editedFields
@@ -120,8 +119,8 @@ function AdminStates(): React.JSX.Element {
         visaTerm: 0,
         visaShare: '',
         actions: '',
-        createdAt:{},
-        updatedAt:{},
+        createdAt: {},
+        updatedAt: {},
       });
     }
   }, [editingStateId, states]);
@@ -193,7 +192,10 @@ function AdminStates(): React.JSX.Element {
                                 className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 value={editedFields.min_income}
                                 onChange={(e) =>
-                                  setEditedFields({ ...editedFields, min_income: Number(e.target.value) })
+                                  setEditedFields({
+                                    ...editedFields,
+                                    min_income: Number(e.target.value),
+                                  })
                                 }
                               />
                             </dd>
@@ -240,7 +242,10 @@ function AdminStates(): React.JSX.Element {
                                 className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 value={editedFields.work_exp}
                                 onChange={(e) =>
-                                  setEditedFields({ ...editedFields, work_exp: Number(e.target.value)})
+                                  setEditedFields({
+                                    ...editedFields,
+                                    work_exp: Number(e.target.value),
+                                  })
                                 }
                               />
                             </dd>
@@ -255,7 +260,10 @@ function AdminStates(): React.JSX.Element {
                                 className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 value={editedFields.min_age}
                                 onChange={(e) =>
-                                  setEditedFields({ ...editedFields, min_age: Number(e.target.value)})
+                                  setEditedFields({
+                                    ...editedFields,
+                                    min_age: Number(e.target.value),
+                                  })
                                 }
                               />
                             </dd>
@@ -270,7 +278,10 @@ function AdminStates(): React.JSX.Element {
                                 className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 value={editedFields.max_age}
                                 onChange={(e) =>
-                                  setEditedFields({ ...editedFields, max_age: Number(e.target.value)})
+                                  setEditedFields({
+                                    ...editedFields,
+                                    max_age: Number(e.target.value),
+                                  })
                                 }
                               />
                             </dd>
@@ -304,7 +315,10 @@ function AdminStates(): React.JSX.Element {
                                 className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 value={editedFields.visaTerm}
                                 onChange={(e) =>
-                                  setEditedFields({ ...editedFields, visaTerm:  Number(e.target.value)})
+                                  setEditedFields({
+                                    ...editedFields,
+                                    visaTerm: Number(e.target.value),
+                                  })
                                 }
                               />
                             </dd>
@@ -345,14 +359,14 @@ function AdminStates(): React.JSX.Element {
                           </div>
                           <div className="m-2 flex justify-center">
                             <button
-                            type='button'
-                              onClick={() => handleEditState(state.id) as never }
+                              type="button"
+                              onClick={() => handleEditState(state.id) as never}
                               className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-6 "
                             >
                               Сохранить
                             </button>
                             <button
-                            type='button'
+                              type="button"
                               onClick={() => setEditingStateId(null)}
                               className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-6 "
                             >

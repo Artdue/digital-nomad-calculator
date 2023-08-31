@@ -1,13 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import type { AxiosResponse } from 'axios';
+import axios  from 'axios';
+import type { Istate } from '../../Types/types';
 
-export const deleteState = createAsyncThunk('admin/deleteState', async (id) => {
-  try {
-    
-    const response = await axios.delete(`http://localhost:3000/admin/${id}`);
+
+
+const deleteState = createAsyncThunk<Istate>('admin/deleteState', async (id) => {
+    const response: AxiosResponse<Istate>  = await axios.delete(`http://localhost:3000/admin/${id}`);
     return response.data;
-    console.log(data);
-  } catch (error) {
-    throw error;
-  }
 });
+export default deleteState;
+
+
+
