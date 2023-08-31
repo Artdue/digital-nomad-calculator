@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addState } from '../../Redux/thunks/addStates';
 import TestPage from './SideBarAdmin';
 
-export default function NewState() {
+export default function NewState():React.JSX.Element {
   const formRef = useRef(null);
 
   const [showForm, setShowForm] = useState(false);

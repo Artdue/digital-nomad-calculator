@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { IstateType } from './store.types';
-import { getAdmin } from './thunks/getAdmin';
+import getAdmin  from './thunks/getAdmin';
 import { addState } from './thunks/addStates';
 import { deleteState } from './thunks/deleteState';
 import { editState } from './thunks/editState';

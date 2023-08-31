@@ -4,7 +4,6 @@ const { User } = require('../db/models');
 
 const adminRouter = express.Router();
 
-
 adminRouter.get('/', async (req, res) => {
   try {
     const states = await State.findAll({ order: [['state_name', 'ASC']], raw: true });
