@@ -21,3 +21,4 @@ export type IInitialState = {
   auth: boolean;
   msg: string;
 };
+
