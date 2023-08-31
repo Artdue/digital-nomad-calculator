@@ -1,6 +1,6 @@
-export const fetchStates = async () => {
+const fetchStates = async (): Promise<void> => {
   try {
-    const response = await fetch('http://localhost:3000/states');
+    const response: Response = await fetch('http://localhost:3000/states');
     if (response.ok) {
       const data = await response.json();
       return data;
@@ -9,3 +9,5 @@ export const fetchStates = async () => {
     console.error(error);
   }
 };
+
+export default fetchStates;
