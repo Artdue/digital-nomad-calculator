@@ -10,6 +10,9 @@ type Istate = {
   max_age: number;
   gender: string;
   criminal: boolean;
+  visaType: string;
+  visaTerm: number;
+  visaShare: string;
   actions: string;
   createdAt: object;
   updatedAt: object;
@@ -33,15 +36,52 @@ export type IUser = {
   middle_name: string;
   last_name: string;
   email: string;
+  password: string;
+  subscribed: boolean;
+  birthDate: string;
+  phoneNumber: string;
+  passport: string;
+  balance: string;
+  lease: string;
   citizenship: string;
-  income: string;
-  work_exp: string;
-  appStatus: boolean;
+  income: number;
+  work_exp: number;
+  work_date: string;
   document_status: string;
+  appStatus: boolean;
+  admin: boolean;
+  visaType: string;
+  visaTerm: number;
+  visaShare: string;
+  createdAt: object;
+  updatedAt: object;
 };
 
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
+
+export type ILogin = {
+  email: string;
+  password: string;
+};
+
+export type Istates = {
+  id: number;
+  state_name: string;
+  min_income: number;
+  banned_citizenship: string;
+  work_exp: number;
+  min_age: number;
+  max_age: number;
+  gender: string;
+  criminal: boolean;
+  visaType: string;
+  visaTerm: number;
+  visaShare: string;
+  actions: string;
+  createdAt: object;
+  updatedAt: object;
+};
 
 export type { Istate, IInput };
