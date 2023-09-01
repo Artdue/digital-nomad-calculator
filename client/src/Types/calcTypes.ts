@@ -68,6 +68,22 @@ type IEditUserInputs = {
   visaShare: string;
 };
 
+type IEditUserInputs2 = {
+  id: number;
+  first_name: string;
+  second_name: string;
+  last_name: string;
+  birthDate: string;
+  phone: string;
+  citizenship: string;
+  income: number;
+  work_exp: number;
+  work_date: string;
+  visaType: string;
+  visaShare: string;
+  appStatus: boolean;
+};
+
 type IuserInputs = {
   income: number;
   employmentDate: string;
@@ -80,4 +96,4 @@ export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
 
-export type { Istates, IInputs, IUsers, IEditUserInputs, IuserInputs, IInputs2 };
+export type { Istates, IInputs, IUsers, IEditUserInputs, IuserInputs, IInputs2, IEditUserInputs2 };
