@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUsers } from './thunks/getUsers';
-import { editUser } from './thunks/editUsersList';
-import { IUserType } from './store.types';
+import  getUsers  from './thunks/getUsers';
+import  editUser  from './thunks/editUsersList';
+import type { IUserType } from './store.types';
 
 const initialState: IUserType = {
   users: [],
