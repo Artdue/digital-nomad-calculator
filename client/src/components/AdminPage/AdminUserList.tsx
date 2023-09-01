@@ -14,10 +14,14 @@ const AdminUserList: React.FC = () => {
 
   const dispatch: AppDispatch = useDispatch();
   const [selectedStatus, setSelectedStatus] = useState<string>('');
+  //console.log('setSelectedStatus', setSelectedStatus);
+
   const [filteredUsers, setFilteredUsers] = useState<IUser[]>(users);
 
-  //const [userStatusMap, setUserStatusMap] = useState({});
-  const [userStatusMap, setUserStatusMap] = useState<{ [userId: number]: string }>({});
+  const [userStatusMap, setUserStatusMap] = useState<{ [id: number]: string }>({});
+
+  console.log('MAAAAAAAAAAAAAAAAAAAAAAAAAAAAP', setUserStatusMap);
+
   const [searchText, setSearchText] = useState<string>('');
 
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -26,11 +30,11 @@ const AdminUserList: React.FC = () => {
   const [showNotification1, setShowNotification1] = useState<boolean>(false);
   const [showNotification2, setShowNotification2] = useState<boolean>(false);
 
-  const state = useAppSelector((state) => state.nodeSlice);
-  console.log(state);
+  useAppSelector((state) => state.nodeSlice);
+  // console.log(state);
 
   const sendMesg = (user: IUser) => {
-    //console.log('Отправка письма', user);
+    //console.log('ОТПРАВКА ПИСЬМА ДА НУ НАХУЙ', user);
     dispatch(nodemailerAdminSend(user));
   };
 
@@ -63,12 +67,12 @@ const AdminUserList: React.FC = () => {
   };
 
   const [modalForUser, setModalForUser] = useState<IUser>(initialState);
-  console.log('🚀 ~ file: AdminUserList.tsx:23 ~ AdminUserList ~ modalForUser:', modalForUser);
 
   const handleStatusChange1 = async (user: IUser): Promise<void> => {
     try {
       const newStatus = userStatusMap[user.id] || selectedStatus;
-      await dispatch(editUser({ userId: user.id, data: { document_status: newStatus } }));
+      await dispatch(editUser({ id: user.id, data: { document_status: newStatus } }));
+      // console.log(' при изменении статуса и отправке сообщения', userId, date);
 
       setUserStatusMap((prevState) => ({ ...prevState, [user.id]: newStatus }));
 
@@ -86,6 +90,7 @@ const AdminUserList: React.FC = () => {
     try {
       const newStatus = userStatusMap[id] || selectedStatus;
       await dispatch(editUser({ id, data: { document_status: newStatus } }));
+
       setUserStatusMap((prevState) => ({ ...prevState, [id]: newStatus }));
     } catch (error) {
       console.error('Ошибка при изменении статуса:', error);
@@ -96,6 +101,7 @@ const AdminUserList: React.FC = () => {
     try {
       const newStatus = userStatusMap[id] || selectedStatus;
       await dispatch(editUser({ id, data: { document_status: newStatus } }));
+
       setUserStatusMap((prevState) => ({ ...prevState, [id]: newStatus }));
     } catch (error) {
       console.error('Ошибка при изменении статуса:', error);
