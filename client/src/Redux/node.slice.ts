@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import nodemailerSend from './thunks/nodemailer';
 import userNod from './thunks/userNod';
-import nodemailerAdminSend from './thunks/nodemaileradmin'
+import nodemailerAdminSend from './thunks/nodemaileradmin';
 
 const initialState = {
   message: 'Оставьте заявку, и наш специалист свяжется с вами',
@@ -13,32 +13,31 @@ const nodeSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(nodemailerSend.pending, (state) => {
+      .addCase(nodemailerSend.pending, () => {
         console.log('pending');
       })
       .addCase(nodemailerSend.fulfilled, (state) => {
         state.message = 'Ваш запрос на консультацию отправлен';
       })
-      .addCase(nodemailerSend.rejected, (state) => {
+      .addCase(nodemailerSend.rejected, () => {
         console.error('ERROR!');
       })
-      .addCase(userNod.pending, (state) => {
+      .addCase(userNod.pending, () => {
         console.log('pending');
       })
       .addCase(userNod.fulfilled, (state) => {
         state.message = 'Ваш запрос на консультацию отправлен';
       })
-      .addCase(userNod.rejected, (state) => {
+      .addCase(userNod.rejected, () => {
         console.error('ERROR!');
       })
-      .addCase(nodemailerAdminSend.pending, (state) => {
+      .addCase(nodemailerAdminSend.pending, () => {
         console.log('pending');
       })
-      .addCase(nodemailerAdminSend.fulfilled, (state) => {
+      .addCase(nodemailerAdminSend.fulfilled, () => {
         // state.message = 'Ваш запрос на консультацию отправлен';
-        console.log('документы отправлены');
       })
-      .addCase(nodemailerAdminSend.rejected, (state) => {
+      .addCase(nodemailerAdminSend.rejected, () => {
         console.error('ERROR!');
       })
       .addDefaultCase(() => {});
