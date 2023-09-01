@@ -6,46 +6,73 @@ import { editUser } from '../../Redux/thunks/editUsersList';
 import TestPage from './SideBarAdmin';
 import nodemailerAdminSend from '../../Redux/thunks/nodemaileradmin';
 import { useAppSelector } from '../../Redux/hooks';
+import { AppDispatch, IUser, RootState } from '../../Types/types';
 
-function AdminUserList() {
-  const users = useSelector((state) => state.adminUserSlice.users);
-  console.log(users);
+const AdminUserList: React.FC = () => {
+  const users = useSelector((state: RootState) => state.adminUserSlice.users);
+  // console.log(users);
 
-  const dispatch = useDispatch();
-  const [selectedStatus, setSelectedStatus] = useState('');
-  const [filteredUsers, setFilteredUsers] = useState(users);
+  const dispatch: AppDispatch = useDispatch();
+  const [selectedStatus, setSelectedStatus] = useState<string>('');
+  const [filteredUsers, setFilteredUsers] = useState<IUser[]>(users);
 
-  const [userStatusMap, setUserStatusMap] = useState({});
-  const [searchText, setSearchText] = useState('');
+  //const [userStatusMap, setUserStatusMap] = useState({});
+  const [userStatusMap, setUserStatusMap] = useState<{ [userId: number]: string }>({});
+  const [searchText, setSearchText] = useState<string>('');
 
-  const [oneState, setOneState] = useState();
-  const [showModal, setShowModal] = useState(false);
-  console.log('🚀 ', showModal);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  //console.log('🚀 ', showModal);
 
-  const [showNotification1, setShowNotification1] = useState(false);
-  const [showNotification2, setShowNotification2] = useState(false);
+  const [showNotification1, setShowNotification1] = useState<boolean>(false);
+  const [showNotification2, setShowNotification2] = useState<boolean>(false);
 
   const state = useAppSelector((state) => state.nodeSlice);
   console.log(state);
 
-  const sendMesg = (user) => {
-    console.log('Отправка письма', user);
-    void dispatch(nodemailerAdminSend(user));
+  const sendMesg = (user: IUser) => {
+    //console.log('Отправка письма', user);
+    dispatch(nodemailerAdminSend(user));
   };
 
-  const [modalForUser, setModalForUser] = useState(''); // пока не важно
+  const initialState = {
+    id: 0,
+    login: '',
+    first_name: '',
+    middle_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    subscribed: false,
+    birthDate: '',
+    phoneNumber: '',
+    passport: '',
+    balance: '',
+    lease: '',
+    citizenship: '',
+    income: 0,
+    work_exp: 0,
+    work_date: '',
+    document_status: '',
+    appStatus: false,
+    admin: false,
+    visaType: '',
+    visaTerm: 0,
+    visaShare: '',
+    createdAt: {},
+    updatedAt: {},
+  };
+
+  const [modalForUser, setModalForUser] = useState<IUser>(initialState);
   console.log('🚀 ~ file: AdminUserList.tsx:23 ~ AdminUserList ~ modalForUser:', modalForUser);
 
-  const handleStatusChange1 = async (user) => {
+  const handleStatusChange1 = async (user: IUser): Promise<void> => {
     try {
       const newStatus = userStatusMap[user.id] || selectedStatus;
       await dispatch(editUser({ userId: user.id, data: { document_status: newStatus } }));
 
-      // Обновите userStatusMap до отправки письма
       setUserStatusMap((prevState) => ({ ...prevState, [user.id]: newStatus }));
 
-      // Теперь вызовите sendMesg с актуальным статусом
-      await sendMesg({ ...user, document_status: newStatus });
+      sendMesg({ ...user, document_status: newStatus });
     } catch (error) {
       console.error('Ошибка при изменении статуса и отправке сообщения:', error);
     }
@@ -55,7 +82,7 @@ function AdminUserList() {
     }, 3000);
   };
 
-  const handleStatusChange2 = async (id) => {
+  const handleStatusChange2 = async (id: number): Promise<void> => {
     try {
       const newStatus = userStatusMap[id] || selectedStatus;
       await dispatch(editUser({ id, data: { document_status: newStatus } }));
@@ -65,7 +92,7 @@ function AdminUserList() {
     }
   };
 
-  const handleStatusChange = async (id) => {
+  const handleStatusChange = async (id: number) => {
     try {
       const newStatus = userStatusMap[id] || selectedStatus;
       await dispatch(editUser({ id, data: { document_status: newStatus } }));
@@ -98,12 +125,12 @@ function AdminUserList() {
     }
   }, [selectedStatus, searchText, users]);
 
-  const openModal = (user) => {
+  const openModal = (user: IUser) => {
     setModalForUser(user);
     setShowModal(true);
   };
   const closeModal = () => {
-    setModalForUser([]);
+    setModalForUser(initialState);
     setShowModal(false);
   };
 
@@ -219,7 +246,6 @@ function AdminUserList() {
         />
         {/* Модальное окно */}
         {showModal && (
-          // модалка
           <div className="flex items-stretch overflow-auto">
             <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full]  ">
               <div className="bg-white p-4 rounded-md w-[1000px] h-[850px]  ">
@@ -385,7 +411,6 @@ function AdminUserList() {
                         </div>
                       </dd>
                     </div>
-                    {/* кнопка */}
                     <div className="m-2 pt-4 flex justify-center ">
                       <button
                         onClick={closeModal}
@@ -422,16 +447,6 @@ function AdminUserList() {
                       >
                         Анкета
                       </button>
-                      {/* <p className="text-gray-500 dark:text-gray-300">Паспорт: {user.passport}</p>
-                      <p className="text-gray-500 dark:text-gray-300">
-                        Выписка из Банка: {user.balance}
-                      </p>
-                      <p className="text-gray-500 dark:text-gray-300">
-                        Bыписка c работы: {user.balance}
-                      </p> */}
-                      {/* <button className="btn btn-primary resume-btn" onClick={() => window.open(`http://localhost:3000${user.passport}`, '_blank')}>Паспорт</button>
-                      <button className="btn btn-primary resume-btn" onClick={() => window.open(`http://localhost:3000${user.balance}`, '_blank')}>Выписка из Банка</button>
-                      <button className="btn btn-primary resume-btn" onClick={() => window.open(`http://localhost:3000${user.lease}`, '_blank')}>Справка о работе</button>  */}
                       <div className="document-buttons">
                         {user.passport ? (
                           <div>
@@ -504,7 +519,7 @@ function AdminUserList() {
                           setUserStatusMap((prevState) => ({ ...prevState, [user.id]: value }));
                         }}
                       >
-                        <option value={null}>Новый пользователь</option>
+                        <option value="Новый пользователь">Новый пользователь</option>
                         <option value="Документы отправлены">
                           Пользователь отправил документы
                         </option>
@@ -530,14 +545,6 @@ function AdminUserList() {
                         >
                           Сохранить
                         </button>
-
-                        {/* <button
-                        type="button"
-                        className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
-                        onClick={() => openModal(user)}
-                      >
-                        Анкета Подробнее
-                      </button> */}
                       </div>
                     </div>
                   </div>
@@ -546,10 +553,10 @@ function AdminUserList() {
           ) : (
             <span>Нет пользователей</span>
           )}
-        </div>{' '}
+        </div>
       </div>
     </>
   );
-}
+};
 
 export default AdminUserList;
