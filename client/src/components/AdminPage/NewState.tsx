@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import addState from '../../Redux/thunks/addStates';
 import TestPage from './SideBarAdmin';
+import type {InewState} from '../../Types/types';
 
 export default function NewState(): React.JSX.Element {
   const formRef = useRef(null);
@@ -23,7 +24,7 @@ export default function NewState(): React.JSX.Element {
   const [actions, setActions] = useState<string>('');
 
   const handleAddState = async (): Promise<void> => {
-    const newState = {
+    const InewState: InewState = {
       state_name: String(stateName),
       min_income: Number(minIncome),
       banned_citizenship: String(bannedCitizenship),
@@ -38,7 +39,7 @@ export default function NewState(): React.JSX.Element {
     };
 
     try {
-      void dispatch(addState(newState) as never);
+      void dispatch(addState(InewState) as never);
       setShowNotification(true);
       setStateName('');
       setMinIncome(0);

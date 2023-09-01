@@ -17,7 +17,7 @@ function AdminStates(): React.JSX.Element {
 
   const deleteOneState = async (id: number): Promise<void> => {
     try {
-     dispatch(deleteState(id) as never);
+      dispatch(deleteState(id) as never);
     } catch (error) {
       console.error('Ошибка при удалении данных:', error);
     }
@@ -46,9 +46,9 @@ function AdminStates(): React.JSX.Element {
     updatedAt: {},
   });
 
-  const handleEditState = async (): Promise <void> => {
+  const handleEditState = async (): Promise<void> => {
     try {
-      dispatch(editState(editedFields)as never);
+      dispatch(editState(editedFields) as never);
       setEditingStateId(null);
       setEditedFields({
         id: 0,
@@ -360,7 +360,7 @@ function AdminStates(): React.JSX.Element {
                           <div className="m-2 flex justify-center">
                             <button
                               type="button"
-                              onClick={() => handleEditState(state.id) as never}
+                              onClick={() => handleEditState() as never}
                               className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-6 "
                             >
                               Сохранить
