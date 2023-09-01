@@ -6,11 +6,18 @@ export type IstateType = {
 };
 
 export type IprofileType = {
-  profile: IUser[];
+  profile: IUser;
   loading: boolean;
 };
 
 export type IUserType = {
   users: IUser[];
   loading: boolean;
+};
+
+export type IInitialState = {
+  email: string;
+  admin: boolean;
+  auth: boolean;
+  msg: string;
 };

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { unregtUserGet } from './thunks/unregThunk';
 
 const initialState = {
-  income: '',
+  income: 0,
   employmentDate: '',
   citizenship: '',
   visaT: '',

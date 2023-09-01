@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchStates } from './states.api';
+import fetchStates from './states.api';
 
 // eslint-disable-next-line import/prefer-default-export
 export const getStates = createAsyncThunk('states/getStates', async () => {
