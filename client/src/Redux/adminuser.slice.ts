@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getUsers } from './thunks/getUsers';
 import { editUser } from './thunks/editUsersList';
-import { IUserType } from './store.types';
+import type { IUserType } from './store.types';
 
 const initialState: IUserType = {
   users: [],
@@ -27,13 +27,9 @@ const adminUserSlice = createSlice({
       })
       .addCase(editUser.pending, (state) => {
         state.loading = true;
-        // console.log(state.loading);
       })
       .addCase(editUser.fulfilled, (state, action) => {
         state.loading = false;
-        console.log('============>Я в диспатче');
-
-        //* колхоз, но работает
         state.users = action.payload;
       })
       .addCase(editUser.rejected, (state) => {
