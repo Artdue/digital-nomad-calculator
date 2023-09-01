@@ -3,9 +3,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { getStates } from '../../../Redux/thunks/getStates';
-import type { IEditUser, IInput2, IUser, Istate, RootState } from '../../../Types/types';
+import type { IInput2, IUser, Istate, RootState } from '../../../Types/types';
 import { profilePut } from '../../../Redux/thunks/profileThunk';
 import { unregtUserGet } from '../../../Redux/thunks/unregThunk';
+import type { IEditUserInputs2 } from '../../../Types/calcTypes';
 
 export default function MainCalculator(): React.JSX.Element {
   const states = useAppSelector((state: RootState) => state.stateSlice.states);
@@ -71,7 +72,7 @@ export default function MainCalculator(): React.JSX.Element {
 
     window.scrollTo(0, 0);
 
-    const editUser: IEditUser = {
+    const editUser: IEditUserInputs2 = {
       id: userData.id,
       citizenship,
       income,
@@ -79,31 +80,33 @@ export default function MainCalculator(): React.JSX.Element {
       work_date: employmentDate,
       visaType: visaT,
       visaShare: visaS,
+      first_name: userData.first_name || '',
+      second_name: userData.middle_name || '',
+      last_name: userData.last_name || '',
+      birthDate: userData.birthDate || '',
+      phone: userData.phoneNumber || '',
+      appStatus: false,
     };
 
     void dispatch(profilePut(editUser));
-
-    console.log('visas', visaT, visaS, states);
 
     const visaTypeFilter =
       visaT !== 'Не имеет значения' && visaT !== ''
         ? states.filter((state) => state.visaType === visaT)
         : states;
-    console.log('Отфильтрованные по типу визы:', visaTypeFilter);
     const visaShareFilter =
       visaS !== 'Не имеет значения' && visaS !== ''
         ? states.filter((state) => state.visaShare === visaS)
         : states;
-    console.log('Отфильтрованные по семейной визе:', visaShareFilter);
 
     const incomeFilter =
       income !== 0 ? states.filter((state) => state.min_income < income) : states;
-    console.log('Отфильтрованные по доходу:', incomeFilter);
+
     const citiFilter = states.filter((state) => {
       const bannedCitizenships = state.banned_citizenship.split(',').map((value) => value.trim());
       return !bannedCitizenships.includes(citizenship);
     });
-    console.log('Отфильтрованные по гр-у:', citiFilter);
+
     let monthsPassed = 0;
     if (employmentDate === '') {
       monthsPassed = 12;
@@ -114,9 +117,8 @@ export default function MainCalculator(): React.JSX.Element {
       const timeDiff = currentDate.getTime() - targetDate.getTime();
       monthsPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44));
     }
-    console.log('Отфильтрованные по работе:', monthsPassed);
+
     const workFilter = states.filter((state) => state.work_exp < monthsPassed);
-    console.log('Отфильтрованные по работе:', workFilter);
 
     const commonStates = incomeFilter.filter((state) => {
       const isInCitiFilter = citiFilter.some((filteredState) => filteredState.id === state.id);
@@ -130,8 +132,6 @@ export default function MainCalculator(): React.JSX.Element {
 
       return isInCitiFilter && isInWorkFilter && isInvisaTypeFilter && isInvisaShareFilter;
     });
-
-    console.log('Подходящие страны:', commonStates);
 
     if (commonStates.length > 0) {
       setFilterStates(commonStates);

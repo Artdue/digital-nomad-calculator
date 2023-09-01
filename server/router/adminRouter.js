@@ -74,6 +74,7 @@ adminRouter.get('/users', async (req, res) => {
 });
 
 adminRouter.put('/users/:id', async (req, res) => {
+  console.log('edit_user=============================>', req.body);
   const userId = req.params.id;
   console.log(req.body);
   try {

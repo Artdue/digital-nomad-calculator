@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
-import { profileGet, profilePut } from '../../Redux/thunks/profileThunk';
+import { profilePut } from '../../Redux/thunks/profileThunk';
 import Profile from './Profile';
 import Status from './Status';
+import type { IEditUserInputs2 } from '../../Types/calcTypes';
 
 export default function EditProfile(): React.JSX.Element {
   const dispatch = useAppDispatch();
@@ -18,11 +19,10 @@ export default function EditProfile(): React.JSX.Element {
   const [firstName, setFirstName] = useState(userData?.first_name || '');
   const [middleName, setMiddleName] = useState(userData?.middle_name || '');
   const [lastName, setLastName] = useState(userData?.last_name || '');
-  //   const [email, setEmail] = useState('super-Multer@was-born-on-Phiket.th');
   const [citizenship, setCitizenship] = useState(
     userData?.citizenship || userInputs?.citizenship || '',
   );
-  const [income, setIncome] = useState(userData?.income || userInputs?.income || 0);
+  const [income, setIncome] = useState<number>(userData?.income || userInputs?.income || 0);
   const [employmentDate, setEmploymentDate] = useState(
     userData?.work_date || userInputs?.employmentDate || '',
   );
@@ -31,16 +31,6 @@ export default function EditProfile(): React.JSX.Element {
   const [birthDate, setbirthDate] = useState(userData?.birthDate || '');
   const [visaType, setvisaType] = useState(userData?.visaType || userInputs?.visaT || '');
   const [visaShare, setvisaShare] = useState(userData?.visaShare || userInputs?.visaS || '');
-
-  // const [showModal, setShowModal] = useState(false);
-
-  // const openModal = () => {
-  //   window.scrollTo(0, 0);
-  //   setShowModal(true);
-  // };
-  // const closeModal = () => {
-  //   setShowModal(false);
-  // };
 
   useEffect(() => {
     if (userData && userData.document_status) {
@@ -59,30 +49,19 @@ export default function EditProfile(): React.JSX.Element {
     setFirstName(firstName);
     setMiddleName(middleName);
     setLastName(lastName);
-    // setEmail(email);
     setCitizenship(citizenship);
     setIncome(income);
     setEmploymentDate(employmentDate);
     const currentDate = new Date();
     const [year, month, day] = employmentDate.split('-').map(Number);
     const targetDate = new Date(year, month - 1, day);
-    const timeDiff = currentDate - targetDate;
+    const timeDiff = currentDate.getTime() - targetDate.getTime();
     const monthsPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44));
     setworkExp(monthsPassed);
     setPhone(phone);
     setbirthDate(birthDate);
-    console.log(
-      firstName,
-      middleName,
-      lastName,
-      citizenship,
-      income,
-      employmentDate,
-      JSON.stringify(monthsPassed),
-      phone,
-      birthDate,
-    );
-    const editUser = {
+
+    const editUser: IEditUserInputs2 = {
       id: userData.id,
       first_name: firstName,
       second_name: middleName,
@@ -97,9 +76,7 @@ export default function EditProfile(): React.JSX.Element {
       visaShare,
       appStatus: userData.appStatus,
     };
-    console.log(editUser);
     void dispatch(profilePut(editUser));
-    // void dispatch(profileGet(user));
   };
 
   return (
@@ -109,7 +86,7 @@ export default function EditProfile(): React.JSX.Element {
           <img src="/src/assets/reload-cat.gif" alt="" />
         </div>
       ) : (
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler as never}>
           <div className="container mx-auto mt-8 p-8 max-w-4xl justify-center items-center flex-col block rounded-lg bg-white shadow-md dark:bg-neutral-700">
             <div className="px-4 sm:px-0 text-center ">
               {status && (
@@ -229,8 +206,8 @@ export default function EditProfile(): React.JSX.Element {
                       type="text"
                       className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       name="income"
-                      value={income}
-                      onChange={(e) => setIncome(e.target.value)}
+                      value={Number(income)}
+                      onChange={(e) => setIncome(Number(e.target.value))}
                     />
                   </dd>
                 </div>
@@ -293,7 +270,10 @@ export default function EditProfile(): React.JSX.Element {
               </dl>
             </div>
             <div className="m-2 flex justify-center">
-              <button className="m-2 mt-4 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2">
+              <button
+                type="submit"
+                className="m-2 mt-4 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2"
+              >
                 Сохранить
               </button>
             </div>{' '}
