@@ -6,7 +6,10 @@ const adminRouter = express.Router();
 
 adminRouter.get('/', async (req, res) => {
   try {
-    const states = await State.findAll({ order: [['state_name', 'ASC']], raw: true });
+    const states = await State.findAll({
+      order: [['state_name', 'ASC']],
+      raw: true,
+    });
     res.json(states);
   } catch (error) {
     console.error('Ошибка при получении данных калькулятора:', error);
@@ -71,6 +74,7 @@ adminRouter.get('/users', async (req, res) => {
 });
 
 adminRouter.put('/users/:id', async (req, res) => {
+  console.log('edit_user=============================>', req.body);
   const userId = req.params.id;
   try {
     await User.update(req.body, {

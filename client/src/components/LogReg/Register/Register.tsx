@@ -24,6 +24,7 @@ export default function Register(): React.JSX.Element {
   const Handler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     const actionResult = await dispatch(userRegister(reg));
+
     if (actionResult.payload.msg === 'Пользователь зарегистрирован') {
       navigate('/user/main');
     }
