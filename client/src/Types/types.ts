@@ -103,4 +103,18 @@ type IEditUser = {
   visaShare: string;
 };
 
+export type InewState = {
+  state_name: string;
+  min_income: number;
+  banned_citizenship: string;
+  work_exp: number;
+  min_age: number;
+  max_age: number;
+  gender: string;
+  criminal: boolean;
+  visaTerm: number;
+  visaShare: string;
+  actions: string;
+}
+
 export type { Istate, IInput, IInput2, IEditUser };
