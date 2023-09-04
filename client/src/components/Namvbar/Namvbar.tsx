@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { Button } from '@material-tailwind/react';
-
 import {
   Bars3Icon,
   XMarkIcon,
@@ -12,6 +11,8 @@ import {
 } from '@heroicons/react/24/outline';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import userLogout from '../../Redux/thunks/user/logout.api';
+import { clearProfile } from '../../Redux/profileSlice';
+
 
 const navigation = [
   { name: 'Главная', href: '/', current: false },
@@ -32,6 +33,7 @@ export default function Namvbar({ scrollToBlock }): React.JSX.Element {
 
   const logout = (): void => {
     void dispatch(userLogout());
+    void dispatch(clearProfile());
     navigate('/');
   };
 

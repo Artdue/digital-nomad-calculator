@@ -54,8 +54,8 @@ export type IUser = {
   visaType: string;
   visaTerm: number;
   visaShare: string;
-  createdAt: object;
-  updatedAt: object;
+  createdAt: object | null;
+  updatedAt: object | null;
 };
 
 export type RootState = ReturnType<typeof store.getState>;
