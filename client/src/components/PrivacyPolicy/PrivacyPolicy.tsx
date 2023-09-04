@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function PrivacyPolicy() {
+export default function PrivacyPolicy(): React.JSX.Element {
   return (
     <div className=" px-4 mx-auto max-w-screen-xl  lg:px-6 ">
       <div className="w-full rounded overflow-hidden shadow-lg bg-white flex flex-col p-6 md:py-8 lg:py-12 xl:py-16 md:px-8 lg:px-12 xl:px-20">
@@ -264,4 +264,3 @@ export default function PrivacyPolicy() {
     </div>
   );
 }
-
