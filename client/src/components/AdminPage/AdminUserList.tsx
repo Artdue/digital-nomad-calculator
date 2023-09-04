@@ -1,37 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { EyeIcon } from '@heroicons/react/20/solid';
-import { getUsers } from '../../Redux/thunks/getUsers';
-import { editUser } from '../../Redux/thunks/editUsersList';
+import getUsers from '../../Redux/thunks/getUsers';
+import editUser from '../../Redux/thunks/editUsersList';
 import TestPage from './SideBarAdmin';
 import nodemailerAdminSend from '../../Redux/thunks/nodemaileradmin';
 import { useAppSelector } from '../../Redux/hooks';
-import { AppDispatch, IUser, RootState } from '../../Types/types';
+import type { AppDispatch, IUser, RootState } from '../../Types/types';
 
-const AdminUserList: React.FC = () => {
+function AdminUserList(): React.JSX.Element {
   const users = useSelector((state: RootState) => state.adminUserSlice.users);
-  // console.log(users);
 
   const dispatch: AppDispatch = useDispatch();
   const [selectedStatus, setSelectedStatus] = useState<string>('');
+
   const [filteredUsers, setFilteredUsers] = useState<IUser[]>(users);
 
-  //const [userStatusMap, setUserStatusMap] = useState({});
-  const [userStatusMap, setUserStatusMap] = useState<{ [userId: number]: string }>({});
+  const [userStatusMap, setUserStatusMap] = useState<{ [id: number]: string }>({});
   const [searchText, setSearchText] = useState<string>('');
 
   const [showModal, setShowModal] = useState<boolean>(false);
-  //console.log('🚀 ', showModal);
 
   const [showNotification1, setShowNotification1] = useState<boolean>(false);
   const [showNotification2, setShowNotification2] = useState<boolean>(false);
 
-  const state = useAppSelector((state) => state.nodeSlice);
-  console.log(state);
+  useAppSelector((state) => state.nodeSlice);
 
-  const sendMesg = (user: IUser) => {
-    //console.log('Отправка письма', user);
-    dispatch(nodemailerAdminSend(user));
+  const sendMesg = (user: IUser): void => {
+    dispatch(nodemailerAdminSend(user) as never);
   };
 
   const initialState = {
@@ -63,12 +59,11 @@ const AdminUserList: React.FC = () => {
   };
 
   const [modalForUser, setModalForUser] = useState<IUser>(initialState);
-  console.log('🚀 ~ file: AdminUserList.tsx:23 ~ AdminUserList ~ modalForUser:', modalForUser);
 
   const handleStatusChange1 = async (user: IUser): Promise<void> => {
     try {
       const newStatus = userStatusMap[user.id] || selectedStatus;
-      await dispatch(editUser({ userId: user.id, data: { document_status: newStatus } }));
+      await dispatch(editUser({ id: user.id, data: { document_status: newStatus } }));
 
       setUserStatusMap((prevState) => ({ ...prevState, [user.id]: newStatus }));
 
@@ -86,16 +81,18 @@ const AdminUserList: React.FC = () => {
     try {
       const newStatus = userStatusMap[id] || selectedStatus;
       await dispatch(editUser({ id, data: { document_status: newStatus } }));
+
       setUserStatusMap((prevState) => ({ ...prevState, [id]: newStatus }));
     } catch (error) {
       console.error('Ошибка при изменении статуса:', error);
     }
   };
 
-  const handleStatusChange = async (id: number) => {
+  const handleStatusChange = async (id: number): Promise<void> => {
     try {
       const newStatus = userStatusMap[id] || selectedStatus;
       await dispatch(editUser({ id, data: { document_status: newStatus } }));
+
       setUserStatusMap((prevState) => ({ ...prevState, [id]: newStatus }));
     } catch (error) {
       console.error('Ошибка при изменении статуса:', error);
@@ -107,8 +104,8 @@ const AdminUserList: React.FC = () => {
   };
 
   useEffect(() => {
-    dispatch(getUsers());
-  }, []);
+    dispatch(getUsers() as never);
+  }, [dispatch]);
 
   useEffect(() => {
     if (selectedStatus === '' && searchText === '') {
@@ -125,11 +122,11 @@ const AdminUserList: React.FC = () => {
     }
   }, [selectedStatus, searchText, users]);
 
-  const openModal = (user: IUser) => {
+  const openModal = (user: IUser): void => {
     setModalForUser(user);
     setShowModal(true);
   };
-  const closeModal = () => {
+  const closeModal = (): void => {
     setModalForUser(initialState);
     setShowModal(false);
   };
@@ -413,6 +410,7 @@ const AdminUserList: React.FC = () => {
                     </div>
                     <div className="m-2 pt-4 flex justify-center ">
                       <button
+                        type="button"
                         onClick={closeModal}
                         className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-6 "
                       >
@@ -451,6 +449,7 @@ const AdminUserList: React.FC = () => {
                         {user.passport ? (
                           <div>
                             <button
+                              type="button"
                               className="flex items-center "
                               onClick={() =>
                                 window.open(`http://localhost:3000${user.passport}`, '_blank')
@@ -470,6 +469,7 @@ const AdminUserList: React.FC = () => {
                         {user.balance ? (
                           <div>
                             <button
+                              type="button"
                               className="flex items-center "
                               onClick={() =>
                                 window.open(`http://localhost:3000${user.balance}`, '_blank')
@@ -491,6 +491,7 @@ const AdminUserList: React.FC = () => {
                         {user.lease ? (
                           <div>
                             <button
+                              type="button"
                               className="flex items-center "
                               onClick={() =>
                                 window.open(`http://localhost:3000${user.lease}`, '_blank')
@@ -530,17 +531,18 @@ const AdminUserList: React.FC = () => {
                       </select>
                       <div className="mt-auto pt-5">
                         <button
-                          onClick={() => {
-                            handleStatusChange1(user);
-                            handleStatusChange2(user.id);
-                          }}
                           type="button"
+                          onClick={() => {
+                            void handleStatusChange1(user);
+                            void handleStatusChange2(user.id);
+                          }}
                           className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                         >
                           Отправить письмо
                         </button>
                         <button
-                          onClick={() => handleStatusChange(user.id)}
+                          type="button"
+                          onClick={() => handleStatusChange(user.id) as never}
                           className="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                         >
                           Сохранить
@@ -557,6 +559,6 @@ const AdminUserList: React.FC = () => {
       </div>
     </>
   );
-};
+}
 
 export default AdminUserList;

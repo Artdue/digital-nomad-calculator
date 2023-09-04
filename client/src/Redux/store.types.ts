@@ -21,3 +21,8 @@ export type IInitialState = {
   auth: boolean;
   msg: string;
 };
+
+export type IstateData = {
+  data: object;
+  id: number;
+};
