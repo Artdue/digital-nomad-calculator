@@ -117,4 +117,5 @@ export type InewState = {
   actions: string;
 }
 
+
 export type { Istate, IInput, IInput2, IEditUser };

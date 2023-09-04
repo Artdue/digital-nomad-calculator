@@ -86,7 +86,7 @@ export default function Calculator(): React.JSX.Element {
     const userInputs: IInputs2 = {
       income,
       employmentDate,
-      citizenship,
+      citizenship
     };
 
     void dispatch(unregtUserGet(userInputs));
@@ -198,14 +198,14 @@ export default function Calculator(): React.JSX.Element {
                 <Button
                   onClick={resetCalc}
                   variant="gradient"
-                  className="rounded-full bg-[#233862] bg-[#76a1dd] ml-2 mr-2"
+                  className="rounded-full  bg-[#76a1dd] mr-2"
                 >
                   Сбросить
                 </Button>
                 <Button
                   type="submit"
                   variant="gradient"
-                  className="rounded-full bg-[#76a1dd] bg-[#233862] mr-2 ml-2 "
+                  className="rounded-full bg-[#233862] ml-2 "
                 >
                   Подобрать
                 </Button>

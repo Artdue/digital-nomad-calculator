@@ -1,18 +1,17 @@
-import React, { useRef } from 'react';
-import * as Scroll from 'react-scroll';
-// import { Link } from 'react-router-dom';
+import React from 'react';
 
+import { Button } from '@material-tailwind/react';
+import { Link } from 'react-router-dom';
 import Calculator from '../Calculator/Calculator';
 import Contact from '../../ContactAndFeed/Contact/Contact';
 import Qualities from '../Qualities/Qualities';
-import { Link } from 'react-router-dom';
 import Motivation from '../Motivation/Motivation';
-import { Button } from '@material-tailwind/react';
-import Strengths from '../Strengths/Strengths';
-import ServicesCompanies from '../ServicesCompanies/ServicesCompanies';
+import type { IPropCalcScroll } from '../../../Types/propsType';
 
-export default function Home({ calculator }) {
-  const calculateScroll = () => {
+
+
+export default function Home({ calculator }: IPropCalcScroll): React.JSX.Element  {
+  const calculateScroll = (): void=> {
     window.scrollTo(0, 700);
   };
 
@@ -25,7 +24,6 @@ export default function Home({ calculator }) {
               Digital Nomad Calculator
             </h1>
             <p className="mt-6 lg:text-lg md:text-lg text-sm max-w-md  lg:max-w-4xl md:max-w-3xl leading-8 text-gray-600">
-              {/* <p className="mt-6 lg:text-lg md:text-lg text-sm leading-8 text-gray-600"> */}
               Легко и просто ориентируйтесь в мире виз для цифровых кочевников
             </p>
             <div className="mt-4 lg:mt-10 flex items-center justify-center gap-x-6 pl-5  lg:pl-0 md:pl-7">
@@ -41,29 +39,6 @@ export default function Home({ calculator }) {
                 Записаться на консультацию <span aria-hidden="true">→</span>
               </Link>
             </div>
-            {/* <div className="mt-10 relative">
-              <img
-                src="/src/assets/barthelemy-de-mazenod-1Y5WpVfaAPQ-unsplash_YkeYSQqD.webp"
-                alt=""
-                className="w-full"
-              />
-
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center space-x-4">
-                  <Button
-                    type="submit"
-                    onClick={calculateScroll}
-                    variant="gradient"
-                    className="rounded-full bg-[#337CE5] font-semibold text-white"
-                  >
-                    Подобрать страну
-                  </Button>
-                  <Link to="/contact" className="text-sm font-semibold leading-6 text-[#233862]">
-                    Записаться на консультацию <span aria-hidden="true">→</span>
-                  </Link>
-                </div>{' '}
-              </div>
-            </div> */}
           </div>
           <div className="mx-auto max-w-7xl px-6 lg:px-8 py-8 md:py-8 lg:py-14">
             <div className="mx-auto max-w-2xl lg:max-w-4xl">
@@ -83,21 +58,12 @@ export default function Home({ calculator }) {
       <div className="">
         <Qualities />
       </div>
-      <div className="bg-[#F4F8FD] py-14 " ref={calculator}>
+      <div className="bg-[#F4F8FD] py-14 " ref={calculator as never}>
         <Calculator />
       </div>
       <div>
         <Motivation />
       </div>
-      {/* <div>
-        <Strengths />
-      </div>
-      <div className="bg-[#F4F8FD]">
-        <ServicesCompanies />
-      </div>
-      <div>
-        <Motivation />
-      </div> */}
       <div className="bg-[#F4F8FD]">
         <Contact />
       </div>
