@@ -8,6 +8,7 @@ const initialState: IUserType = {
   loading: false,
 };
 
+
 const adminUserSlice = createSlice({
   name: 'user',
   initialState,

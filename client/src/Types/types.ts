@@ -125,3 +125,4 @@ type FormInputs = {
 };
 
 export type { Istate, IInput, IInput2, IEditUser, InewState, FormInputs };
+

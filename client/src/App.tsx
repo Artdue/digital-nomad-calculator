@@ -38,7 +38,9 @@ function App(): JSX.Element {
 
   const navigate = useNavigate();
 
-  const calculator = useRef(null);
+  type CalculatorRef = React.RefObject<HTMLFormElement | null>;
+
+  const calculator:CalculatorRef = useRef(null);
 
   const scrollToBlock = (): void => {
     navigate('/');
