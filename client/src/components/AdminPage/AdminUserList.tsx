@@ -7,6 +7,7 @@ import TestPage from './SideBarAdmin';
 import nodemailerAdminSend from '../../Redux/thunks/nodemaileradmin';
 import { useAppSelector } from '../../Redux/hooks';
 import type { AppDispatch, IUser, RootState } from '../../Types/types';
+import type { IUsers } from '../../Types/calcTypes';
 
 function AdminUserList(): React.JSX.Element {
   const users = useSelector((state: RootState) => state.adminUserSlice.users);
@@ -26,11 +27,11 @@ function AdminUserList(): React.JSX.Element {
 
   useAppSelector((state) => state.nodeSlice);
 
-  const sendMesg = (user: IUser): void => {
-    dispatch(nodemailerAdminSend(user) as never);
+  const sendMesg = (user: IUsers): void => {
+    void dispatch(nodemailerAdminSend(user));
   };
 
-  const initialState = {
+  const initialState: IUser = {
     id: 0,
     login: '',
     first_name: '',
@@ -62,7 +63,7 @@ function AdminUserList(): React.JSX.Element {
 
   const handleStatusChange1 = async (user: IUser): Promise<void> => {
     try {
-      const newStatus = userStatusMap[user.id] || selectedStatus;
+      const newStatus: string = userStatusMap[user.id] || selectedStatus;
       await dispatch(editUser({ id: user.id, data: { document_status: newStatus } }));
 
       setUserStatusMap((prevState) => ({ ...prevState, [user.id]: newStatus }));

@@ -26,6 +26,7 @@ export default function Login(): React.JSX.Element {
   const Handler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     const actionResult = await dispatch(userLogin(login));
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     if (actionResult.payload.msg === 'Вы успешно авторизованы!') {
       navigate('/user/main');
     }
