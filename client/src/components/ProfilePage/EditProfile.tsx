@@ -13,7 +13,6 @@ export default function EditProfile(): React.JSX.Element {
   const userData = profile.profile;
   const { loading } = statusS;
   const userInputs = useAppSelector((state) => state.unregSlice);
-  console.log("USERDATAAAAAAAAAA", userData)
 
   const [status, setStatus] = useState('');
 
