@@ -11,7 +11,6 @@ const userNod = createAsyncThunk('/userNodemailer', async (userData: IUser) => {
       },
       body: JSON.stringify(userData),
     });
-    // const result = await response.json();
   } catch (error) {
     console.error('Oops', error);
   }
