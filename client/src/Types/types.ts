@@ -54,8 +54,8 @@ export type IUser = {
   visaType: string;
   visaTerm: number;
   visaShare: string;
-  createdAt: object;
-  updatedAt: object;
+  createdAt: object | null;
+  updatedAt: object | null;
 };
 
 export type RootState = ReturnType<typeof store.getState>;
@@ -67,7 +67,7 @@ export type ILogin = {
   password: string;
 };
 
-export type Istates = {
+type Istates = {
   id: number;
   state_name: string;
   min_income: number;
@@ -103,7 +103,7 @@ type IEditUser = {
   visaShare: string;
 };
 
-export type InewState = {
+type InewState = {
   state_name: string;
   min_income: number;
   banned_citizenship: string;
@@ -115,7 +115,14 @@ export type InewState = {
   visaTerm: number;
   visaShare: string;
   actions: string;
-}
+};
 
+type FormInputs = {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+};
 
-export type { Istate, IInput, IInput2, IEditUser };
+export type { Istate, IInput, IInput2, IEditUser, InewState, FormInputs };
+
