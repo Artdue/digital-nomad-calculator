@@ -26,7 +26,7 @@ const posts = [
   },
 ];
 
-export default function Qualities() {
+export default function Qualities(): React.JSX.Element {
   return (
     <>
       {' '}

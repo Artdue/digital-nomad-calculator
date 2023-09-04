@@ -25,6 +25,7 @@ export default function Register(): React.JSX.Element {
     e.preventDefault();
     const actionResult = await dispatch(userRegister(reg));
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     if (actionResult.payload.msg === 'Пользователь зарегистрирован') {
       navigate('/user/main');
     }

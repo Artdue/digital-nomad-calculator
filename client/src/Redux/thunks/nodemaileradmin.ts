@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { IUsers } from '../../Types/calcTypes';
+import type { IUsers } from '../../Types/calcTypes';
 
 const nodemailerAdminSend = createAsyncThunk('/nodemailer/admin', async (user: IUsers) => {
   console.log('FETCH');

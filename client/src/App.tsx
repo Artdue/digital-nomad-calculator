@@ -40,7 +40,7 @@ function App(): JSX.Element {
 
   type CalculatorRef = React.RefObject<HTMLFormElement | null>;
 
-  const calculator:CalculatorRef = useRef(null);
+  const calculator: CalculatorRef = useRef(null);
 
   const scrollToBlock = (): void => {
     navigate('/');
@@ -54,7 +54,15 @@ function App(): JSX.Element {
   return (
     <>
       <Routes>
-        <Route element={<Namvbar scrollToBlock={scrollToBlock} />}>
+        <Route
+          element={
+            <Namvbar
+              scrollToBlock={() => {
+                scrollToBlock();
+              }}
+            />
+          }
+        >
           <Route path="/" element={<Home calculator={calculator} />} />
 
           <Route path="/about" element={<AboutCompany />} />

@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
@@ -13,7 +14,6 @@ import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import userLogout from '../../Redux/thunks/user/logout.api';
 import { clearProfile } from '../../Redux/profileSlice';
 
-
 const navigation = [
   { name: 'Главная', href: '/', current: false },
   { name: 'Услуги', href: '/services-and-price', current: false },
@@ -21,11 +21,15 @@ const navigation = [
   { name: 'Контакты', href: '/contact', current: false },
 ];
 
-function classNames(...classes) {
+function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Namvbar({ scrollToBlock }): React.JSX.Element {
+type NavbarProps = {
+  scrollToBlock: () => void;
+};
+
+export default function Namvbar({ scrollToBlock }: NavbarProps): React.JSX.Element {
   const user = useAppSelector((state) => state.userSlice);
 
   const dispatch = useAppDispatch();
@@ -63,7 +67,7 @@ export default function Namvbar({ scrollToBlock }): React.JSX.Element {
                 <div className="flex flex-grow items-center justify-center sm:justify-start">
                   <Button
                     type="button"
-                    onClick={scrollToBlock}
+                    onClick={scrollToBlock as never}
                     variant="gradient"
                     size="md"
                     className="rounded-full bg-gradient-to-br from-[#337CE5] to-[#255fd4] font-semibold text-white ml-2 md:ml-0"
@@ -195,6 +199,7 @@ export default function Namvbar({ scrollToBlock }): React.JSX.Element {
                             <Menu.Item>
                               {({ active }) => (
                                 <button
+                                  type="button"
                                   onClick={logout}
                                   className={classNames(
                                     active ? 'bg-gray-100' : '',

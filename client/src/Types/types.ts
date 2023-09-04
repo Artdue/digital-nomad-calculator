@@ -54,8 +54,8 @@ export type IUser = {
   visaType: string;
   visaTerm: number;
   visaShare: string;
-  createdAt: object | null;
-  updatedAt: object | null;
+  createdAt: object;
+  updatedAt: object;
 };
 
 export type RootState = ReturnType<typeof store.getState>;
@@ -125,4 +125,3 @@ type FormInputs = {
 };
 
 export type { Istate, IInput, IInput2, IEditUser, InewState, FormInputs };
-
