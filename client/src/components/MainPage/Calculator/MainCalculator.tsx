@@ -15,7 +15,6 @@ export default function MainCalculator(): React.JSX.Element {
   const userData: IUser = profile.profile;
   const { loading } = status;
   const userInputs: IInput2 = useAppSelector((state) => state.unregSlice);
-  console.log('USERDATAFFFFFFFFFFFFFFFFFFF', userData);
 
   const user = useAppSelector((state) => state.userSlice);
 

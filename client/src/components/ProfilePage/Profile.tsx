@@ -6,28 +6,31 @@ function Profile(): React.JSX.Element {
   const profile = useAppSelector((state) => state.profileSlice);
   const userData = profile.profile;
 
-  const [uploadResponse1, setUploadResponse1] = useState(null);
-  const [uploadResponse2, setUploadResponse2] = useState(null);
-  const [uploadResponse3, setUploadResponse3] = useState(null);
+  const [uploadResponse1, setUploadResponse1] = useState<string | null>(null);
+  const [uploadResponse2, setUploadResponse2] = useState<string | null>(null);
+  const [uploadResponse3, setUploadResponse3] = useState<string | null>(null);
 
-  const handleFileUpload = async (file: any, type: any): Promise<void> => {
+  type IFile = {
+    lastModified: number;
+    lastModifiedDate: object;
+    name: string;
+    size: number;
+    type: string;
+    webkitRelativePath: string;
+  };
+
+  const handleFileUpload = async (file: IFile | string, type: string): Promise<void> => {
     if (file) {
       const formData = new FormData();
-      formData.append('file', file);
+      formData.append('file', file as unknown as Blob);
 
       try {
-        const response = await axios.post(
-          `http://localhost:3000/profile/${userData.id}/${type}`,
-          formData,
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-              withCredentials: true,
-            },
+        await axios.post(`http://localhost:3000/profile/${userData.id}/${type}`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            withCredentials: true,
           },
-        );
-        const result = await response.data.msg;
-        console.log('result====>', result);
+        });
         if (type === 'lease') {
           setUploadResponse1(`✅`);
         } else if (type === 'balance') {
@@ -36,7 +39,7 @@ function Profile(): React.JSX.Element {
           setUploadResponse3(`✅`);
         }
       } catch (error) {
-        console.error(`Ошибка при загрузке файла ${type}:`, error.response);
+        console.error(`Ошибка при загрузке файла ${type}:`, error);
       }
     }
   };
@@ -50,15 +53,15 @@ function Profile(): React.JSX.Element {
           <div className="mb-4">
             <form
               className="w-full py-1 px-2 rounded-md"
-              onSubmit={(e) => {
+              onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault();
-                const file = e.target.elements.passportFile.files[0];
-                handleFileUpload(file, 'passport');
+                const file = e.target.elements.passportFile.files[0] as string;
+                void handleFileUpload(file, 'passport');
               }}
             >
-              <label className="text-center block mb-1 s text-md font-medium leading-6 text-gray-900 mt-2">
+              <span className="text-center block mb-1 s text-md font-medium leading-6 text-gray-900 mt-2">
                 Загрузите паспорт
-              </label>
+              </span>
               <input type="file" name="passportFile" className="mb-2 border rounded-md mr-2" />
 
               {uploadResponse3 ? (
@@ -85,13 +88,13 @@ function Profile(): React.JSX.Element {
               className="w-full py-1 px-2 rounded-md"
               onSubmit={(e) => {
                 e.preventDefault();
-                const file = e.target.elements.balanceFile.files[0];
-                handleFileUpload(file, 'balance');
+                const file = e.target.elements.balanceFile.files[0] as string;
+                void handleFileUpload(file, 'balance');
               }}
             >
-              <label className="text-center block mb-1 s text-md font-medium leading-6 text-gray-900 mt-2">
+              <span className="text-center block mb-1 s text-md font-medium leading-6 text-gray-900 mt-2">
                 Загрузите банковскую выписку
-              </label>
+              </span>
               <input type="file" name="balanceFile" className="mb-2 border rounded-md mr-2" />
               {uploadResponse2 ? (
                 <button
@@ -117,13 +120,13 @@ function Profile(): React.JSX.Element {
               className="w-full py-1 px-2 rounded-md"
               onSubmit={(e) => {
                 e.preventDefault();
-                const file = e.target.elements.leaseFile.files[0];
-                handleFileUpload(file, 'lease');
+                const file = e.target.elements.leaseFile.files[0] as string;
+                void handleFileUpload(file, 'lease');
               }}
             >
-              <label className="text-center block mb-1 rounded-md text-md font-medium leading-6 text-gray-900 mt-2">
+              <span className="text-center block mb-1 rounded-md text-md font-medium leading-6 text-gray-900 mt-2">
                 Загрузите справку о работе
-              </label>
+              </span>
               <input type="file" name="leaseFile" className="mb-2 border rounded-md mr-2 " />
               {uploadResponse1 ? (
                 <button
