@@ -67,7 +67,7 @@ export type ILogin = {
   password: string;
 };
 
-export type Istates = {
+type Istates = {
   id: number;
   state_name: string;
   min_income: number;
@@ -103,7 +103,7 @@ type IEditUser = {
   visaShare: string;
 };
 
-export type InewState = {
+type InewState = {
   state_name: string;
   min_income: number;
   banned_citizenship: string;
@@ -117,10 +117,11 @@ export type InewState = {
   actions: string;
 };
 
-export type IInputFeed = {
+type FormInputs = {
   name: string;
   email: string;
   phone: string;
   message: string;
 };
-export type { Istate, IInput, IInput2, IEditUser };
+
+export type { Istate, IInput, IInput2, IEditUser, InewState, FormInputs };
