@@ -1,9 +1,6 @@
 import React, { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-//import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
-import userLogout from '../../Redux/thunks/user/logout.api';
 import { Button } from '@material-tailwind/react';
 
 import {
@@ -13,39 +10,32 @@ import {
   UserIcon,
   BriefcaseIcon,
 } from '@heroicons/react/24/outline';
+import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
+import userLogout from '../../Redux/thunks/user/logout.api';
 
 const navigation = [
   { name: 'Главная', href: '/', current: false },
-  // { name: 'Подбери свою страну', href: '/digitalNomadCalculator', current: false },
   { name: 'Услуги', href: '/services-and-price', current: false },
-  // { name: 'Команда', href: '/CompanyServices', current: false },
   { name: 'О компании', href: '/about', current: false },
   { name: 'Контакты', href: '/contact', current: false },
-  // { name: 'Войти', href: '#', current: false },
 ];
-
-// const navigationT = [
-//   { name: 'Войти', href: '/user/login', current: false },
-//    { name: 'Зарегистрироваться', href: '/user/register', current: false },
-// ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Namvbar({ scrollToBlock }) {
-  // const user = useAppSelector((state) => state.adminUserSlice);
+export default function Namvbar({ scrollToBlock }): React.JSX.Element {
   const user = useAppSelector((state) => state.userSlice);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const logout = () => {
+  const logout = (): void => {
     void dispatch(userLogout());
     navigate('/');
   };
 
-  const toLogin = () => {
+  const toLogin = (): void => {
     navigate('/user/login');
     window.scrollTo(0, 0);
   };
@@ -58,7 +48,6 @@ export default function Namvbar({ scrollToBlock }) {
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
               <div className="relative flex h-16 items-center justify-between">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden md:hidden">
-                  {/* Mobile menu button*/}
                   <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-[#0c4a6e] hover:bg-[#76a1dd]] hover:text-[#255fd4] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="absolute -inset-0.5" />
                     <span className="sr-only">Open main menu</span>
@@ -71,11 +60,9 @@ export default function Namvbar({ scrollToBlock }) {
                 </div>
                 <div className="flex flex-grow items-center justify-center sm:justify-start">
                   <Button
-                    type="submit"
+                    type="button"
                     onClick={scrollToBlock}
                     variant="gradient"
-                    // size={window.innerWidth >= 1024 ? 'md' : 'sm'}
-                    // className="rounded-full bg-gradient-to-br from-[#337CE5] to-[#255fd4] font-semibold text-white ml-2 md:ml-0"
                     size="md"
                     className="rounded-full bg-gradient-to-br from-[#337CE5] to-[#255fd4] font-semibold text-white ml-2 md:ml-0"
                   >
@@ -105,7 +92,6 @@ export default function Namvbar({ scrollToBlock }) {
                 </div>
 
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  {/* Profile dropdown */}
                   {user.email ? (
                     user.admin ? (
                       <Menu as="div" className="relative ml-3">
@@ -143,6 +129,7 @@ export default function Namvbar({ scrollToBlock }) {
                             <Menu.Item>
                               {({ active }) => (
                                 <button
+                                  type="button"
                                   onClick={logout}
                                   className={classNames(
                                     active ? 'bg-gray-100' : '',

@@ -115,6 +115,12 @@ export type InewState = {
   visaTerm: number;
   visaShare: string;
   actions: string;
-}
+};
 
+export type IInputFeed = {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+};
 export type { Istate, IInput, IInput2, IEditUser };

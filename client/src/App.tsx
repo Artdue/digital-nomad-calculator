@@ -11,7 +11,6 @@ import navApi from './Redux/thunks/user/nav.api';
 import EditProfile from './components/ProfilePage/EditProfile';
 import { profileGet } from './Redux/thunks/profileThunk';
 import { useAppSelector } from './Redux/hooks';
-import Calculator from './components/MainPage/Calculator/Calculator';
 import Contact from './components/ContactAndFeed/Contact/Contact';
 import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
 import OurTeam from './components/MainPage/OurTeam/OurTeam';
@@ -20,15 +19,12 @@ import MainCalculator from './components/MainPage/Calculator/MainCalculator';
 import Admin from './components/AdminPage/Admin';
 import AdminUserList from './components/AdminPage/AdminUserList';
 import ServicesAndPrice from './components/ServicesAndPrice/ServicesAndPrice';
-import RegGoogle from './components/LogReg/Register/RegGoogle';
 import LogAdmin from './components/AdminPage/LogAdmin/LogAdmin';
-import TestPage from './components/AdminPage/SideBarAdmin';
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
   const user = useAppSelector((state) => state.userSlice);
   console.log(user);
-  
 
   useEffect(() => {
     dispatch(navApi());
@@ -44,7 +40,7 @@ function App(): JSX.Element {
 
   const calculator = useRef(null);
 
-  const scrollToBlock = () => {
+  const scrollToBlock = (): void => {
     navigate('/');
     setTimeout(() => {
       calculator.current.scrollIntoView({
@@ -65,13 +61,13 @@ function App(): JSX.Element {
           <Route path="/services-and-price" element={<ServicesAndPrice />} />
           {/* <Route path="/digitalNomadCalculator" element={<Calculator />} /> */}
           <Route path="/user/register" element={user.email ? <EditProfile /> : <Register />} />
-          <Route path="/user/login" element={user.email ?  <EditProfile />: <Login/>} />
-          <Route path="/path-to-privacy-policy" element={<PrivacyPolicy />}/>
-          <Route path="/user/profile" element={user.email ? <EditProfile />: <Login/>} />
-          <Route path="/user/main" element={user.email ? <MainCalculator/>: <Login/>} />
-          <Route path="/admin" element={user.admin ? <Admin/>:<LogAdmin/> } />
-          <Route path="/admin/users" element={user.admin ? <AdminUserList/>: <LogAdmin/>} />
-          <Route path="/mainAdmin" element={user.admin ?<AdminUserList/>: <LogAdmin />  } />
+          <Route path="/user/login" element={user.email ? <EditProfile /> : <Login />} />
+          <Route path="/path-to-privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/user/profile" element={user.email ? <EditProfile /> : <Login />} />
+          <Route path="/user/main" element={user.email ? <MainCalculator /> : <Login />} />
+          <Route path="/admin" element={user.admin ? <Admin /> : <LogAdmin />} />
+          <Route path="/admin/users" element={user.admin ? <AdminUserList /> : <LogAdmin />} />
+          <Route path="/mainAdmin" element={user.admin ? <AdminUserList /> : <LogAdmin />} />
         </Route>
       </Routes>
       {/* <TestPage /> */}
