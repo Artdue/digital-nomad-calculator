@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import { getStates } from '../../../Redux/thunks/getStates';
 import type { IInput2, IUser, Istate, RootState } from '../../../Types/types';
-import { profilePut } from '../../../Redux/thunks/profileThunk';
+import { profileGet, profilePut } from '../../../Redux/thunks/profileThunk';
 import { unregtUserGet } from '../../../Redux/thunks/unregThunk';
 import type { IEditUserInputs2 } from '../../../Types/calcTypes';
 
@@ -15,10 +15,19 @@ export default function MainCalculator(): React.JSX.Element {
   const userData: IUser = profile.profile;
   const { loading } = status;
   const userInputs: IInput2 = useAppSelector((state) => state.unregSlice);
+  console.log('USERDATAFFFFFFFFFFFFFFFFFFF', userData);
+
+  const user = useAppSelector((state) => state.userSlice);
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const formRef = useRef<HTMLFormElement | null>(null);
+
+  useEffect(() => {
+    if (user.email) {
+      void dispatch(profileGet(user));
+    }
+  }, [dispatch, user]);
 
   const [showNotification1, setShowNotification1] = useState(false);
 
@@ -86,6 +95,7 @@ export default function MainCalculator(): React.JSX.Element {
       birthDate: userData.birthDate || '',
       phone: userData.phoneNumber || '',
       appStatus: false,
+      document_status: userData.document_status || 'Новый пользователь',
     };
 
     void dispatch(profilePut(editUser));

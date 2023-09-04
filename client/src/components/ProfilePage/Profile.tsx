@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useAppSelector } from '../../Redux/hooks';
 
-function Profile() {
+function Profile(): React.JSX.Element {
   const profile = useAppSelector((state) => state.profileSlice);
   const userData = profile.profile;
 
@@ -10,7 +10,7 @@ function Profile() {
   const [uploadResponse2, setUploadResponse2] = useState(null);
   const [uploadResponse3, setUploadResponse3] = useState(null);
 
-  const handleFileUpload = async (file, type) => {
+  const handleFileUpload = async (file: any, type: any): Promise<void> => {
     if (file) {
       const formData = new FormData();
       formData.append('file', file);
@@ -29,20 +29,11 @@ function Profile() {
         const result = await response.data.msg;
         console.log('result====>', result);
         if (type === 'lease') {
-          // setUploadResponse1(`Справка успешно загружена`);
           setUploadResponse1(`✅`);
-
-          console.log(`Файл типа ${type} успешно загружен на сервер`);
         } else if (type === 'balance') {
-          // setUploadResponse2(`Выписка успешно загружена`);
           setUploadResponse2(`✅`);
-
-          console.log(`Файл типа ${type} успешно загружен на сервер`);
         } else {
-          // setUploadResponse3(`Паспорт успешно загружен`);
           setUploadResponse3(`✅`);
-
-          console.log(`Файл типа ${type} успешно загружен на сервер`);
         }
       } catch (error) {
         console.error(`Ошибка при загрузке файла ${type}:`, error.response);

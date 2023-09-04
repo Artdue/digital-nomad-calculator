@@ -15,9 +15,7 @@ const unregSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(unregtUserGet.pending, () => {
-        console.log('pending');
-      })
+      .addCase(unregtUserGet.pending, () => {})
       .addCase(unregtUserGet.fulfilled, (state, action) => {
         state.income = action.payload.income;
         state.employmentDate = action.payload.employmentDate;

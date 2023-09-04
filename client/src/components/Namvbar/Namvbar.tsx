@@ -1,11 +1,8 @@
 import React, { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-//import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+// import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
-import userLogout from '../../Redux/thunks/user/logout.api';
 import { Button } from '@material-tailwind/react';
-
 import {
   Bars3Icon,
   XMarkIcon,
@@ -13,6 +10,9 @@ import {
   UserIcon,
   BriefcaseIcon,
 } from '@heroicons/react/24/outline';
+import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
+import userLogout from '../../Redux/thunks/user/logout.api';
+import { clearProfile } from '../../Redux/profileSlice';
 
 const navigation = [
   { name: 'Главная', href: '/', current: false },
@@ -42,6 +42,7 @@ export default function Namvbar({ scrollToBlock }) {
 
   const logout = () => {
     void dispatch(userLogout());
+    void dispatch(clearProfile());
     navigate('/');
   };
 
@@ -58,7 +59,7 @@ export default function Namvbar({ scrollToBlock }) {
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
               <div className="relative flex h-16 items-center justify-between">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden md:hidden">
-                  {/* Mobile menu button*/}
+                  {/* Mobile menu button */}
                   <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-[#0c4a6e] hover:bg-[#76a1dd]] hover:text-[#255fd4] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="absolute -inset-0.5" />
                     <span className="sr-only">Open main menu</span>
