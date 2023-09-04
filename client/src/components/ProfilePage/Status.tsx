@@ -2,22 +2,34 @@ import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import { profilePut } from '../../Redux/thunks/profileThunk';
 import userNod from '../../Redux/thunks/userNod';
+import type { IUser } from '../../Types/types';
+import type { IEditUserInputs2 } from '../../Types/calcTypes';
 
 export default function Status(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const profile = useAppSelector((state) => state.profileSlice);
-  const userData = profile.profile;
-  // console.log('userData', userData);
+  const userData: IUser = profile.profile;
   const statusS = useAppSelector((state) => state.profileSlice);
   const { loading } = statusS;
 
   const [showNotification1, setShowNotification1] = useState(false);
   const [showNotification2, setShowNotification2] = useState(false);
 
-  const appHandler = () => {
-    const editUser = {
+  const appHandler = (): void => {
+    const editUser: IEditUserInputs2 = {
       id: userData.id,
-      appStatus: true,
+      citizenship: userData.citizenship || '',
+      income: userData.income || 0,
+      work_exp: userData.work_exp || 0,
+      work_date: userData.work_date || '',
+      visaType: userData.visaType || '',
+      visaShare: userData.visaShare || '',
+      first_name: userData.first_name || '',
+      second_name: userData.middle_name || '',
+      last_name: userData.last_name || '',
+      birthDate: userData.birthDate || '',
+      phone: userData.phoneNumber || '',
+      appStatus: false,
       document_status: 'Документы отправлены',
     };
     setShowNotification2(true);
@@ -29,7 +41,7 @@ export default function Status(): React.JSX.Element {
     void dispatch(userNod(userData));
   };
 
-  const editHandler = () => {
+  const editHandler = (): void => {
     window.scrollTo(0, 0);
     setShowNotification1(true);
     setTimeout(() => {
@@ -40,6 +52,7 @@ export default function Status(): React.JSX.Element {
 
   return (
     <>
+      <div />
       {loading ? (
         <div className="flex h-screen items-center justify-center">
           <img src="/src/assets/reload-cat.gif" alt="" />
@@ -63,9 +76,10 @@ export default function Status(): React.JSX.Element {
               Заявка отправлена
             </div>
           )}
-          {userData.appStatus ? (
+          {userData?.appStatus ? (
             <div>
               <button
+                type="button"
                 onClick={editHandler}
                 className="m-2 mt-4 px-4 py-2 text-white rounded-md bg-gradient-to-br from-green-700 to-green-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2"
               >
@@ -75,6 +89,7 @@ export default function Status(): React.JSX.Element {
           ) : (
             <div>
               <button
+                type="button"
                 className="m-2 mt-4 px-4 py-2 text-white rounded-md bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-sm text-center mr-2"
                 onClick={appHandler}
               >

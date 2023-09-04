@@ -18,8 +18,6 @@ export default function Calculator(): React.JSX.Element {
   const [filterStates, setFilterStates] = useState<Istate[]>([]);
   const [showImage, setShowImage] = useState(true);
 
-  console.log(workExp);
-
   const [showNotification1, setShowNotification1] = useState(false);
 
   useEffect(() => {
@@ -228,10 +226,11 @@ export default function Calculator(): React.JSX.Element {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {filterStates.map((state) => (
                     <button
+                      key={state.id}
                       type="button"
                       className="bg-white rounded-full border-2 border-[#337CE5]"
                     >
-                      <div key={state.id} className="max-w-sm">
+                      <div className="max-w-sm">
                         <figure className="py-3">
                           <blockquote className="font-light text-gray-700 sm:text-lg dark:text-gray-700">
                             {state.state_name}

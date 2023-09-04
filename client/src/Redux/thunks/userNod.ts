@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import type { IUser } from '../../Types/types';
 
-const userNod = createAsyncThunk('/userNodemailer', async (userData) => {
+const userNod = createAsyncThunk('/userNodemailer', async (userData: IUser) => {
   try {
     console.log('FETCH');
     await fetch('http://localhost:3000/nodemailer/user', {

@@ -13,6 +13,7 @@ export default function EditProfile(): React.JSX.Element {
   const userData = profile.profile;
   const { loading } = statusS;
   const userInputs = useAppSelector((state) => state.unregSlice);
+  console.log("USERDATAAAAAAAAAA", userData)
 
   const [status, setStatus] = useState('');
 
@@ -46,6 +47,7 @@ export default function EditProfile(): React.JSX.Element {
     e.preventDefault();
     e.stopPropagation();
     window.scrollTo(0, 0);
+    console.log('ddddddddddd', userData);
     setFirstName(firstName);
     setMiddleName(middleName);
     setLastName(lastName);
@@ -70,11 +72,12 @@ export default function EditProfile(): React.JSX.Element {
       phone,
       citizenship,
       income,
-      work_exp: monthsPassed,
+      work_exp: monthsPassed || 0,
       work_date: employmentDate,
       visaType,
       visaShare,
       appStatus: userData.appStatus,
+      document_status: userData.document_status || 'Новый пользователь',
     };
     void dispatch(profilePut(editUser));
   };
