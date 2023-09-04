@@ -2,7 +2,7 @@ import { v4 } from 'uuid';
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
-import { getStates } from '../../../Redux/thunks/getStates';
+import getStates from '../../../Redux/thunks/getStates';
 import type { IInput2, IUser, Istate, RootState } from '../../../Types/types';
 import { profileGet, profilePut } from '../../../Redux/thunks/profileThunk';
 import { unregtUserGet } from '../../../Redux/thunks/unregThunk';

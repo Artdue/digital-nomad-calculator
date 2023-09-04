@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '@material-tailwind/react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
-import { getStates } from '../../../Redux/thunks/getStates';
+import getStates from '../../../Redux/thunks/getStates';
 import type { Istate, RootState } from '../../../Types/types';
 import { unregtUserGet } from '../../../Redux/thunks/unregThunk';
 import type { IInputs2 } from '../../../Types/calcTypes';

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { IstateType } from './store.types';
-import { getStates } from './thunks/getStates';
+import getStates from './thunks/getStates';
 
 const initialState: IstateType = {
   states: [],
