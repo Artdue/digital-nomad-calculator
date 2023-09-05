@@ -8,11 +8,11 @@ import Qualities from '../Qualities/Qualities';
 import Motivation from '../Motivation/Motivation';
 import type { IPropCalcScroll } from '../../../Types/propsType';
 
-
-
-export default function Home({ calculator }: IPropCalcScroll): React.JSX.Element  {
-  const calculateScroll = (): void=> {
-    window.scrollTo(0, 700);
+export default function Home({ calculator }: IPropCalcScroll): React.JSX.Element {
+  const calculateScroll = (): void => {
+    calculator.current.scrollIntoView({
+      behavior: 'smooth',
+    });
   };
 
   return (
@@ -28,7 +28,7 @@ export default function Home({ calculator }: IPropCalcScroll): React.JSX.Element
             </p>
             <div className="mt-4 lg:mt-10 flex items-center justify-center gap-x-6 pl-5  lg:pl-0 md:pl-7">
               <Button
-                type="submit"
+                type="button"
                 onClick={calculateScroll}
                 variant="gradient"
                 className="rounded-full bg-[#337CE5] font-semibold text-white "
