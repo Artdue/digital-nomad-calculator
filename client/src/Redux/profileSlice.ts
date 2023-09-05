@@ -27,8 +27,8 @@ const initialState: IprofileType = {
     visaType: '',
     visaTerm: 0,
     visaShare: '',
-    createdAt: null,
-    updatedAt: null,
+    createdAt: {},
+    updatedAt: {},
   },
   loading: false,
 };
@@ -48,12 +48,16 @@ const profileSlice = createSlice({
         state.loading = true;
       })
       .addCase(profileGet.fulfilled, (state, action) => {
-        state.profile = action.payload;
-        state.loading = false;
+        if (action.payload) {
+          state.profile = action.payload;
+          state.loading = false;
+        }
       })
       .addCase(profilePut.pending, (state, action) => {
-        state.profile = action.payload;
-        state.loading = true;
+        if (action.payload) {
+          state.profile = action.payload;
+          state.loading = true;
+        }
       })
       .addCase(profilePut.fulfilled, (state, action) => {
         state.profile = action.payload;
