@@ -16,13 +16,18 @@ export type IUserType = {
 };
 
 export type IInitialState = {
-  email: string;
-  admin: boolean;
-  auth: boolean;
-  msg: string;
+  email?: string | undefined;
+  admin?: boolean | undefined;
+  auth?: boolean | undefined;
+  msg?: string | undefined;
 };
 
 export type IstateData = {
   data: object;
   id: number;
+};
+
+export type IError = {
+  status: string;
+  error: string;
 };
