@@ -27,8 +27,8 @@ const initialState: IprofileType = {
     visaType: '',
     visaTerm: 0,
     visaShare: '',
-    createdAt: null,
-    updatedAt: null,
+    createdAt: {},
+    updatedAt: {},
   },
   loading: false,
 };

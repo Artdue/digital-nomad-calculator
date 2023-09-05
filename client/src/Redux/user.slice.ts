@@ -24,6 +24,7 @@ const userSlice = createSlice({
       .addCase(userLogin.pending, () => {
         console.log('pending');
       })
+
       .addCase(userLogin.fulfilled, (state, action: PayloadAction<IInitialState>) => {
         if (action.payload) {
           state.email = action.payload.email;

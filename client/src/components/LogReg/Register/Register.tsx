@@ -93,7 +93,7 @@ export default function Register(): React.JSX.Element {
             * регистрируясь, вы принимаете условия{' '}
             <button
               type="button"
-              className="underline dark:text-blue-400"
+              className="underline text-xs uppercase dark:text-blue-400"
               onClick={() => openModal()}
             >
               Пользовательского соглашения
