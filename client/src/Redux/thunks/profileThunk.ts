@@ -17,6 +17,7 @@ export const profileGet = createAsyncThunk('getUser', async (user: IInitialState
     return await res;
   } catch (error) {
     console.error('Oops', error);
+    return Promise.reject(new Error('400'));
   }
 });
 
