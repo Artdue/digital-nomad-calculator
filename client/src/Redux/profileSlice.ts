@@ -48,16 +48,12 @@ const profileSlice = createSlice({
         state.loading = true;
       })
       .addCase(profileGet.fulfilled, (state, action) => {
-        if (action.payload) {
-          state.profile = action.payload;
-          state.loading = false;
-        }
+        state.profile = action.payload;
+        state.loading = false;
       })
       .addCase(profilePut.pending, (state, action) => {
-        if (action.payload) {
-          state.profile = action.payload;
-          state.loading = true;
-        }
+        state.profile = action.payload;
+        state.loading = true;
       })
       .addCase(profilePut.fulfilled, (state, action) => {
         state.profile = action.payload;

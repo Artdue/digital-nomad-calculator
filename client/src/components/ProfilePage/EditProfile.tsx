@@ -40,14 +40,13 @@ export default function EditProfile(): React.JSX.Element {
         setStatus(userData.document_status);
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData?.document_status]);
 
   const submitHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     e.stopPropagation();
     window.scrollTo(0, 0);
-    console.log('ddddddddddd', userData);
     setFirstName(firstName);
     setMiddleName(middleName);
     setLastName(lastName);

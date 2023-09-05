@@ -46,6 +46,16 @@ export default function MainCalculator(): React.JSX.Element {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    if (userData) {
+      setCitizenship(userData?.citizenship || userInputs?.citizenship);
+      setIncome(userData?.income || userInputs?.income);
+      setEmploymentDate(userData?.work_date || userInputs?.employmentDate);
+      setvisaT(userData?.visaType);
+      setvisaS(userData?.visaShare);
+    }
+  }, [dispatch, userData]);
+
+  useEffect(() => {
     void dispatch(getStates());
   }, [dispatch]);
 
