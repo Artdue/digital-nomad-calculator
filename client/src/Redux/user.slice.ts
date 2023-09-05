@@ -4,10 +4,11 @@ import navApi from './thunks/user/nav.api';
 import userRegister from './thunks/user/reg.api';
 import userLogin from './thunks/user/log.api';
 import userLogout from './thunks/user/logout.api';
-import logAdmin from './thunks/logAdmin';
-import type { IInitialState } from './store.types';
 
-const initialState: IInitialState = {
+import logAdmin from './thunks/logAdmin';
+import type { IError, IInitialState } from './store.types';
+
+const initialState: IInitialState | IError = {
   email: '',
   admin: false,
   auth: false,
@@ -24,10 +25,12 @@ const userSlice = createSlice({
         console.log('pending');
       })
       .addCase(userLogin.fulfilled, (state, action: PayloadAction<IInitialState>) => {
-        state.email = action.payload.email;
-        state.admin = action.payload.admin;
-        state.msg = action.payload.msg;
-        state.auth = false;
+        if (action.payload) {
+          state.email = action.payload.email;
+          state.admin = action.payload.admin;
+          state.msg = action.payload.msg;
+          state.auth = false;
+        }
       })
       .addCase(userLogin.rejected, () => {
         console.error('ERROR!');

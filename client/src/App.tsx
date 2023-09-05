@@ -24,7 +24,6 @@ import LogAdmin from './components/AdminPage/LogAdmin/LogAdmin';
 function App(): JSX.Element {
   const dispatch = useDispatch();
   const user = useAppSelector((state) => state.userSlice);
-  console.log(user);
 
   useEffect(() => {
     dispatch(navApi());
@@ -69,9 +68,8 @@ function App(): JSX.Element {
           <Route path="/contact" element={<Contact />} />
           <Route path="/CompanyServices" element={<OurTeam />} />
           <Route path="/services-and-price" element={<ServicesAndPrice />} />
-          {/* <Route path="/digitalNomadCalculator" element={<Calculator />} /> */}
-          <Route path="/user/register" element={user.email ? <EditProfile /> : <Register />} />
-          <Route path="/user/login" element={user.email ? <EditProfile /> : <Login />} />
+          <Route path="/user/register" element={user.email ? <MainCalculator /> : <Register />} />
+          <Route path="/user/login" element={user.email ? <MainCalculator /> : <Login />} />
           <Route path="/path-to-privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/user/profile" element={user.email ? <EditProfile /> : <Login />} />
           <Route path="/user/main" element={user.email ? <MainCalculator /> : <Login />} />
@@ -80,7 +78,6 @@ function App(): JSX.Element {
           <Route path="/mainAdmin" element={user.admin ? <AdminUserList /> : <LogAdmin />} />
         </Route>
       </Routes>
-      {/* <TestPage /> */}
       <Foot />
     </>
   );
