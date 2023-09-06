@@ -5,18 +5,15 @@ const { User } = require('../db/models');
 
 router
   .post('/', async (req, res) => {
-    //  console.log('SMOTRIM TUT REQ BODY ', req.body);
     const { email, password } = req.body;
     try {
       const user = await User.findOne({ where: { email } });
-      // console.log('SMOTRIM TUT USER ', user);
       if (user && user.admin === true) {
         const checkPass = await bcrypt.compare(password, user.password);
 
         if (checkPass) {
           req.session.email = user.email;
           req.session.admin = user.admin;
-          // console.log('TTUT REEQ SESSIOOOOOOOON', req.session);
           req.session.save(() => {
             res.json({
               msg: 'Вы успешно авторизованы!',
@@ -26,10 +23,20 @@ router
             });
           });
         } else {
-          res.json({ msg: 'Пароль неверный' });
+          res.json({
+            msg: 'Пароль неверный',
+            email: '',
+            admin: false,
+            auth: false,
+          });
         }
       } else {
-        res.json({ msg: 'Такой пользователь не найден' });
+        res.json({
+          msg: 'Такой пользователь не найден',
+          email: '',
+          admin: false,
+          auth: false,
+        });
       }
     } catch (error) {
       res.send('Что-то пошло не так', error);

@@ -34,7 +34,7 @@ const userSlice = createSlice({
         }
       })
       .addCase(userLogin.rejected, () => {
-        console.error('ERROR!');
+        console.log('ERROR!');
       })
       .addCase(userRegister.pending, () => {
         console.log('pending');
@@ -49,7 +49,7 @@ const userSlice = createSlice({
         console.log('ERROR!');
       })
       .addCase(userLogout.pending, () => {
-        console.error('pending');
+        console.log('pending');
       })
       .addCase(userLogout.fulfilled, (state) => {
         Object.assign(state, initialState);
@@ -69,7 +69,7 @@ const userSlice = createSlice({
         console.error('ERROR!');
       })
       .addCase(logAdmin.pending, () => {
-        console.error('pending');
+        console.log('pending');
       })
       .addCase(logAdmin.fulfilled, (state, action: PayloadAction<IInitialState>) => {
         state.email = action.payload.email;
