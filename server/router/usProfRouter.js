@@ -16,7 +16,6 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/', async (req, res) => {
-  console.log('REQ BODY', req.body);
   try {
     await User.update(
       {

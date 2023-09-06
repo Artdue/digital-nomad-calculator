@@ -1,8 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import type { IUsers } from '../../Types/calcTypes';
 
-
-const nodemailerAdminSend = createAsyncThunk('/nodemailer/admin', async (user) => {
-  console.log('FETCH');
+const nodemailerAdminSend = createAsyncThunk('/nodemailer/admin', async (user: IUsers) => {
   try {
     await fetch('http://localhost:3000/nodemailer/admin', {
       method: 'POST',
@@ -11,7 +10,6 @@ const nodemailerAdminSend = createAsyncThunk('/nodemailer/admin', async (user) =
       },
       body: JSON.stringify(user),
     });
-
   } catch (error) {
     console.error('Oops', error);
   }

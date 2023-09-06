@@ -4,10 +4,12 @@ const { User } = require('../db/models');
 
 const adminRouter = express.Router();
 
-
 adminRouter.get('/', async (req, res) => {
   try {
-    const states = await State.findAll({ order: [['state_name', 'ASC']], raw: true });
+    const states = await State.findAll({
+      order: [['state_name', 'ASC']],
+      raw: true,
+    });
     res.json(states);
   } catch (error) {
     console.error('Ошибка при получении данных калькулятора:', error);
@@ -46,14 +48,7 @@ adminRouter.delete('/:id', async (req, res) => {
     const deletedState = await State.destroy({
       where: { id: stateId },
     });
-
-    // if (deletedState === 0) {
-    //   res.status(404).json({ error: 'Государство не найдено' });
-    // } else {
-    //   res.status(200).json({ message: 'Государство успешно удалено' });
-    // }
     const states = await State.findAll({ raw: true });
-    // console.log(states);
     res.json(states);
   } catch (error) {
     console.error('Ошибка при удалении данных государства:', error);

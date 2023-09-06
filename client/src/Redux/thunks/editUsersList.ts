@@ -1,14 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import type { AxiosResponse } from 'axios';
+import type { IstateData } from '../store.types';
+import type { IUser } from '../../Types/types';
 
-export const editUser = createAsyncThunk('admin/editState', async (stateData) => {
-  console.log('=============> Я В САНКЕ' );
-  
-  try {
+const editUser = createAsyncThunk<IUser[], IstateData>(
+  'admin/editState',
+  async (stateData: IstateData) => {
     const { id, data } = stateData;
-    const response = await axios.put(`http://localhost:3000/admin/users/${id}`, data);
+    const response: AxiosResponse<IUser[]> = await axios.put(
+      `http://localhost:3000/admin/users/${id}`,
+      data,
+    );
     return response.data;
-  } catch (error) {
-    throw error;
-  }
-});
+  },
+);
+
+export default editUser;

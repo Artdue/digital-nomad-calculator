@@ -1,57 +1,56 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addState } from '../../Redux/thunks/addStates';
+import { useDispatch } from 'react-redux';
+import addState from '../../Redux/thunks/addStates';
 import TestPage from './SideBarAdmin';
+import type {InewState} from '../../Types/types';
 
-export default function NewState() {
+export default function NewState(): React.JSX.Element {
   const formRef = useRef(null);
-
-  const [showForm, setShowForm] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
 
-
   const dispatch = useDispatch();
+
   const [stateName, setStateName] = useState<string>('');
-  const [minIncome, setMinIncome] = useState<string>('');
+  const [minIncome, setMinIncome] = useState<number>(0);
   const [bannedCitizenship, setBannedCitizenship] = useState<string>('');
   const [workExp, setWorkExp] = useState<string>('');
-  const [minAge, setMinAge] = useState<string>('');
-  const [maxAge, setMaxAge] = useState<string>('');
+  const [minAge, setMinAge] = useState<number>(0);
+  const [maxAge, setMaxAge] = useState<number>(0);
   const [gender, setGender] = useState<string>('');
   const [criminal, setCriminal] = useState<boolean>(false);
   const [visaType, setVisaType] = useState<string>('');
-  const [visaTerm, setVisaTerm] = useState<string>('');
+  const [visaTerm, setVisaTerm] = useState<number>(0);
   const [visaShare, setVisaShare] = useState<string>('');
   const [actions, setActions] = useState<string>('');
 
-  const handleAddState = async () => {
-    const newState = {
-      state_name: stateName,
+  const handleAddState = async (): Promise<void> => {
+    const InewState: InewState = {
+      state_name: String(stateName),
       min_income: Number(minIncome),
-      banned_citizenship: bannedCitizenship,
+      banned_citizenship: String(bannedCitizenship),
       work_exp: Number(workExp),
       min_age: Number(minAge),
       max_age: Number(maxAge),
-      gender,
-      criminal,
-      visaType,
-      visaTerm,
-      visaShare,
-      actions,
+      gender: String(gender),
+      criminal: Boolean(criminal),
+      visaTerm: Number(visaTerm),
+      visaShare: String(gender),
+      actions: String(actions),
     };
+
     try {
-      void dispatch(addState(newState));
+      void dispatch(addState(InewState) as never);
       setShowNotification(true);
       setStateName('');
-      setMinIncome('');
+      setMinIncome(0);
       setBannedCitizenship('');
       setWorkExp('');
-      setMinAge('');
-      setMaxAge('');
+      setMinAge(0);
+      setMaxAge(0);
       setGender('');
       setCriminal(false);
       setVisaType('');
-      setVisaTerm('');
+      setVisaTerm(0);
       setVisaShare('');
       setActions('');
     } catch (error) {
@@ -64,18 +63,17 @@ export default function NewState() {
   useEffect(() => {
     if (showNotification) {
       const notificationTimeout = setTimeout(() => {
-        setShowNotification(false); 
+        setShowNotification(false);
       }, 5000);
-  
+
       return () => clearTimeout(notificationTimeout);
     }
   }, [showNotification]);
-  
 
-  const openModal = () => {
+  const openModal = (): void => {
     setShowModal(true);
   };
-  const closeModal = () => {
+  const closeModal = (): void => {
     setShowModal(false);
   };
 
@@ -83,40 +81,33 @@ export default function NewState() {
     <>
       <TestPage />
       <div className="flex justify-center mb-4">
-  <button
-    onClick={() => openModal()}
-    type="button"
-    className="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-  >
-    Добавление данных в калькулятор
-  </button>
-</div>
+        <button
+          onClick={() => openModal()}
+          type="button"
+          className="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+        >
+          Добавление данных в калькулятор
+        </button>
+      </div>
 
-{showNotification && (
-  <div
-    id="status"
-    className="fixed top-16 left-1/2 animate-pulse transform -translate-x-1/2 w-300 z- bg-gradient-to-br from-purple-600 to-blue-500 p-4 rounded-md text-white text-center"
-    style={{
-      transition: 'opacity 0.5s',
-      opacity: showNotification ? 1 : 0,
-      zIndex: 9999, // Установите здесь нужное значение z-index
-    }}  
-  >
-    Страна добавлена
-  </div>
-)}
+      {showNotification && (
+        <div
+          id="status"
+          className="fixed top-16 left-1/2 animate-pulse transform -translate-x-1/2 w-300 z- bg-gradient-to-br from-purple-600 to-blue-500 p-4 rounded-md text-white text-center"
+          style={{
+            transition: 'opacity 0.5s',
+            opacity: showNotification ? 1 : 0,
+            zIndex: 9999,
+          }}
+        >
+          Страна добавлена
+        </div>
+      )}
 
       {showModal && (
-        // <div
-        //   className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 "
-        //   style={{
-        //     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        //   }}
-        // >
         <div className="fixed inset-0  z-50 bg-black bg-opacity-50 sm:h-[full] overflow-auto">
           <div ref={formRef} className="p-4 w-full max-w-l mx-auto m-4 flex justify-center">
             <div className="px-4 sm:px-0 " />
-            {/* <div className="mt-6 border-t border-gray-100  w-[700px] bg-white"> */}
             <div className=" bg-white p-4 rounded-md w-[1000px] h-[850px]  ">
               <div className="mr-6 ml-6 mt-4 mb-4 ">
                 <form onSubmit={(e) => e.preventDefault()} className="divide-y divide-gray-100">
@@ -176,7 +167,7 @@ export default function NewState() {
                             className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             placeholder=""
                             value={minIncome}
-                            onChange={(e) => setMinIncome(e.target.value)}
+                            onChange={(e) => setMinIncome(Number(e.target.value))}
                           />
                         </dd>
                       </div>
@@ -204,7 +195,7 @@ export default function NewState() {
                             className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             placeholder=""
                             value={minAge}
-                            onChange={(e) => setMinAge(e.target.value)}
+                            onChange={(e) => setMinAge(Number(e.target.value))}
                           />
                         </dd>
                       </div>
@@ -219,7 +210,7 @@ export default function NewState() {
                             type="number"
                             className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             value={maxAge}
-                            onChange={(e) => setMaxAge(e.target.value)}
+                            onChange={(e) => setMaxAge(Number(e.target.value))}
                           />
                         </dd>
                       </div>
@@ -248,7 +239,7 @@ export default function NewState() {
                             type="number"
                             className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             value={visaTerm}
-                            onChange={(e) => setVisaTerm(e.target.value)}
+                            onChange={(e) => setVisaTerm(Number(e.target.value))}
                           />
                         </dd>
                       </div>
@@ -276,26 +267,26 @@ export default function NewState() {
                         <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                           <textarea
                             id="actions"
-                            // className="w-[640px] h-[200px] mt-1 text-sm text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none overflow-auto"
                             className="block w-full h-[200px] px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             placeholder="Действия"
-                            // maxLength={5000}
                             value={actions}
                             onChange={(e) => setActions(e.target.value)}
                           />
                         </dd>
                       </div>
                       <div className="m-2 flex justify-center">
-  <button
-    onClick={() => {
-      handleAddState();
-      closeModal();
-    }}
-    className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-6"
-  >
-    Добавить
-  </button>
                         <button
+                          type="button"
+                          onClick={() => {
+                            void handleAddState();
+                            closeModal();
+                          }}
+                          className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-6"
+                        >
+                          Добавить
+                        </button>
+                        <button
+                          type="button"
                           onClick={closeModal}
                           className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-6 "
                         >

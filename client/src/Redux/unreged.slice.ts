@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { unregtUserGet } from './thunks/unregThunk';
 
 const initialState = {
-  income: '',
+  income: 0,
   employmentDate: '',
   citizenship: '',
-  visaT: '',
-  visaS: '',
+  visaT: ('' as string) || undefined,
+  visaS: ('' as string) || undefined,
 };
 
 const unregSlice = createSlice({
@@ -15,9 +15,7 @@ const unregSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(unregtUserGet.pending, () => {
-        console.log('pending');
-      })
+      .addCase(unregtUserGet.pending, () => {})
       .addCase(unregtUserGet.fulfilled, (state, action) => {
         state.income = action.payload.income;
         state.employmentDate = action.payload.employmentDate;

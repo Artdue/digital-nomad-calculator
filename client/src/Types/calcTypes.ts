@@ -1,6 +1,6 @@
 import type store from '../Redux/store';
 
-type Istate = {
+type Istates = {
   id: number;
   state_name: string;
   min_income: number;
@@ -18,19 +18,19 @@ type Istate = {
   updatedAt: object;
 };
 
-type IInput = {
+type IInputs = {
   income: string;
   work_exp: string;
   citizenship: string;
 };
 
-export type UserType = {
-  admin: boolean;
-  email: string;
-  password: string;
+type IInputs2 = {
+  income: number;
+  employmentDate: string;
+  citizenship: string;
 };
 
-export type IUser = {
+type IUsers = {
   id: number;
   login: string;
   first_name: string;
@@ -58,23 +58,7 @@ export type IUser = {
   updatedAt: object;
 };
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
-
-export type ILogin = {
-  email: string;
-  password: string;
-};
-
-type IInput2 = {
-  income: number;
-  employmentDate: string;
-  citizenship: string;
-  visaT: string | undefined;
-  visaS: string | undefined;
-};
-
-type IEditUser = {
+type IEditUserInputs = {
   id: number;
   citizenship: string;
   income: number;
@@ -84,25 +68,48 @@ type IEditUser = {
   visaShare: string;
 };
 
-type InewState = {
-  state_name: string;
-  min_income: number;
-  banned_citizenship: string;
-  work_exp: number;
-  min_age: number;
-  max_age: number;
-  gender: string;
-  criminal: boolean;
-  visaTerm: number;
-  visaShare: string;
-  actions: string;
-};
-
-type FormInputs = {
-  name: string;
-  email: string;
+type IEditUserInputs2 = {
+  id: number;
+  first_name: string;
+  second_name: string;
+  last_name: string;
+  birthDate: string;
   phone: string;
-  message: string;
+  citizenship: string;
+  income: number;
+  work_exp: number;
+  work_date: string;
+  visaType: string;
+  visaShare: string;
+  appStatus: boolean;
+  document_status: string;
 };
 
-export type { Istate, IInput, IInput2, IEditUser, InewState, FormInputs };
+type IuserInputs = {
+  income: number;
+  employmentDate: string;
+  citizenship: string;
+  visaT: string | undefined;
+  visaS: string | undefined;
+};
+
+type IuserEditInputs = {
+  id: number;
+  appStatus: boolean;
+  document_status: string;
+};
+
+export type RootState = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;
+
+export type {
+  Istates,
+  IInputs,
+  IUsers,
+  IEditUserInputs,
+  IuserInputs,
+  IInputs2,
+  IEditUserInputs2,
+  IuserEditInputs,
+};

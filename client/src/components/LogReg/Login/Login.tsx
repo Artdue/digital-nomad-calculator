@@ -1,67 +1,46 @@
 import React, { useState } from 'react';
+import type { ChangeEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import userLogin from '../../../Redux/thunks/user/log.api';
 import RegGoogle from '../Register/RegGoogle';
-
-type ILogin = {
-  email: string;
-  password: string;
-};
+import type { ILogin, RootState } from '../../../Types/types';
 
 const initState: ILogin = {
   email: '',
   password: '',
 };
-export default function Login() {
+
+export default function Login(): React.JSX.Element {
   const [login, setLogin] = useState(initState);
 
-  const state = useAppSelector((state) => state.userSlice);
-  // console.log(state);
+  const mstate = useAppSelector((state: RootState) => state.userSlice);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const inputHandler = (event: ChangeEvent<HTMLInputElement>): void => {
     setLogin((pre) => ({ ...pre, [event.target.name]: event.target.value }));
   };
-  const Hendler = async (e: React.FormEvent) => {
+
+  const Handler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    const actionResult = await dispatch(userLogin(login));
-    // console.log(actionResult.payload);
-    if (actionResult.payload.msg === 'Вы успешно авторизованы!') {
+    await dispatch(userLogin(login));
+    if (mstate.msg === 'Вы успешно авторизованы!') {
       navigate('/user/main');
-    } else {
-      state.msg;
     }
   };
 
   return (
     <div className="isolate bg-white px-4 sm:py-32 lg:px-8">
-      {/* py-20 - это паддинги */}
-      {/* это градиент заднего фона */}
-      {/* <div
-        className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
-        aria-hidden="true"
-      >
-        <div
-          className="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
-          style={{
-            clipPath:
-              'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-          }}
-        />
-      </div> */}
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Войти</h2>
-        <div>{state.msg}</div>
+        <div>{mstate.msg}</div>
       </div>
       <form className="mx-auto mt-16 max-w-xl sm:mt-10">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div className="sm:col-span-2">
-            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
-              Email
-            </label>
+            <span className="block text-sm font-semibold leading-6 text-gray-900">Email</span>
             <div className="mt-2.5">
               <input
                 onChange={inputHandler}
@@ -75,9 +54,7 @@ export default function Login() {
             </div>
           </div>
           <div className="sm:col-span-2">
-            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
-              Password
-            </label>
+            <span className="block text-sm font-semibold leading-6 text-gray-900">Password</span>
             <div className="mt-2.5">
               <input
                 onChange={inputHandler}
@@ -94,7 +71,7 @@ export default function Login() {
 
         <div className="mt-10">
           <button
-            onClick={(e) => Hendler(e)}
+            onClick={(e) => Handler(e) as never}
             type="submit"
             className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >

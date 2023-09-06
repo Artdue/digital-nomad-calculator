@@ -1,14 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function RegGoogle() {
+function RegGoogle(): React.JSX.Element {
   return (
     <div className="mt-10">
-      <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 w-full">
+      <button
+        type="button"
+        className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 w-full"
+      >
         <Link
           type="submit"
           to="http://localhost:3000/google"
-          className="flex block w-full relative px-5 py-2.5 transition-all ease-in duration-75 rounded-md border border-gradient-to-br from-purple-600 to-blue-500 bg-white items-center justify-center gap-2"
+          className="flex  w-full relative px-5 py-2.5 transition-all ease-in duration-75 rounded-md border border-gradient-to-br from-purple-600 to-blue-500 bg-white items-center justify-center gap-2"
         >
           <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 0 48 48">
             <path
