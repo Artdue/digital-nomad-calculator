@@ -48,14 +48,7 @@ adminRouter.delete('/:id', async (req, res) => {
     const deletedState = await State.destroy({
       where: { id: stateId },
     });
-
-    // if (deletedState === 0) {
-    //   res.status(404).json({ error: 'Государство не найдено' });
-    // } else {
-    //   res.status(200).json({ message: 'Государство успешно удалено' });
-    // }
     const states = await State.findAll({ raw: true });
-    // console.log(states);
     res.json(states);
   } catch (error) {
     console.error('Ошибка при удалении данных государства:', error);
@@ -74,9 +67,7 @@ adminRouter.get('/users', async (req, res) => {
 });
 
 adminRouter.put('/users/:id', async (req, res) => {
-  console.log('edit_user=============================>', req.body);
   const userId = req.params.id;
-  console.log(req.body);
   try {
     await User.update(req.body, {
       where: { id: userId },

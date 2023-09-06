@@ -67,24 +67,6 @@ export type ILogin = {
   password: string;
 };
 
-type Istates = {
-  id: number;
-  state_name: string;
-  min_income: number;
-  banned_citizenship: string;
-  work_exp: number;
-  min_age: number;
-  max_age: number;
-  gender: string;
-  criminal: boolean;
-  visaType: string;
-  visaTerm: number;
-  visaShare: string;
-  actions: string;
-  createdAt: object;
-  updatedAt: object;
-};
-
 type IInput2 = {
   income: number;
   employmentDate: string;

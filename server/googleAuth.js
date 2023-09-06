@@ -16,7 +16,6 @@ passport.use(
   )
 );
 passport.serializeUser(async (user, done) => {
-  console.log('=============>');
   const email = user.emails.map((el) => el.value).join('');
   try {
     const foundUser = await User.findOne({ where: { email }, raw: true });
@@ -35,11 +34,5 @@ passport.serializeUser(async (user, done) => {
   }
 });
 passport.deserializeUser((user, done) => {
-  console.log('=============>deserial');
   done(null, user);
 });
-
-// passport.use(cors({
-//   origin: 'http://localhost:5173', // Замените на адрес вашего фронтенда
-//   credentials: true, // Разрешает отправку куков и заголовков аутентификации
-// }));
