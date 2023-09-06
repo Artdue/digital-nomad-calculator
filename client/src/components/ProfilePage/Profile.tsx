@@ -1,8 +1,8 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import type { ChangeEvent } from 'react';
 import type { AxiosResponse } from 'axios';
- import axios from 'axios';
- import { useAppSelector } from '../../Redux/hooks';
+import axios from 'axios';
+import { useAppSelector } from '../../Redux/hooks';
 
 type UploadResponse = string | null;
 

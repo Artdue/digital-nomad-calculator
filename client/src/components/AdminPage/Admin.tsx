@@ -82,10 +82,8 @@ function AdminStates(): React.JSX.Element {
 
   useEffect(() => {
     if (editingStateId !== null) {
-      // Найдите состояние, которое редактируется
       const editingState = states.find((state) => state.id === editingStateId);
 
-      // Заполните состояние editedFields данными для предзаполнения
       setEditedFields({
         id: editingState?.id || 0,
         state_name: editingState?.state_name || '',
@@ -104,7 +102,6 @@ function AdminStates(): React.JSX.Element {
         updatedAt: editingState?.updatedAt || {},
       });
     } else {
-      // Если не редактируется, сбросьте editedFields
       setEditedFields({
         id: 0,
         state_name: '',
@@ -155,7 +152,6 @@ function AdminStates(): React.JSX.Element {
             {states.map((state) => (
               <div key={state.id} className="flex items-stretch">
                 {editingStateId === state.id ? (
-                  // модалка
                   <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full] overflow-auto ">
                     <div className="bg-white p-4 rounded-md w-[1000px] h-[850px]  ">
                       <div className="px-4 sm:px-0 text-center ">
@@ -174,7 +170,6 @@ function AdminStates(): React.JSX.Element {
                               <input
                                 type="text"
                                 className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                // value={firstName}
                                 value={editedFields.state_name}
                                 onChange={(e) =>
                                   setEditedFields({ ...editedFields, state_name: e.target.value })

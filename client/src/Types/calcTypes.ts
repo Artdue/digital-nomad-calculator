@@ -89,8 +89,8 @@ type IuserInputs = {
   income: number;
   employmentDate: string;
   citizenship: string;
-  visaT: string;
-  visaS: string;
+  visaT: string | undefined;
+  visaS: string | undefined;
 };
 
 type IuserEditInputs = {

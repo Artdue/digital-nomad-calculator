@@ -53,6 +53,7 @@ export default function MainCalculator(): React.JSX.Element {
       setvisaT(userData?.visaType);
       setvisaS(userData?.visaShare);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, userData]);
 
   useEffect(() => {

@@ -59,7 +59,6 @@ export type IUser = {
 };
 
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
 
 export type ILogin = {
@@ -71,8 +70,8 @@ type IInput2 = {
   income: number;
   employmentDate: string;
   citizenship: string;
-  visaT: string;
-  visaS: string;
+  visaT: string | undefined;
+  visaS: string | undefined;
 };
 
 type IEditUser = {
