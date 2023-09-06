@@ -6,8 +6,9 @@ import deleteState from './thunks/deleteState';
 import editState from './thunks/editState';
 
 const initialState: IstateType = {
-  states: [],
+  states: [] ,
   loading: false,
+  
 };
 
 const adminSlice = createSlice({
@@ -21,7 +22,7 @@ const adminSlice = createSlice({
       })
       .addCase(getAdmin.fulfilled, (state, action) => {
         state.loading = false;
-        state.states = action.payload;
+        state.states = action.payload ;
       })
       .addCase(getAdmin.rejected, (state) => {
         state.loading = false;
@@ -65,3 +66,5 @@ const adminSlice = createSlice({
 });
 
 export default adminSlice.reducer;
+
+
