@@ -1,13 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import  getUsers  from './thunks/getUsers';
-import  editUser  from './thunks/editUsersList';
+import getUsers from './thunks/getUsers';
+import editUser from './thunks/editUsersList';
 import type { IUserType } from './store.types';
 
 const initialState: IUserType = {
   users: [],
   loading: false,
 };
-
 
 const adminUserSlice = createSlice({
   name: 'user',

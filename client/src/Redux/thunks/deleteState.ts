@@ -4,8 +4,8 @@ import type { AxiosResponse } from 'axios';
 import axios from 'axios';
 import type { Istate } from '../../Types/types';
 
-const deleteState = createAsyncThunk<Istate, number>('admin/deleteState', async (id) => {
-  const response: AxiosResponse<Istate> = await axios.delete(`http://localhost:3000/admin/${id}`);
+const deleteState = createAsyncThunk<Istate[], number>('admin/deleteState', async (id) => {
+  const response: AxiosResponse<Istate[]> = await axios.delete(`http://localhost:3000/admin/${id}`);
   return response.data;
 });
 
