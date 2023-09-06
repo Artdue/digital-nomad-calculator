@@ -388,8 +388,13 @@ export default function MainCalculator(): React.JSX.Element {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {filterStates.map((state) => (
-                  <button type="button" className="" onClick={() => openModal(state)}>
-                    <div key={state.id} className="max-w-sm border rounded">
+                  <button
+                    key={state.id}
+                    type="button"
+                    className=""
+                    onClick={() => openModal(state)}
+                  >
+                    <div className="max-w-sm border rounded">
                       <figure className="py-3">
                         <blockquote className="font-light text-gray-700 sm:text-lg dark:text-gray-700">
                           {state.state_name}
