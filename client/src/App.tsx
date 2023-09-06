@@ -27,13 +27,16 @@ function App(): JSX.Element {
 
   useEffect(() => {
     dispatch(navApi());
-  }, []);
+  }, [dispatch]);
+
 
   useEffect(() => {
     if (user.email) {
-      dispatch(profileGet(user));
+      dispatch(profileGet(user) as never);
     }
-  }, [user]);
+  }, [user, dispatch]);
+  
+  
 
   const navigate = useNavigate();
 
