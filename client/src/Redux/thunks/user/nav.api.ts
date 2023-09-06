@@ -11,4 +11,5 @@ const navApi = createAsyncThunk<INav, void>('navApp', () =>
       throw error;
     }),
 );
+
 export default navApi;
