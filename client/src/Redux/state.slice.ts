@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { IstateType } from './store.types';
 import getStates from './thunks/getStates';
+import type { Istate } from '../Types/types';
 
 const initialState: IstateType = {
-  states: [],
+  states: [] as Istate[],
   loading: false,
 };
 
@@ -18,7 +19,9 @@ const stateSlice = createSlice({
       })
       .addCase(getStates.fulfilled, (state, action) => {
         state.loading = false;
-        state.states = action.payload;
+        if (action.payload) {
+          state.states = action.payload;
+        }
       })
       .addCase(getStates.rejected, (state) => {
         state.loading = false;

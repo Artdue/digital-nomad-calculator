@@ -5,8 +5,8 @@ const initialState = {
   income: 0,
   employmentDate: '',
   citizenship: '',
-  visaT: '',
-  visaS: '',
+  visaT: ('' as string) || undefined,
+  visaS: ('' as string) || undefined,
 };
 
 const unregSlice = createSlice({
