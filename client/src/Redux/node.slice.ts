@@ -13,30 +13,22 @@ const nodeSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(nodemailerSend.pending, () => {
-        console.log('pending');
-      })
+      .addCase(nodemailerSend.pending, () => {})
       .addCase(nodemailerSend.fulfilled, (state) => {
         state.message = 'Ваш запрос на консультацию отправлен';
       })
       .addCase(nodemailerSend.rejected, () => {
         console.error('ERROR!');
       })
-      .addCase(userNod.pending, () => {
-        console.log('pending');
-      })
+      .addCase(userNod.pending, () => {})
       .addCase(userNod.fulfilled, (state) => {
         state.message = 'Ваш запрос на консультацию отправлен';
       })
       .addCase(userNod.rejected, () => {
         console.error('ERROR!');
       })
-      .addCase(nodemailerAdminSend.pending, () => {
-        console.log('pending');
-      })
-      .addCase(nodemailerAdminSend.fulfilled, () => {
-        // state.message = 'Ваш запрос на консультацию отправлен';
-      })
+      .addCase(nodemailerAdminSend.pending, () => {})
+      .addCase(nodemailerAdminSend.fulfilled, () => {})
       .addCase(nodemailerAdminSend.rejected, () => {
         console.error('ERROR!');
       })

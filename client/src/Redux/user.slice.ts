@@ -21,9 +21,7 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(userLogin.pending, () => {
-        console.log('pending');
-      })
+      .addCase(userLogin.pending, () => {})
 
       .addCase(userLogin.fulfilled, (state, action: PayloadAction<IInitialState>) => {
         if (action.payload) {
@@ -36,9 +34,7 @@ const userSlice = createSlice({
       .addCase(userLogin.rejected, () => {
         console.log('ERROR!');
       })
-      .addCase(userRegister.pending, () => {
-        console.log('pending');
-      })
+      .addCase(userRegister.pending, () => {})
       .addCase(userRegister.fulfilled, (state, action: PayloadAction<IInitialState>) => {
         state.email = action.payload.email;
         state.admin = action.payload.admin;
@@ -48,18 +44,14 @@ const userSlice = createSlice({
       .addCase(userRegister.rejected, () => {
         console.log('ERROR!');
       })
-      .addCase(userLogout.pending, () => {
-        console.log('pending');
-      })
+      .addCase(userLogout.pending, () => {})
       .addCase(userLogout.fulfilled, (state) => {
         Object.assign(state, initialState);
       })
       .addCase(userLogout.rejected, () => {
         console.error('ERROR!');
       })
-      .addCase(navApi.pending, () => {
-        console.log('pending');
-      })
+      .addCase(navApi.pending, () => {})
       .addCase(navApi.fulfilled, (state, action: PayloadAction<IInitialState>) => {
         state.email = action.payload.email;
         state.admin = action.payload.admin;
@@ -68,9 +60,7 @@ const userSlice = createSlice({
       .addCase(navApi.rejected, () => {
         console.error('ERROR!');
       })
-      .addCase(logAdmin.pending, () => {
-        console.log('pending');
-      })
+      .addCase(logAdmin.pending, () => {})
       .addCase(logAdmin.fulfilled, (state, action: PayloadAction<IInitialState>) => {
         state.email = action.payload.email;
         state.admin = action.payload.admin;

@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../../Redux/hooks';
 import getStates from '../../../Redux/thunks/getStates';
 import type { Istate, RootState } from '../../../Types/types';
 import { unregtUserGet } from '../../../Redux/thunks/unregThunk';
-import type { IInputs2 } from '../../../Types/calcTypes';
+import type { IuserInputs } from '../../../Types/calcTypes';
 
 export default function Calculator(): React.JSX.Element {
   const states = useAppSelector((state: RootState) => state.stateSlice.states);
@@ -81,10 +81,12 @@ export default function Calculator(): React.JSX.Element {
       }, 3000);
     }
 
-    const userInputs: IInputs2 = {
+    const userInputs: IuserInputs = {
       income,
       employmentDate,
-      citizenship
+      citizenship,
+      visaS: '',
+      visaT: '',
     };
 
     void dispatch(unregtUserGet(userInputs));
