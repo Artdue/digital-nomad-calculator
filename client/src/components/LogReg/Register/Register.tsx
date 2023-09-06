@@ -14,6 +14,7 @@ const initState: ILogin = {
 export default function Register(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const mstate = useAppSelector((state) => state.userSlice.msg);
+
   const [reg, setReg] = useState(initState);
   const navigate = useNavigate();
 
@@ -21,12 +22,19 @@ export default function Register(): React.JSX.Element {
     setReg((pre) => ({ ...pre, [e.target.name]: e.target.value }));
   };
 
+  // const Handler = async (e: React.FormEvent): Promise<void> => {
+  //   e.preventDefault();
+  //   const actionResult = await dispatch(userRegister(reg));
+
+  //   if (actionResult.payload.msg === 'Пользователь зарегистрирован') {
+  //     navigate('/user/main');
+  //   }
+  // };
+
   const Handler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    const actionResult = await dispatch(userRegister(reg));
-
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    if (actionResult.payload.msg === 'Пользователь зарегистрирован') {
+    await dispatch(userRegister(reg));
+    if (mstate === 'Пользователь зарегистрирован') {
       navigate('/user/main');
     }
   };
