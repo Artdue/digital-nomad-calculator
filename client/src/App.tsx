@@ -24,7 +24,6 @@ import LogAdmin from './components/AdminPage/LogAdmin/LogAdmin';
 function App(): JSX.Element {
   const dispatch = useDispatch();
   const user = useAppSelector((state) => state.userSlice);
-  console.log(user);
 
   useEffect(() => {
     dispatch(navApi());
