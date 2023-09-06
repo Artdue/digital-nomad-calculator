@@ -44,9 +44,11 @@ function App(): JSX.Element {
   const scrollToBlock = (): void => {
     navigate('/');
     setTimeout(() => {
-      calculator.current.scrollIntoView({
-        behavior: 'smooth',
-      });
+      if (calculator.current) {
+        calculator.current.scrollIntoView({
+          behavior: 'smooth',
+        });
+      }
     }, 1);
   };
 

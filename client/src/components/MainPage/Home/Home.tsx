@@ -10,9 +10,11 @@ import type { IPropCalcScroll } from '../../../Types/propsType';
 
 export default function Home({ calculator }: IPropCalcScroll): React.JSX.Element {
   const calculateScroll = (): void => {
-    calculator.current.scrollIntoView({
-      behavior: 'smooth',
-    });
+    if (calculator.current) {
+      calculator.current.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }
   };
 
   return (
