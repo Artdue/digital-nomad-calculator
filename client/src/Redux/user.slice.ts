@@ -6,9 +6,9 @@ import userLogin from './thunks/user/log.api';
 import userLogout from './thunks/user/logout.api';
 
 import logAdmin from './thunks/logAdmin';
-import type { IError, IInitialState } from './store.types';
+import type { IInitialState } from './store.types';
 
-const initialState: IInitialState | IError = {
+const initialState: IInitialState = {
   email: '',
   admin: false,
   auth: false,
