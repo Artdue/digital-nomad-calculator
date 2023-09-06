@@ -26,8 +26,8 @@ function App(): JSX.Element {
   const user = useAppSelector((state) => state.userSlice);
 
   useEffect(() => {
-    dispatch(navApi());
-  }, []);
+    dispatch(navApi() as never);
+  }, [dispatch]);
 
   useEffect(() => {
     if (user.email) {

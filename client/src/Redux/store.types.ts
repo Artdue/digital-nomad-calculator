@@ -31,3 +31,7 @@ export type IError = {
   status: string;
   error: string;
 };
+export type INav = {
+  email?: string | undefined;
+  admin?: boolean | undefined;
+};
