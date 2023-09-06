@@ -3,7 +3,7 @@ import type { IEditUserInputs2 } from '../../Types/calcTypes';
 import type { IInitialState } from '../store.types';
 import type { IUser } from '../../Types/types';
 
-export const profileGet = createAsyncThunk('getUser', async (user: IInitialState) => {
+export const profileGet = createAsyncThunk<IUser, IInitialState>('getUser', async (user: IInitialState) => {
   try {
     // eslint-disable-next-line no-promise-executor-return
     await new Promise((resolve) => setTimeout(resolve, 1000));

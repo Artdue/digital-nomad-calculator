@@ -26,14 +26,18 @@ function App(): JSX.Element {
   const user = useAppSelector((state) => state.userSlice);
 
   useEffect(() => {
+
     dispatch(navApi() as never);
   }, [dispatch]);
 
+
   useEffect(() => {
     if (user.email) {
-      dispatch(profileGet(user));
+      dispatch(profileGet(user) as never);
     }
-  }, [user]);
+  }, [user, dispatch]);
+  
+  
 
   const navigate = useNavigate();
 
@@ -44,9 +48,11 @@ function App(): JSX.Element {
   const scrollToBlock = (): void => {
     navigate('/');
     setTimeout(() => {
-      calculator.current.scrollIntoView({
-        behavior: 'smooth',
-      });
+      if (calculator.current) {
+        calculator.current.scrollIntoView({
+          behavior: 'smooth',
+        });
+      }
     }, 1);
   };
 
