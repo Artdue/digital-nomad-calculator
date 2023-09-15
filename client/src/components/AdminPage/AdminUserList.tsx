@@ -245,8 +245,8 @@ function AdminUserList(): React.JSX.Element {
         {/* Модальное окно */}
         {showModal && (
           <div className="flex items-stretch overflow-auto">
-            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full]  ">
-              <div className="bg-white p-4 rounded-md w-[1000px] h-[850px]  ">
+            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full]">
+              <div className="bg-white p-4 rounded-md w-[1000px] max-h-[90vh] overflow-y-auto">
                 <div className="px-4 sm:px-0 text-center ">
                   <h1 className="text-2xl font-bold leading-7 text-gray-900">Анкета</h1>
                 </div>
