@@ -113,7 +113,7 @@ function AdminUserList(): React.JSX.Element {
       setFilteredUsers(users);
     } else {
       const filtered = users.filter((user) => {
-        const fullName = `${user.first_name} ${user.last_name} ${user.middle_name}`;
+        const fullName = `${user.last_name} ${user.first_name} ${user.middle_name}`;
         return (
           (selectedStatus === '' || user.document_status === selectedStatus) &&
           (searchText === '' || fullName.toLowerCase().includes(searchText.toLowerCase()))
@@ -238,7 +238,7 @@ function AdminUserList(): React.JSX.Element {
         <input
           type="text"
           className="rounded-lg text-sm px-2 py-1.5 w-full mb-4"
-          placeholder="Поиск по имени, фамилии или отчеству"
+          placeholder="Поиск по фамилии, имени или отчеству"
           value={searchText}
           onChange={(event) => setSearchText(event.target.value)}
         />
@@ -255,9 +255,24 @@ function AdminUserList(): React.JSX.Element {
                   <dl className="divide-y divide-gray-100">
                     {' '}
                     <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                        Фамилия
+                      </dt>
+                      <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                        <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                          {modalForUser.last_name ? (
+                            modalForUser.last_name
+                          ) : (
+                            <div>Не заполненно</div>
+                          )}
+                        </div>
+                      </dd>
+                    </div>
+                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                       <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">Имя</dt>
                       <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                         <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                          {' '}
                           {modalForUser.first_name ? (
                             modalForUser.first_name
                           ) : (
@@ -275,21 +290,6 @@ function AdminUserList(): React.JSX.Element {
                           {' '}
                           {modalForUser.middle_name ? (
                             modalForUser.middle_name
-                          ) : (
-                            <div>Не заполненно</div>
-                          )}
-                        </div>
-                      </dd>
-                    </div>
-                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
-                        Фамилия
-                      </dt>
-                      <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                          {' '}
-                          {modalForUser.last_name ? (
-                            modalForUser.last_name
                           ) : (
                             <div>Не заполненно</div>
                           )}
@@ -433,7 +433,7 @@ function AdminUserList(): React.JSX.Element {
                   <div className="w-full h-[450px] overflow-auto">
                     <div className="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl h-full flex flex-col">
                       <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-                        ФИО: {user.first_name} {user.last_name} {user.middle_name}
+                        ФИО: {user.last_name}  {user.first_name} {user.middle_name}
                       </h1>
                       <p className="text-gray-500 dark:text-gray-300">Email: {user.email}</p>
                       <p className="text-gray-500 dark:text-gray-300">
