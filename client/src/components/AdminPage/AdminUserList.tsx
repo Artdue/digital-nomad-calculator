@@ -108,20 +108,25 @@ function AdminUserList(): React.JSX.Element {
     dispatch(getUsers() as never);
   }, [dispatch]);
 
+
   useEffect(() => {
     if (selectedStatus === '' && searchText === '') {
       setFilteredUsers(users);
     } else {
       const filtered = users.filter((user) => {
         const fullName = `${user.last_name} ${user.first_name} ${user.middle_name}`;
+        const reversedFullName = `${user.first_name} ${user.last_name} ${user.middle_name}`;
         return (
           (selectedStatus === '' || user.document_status === selectedStatus) &&
-          (searchText === '' || fullName.toLowerCase().includes(searchText.toLowerCase()))
+          (searchText === '' ||
+            fullName.toLowerCase().includes(searchText.toLowerCase()) ||
+            reversedFullName.toLowerCase().includes(searchText.toLowerCase()))
         );
       });
       setFilteredUsers(filtered);
     }
   }, [selectedStatus, searchText, users]);
+
 
   const openModal = (user: IUser): void => {
     setModalForUser(user);

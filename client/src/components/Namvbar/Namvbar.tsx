@@ -74,24 +74,26 @@ export default function Namvbar({ scrollToBlock }: NavbarProps): React.JSX.Eleme
                   >
                     Digital Nomad Calculator
                   </Button>
-                  <div className="hidden md:flex md:flex-grow justify-center space-x-4">
-                    <div className="hidden sm:ml-6 sm:block">
-                      <div className="flex space-x-4 sm:items-center">
-                        {navigation.map((item) => (
-                          <Link
-                            key={item.name}
-                            to={item.href}
-                            className={classNames(
-                              item.current
-                                ? 'bg-[#0c4a6e] text-[#76a1dd]'
-                                : 'text-[#0c4a6e] hover:text-[#76a1dd]',
-                              'px-4 py-2 md:text-sm lg:text-base font-medium',
-                            )}
-                            aria-current={item.current ? 'page' : undefined}
-                          >
-                            {item.name}
-                          </Link>
-                        ))}
+                  <div className="md:flex-grow justify-center sm:flex-grow-0 sm:justify-start">
+                  <div className="hidden md:flex md:flex-grow space-x-1 ml-32">
+                      <div className="hidden sm:ml-6 sm:block">
+                        <div className="flex space-x-4 sm:items-center">
+                          {navigation.map((item) => (
+                            <Link
+                              key={item.name}
+                              to={item.href}
+                              className={classNames(
+                                item.current
+                                  ? 'bg-[#0c4a6e] text-[#76a1dd]'
+                                  : 'text-[#0c4a6e] hover:text-[#76a1dd]',
+                                'px-4 py-2 md:text-sm lg:text-base font-medium',
+                              )}
+                              aria-current={item.current ? 'page' : undefined}
+                            >
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
