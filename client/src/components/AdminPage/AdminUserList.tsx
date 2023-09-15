@@ -433,7 +433,7 @@ function AdminUserList(): React.JSX.Element {
                   <div className="w-full h-[450px] overflow-auto">
                     <div className="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl h-full flex flex-col">
                       <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-                        ФИО: {user.last_name}  {user.first_name} {user.middle_name}
+                        ФИО: {user.last_name} {user.first_name} {user.middle_name}
                       </h1>
                       <p className="text-gray-500 dark:text-gray-300">Email: {user.email}</p>
                       <p className="text-gray-500 dark:text-gray-300">
