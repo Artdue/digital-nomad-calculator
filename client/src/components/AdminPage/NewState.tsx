@@ -105,13 +105,10 @@ export default function NewState(): React.JSX.Element {
       )}
 
       {showModal && (
-        // <div className="fixed inset-0  z-50 bg-black bg-opacity-50 sm:h-[full] overflow-auto">
-        //   <div ref={formRef} className="p-4 w-full max-w-l mx-auto m-4 flex justify-center">
-        //     <div className="px-4 sm:px-0 " />
         <div className="fixed inset-0 z-50 bg-black bg-opacity-50 sm:h-[full] overflow-auto">
           <div ref={formRef} className="p-4 w-full max-w-l mx-auto m-4 flex justify-center">
             <div className="px-4 sm:px-0" />
-            <div className="bg-white p-4 rounded-md w-[1000px] h-[90vh] overflow-y-auto">
+            <div className="bg-white p-4 rounded-md w-[1000px] max-h-[90vh] overflow-y-auto">
               <div className="px-4 sm:px-0 text-center ">
                 <h1 className="text-2xl font-bold leading-7 text-gray-900">
                   Добавление новой страны

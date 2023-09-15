@@ -152,9 +152,9 @@ function AdminStates(): React.JSX.Element {
             {states.map((state) => (
               <div key={state.id} className="flex items-stretch">
                 {editingStateId === state.id ? (
-                  <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full] overflow-auto ">
-                    <div className="bg-white p-4 rounded-md w-[1000px] h-[850px]  ">
-                      <div className="px-4 sm:px-0 text-center ">
+                  <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full] overflow-auto">
+                    <div className="bg-white p-4 rounded-md w-[1000px] max-h-[90vh] overflow-y-auto">
+                      <div className="px-4 sm:px-0 text-center">
                         <h1 className="text-2xl font-bold leading-7 text-gray-900">
                           Редактирование государства
                         </h1>
