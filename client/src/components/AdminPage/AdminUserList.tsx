@@ -244,181 +244,196 @@ function AdminUserList(): React.JSX.Element {
         />
         {/* Модальное окно */}
         {showModal && (
-          <div className="flex items-stretch overflow-auto">
-            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full]  ">
-              <div className="bg-white p-4 rounded-md w-[1000px] h-[850px]  ">
-                <div className="px-4 sm:px-0 text-center ">
-                  <h1 className="text-2xl font-bold leading-7 text-gray-900">Анкета</h1>
-                </div>
+          // <div className="flex items-stretch overflow-auto">
+          //   <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full]  ">
+          //     <div className="bg-white p-4 rounded-md w-[1000px] h-[90vh]">
+          //       <div className="px-4 sm:px-0 text-center ">
+          //         <h1 className="text-2xl font-bold leading-7 text-gray-900">Анкета</h1>
+          //       </div>
 
-                <div className="mr-6 ml-6 mt-4 border-t border-gray-100">
-                  <dl className="divide-y divide-gray-100">
-                    {' '}
-                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">Имя</dt>
-                      <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                          {modalForUser.first_name ? (
-                            modalForUser.first_name
-                          ) : (
-                            <div>Не заполненно</div>
-                          )}
-                        </div>
-                      </dd>
-                    </div>
-                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
-                        Отчество
-                      </dt>
-                      <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                          {' '}
-                          {modalForUser.middle_name ? (
-                            modalForUser.middle_name
-                          ) : (
-                            <div>Не заполненно</div>
-                          )}
-                        </div>
-                      </dd>
-                    </div>
-                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
-                        Фамилия
-                      </dt>
-                      <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                          {' '}
-                          {modalForUser.last_name ? (
-                            modalForUser.last_name
-                          ) : (
-                            <div>Не заполненно</div>
-                          )}
-                        </div>
-                      </dd>
-                    </div>
-                    {/*  */}
-                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
-                        Дата рождения
-                      </dt>
-                      <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                          {' '}
-                          {modalForUser.birthDate ? (
-                            modalForUser.birthDate
-                          ) : (
-                            <div>Не заполненно</div>
-                          )}
-                        </div>
-                      </dd>
-                    </div>{' '}
-                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
-                        Номер телефона
-                      </dt>
-                      <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                          {' '}
-                          {modalForUser.phoneNumber ? (
-                            modalForUser.phoneNumber
-                          ) : (
-                            <div>Не заполненно</div>
-                          )}
-                        </div>
-                      </dd>
-                    </div>{' '}
-                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
-                        Email
-                      </dt>
-                      <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                          {' '}
-                          {modalForUser.email ? modalForUser.email : <div>Не заполненно</div>}
-                        </div>
-                      </dd>
-                    </div>{' '}
-                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
-                        Гражданство
-                      </dt>
-                      <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                          {' '}
-                          {modalForUser.citizenship ? (
-                            modalForUser.citizenship
-                          ) : (
-                            <div>Не заполненно</div>
-                          )}
-                        </div>
-                      </dd>
-                    </div>{' '}
-                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
-                        Чистый доход в €
-                      </dt>
-                      <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                          {' '}
-                          {modalForUser.income ? modalForUser.income : <div>Не заполненно</div>}
-                        </div>
-                      </dd>
-                    </div>{' '}
-                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
-                        Виза или ВНЖ
-                      </dt>
-                      <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                          {' '}
-                          {modalForUser.visaType ? modalForUser.visaType : <div>Не заполненно</div>}
-                        </div>
-                      </dd>
-                    </div>
-                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
-                        Персональная или семейная виза
-                      </dt>
-                      <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                          {' '}
-                          {modalForUser.visaShare ? (
-                            modalForUser.visaShare
-                          ) : (
-                            <div>Не заполненно</div>
-                          )}
-                        </div>
-                      </dd>
-                    </div>{' '}
-                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
-                        Примерная дата устройства на текущую работу
-                      </dt>
-                      <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                        <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                          {' '}
-                          {modalForUser.work_date ? (
-                            modalForUser.work_date
-                          ) : (
-                            <div>Не заполненно</div>
-                          )}
-                        </div>
-                        <div className="text-sm font-medium leading-6 text-gray-900 mt-2">
-                          Месяцев на текущей работе:{' '}
-                          {modalForUser.work_exp ? modalForUser.work_exp : <div>0</div>}
-                        </div>
-                      </dd>
-                    </div>
-                    <div className="m-2 pt-4 flex justify-center ">
-                      <button
-                        type="button"
-                        onClick={closeModal}
-                        className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-6 "
-                      >
-                        Закрыть
-                      </button>
-                    </div>
-                  </dl>
+          <div className="flex items-stretch overflow-auto">
+            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full]">
+              <div className="bg-white p-4 rounded-md w-[1000px] h-[90vh]">
+                <div className="overflow-y-auto max-h-[80vh]">
+                  <div className="px-4 sm:px-0 text-center ">
+                    <h1 className="text-2xl font-bold leading-7 text-gray-900">Анкета</h1>
+                  </div>
+
+                  <div className="mr-6 ml-6 mt-4 border-t border-gray-100">
+                    <dl className="divide-y divide-gray-100">
+                      {' '}
+                      <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                          Имя
+                        </dt>
+                        <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                          <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            {modalForUser.first_name ? (
+                              modalForUser.first_name
+                            ) : (
+                              <div>Не заполненно</div>
+                            )}
+                          </div>
+                        </dd>
+                      </div>
+                      <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                          Отчество
+                        </dt>
+                        <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                          <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            {' '}
+                            {modalForUser.middle_name ? (
+                              modalForUser.middle_name
+                            ) : (
+                              <div>Не заполненно</div>
+                            )}
+                          </div>
+                        </dd>
+                      </div>
+                      <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                          Фамилия
+                        </dt>
+                        <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                          <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            {' '}
+                            {modalForUser.last_name ? (
+                              modalForUser.last_name
+                            ) : (
+                              <div>Не заполненно</div>
+                            )}
+                          </div>
+                        </dd>
+                      </div>
+                      {/*  */}
+                      <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                          Дата рождения
+                        </dt>
+                        <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                          <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            {' '}
+                            {modalForUser.birthDate ? (
+                              modalForUser.birthDate
+                            ) : (
+                              <div>Не заполненно</div>
+                            )}
+                          </div>
+                        </dd>
+                      </div>{' '}
+                      <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                          Номер телефона
+                        </dt>
+                        <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                          <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            {' '}
+                            {modalForUser.phoneNumber ? (
+                              modalForUser.phoneNumber
+                            ) : (
+                              <div>Не заполненно</div>
+                            )}
+                          </div>
+                        </dd>
+                      </div>{' '}
+                      <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                          Email
+                        </dt>
+                        <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                          <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            {' '}
+                            {modalForUser.email ? modalForUser.email : <div>Не заполненно</div>}
+                          </div>
+                        </dd>
+                      </div>{' '}
+                      <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                          Гражданство
+                        </dt>
+                        <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                          <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            {' '}
+                            {modalForUser.citizenship ? (
+                              modalForUser.citizenship
+                            ) : (
+                              <div>Не заполненно</div>
+                            )}
+                          </div>
+                        </dd>
+                      </div>{' '}
+                      <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                          Чистый доход в €
+                        </dt>
+                        <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                          <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            {' '}
+                            {modalForUser.income ? modalForUser.income : <div>Не заполненно</div>}
+                          </div>
+                        </dd>
+                      </div>{' '}
+                      <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                          Виза или ВНЖ
+                        </dt>
+                        <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                          <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            {' '}
+                            {modalForUser.visaType ? (
+                              modalForUser.visaType
+                            ) : (
+                              <div>Не заполненно</div>
+                            )}
+                          </div>
+                        </dd>
+                      </div>
+                      <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                          Персональная или семейная виза
+                        </dt>
+                        <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                          <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            {' '}
+                            {modalForUser.visaShare ? (
+                              modalForUser.visaShare
+                            ) : (
+                              <div>Не заполненно</div>
+                            )}
+                          </div>
+                        </dd>
+                      </div>{' '}
+                      <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                          Примерная дата устройства на текущую работу
+                        </dt>
+                        <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                          <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            {' '}
+                            {modalForUser.work_date ? (
+                              modalForUser.work_date
+                            ) : (
+                              <div>Не заполненно</div>
+                            )}
+                          </div>
+                          <div className="text-sm font-medium leading-6 text-gray-900 mt-2">
+                            Месяцев на текущей работе:{' '}
+                            {modalForUser.work_exp ? modalForUser.work_exp : <div>0</div>}
+                          </div>
+                        </dd>
+                      </div>
+                      <div className="m-2 pt-4 flex justify-center ">
+                        <button
+                          type="button"
+                          onClick={closeModal}
+                          className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-6 "
+                        >
+                          Закрыть
+                        </button>
+                      </div>
+                    </dl>
+                  </div>
                 </div>
               </div>
             </div>
