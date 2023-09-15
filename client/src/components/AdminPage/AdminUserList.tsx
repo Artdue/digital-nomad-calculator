@@ -116,11 +116,15 @@ function AdminUserList(): React.JSX.Element {
       const filtered = users.filter((user) => {
         const fullName = `${user.last_name} ${user.first_name} ${user.middle_name}`;
         const reversedFullName = `${user.first_name} ${user.last_name} ${user.middle_name}`;
+        const reversedFullName1 = `${user.middle_name} ${user.last_name} ${user.first_name}`;
+        const reversedFullName2 = `${user.middle_name} ${user.first_name} ${user.last_name}`;
         return (
           (selectedStatus === '' || user.document_status === selectedStatus) &&
           (searchText === '' ||
             fullName.toLowerCase().includes(searchText.toLowerCase()) ||
-            reversedFullName.toLowerCase().includes(searchText.toLowerCase()))
+            reversedFullName.toLowerCase().includes(searchText.toLowerCase())||
+            reversedFullName1.toLowerCase().includes(searchText.toLowerCase())||
+            reversedFullName2.toLowerCase().includes(searchText.toLowerCase()))
         );
       });
       setFilteredUsers(filtered);
