@@ -12,8 +12,8 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       done(null, profile);
-    }
-  )
+    },
+  ),
 );
 passport.serializeUser(async (user, done) => {
   const email = user.emails.map((el) => el.value).join('');
