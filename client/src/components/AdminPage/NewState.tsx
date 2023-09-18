@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import addState from '../../Redux/thunks/addStates';
-import TestPage from './SideBarAdmin';
-import type {InewState} from '../../Types/types';
+import type { InewState } from '../../Types/types';
 
 export default function NewState(): React.JSX.Element {
   const formRef = useRef(null);
@@ -79,7 +78,6 @@ export default function NewState(): React.JSX.Element {
 
   return (
     <>
-      <TestPage />
       <div className="flex justify-center mb-4">
         <button
           onClick={() => openModal()}
