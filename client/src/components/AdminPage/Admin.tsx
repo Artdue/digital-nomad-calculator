@@ -122,7 +122,7 @@ function AdminStates(): React.JSX.Element {
   }, [editingStateId, states]);
 
   return (
-    <div className="ml-10 sm:ml-0">
+    <div className="ml-10 sm:ml-0 py-12">
       {showNotification1 && (
         <div
           id="status"
@@ -220,34 +220,16 @@ function AdminStates(): React.JSX.Element {
                               {' '}
                               <option value="">Выберите </option>
                               <option value="RU">RU - гражданин РФ</option>
-                              <option value="UKR">
-                                UKR - гражданин Украины
-                              </option>
-                              <option value="KZ">
-                                KZ - гражданин Казахстана
-                              </option>
-                              <option value="UZ">
-                                UZ - гражданин Узбекистана
-                              </option>
-                              <option value="TJ">
-                                TJ - гражданин Таджикистана
-                              </option>
-                              <option value="AZ">
-                                AZ - гражданин Азербайджана
-                              </option>
-                              <option value="MD">
-                                MD - гражданин Молдавии
-                              </option>
-                              <option value="BY">
-                                BY - гражданин Беларуси
-                              </option>
+                              <option value="UKR">UKR - гражданин Украины</option>
+                              <option value="KZ">KZ - гражданин Казахстана</option>
+                              <option value="UZ">UZ - гражданин Узбекистана</option>
+                              <option value="TJ">TJ - гражданин Таджикистана</option>
+                              <option value="AZ">AZ - гражданин Азербайджана</option>
+                              <option value="MD">MD - гражданин Молдавии</option>
+                              <option value="BY">BY - гражданин Беларуси</option>
                               <option value="AM">AM - гражданин Армении</option>
-                              <option value="KG">
-                                KG - гражданин Киргизии
-                              </option>
-                              <option value="TM">
-                                TM - гражданин Туркменистана
-                              </option>{' '}
+                              <option value="KG">KG - гражданин Киргизии</option>
+                              <option value="TM">TM - гражданин Туркменистана</option>{' '}
                             </select>
                           </dd>
                         </div>
@@ -306,9 +288,7 @@ function AdminStates(): React.JSX.Element {
                           </dd>
                         </div>
                         <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                          <dt className="text-sm font-medium leading-6 text-gray-900">
-                            Тип визы
-                          </dt>
+                          <dt className="text-sm font-medium leading-6 text-gray-900">Тип визы</dt>
                           <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                             <select
                               id="visaType"
@@ -346,9 +326,7 @@ function AdminStates(): React.JSX.Element {
                           </dd>
                         </div>
                         <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                          <dt className="text-sm font-medium leading-6 text-gray-900">
-                            Тип визы
-                          </dt>
+                          <dt className="text-sm font-medium leading-6 text-gray-900">Тип визы</dt>
                           <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                             <select
                               id="visaShare"
