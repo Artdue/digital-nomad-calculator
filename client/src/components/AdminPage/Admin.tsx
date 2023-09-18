@@ -127,7 +127,10 @@ function AdminStates(): React.JSX.Element {
         <div
           id="status"
           className="fixed top-16 left-1/2 animate-pulse transform -translate-x-1/2 w-300 bg-gradient-to-br from-purple-600 to-blue-500 p-4 rounded-md text-white text-center"
-          style={{ transition: 'opacity 0.5s', opacity: showNotification1 ? 1 : 0 }}
+          style={{
+            transition: 'opacity 0.5s',
+            opacity: showNotification1 ? 1 : 0,
+          }}
         >
           Страна удалена
         </div>
@@ -135,7 +138,10 @@ function AdminStates(): React.JSX.Element {
       {showNotification2 && (
         <div
           className="fixed top-10 left-1/2 transform -translate-x-1/2 w-300 bg-gradient-to-br from-purple-600 to-blue-500 p-4 rounded-md text-white text-center"
-          style={{ transition: 'opacity 0.5s', opacity: showNotification2 ? 1 : 0 }}
+          style={{
+            transition: 'opacity 0.5s',
+            opacity: showNotification2 ? 1 : 0,
+          }}
         >
           Данные актуализированы
         </div>
@@ -149,9 +155,9 @@ function AdminStates(): React.JSX.Element {
           {states.map((state) => (
             <div key={state.id} className="flex items-stretch">
               {editingStateId === state.id ? (
-                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full] overflow-auto ">
-                  <div className="bg-white p-4 rounded-md w-[1000px] h-[850px]  ">
-                    <div className="px-4 sm:px-0 text-center ">
+                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full] overflow-auto">
+                  <div className="bg-white p-4 rounded-md w-[1000px] max-h-[90vh] overflow-y-auto">
+                    <div className="px-4 sm:px-0 text-center">
                       <h1 className="text-2xl font-bold leading-7 text-gray-900">
                         Редактирование государства
                       </h1>
@@ -169,7 +175,10 @@ function AdminStates(): React.JSX.Element {
                               className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                               value={editedFields.state_name}
                               onChange={(e) =>
-                                setEditedFields({ ...editedFields, state_name: e.target.value })
+                                setEditedFields({
+                                  ...editedFields,
+                                  state_name: e.target.value,
+                                })
                               }
                             />
                           </dd>
@@ -211,16 +220,34 @@ function AdminStates(): React.JSX.Element {
                               {' '}
                               <option value="">Выберите </option>
                               <option value="RU">RU - гражданин РФ</option>
-                              <option value="UKR">UKR - гражданин Украины</option>
-                              <option value="KZ">KZ - гражданин Казахстана</option>
-                              <option value="UZ">UZ - гражданин Узбекистана</option>
-                              <option value="TJ">TJ - гражданин Таджикистана</option>
-                              <option value="AZ">AZ - гражданин Азербайджана</option>
-                              <option value="MD">MD - гражданин Молдавии</option>
-                              <option value="BY">BY - гражданин Беларуси</option>
+                              <option value="UKR">
+                                UKR - гражданин Украины
+                              </option>
+                              <option value="KZ">
+                                KZ - гражданин Казахстана
+                              </option>
+                              <option value="UZ">
+                                UZ - гражданин Узбекистана
+                              </option>
+                              <option value="TJ">
+                                TJ - гражданин Таджикистана
+                              </option>
+                              <option value="AZ">
+                                AZ - гражданин Азербайджана
+                              </option>
+                              <option value="MD">
+                                MD - гражданин Молдавии
+                              </option>
+                              <option value="BY">
+                                BY - гражданин Беларуси
+                              </option>
                               <option value="AM">AM - гражданин Армении</option>
-                              <option value="KG">KG - гражданин Киргизии</option>
-                              <option value="TM">TM - гражданин Туркменистана</option>{' '}
+                              <option value="KG">
+                                KG - гражданин Киргизии
+                              </option>
+                              <option value="TM">
+                                TM - гражданин Туркменистана
+                              </option>{' '}
                             </select>
                           </dd>
                         </div>
@@ -279,14 +306,19 @@ function AdminStates(): React.JSX.Element {
                           </dd>
                         </div>
                         <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                          <dt className="text-sm font-medium leading-6 text-gray-900">Тип визы</dt>
+                          <dt className="text-sm font-medium leading-6 text-gray-900">
+                            Тип визы
+                          </dt>
                           <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                             <select
                               id="visaType"
                               className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                               value={editedFields.visaType}
                               onChange={(e) =>
-                                setEditedFields({ ...editedFields, visaType: e.target.value })
+                                setEditedFields({
+                                  ...editedFields,
+                                  visaType: e.target.value,
+                                })
                               }
                             >
                               <option value="">Выберите тип визы</option>
@@ -314,14 +346,19 @@ function AdminStates(): React.JSX.Element {
                           </dd>
                         </div>
                         <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                          <dt className="text-sm font-medium leading-6 text-gray-900">Тип визы</dt>
+                          <dt className="text-sm font-medium leading-6 text-gray-900">
+                            Тип визы
+                          </dt>
                           <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                             <select
                               id="visaShare"
                               className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                               value={editedFields.visaShare}
                               onChange={(e) =>
-                                setEditedFields({ ...editedFields, visaShare: e.target.value })
+                                setEditedFields({
+                                  ...editedFields,
+                                  visaShare: e.target.value,
+                                })
                               }
                             >
                               <option value="">Выберите </option>
@@ -340,7 +377,10 @@ function AdminStates(): React.JSX.Element {
                               defaultValue={editedFields.actions}
                               placeholder="Действия"
                               onChange={(e) =>
-                                setEditedFields({ ...editedFields, actions: e.target.value })
+                                setEditedFields({
+                                  ...editedFields,
+                                  actions: e.target.value,
+                                })
                               }
                             />
                           </dd>

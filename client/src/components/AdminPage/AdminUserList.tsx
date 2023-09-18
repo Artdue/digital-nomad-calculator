@@ -16,7 +16,9 @@ function AdminUserList(): React.JSX.Element {
 
   const [filteredUsers, setFilteredUsers] = useState<IUser[]>(users);
 
-  const [userStatusMap, setUserStatusMap] = useState<{ [id: number]: string }>({});
+  const [userStatusMap, setUserStatusMap] = useState<{ [id: number]: string }>(
+    {}
+  );
   const [searchText, setSearchText] = useState<string>('');
 
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -63,13 +65,18 @@ function AdminUserList(): React.JSX.Element {
   const handleStatusChange1 = async (user: IUser): Promise<void> => {
     try {
       const newStatus: string = userStatusMap[user.id] || selectedStatus;
-      await dispatch(editUser({ id: user.id, data: { document_status: newStatus } }));
+      await dispatch(
+        editUser({ id: user.id, data: { document_status: newStatus } })
+      );
 
       setUserStatusMap((prevState) => ({ ...prevState, [user.id]: newStatus }));
 
       sendMesg({ ...user, document_status: newStatus });
     } catch (error) {
-      console.error('Ошибка при изменении статуса и отправке сообщения:', error);
+      console.error(
+        'Ошибка при изменении статуса и отправке сообщения:',
+        error
+      );
     }
     setShowNotification2(true);
     setTimeout(() => {
@@ -112,10 +119,19 @@ function AdminUserList(): React.JSX.Element {
       setFilteredUsers(users);
     } else {
       const filtered = users.filter((user) => {
-        const fullName = `${user.first_name} ${user.last_name} ${user.middle_name}`;
+        const fullName = `${user.last_name} ${user.first_name} ${user.middle_name}`;
+        const reversedFullName = `${user.first_name} ${user.last_name} ${user.middle_name}`;
+        const reversedFullName1 = `${user.middle_name} ${user.last_name} ${user.first_name}`;
+        const reversedFullName2 = `${user.middle_name} ${user.first_name} ${user.last_name}`;
         return (
           (selectedStatus === '' || user.document_status === selectedStatus) &&
-          (searchText === '' || fullName.toLowerCase().includes(searchText.toLowerCase()))
+          (searchText === '' ||
+            fullName.toLowerCase().includes(searchText.toLowerCase()) ||
+            reversedFullName.toLowerCase().includes(searchText.toLowerCase()) ||
+            reversedFullName1
+              .toLowerCase()
+              .includes(searchText.toLowerCase()) ||
+            reversedFullName2.toLowerCase().includes(searchText.toLowerCase()))
         );
       });
       setFilteredUsers(filtered);
@@ -137,7 +153,10 @@ function AdminUserList(): React.JSX.Element {
         <div
           id="status"
           className="fixed top-16 left-1/2 animate-pulse transform -translate-x-1/2 w-300 bg-gradient-to-br from-purple-600 to-blue-500 p-4 rounded-md text-white text-center"
-          style={{ transition: 'opacity 0.5s', opacity: showNotification1 ? 1 : 0 }}
+          style={{
+            transition: 'opacity 0.5s',
+            opacity: showNotification1 ? 1 : 0,
+          }}
         >
           Сохранено
         </div>
@@ -145,7 +164,10 @@ function AdminUserList(): React.JSX.Element {
       {showNotification2 && (
         <div
           className="fixed top-10 left-1/2 transform -translate-x-1/2 w-300 bg-gradient-to-br from-purple-600 to-blue-500 p-4 rounded-md text-white text-center"
-          style={{ transition: 'opacity 0.5s', opacity: showNotification2 ? 1 : 0 }}
+          style={{
+            transition: 'opacity 0.5s',
+            opacity: showNotification2 ? 1 : 0,
+          }}
         >
           Письмо отправлено и данные сохранены
         </div>
@@ -235,26 +257,45 @@ function AdminUserList(): React.JSX.Element {
       <input
         type="text"
         className="rounded-lg text-sm px-2 py-1.5 w-full mb-4"
-        placeholder="Поиск по имени, фамилии или отчеству"
+        placeholder="Поиск по фамилии, имени или отчеству"
         value={searchText}
         onChange={(event) => setSearchText(event.target.value)}
       />
       {/* Модальное окно */}
       {showModal && (
         <div className="flex items-stretch overflow-auto">
-          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full]  ">
-            <div className="bg-white p-4 rounded-md w-[1000px] h-[850px]  ">
+          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 sm:h-[full]">
+            <div className="bg-white p-4 rounded-md w-[1000px] max-h-[90vh] overflow-y-auto">
               <div className="px-4 sm:px-0 text-center ">
-                <h1 className="text-2xl font-bold leading-7 text-gray-900">Анкета</h1>
+                <h1 className="text-2xl font-bold leading-7 text-gray-900">
+                  Анкета
+                </h1>
               </div>
 
               <div className="mr-6 ml-6 mt-4 border-t border-gray-100">
                 <dl className="divide-y divide-gray-100">
                   {' '}
                   <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                    <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">Имя</dt>
+                    <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                      Фамилия
+                    </dt>
                     <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                       <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        {modalForUser.last_name ? (
+                          modalForUser.last_name
+                        ) : (
+                          <div>Не заполненно</div>
+                        )}
+                      </div>
+                    </dd>
+                  </div>
+                  <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                    <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                      Имя
+                    </dt>
+                    <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                      <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        {' '}
                         {modalForUser.first_name ? (
                           modalForUser.first_name
                         ) : (
@@ -278,17 +319,6 @@ function AdminUserList(): React.JSX.Element {
                       </div>
                     </dd>
                   </div>
-                  <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                    <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
-                      Фамилия
-                    </dt>
-                    <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                      <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                        {' '}
-                        {modalForUser.last_name ? modalForUser.last_name : <div>Не заполненно</div>}
-                      </div>
-                    </dd>
-                  </div>
                   {/*  */}
                   <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                     <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
@@ -297,7 +327,11 @@ function AdminUserList(): React.JSX.Element {
                     <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                       <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         {' '}
-                        {modalForUser.birthDate ? modalForUser.birthDate : <div>Не заполненно</div>}
+                        {modalForUser.birthDate ? (
+                          modalForUser.birthDate
+                        ) : (
+                          <div>Не заполненно</div>
+                        )}
                       </div>
                     </dd>
                   </div>{' '}
@@ -317,11 +351,17 @@ function AdminUserList(): React.JSX.Element {
                     </dd>
                   </div>{' '}
                   <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                    <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">Email</dt>
+                    <dt className="text-sm font-medium leading-6 text-gray-900 mt-[9px]">
+                      Email
+                    </dt>
                     <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                       <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         {' '}
-                        {modalForUser.email ? modalForUser.email : <div>Не заполненно</div>}
+                        {modalForUser.email ? (
+                          modalForUser.email
+                        ) : (
+                          <div>Не заполненно</div>
+                        )}
                       </div>
                     </dd>
                   </div>{' '}
@@ -347,7 +387,11 @@ function AdminUserList(): React.JSX.Element {
                     <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                       <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         {' '}
-                        {modalForUser.income ? modalForUser.income : <div>Не заполненно</div>}
+                        {modalForUser.income ? (
+                          modalForUser.income
+                        ) : (
+                          <div>Не заполненно</div>
+                        )}
                       </div>
                     </dd>
                   </div>{' '}
@@ -358,7 +402,11 @@ function AdminUserList(): React.JSX.Element {
                     <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                       <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         {' '}
-                        {modalForUser.visaType ? modalForUser.visaType : <div>Не заполненно</div>}
+                        {modalForUser.visaType ? (
+                          modalForUser.visaType
+                        ) : (
+                          <div>Не заполненно</div>
+                        )}
                       </div>
                     </dd>
                   </div>
@@ -369,7 +417,11 @@ function AdminUserList(): React.JSX.Element {
                     <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                       <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         {' '}
-                        {modalForUser.visaShare ? modalForUser.visaShare : <div>Не заполненно</div>}
+                        {modalForUser.visaShare ? (
+                          modalForUser.visaShare
+                        ) : (
+                          <div>Не заполненно</div>
+                        )}
                       </div>
                     </dd>
                   </div>{' '}
@@ -380,11 +432,19 @@ function AdminUserList(): React.JSX.Element {
                     <dd className=" text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                       <div className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         {' '}
-                        {modalForUser.work_date ? modalForUser.work_date : <div>Не заполненно</div>}
+                        {modalForUser.work_date ? (
+                          modalForUser.work_date
+                        ) : (
+                          <div>Не заполненно</div>
+                        )}
                       </div>
                       <div className="text-sm font-medium leading-6 text-gray-900 mt-2">
                         Месяцев на текущей работе:{' '}
-                        {modalForUser.work_exp ? modalForUser.work_exp : <div>0</div>}
+                        {modalForUser.work_exp ? (
+                          modalForUser.work_exp
+                        ) : (
+                          <div>0</div>
+                        )}
                       </div>
                     </dd>
                   </div>
@@ -403,7 +463,6 @@ function AdminUserList(): React.JSX.Element {
           </div>
         </div>
       )}
-
       <div className="grid grid-cols-1 gap-8 xl:gap-12 md:grid-cols-3">
         {filteredUsers.length ? (
           filteredUsers
@@ -413,10 +472,14 @@ function AdminUserList(): React.JSX.Element {
                 <div className="w-full h-[450px] overflow-auto">
                   <div className="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl h-full flex flex-col">
                     <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-                      ФИО: {user.first_name} {user.last_name} {user.middle_name}
+                      ФИО: {user.last_name} {user.first_name} {user.middle_name}
                     </h1>
-                    <p className="text-gray-500 dark:text-gray-300">Email: {user.email}</p>
-                    <p className="text-gray-500 dark:text-gray-300">Телефон: {user.phoneNumber}</p>
+                    <p className="text-gray-500 dark:text-gray-300">
+                      Email: {user.email}
+                    </p>
+                    <p className="text-gray-500 dark:text-gray-300">
+                      Телефон: {user.phoneNumber}
+                    </p>
                     <button
                       type="button"
                       className="mt-4 px-2 py-1 bg-green-500 text-white rounded-md hover:bg-indigo-600 text-sm"
@@ -431,7 +494,10 @@ function AdminUserList(): React.JSX.Element {
                             type="button"
                             className="flex items-center "
                             onClick={() =>
-                              window.open(`http://localhost:3000${user.passport}`, '_blank')
+                              window.open(
+                                `http://localhost:3000${user.passport}`,
+                                '_blank'
+                              )
                             }
                           >
                             Паспорт
@@ -442,7 +508,9 @@ function AdminUserList(): React.JSX.Element {
                           </button>
                         </div>
                       ) : (
-                        <div className="text-gray-500 dark:text-gray-300">Паспорт: нет</div>
+                        <div className="text-gray-500 dark:text-gray-300">
+                          Паспорт: нет
+                        </div>
                       )}
 
                       {user.balance ? (
@@ -451,7 +519,10 @@ function AdminUserList(): React.JSX.Element {
                             type="button"
                             className="flex items-center "
                             onClick={() =>
-                              window.open(`http://localhost:3000${user.balance}`, '_blank')
+                              window.open(
+                                `http://localhost:3000${user.balance}`,
+                                '_blank'
+                              )
                             }
                           >
                             Выписка из Банка
@@ -473,7 +544,10 @@ function AdminUserList(): React.JSX.Element {
                             type="button"
                             className="flex items-center "
                             onClick={() =>
-                              window.open(`http://localhost:3000${user.lease}`, '_blank')
+                              window.open(
+                                `http://localhost:3000${user.lease}`,
+                                '_blank'
+                              )
                             }
                           >
                             Справка о работе
@@ -490,20 +564,33 @@ function AdminUserList(): React.JSX.Element {
                       )}
                     </div>
 
-                    <p className="btn btn-primary resume-btn  text-center">Статус документов</p>
+                    <p className="btn btn-primary resume-btn  text-center">
+                      Статус документов
+                    </p>
                     <select
                       className="rounded-lg text-sm px-2 py-1.5 w-full"
                       value={userStatusMap[user.id] || user.document_status}
                       onChange={(event) => {
                         const { value } = event.target;
-                        setUserStatusMap((prevState) => ({ ...prevState, [user.id]: value }));
+                        setUserStatusMap((prevState) => ({
+                          ...prevState,
+                          [user.id]: value,
+                        }));
                       }}
                     >
-                      <option value="Новый пользователь">Новый пользователь</option>
-                      <option value="Документы отправлены">Пользователь отправил документы</option>
-                      <option value="Получены документы">Получены документы</option>
+                      <option value="Новый пользователь">
+                        Новый пользователь
+                      </option>
+                      <option value="Документы отправлены">
+                        Пользователь отправил документы
+                      </option>
+                      <option value="Получены документы">
+                        Получены документы
+                      </option>
                       <option value="Приняты в работу">Приняты в работу</option>
-                      <option value="Требуют уточнения">Требуют уточнения</option>
+                      <option value="Требуют уточнения">
+                        Требуют уточнения
+                      </option>
                       <option value="Готово">Готово</option>
                     </select>
                     <div className="mt-auto pt-5">
