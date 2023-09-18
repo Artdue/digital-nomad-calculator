@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function TestPage(): React.JSX.Element {
+export default function SideBarAdmin(): React.JSX.Element {
   return (
     <div className="flex flex-col text-gray-800">
-      <div className="fixed flex flex-col top-14 left-0  bg-none h-[100px] w-[250px]">
-        <div className=" flex-grow">
-          <ul className="flex flex-col py-6 space-y-3">
+      <div className="fixed flex flex-col top-14 left-0 bg-none h-full w-[160px]">
+        <div className="flex-grow">
+          <ul className="flex flex-col py-6">
             <li>
               <Link
                 to="/admin/users"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+                className="relative flex flex-row items-center h-full focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
                   <svg
@@ -28,17 +28,19 @@ export default function TestPage(): React.JSX.Element {
                     />
                   </svg>
                 </span>
+                <br />
                 <span className="ml-2 text-sm tracking-wide truncate">
-                  Входящие заявки и <br /> клиенты
+                  Входящие <br /> заявки и <br /> клиенты
                 </span>
               </Link>
             </li>
-
+            <br />
             <li>
               <Link
                 to="/admin"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
+                className="relative flex flex-row items-center h-full focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6"
               >
+                {' '}
                 <span className="inline-flex justify-center items-center ml-4">
                   <svg
                     className="w-5 h-5"
@@ -56,8 +58,10 @@ export default function TestPage(): React.JSX.Element {
                   </svg>
                 </span>
                 <span className="ml-2 text-sm tracking-wide truncate">
-                  Обновление данных для <br />
-                  Digital Nomad Calculator{' '}
+                  Обновление <br />
+                  данных для <br />
+                  Digital Nomad <br />
+                  Calculator{' '}
                 </span>
               </Link>
             </li>

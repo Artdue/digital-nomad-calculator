@@ -129,7 +129,20 @@ export default function Namvbar({ scrollToBlock }: NavbarProps): React.JSX.Eleme
                                     'block px-4 py-2 text-sm text-[#0c4a6e] hover:text-[#76a1dd]',
                                   )}
                                 >
-                                  Кабинет администратора
+                                  Входящие заявки и клиенты
+                                </Link>
+                              )}
+                            </Menu.Item>
+                            <Menu.Item>
+                              {({ active }) => (
+                                <Link
+                                  to="/admin"
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'block px-4 py-2 text-sm text-[#0c4a6e] hover:text-[#76a1dd]',
+                                  )}
+                                >
+                                  Обновление данных для Digital Nomad Calculator{' '}
                                 </Link>
                               )}
                             </Menu.Item>

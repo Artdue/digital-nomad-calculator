@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import addState from '../../Redux/thunks/addStates';
-import TestPage from './SideBarAdmin';
 import type { InewState } from '../../Types/types';
 
 export default function NewState(): React.JSX.Element {
@@ -79,7 +78,6 @@ export default function NewState(): React.JSX.Element {
 
   return (
     <>
-      <TestPage />
       <div className="flex justify-center mb-4">
         <button
           onClick={() => openModal()}
@@ -106,7 +104,10 @@ export default function NewState(): React.JSX.Element {
 
       {showModal && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-50 sm:h-[full] overflow-auto">
-          <div ref={formRef} className="p-4 w-full max-w-l mx-auto m-4 flex justify-center">
+          <div
+            ref={formRef}
+            className="p-4 w-full max-w-l mx-auto m-4 flex justify-center"
+          >
             <div className="px-4 sm:px-0" />
             <div className="bg-white p-4 rounded-md w-[1000px] max-h-[90vh] overflow-y-auto">
               <div className="px-4 sm:px-0 text-center ">
@@ -115,7 +116,10 @@ export default function NewState(): React.JSX.Element {
                 </h1>
               </div>
               <div className="mr-6 ml-6 mt-4 mb-4">
-                <form onSubmit={(e) => e.preventDefault()} className="divide-y divide-gray-100">
+                <form
+                  onSubmit={(e) => e.preventDefault()}
+                  className="divide-y divide-gray-100"
+                >
                   <div className="mr-6 ml-6 mt-4 ">
                     <dl>
                       <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 border-t border-gray-100">
@@ -143,20 +147,32 @@ export default function NewState(): React.JSX.Element {
                             id="banned_citizenship"
                             className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             value={bannedCitizenship}
-                            onChange={(e) => setBannedCitizenship(e.target.value)}
+                            onChange={(e) =>
+                              setBannedCitizenship(e.target.value)
+                            }
                           >
                             <option value="">Выберите </option>
                             <option value="RU">RU - гражданин РФ</option>
                             <option value="UKR">UKR - гражданин Украины</option>
-                            <option value="KZ">KZ - гражданин Казахстана</option>
-                            <option value="UZ">UZ - гражданин Узбекистана</option>
-                            <option value="TJ">TJ - гражданин Таджикистана</option>
-                            <option value="AZ">AZ - гражданин Азербайджана</option>
+                            <option value="KZ">
+                              KZ - гражданин Казахстана
+                            </option>
+                            <option value="UZ">
+                              UZ - гражданин Узбекистана
+                            </option>
+                            <option value="TJ">
+                              TJ - гражданин Таджикистана
+                            </option>
+                            <option value="AZ">
+                              AZ - гражданин Азербайджана
+                            </option>
                             <option value="MD">MD - гражданин Молдавии</option>
                             <option value="BY">BY - гражданин Беларуси</option>
                             <option value="AM">AM - гражданин Армении</option>
                             <option value="KG">KG - гражданин Киргизии</option>
-                            <option value="TM">TM - гражданин Туркменистана</option>
+                            <option value="TM">
+                              TM - гражданин Туркменистана
+                            </option>
                           </select>
                         </dd>
                       </div>
@@ -172,12 +188,16 @@ export default function NewState(): React.JSX.Element {
                             className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             placeholder=""
                             value={minIncome}
-                            onChange={(e) => setMinIncome(Number(e.target.value))}
+                            onChange={(e) =>
+                              setMinIncome(Number(e.target.value))
+                            }
                           />
                         </dd>
                       </div>
                       <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 border-t border-gray-100">
-                        <dt className="text-sm font-medium leading-6 text-gray-900">Опыт работы</dt>
+                        <dt className="text-sm font-medium leading-6 text-gray-900">
+                          Опыт работы
+                        </dt>
                         <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                           <input
                             id="workExp"
@@ -220,7 +240,9 @@ export default function NewState(): React.JSX.Element {
                         </dd>
                       </div>
                       <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 border-t border-gray-100">
-                        <dt className="text-sm font-medium leading-6 text-gray-900">Виза/ВНЖ</dt>
+                        <dt className="text-sm font-medium leading-6 text-gray-900">
+                          Виза/ВНЖ
+                        </dt>
                         <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                           <select
                             id="visaType"
@@ -244,7 +266,9 @@ export default function NewState(): React.JSX.Element {
                             type="number"
                             className="block w-full px-4 py-2 rounded-md border-0 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             value={visaTerm}
-                            onChange={(e) => setVisaTerm(Number(e.target.value))}
+                            onChange={(e) =>
+                              setVisaTerm(Number(e.target.value))
+                            }
                           />
                         </dd>
                       </div>
@@ -309,3 +333,4 @@ export default function NewState(): React.JSX.Element {
     </>
   );
 }
+
