@@ -20,6 +20,8 @@ export default function Calculator(): React.JSX.Element {
 
   const [showNotification1, setShowNotification1] = useState(false);
 
+  console.log(workExp);
+
   useEffect(() => {
     void dispatch(getStates());
   }, [dispatch]);
@@ -30,10 +32,10 @@ export default function Calculator(): React.JSX.Element {
     setWorkExp('');
     setCitizenship('');
     setFilterStates([]);
+    setShowImage(true);
     if (formRef.current) {
       formRef.current.reset();
     }
-    setFilterStates([]);
   };
 
   const navigate = useNavigate();
@@ -63,6 +65,9 @@ export default function Calculator(): React.JSX.Element {
 
     const citiFilter = states.filter((state) => {
       const bannedCitizenships = state.banned_citizenship.split(',').map((value) => value.trim());
+      if (citizenship === '') {
+        return states;
+      }
       return !bannedCitizenships.includes(citizenship);
     });
 
