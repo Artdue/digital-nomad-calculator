@@ -58,3 +58,5 @@ app.use('/mainAdmin', mainAdminRouter);
 app.use('/nodemailer', nodemailerRouter);
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));
+
+module.exports = app;
