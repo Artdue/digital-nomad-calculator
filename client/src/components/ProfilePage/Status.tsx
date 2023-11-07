@@ -55,7 +55,7 @@ export default function Status(): React.JSX.Element {
       <div />
       {loading ? (
         <div className="flex h-screen items-center justify-center">
-          <img src="/src/assets/reload-cat.gif" alt="" />
+          <img src="/public/reload-cat.gif" alt="" />
         </div>
       ) : (
         <div className="m-2 flex justify-center items-center flex-col">
