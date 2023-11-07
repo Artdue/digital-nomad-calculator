@@ -1,9 +1,9 @@
 {
-  "versel": 2,
+  "version": 2,
   "builds": [
     {
       "src": "./app.js",
-      "use": "@versel/node"
+      "use": "@vercel/node"
     }
   ],
   "router": [
