@@ -39,7 +39,7 @@ export default function Foot(): React.JSX.Element {
             <Footer.Brand
               alt="KYC Logo"
               href="https://kycconsulting.ru/"
-              src="/src/assets/logo.png"
+              src="/public/logo.png"
             />
           </div>
           <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">

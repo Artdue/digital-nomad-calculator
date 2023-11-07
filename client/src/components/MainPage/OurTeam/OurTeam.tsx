@@ -5,27 +5,27 @@ const people = [
     name: 'Петр Герчиков',
     role: 'Управляющий Партнер',
     position: 'KYC Consulting',
-    imageUrl: '/src/assets/gerchikov.jpg',
+    imageUrl: '/public/gerchikov.jpg',
   },
   {
     name: 'Марк Белкания',
     role: 'Директор по развитию',
     position: 'KYC Consulting',
 
-    imageUrl: '/src/assets/belkaniya.jpg',
+    imageUrl: '/public/belkaniya.jpg',
   },
   {
     name: 'Надежда Белоусова',
     role: 'Адвокат. Руководитель практики',
     position: 'Litigation KYC Consulting',
 
-    imageUrl: '/src/assets/belousova.jpg',
+    imageUrl: '/public/belousova.jpg',
   },
   {
     name: 'Людмила Устюжина',
     role: 'Адвокат. Руководитель практики',
     position: 'WEALTH KYC Consulting',
-    imageUrl: '/src/assets/ustuzhanina.jpg',
+    imageUrl: '/public/ustuzhanina.jpg',
   },
 ];
 

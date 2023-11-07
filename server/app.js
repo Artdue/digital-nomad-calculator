@@ -39,6 +39,10 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use('/', (req, res) => {
+  res.send('dasdsada');
+});
+
 app.use('/uploads/', checkFileAccess, express.static('uploads'));
 // app.use('/uploads/passport', express.static('passport'));
 // app.use('/uploads/balance', express.static(' balance'));
